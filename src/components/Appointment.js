@@ -2,92 +2,83 @@ import React from 'react';
 
 
 export default class Appointment extends React.Component {
-    state={
-        date:{
-            year:0,
-            month:0,
-            day:0
-        },
-        spec:null,
-        time:null
-    };
 
-
-    changeDate =(e) => {
-        const date = e.target.value.split('-');
-        this.setState({
-            date:{
-                year:date[0],
-                month:date[1],
-                day:date[2]
-            }
-        })
-    };
-
-    chooseSpeciality = (e) => {
-        this.setState({spec:e.target.value})
+    componentDidMount() {
+        this.props.setAppointmentDoctor(+this.props.his.match.params.doctor)
     }
 
-    chooseTime =(e) => {
-        this.setState({time:e.target.value})
+    componentWillUnmount() {
+        this.props.clearAppointment()
     }
 
     render() {
-        let schedule
-        const {his,dataDoctors,dataServices} = this.props;
-        const path = his.match.params.doctor;
-        const doctor = dataDoctors.find(el => el.id === +path);
-        if(doctor){
-            schedule = doctor.schedule
-
-
+        const {his,dataDoctors,dataServices,dataOrders,appointment,
+            setAppointmentDate,
+            setAppointmentTime,
+            setAppointmentSpec,
+            setAppointmentComment,
+            putOrders
+        } = this.props;
+        const timeArray = [];
+        const doctor = dataDoctors.find(el => el.id === +his.match.params.doctor);
+        if (appointment.date.year){
+            for (let index in doctor.schedule[appointment.date.month][appointment.date.day]){
+                timeArray.push({[`${index}`]:doctor.schedule[appointment.date.month][appointment.date.day][`${index}`]})
+            }
         }
-
-
-        // if (doctor){
-        //     schedule = doctor.schedule[`${this.state.date.month<10 ? '0'+this.state.date.month : this.state.date.month}`][`${this.state.date.day<10 ? '0'+this.state.date.day : this.state.date.day}`]
-        //     console.log(doctor.schedule[`${this.state.date.month<10 ? '0'+this.state.date.month : this.state.date.month}`][`${this.state.date.day<10 ? '0'+this.state.date.day : this.state.date.day}`])
-        // }
-        if (this.state.time){
-        console.log(this.state.time)
-        console.log(this.state.time.split(':'))
-        console.log(dataServices[this.state.spec].duration)
-            console.log(+this.state.time.split(':')[0] + dataServices[this.state.spec].duration)
-        }
-
         return (
             <>
-                {doctor && <div style={{display:'flex',flexDirection:'column',width:'400px'}}>
+                {doctor &&
+                <div style={{display:'flex',flexDirection:'column',width:'400px'}}>
                     <p>{doctor.photo}</p>
                     <p>{doctor.name}</p>
                     <p>{doctor.lastName}</p>
                     <p>{doctor.skillsDescription}</p>
-                    <select onChange={this.chooseSpeciality} defaultValue='choose spec'>
+                    <select onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='choose spec'>
                         <option disabled >choose spec</option>
-                        {doctor.speciality.map(el=> (
-                            <option key={el}>{el}</option>
-                        ))}
+                        {
+                            doctor.speciality.map(el=> (
+                                <option key={el}>{el}</option>
+                            ))
+                        }
 
                     </select>
-                    {this.state.spec && <input type="date" onChange={this.changeDate}/>}
-                    {this.state.date.year !== 0 &&
+
+                    {appointment.spec && <input type="date" onChange={(e)=>setAppointmentDate(e.target.value)}/>}
+
+                    {appointment.date.year !== 0 &&
                     <div>
-                        {Object.values(schedule)[0][this.state.date.day] ?
-                            <div>
-                            <select onChange={this.chooseTime}>
-                                {Object.values(schedule)[0][this.state.date.day].map(el=> (
-                                    <option key={el}>{el}</option>
-                                ))}
-                                
-                            </select>
-                                <input type="time" readOnly placeholder="Time will be calculated" value={this.state.time ? +this.state.time.split(':')[0] + dataServices[this.state.spec].duration + ':00' : ''}/>
-                            </div>
-                            : <p>No work today</p>}
+                        {
+                            ( +appointment.date.month >= new Date().getMonth()+1 && +appointment.date.day >= new Date().getDate() ) ?
+                                doctor.schedule[appointment.date.month][appointment.date.day] ?
+                                    <div>
+                                        <select onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='choose time'>
+                                            <option disabled >choose time</option>
+                                            {
+                                                timeArray.map(el=> (
+                                                    <option key={Object.keys(el)[0]}>{Object.values(el)[0] ? Object.keys(el)[0] : null}</option>
+                                                ))
+                                            }
+
+                                        </select>
+                                        <input type="time" readOnly placeholder="Time will be calculated" value={appointment.time ? +appointment.time.split(':')[0] + dataServices[appointment.spec].duration + ':00' : ''}/>
+                                    </div>
+                                    : <p>No work today</p>
+                                : <p>Please choose current or future date</p>
+                        }
                     </div>
                     }
-            </div>}
-                </>
+
+                    {appointment.time &&
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <input type='text' placeholder='Add comments here' onChange={(e)=>setAppointmentComment(e.target.value)}/>
+                        <button onClick={()=>putOrders([...dataOrders,appointment])}>Confirm Appointment</button>
+                    </div>
+                    }
+
+                </div>
+                }
+            </>
         );
     }
 }
-
