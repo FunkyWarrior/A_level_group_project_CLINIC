@@ -1,0 +1,357 @@
+$header-color: #d4d5d7;
+$main-title-color: #3b3b3b;
+$main-text-color: #101010;
+$main-color:   #789084;
+$hover-color: #b1e8ca;
+$opacity-color: rgba(17,17,17,0.7);
+
+//
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+
+}
+
+// .main {
+// 	background-color: $hover-color;
+// }
+
+.container {
+	background-image: url(../assets/images/fon1.jpg);
+	background-size: cover;
+}
+.wrapper {
+	max-width: 1180px;
+	margin: 0 auto;
+}
+
+// header +  navigation
+.header {
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+   	margin: 0 auto;
+    vertical-align: middle;
+	font-weight: 700;
+	background-color: $opacity-color;
+	position: fixed;
+	top: 0;
+	z-index: 99999;
+
+	& .nav {
+		margin-top: 25px;
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: bold;
+		letter-spacing: 0.075em;
+		@media (max-width: 768px) {
+			margin-top: 10px;	
+		}
+	}
+	& .list {
+		list-style: none;
+		padding: 2px;
+		margin: 0;
+        display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		text-transform: uppercase;
+	}
+	& .item {
+		padding: 0;
+		&:not(:last-child) {
+			margin-right: 25px;
+			@media (max-width: 768px) {
+				// margin-right: 10px;	
+			}
+		}
+		&:last-child a {
+			color: $hover-color;
+			&:hover {
+				color: $main-title-color;
+			}
+		}
+		a {
+			text-decoration: none;
+			color: $header-color;
+			&:hover {
+				color: $hover-color;
+			}
+		}
+	}
+	.logo-box {
+		margin-right: 50px;
+		@media (max-width: 768px) {
+			margin-right: 0;	
+		}
+	}
+	.logo-box  img {
+		width: 100px;
+		@media (max-width: 768px) {
+			// width: 150px;	
+		}
+	}	
+}
+	
+// banner + title
+.title-box {
+	color: $header-color;
+	margin: 0px 40px;
+	padding-bottom: 45px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	@media (max-width: 768px) {
+	width: 100%;
+	margin: 0;
+	}
+	img {
+		margin: 150px auto 30px;
+		@media (max-width: 768px) {
+			max-width: 200px;	
+		}
+	}
+	h1{
+		text-transform: uppercase;
+		background-color: $opacity-color;
+		font-size: 52px;
+		padding: 35px;
+		line-height: 50px;
+		font-weight: bold;
+		margin: 70px auto 0;
+		text-align: center;
+		@media (max-width: 768px) {
+			font-size: 30px;
+			padding: 15px;	
+		}
+	}
+}
+
+// button
+.btn {
+	min-height: 50px;
+	width: 70%;
+	margin: 20px auto;
+	color: $main-color;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.05em;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 35px;
+	border: none;
+	border-radius: 2px;
+	background-color:  $hover-color;
+	transition-duration: 0.4s;
+	&:hover {
+		box-shadow: none;
+		background-color: $opacity-color;
+		color: $header-color;
+	}
+	&:focus {
+		outline: none;
+	}
+	@media (max-width: 768px) {
+		width: 100%;
+		margin: 25px auto;	
+	}
+}
+
+//  section About Us
+.aboutsection, 
+.team-container,
+h2  {
+	font-size: 20px;
+	line-height: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+	color: $main-color;
+	text-align: justify;
+	border-bottom: 1px solid $opacity-color;
+	padding-bottom: 50px;
+	@media (max-width: 768px) {
+		padding: 3px;
+		margin: 25px 10px;	
+	}
+}
+h2 {
+	// border: none;
+	font-size: 36px;
+	padding-bottom: 2px;
+}
+
+// second banner 
+.case {
+	position: relative;
+	.banner {
+		display: block;
+		width: 100%;
+		margin: 15px auto;
+	}
+	.button-box {
+		position: absolute; 
+		top: 70%;
+		right: 0%;
+		height: 90px;
+		width: 100%;
+		background-color: rgba(255,255,255,0.4);
+		margin: 20px 0;
+		text-align: right;
+		.btn {
+			width: 35%;
+			margin: 20px 10px;
+		}
+		@media (max-width: 768px) {
+			top: 50%;
+		}
+	}
+}
+
+// shortly about doctors 
+.team-container {
+	color: $main-color;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-bottom: 50px;
+
+	.item {
+		width: 25%;
+		margin: 10px; 
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		border-radius: 5px;
+		box-shadow: 0px 2px 8px 1px $main-color;
+		.photo {
+			overflow: hidden;
+			height: 45%;
+			border-radius: 5px;
+		}
+		.link-box {
+			margin-top: 20px;
+		}
+		.link {
+			width: 100%;
+			display: block;
+			padding: 15px 2px;
+		}
+		.more {
+			background-color: $opacity-color;
+			&:hover {
+				background-color: $main-color;
+			}
+		}
+		@media (max-width: 768px) {
+			width: 45%;
+		}
+		@media (max-width: 630px) {
+			width: 100%;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// _____________________
+
+// footer {
+// 	background-color: $footer-color;
+// 	padding: 60px 25px;
+// 	color: $header-color;
+// 	.wrapper {
+// 		display: flex;
+// 		justify-content: space-between;
+// 		@media (max-width: 768px) {
+// 			flex-direction: column;	
+// 			align-items: center;
+// 			.logo-box {
+// 				display: none;
+// 			}
+// 		}
+// 		.contacts {
+// 			position: relative;
+// 		}
+// 	}
+// 	.nav {
+// 		font-family: 'PT Serif', serif;
+// 		margin-top: 25px;
+// 		font-size: 13px;
+// 		line-height: 21px;
+// 		letter-spacing: 0.075em;
+// 		@media (max-width: 768px) {
+// 			margin-top: 10px;	
+// 		}
+// 		.list {
+// 			list-style: none;
+// 			padding: 2px;
+// 			margin: 0;
+// 			display: flex;
+// 			flex-direction: column;
+// 			justify-content: space-between;
+// 			flex-wrap: wrap;
+// 			text-transform: uppercase;
+// 		}
+// 	}
+// 	.item {
+// 		padding: 0;
+// 		&:not(:last-child) {
+// 			// margin-right: 25px;
+// 			@media (max-width: 768px) {
+// 				// margin-right: 10px;	
+// 			}
+// 		}
+// 		a {
+// 			text-decoration: none;
+// 			color: $header-color;
+// 			&:hover {
+// 				color: $hover-color;
+// 			}
+// 		}
+// 	}
+// }
+
+// h5 {
+// 	font-size: 16px;
+// 	line-height: 24px;
+// 	font-weight: bold;
+// 	text-transform: uppercase;
+// // }
+// footer  {
+// 	.logo-box,
+// 	.footer-nav,
+// 	.contacts {
+// 		width: 25%;
+// 		@media (max-width: 768px) {
+// 			align-self: center;
+// 			width: 50%;
+// 		}
+// 	}
+// 	span {
+// 		color:  $header-color;
+// 		&:hover {
+// 			color: $hover-color;
+// 		}
+// 	}
+// }
+
