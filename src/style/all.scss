@@ -13,9 +13,11 @@ body {
 
 }
 
-// .main {
-// 	background-color: $hover-color;
-// }
+.main {
+	background-image: url(../assets/images/fon6.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
 
 .container {
 	background-image: url(../assets/images/fon1.jpg);
@@ -164,12 +166,14 @@ body {
 .aboutsection, 
 .team-container,
 h2  {
+	background-color: $opacity-color;
+	box-shadow: 0px 0px 10px 20px  $opacity-color;
 	font-size: 20px;
 	line-height: 1.5em;
 	font-family: 'Montserrat', sans-serif;
-	color: $main-color;
+	color: $header-color;
 	text-align: justify;
-	border-bottom: 1px solid $opacity-color;
+	
 	padding: 15px 15px 50px;
 	@media (max-width: 768px) {
 		padding: 3px;
@@ -180,6 +184,10 @@ h2 {
 	// border: none;
 	font-size: 36px;
 	padding: 2px;
+	background: none;
+	box-shadow: none;
+	color: $main-color;
+	border-bottom: 1px solid $opacity-color;
 }
 
 // second banner 
@@ -211,10 +219,10 @@ h2 {
 
 // shortly about doctors 
 .team-container {
-	color: $main-color;
+	color: $header-color;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	padding: 15px 5px 50px;
 
 	.item {
