@@ -143,7 +143,7 @@ body {
 	font-weight: bold;
 	line-height: 35px;
 	border: none;
-	border-radius: 2px;
+	border-radius: 3px;
 	background-color:  $hover-color;
 	transition-duration: 0.4s;
 	&:hover {
@@ -170,7 +170,7 @@ h2  {
 	color: $main-color;
 	text-align: justify;
 	border-bottom: 1px solid $opacity-color;
-	padding-bottom: 50px;
+	padding: 15px 15px 50px;
 	@media (max-width: 768px) {
 		padding: 3px;
 		margin: 25px 10px;	
@@ -179,7 +179,7 @@ h2  {
 h2 {
 	// border: none;
 	font-size: 36px;
-	padding-bottom: 2px;
+	padding: 2px;
 }
 
 // second banner 
@@ -215,10 +215,10 @@ h2 {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding-bottom: 50px;
+	padding: 15px 5px 50px;
 
 	.item {
-		width: 25%;
+		width: 27%;
 		margin: 10px; 
 		text-align: center;
 		display: flex;
@@ -229,6 +229,9 @@ h2 {
 			overflow: hidden;
 			height: 45%;
 			border-radius: 5px;
+			img {
+				border-radius: 5px;
+			}
 		}
 		.link-box {
 			margin-top: 20px;

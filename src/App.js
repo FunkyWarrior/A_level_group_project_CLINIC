@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Switch, Route} from "react-router-dom";
 // import axios from "axios";
 
-import {getDoctors,getServices,getDoctorsRequest} from "./store/app/actions";
+import {getDoctors,getServices, getDoctorsRequest, postServices} from "./store/app/actions";
 
 import Header from "./components/header/index"
 import Footer from "./components/Footer";
@@ -17,14 +17,22 @@ export class App extends React.Component {
 
     componentDidMount() {
         this.props.getDoctors();
-        this.props.getServices( )
+        this.props.getServices( );
+        this.props.postServices()
      
-        fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
-            method: "GET",
-            credentials: "include"
-        })
-            .then(res => res.json())
-            .then(res => console.log (res))
+        // fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
+        //     method: "GET",
+        //     credentials: "include"
+        // })
+        //     .then(res => res.json())
+        //     .then(res => console.log (res))
+
+        // fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
+        //     method: "GET",
+        //     credentials: "include"
+        // })
+        //     .then(res => res.json())
+        //     .then(res => console.log (res))
 }
 
 
@@ -55,8 +63,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     getDoctors,
     getServices,
-    getDoctorsRequest
-
+    getDoctorsRequest,
+    // postServicesRequest,
+    postServices
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(App)

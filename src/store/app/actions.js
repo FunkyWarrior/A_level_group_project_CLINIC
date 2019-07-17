@@ -1,14 +1,7 @@
-export const GET_DOCTORS_REQUEST = "GET_DOCTORS_REQUEST";
-export const GET_DOCTORS_REQUEST_SUCCESS = "GET_DOCTORS_REQUEST_SUCCESS";
-export const GET_DOCTORS_REQUEST_FAIL = "GET_DOCTORS_REQUEST_FAIL";
+// import axios from "axios";
+import * as types from "./actionTypes";
 
-export const GET_SERVICES_REQUEST = "GET_SERVICES_REQUEST";
-export const GET_SERVICES_REQUEST_SUCCESS = "GET_SERVICES_REQUEST_SUCCESS";
-export const GET_SERVICES_REQUEST_FAIL = "GET_SERVICES_REQUEST_FAIL";
 
-export const POST_DOCTORS_REQUEST = "POST_DOCTORS_REQUEST";
-export const POST_DOCTORS_REQUEST_SUCCESS = "POST_DOCTORS_REQUEST_SUCCESS";
-export const POST_DOCTORS_REQUEST_FAIL = "POST_DOCTORS_REQUEST_FAIL";
 
 const URL = "https://team-app-28f4a.firebaseio.com/";
 // https://api-clinics.herokuapp.com/api/v1/services"
@@ -16,17 +9,17 @@ const URL = "https://team-app-28f4a.firebaseio.com/";
 // -----------------------------------------------------------------------------------------------------------------
 
 export const getDoctorsRequest = payload => ({
-    type: GET_DOCTORS_REQUEST,
+    type: types.GET_DOCTORS_REQUEST,
     payload
 });
 
 const getDoctorsRequestSuccess = payload => ({
-    type: GET_DOCTORS_REQUEST_SUCCESS,
+    type: types.GET_DOCTORS_REQUEST_SUCCESS,
     payload
 });
 
 const getDoctorsRequestFail = payload => ({
-    type: GET_DOCTORS_REQUEST_FAIL,
+    type: types.GET_DOCTORS_REQUEST_FAIL,
     payload
 });
 
@@ -42,18 +35,46 @@ export const getDoctors = () => dispatch => {
 };
 // _____________________________________________________________________________________
 
+const getServicesRequest = payload => ({
+    type: types.GET_SERVICES_REQUEST,
+    payload
+});
+
+const getServicesRequestSuccess = payload => ({
+    type: types.GET_SERVICES_REQUEST_SUCCESS,
+    payload
+});
+
+const getServicesRequestFail = payload => ({
+    type: types.GET_SERVICES_REQUEST_FAIL,
+    payload
+});
+
+export const getServices = () => dispatch => {
+    dispatch(getServicesRequest());
+    return fetch(`${URL}services.json`, {
+        method: "GET",
+        // credentials: "include"
+    })
+        .then(res => res.json())
+        .then(res => dispatch(getServicesRequestSuccess(res)))
+        .catch(err => dispatch(getServicesRequestFail(err)));
+};
+
+
+// _____________________________________________________________________________________
 export const postDoctorsRequest = payload => ({
-    type: POST_DOCTORS_REQUEST,
+    type: types.POST_DOCTORS_REQUEST,
     payload
 });
 
 const postDoctorsRequestSuccess = payload => ({
-    type: POST_DOCTORS_REQUEST_SUCCESS,
+    type: types.POST_DOCTORS_REQUEST_SUCCESS,
     payload
 });
 
 const postDoctorsRequestFail = payload => ({
-    type: POST_DOCTORS_REQUEST_FAIL,
+    type: types.POST_DOCTORS_REQUEST_FAIL,
     payload
 });
 
@@ -69,35 +90,42 @@ export const postDoctors = (payload) => dispatch => {
         body: JSON.stringify(payload)
     })
         .then(res => res.json())
-        .then(res =>console.log(res))
+        .then(res => dispatch(postDoctorsRequestSuccess(res)))
         .catch(err => dispatch(postDoctorsRequestFail(err)));
 };
 
 // -----------------------------------------------------------------------------------------------------------------
-const getServicesRequest = payload => ({
-    type: GET_SERVICES_REQUEST,
+
+export const postServicesRequest = payload => ({
+    type: types.POST_SERVICES_REQUEST,
     payload
 });
 
-const getServicesRequestSuccess = payload => ({
-    type: GET_SERVICES_REQUEST_SUCCESS,
+const postServicesRequestSuccess = payload => ({
+    type: types.POST_SERVICES_REQUEST_SUCCESS,
     payload
 });
 
-const getServicesRequestFail = payload => ({
-    type: GET_SERVICES_REQUEST_FAIL,
+const postServicesRequestFail = payload => ({
+    type: types.POST_SERVICES_REQUEST_FAIL,
     payload
 });
 
-export const getServices = () => dispatch => {
-    dispatch(getServicesRequest());
-    return fetch(`${URL}services.json`, {
-        method: "GET",
-        // credentials: "include"
+export const postServices = (payload) => dispatch => {
+    // console.log(payload)
+    dispatch(postServicesRequest());
+    return fetch("https://api-clinics.herokuapp.com/api/v1/services/:id ", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
     })
         .then(res => res.json())
-        .then(res => dispatch(getServicesRequestSuccess(res)))
-        .catch(err => dispatch(getServicesRequestFail(err)));
+        .then(res =>  dispatch(postServicesRequestSuccess(res)))
+        .catch(err => dispatch(postServicesRequestFail(err)))
 };
 
+// _____________________________________________________________
 

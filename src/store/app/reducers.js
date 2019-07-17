@@ -1,21 +1,4 @@
-import {
-    GET_DOCTORS_REQUEST,
-    GET_DOCTORS_REQUEST_SUCCESS,
-    GET_DOCTORS_REQUEST_FAIL,
-
-    GET_SERVICES_REQUEST,
-    GET_SERVICES_REQUEST_SUCCESS,
-    GET_SERVICES_REQUEST_FAIL,
-
-    POST_DOCTORS_REQUEST,
-    POST_DOCTORS_REQUEST_SUCCESS,
-    POST_DOCTORS_REQUEST_FAIL
-
-
-} from './actions'
-
-
-
+import * as types from './actionTypes'
 
 const defaultState = {
     doctors:[  ],
@@ -42,14 +25,14 @@ export const appReducer = (state = defaultState,action) => {
     switch (action.type) {
 // -----------------------------------------------------------------------------------------------------------------
 
-        case GET_DOCTORS_REQUEST : {
+        case types.GET_DOCTORS_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case GET_DOCTORS_REQUEST_SUCCESS : {
+        case types.GET_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
                 doctors:action.payload,
@@ -57,7 +40,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case GET_DOCTORS_REQUEST_FAIL : {
+        case types.GET_DOCTORS_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,
@@ -67,14 +50,14 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-        case GET_SERVICES_REQUEST : {
+        case types.GET_SERVICES_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case GET_SERVICES_REQUEST_SUCCESS : {
+        case types.GET_SERVICES_REQUEST_SUCCESS : {
             return {
                 ...state,
                 services:action.payload,
@@ -82,7 +65,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case GET_SERVICES_REQUEST_FAIL : {
+        case types.GET_SERVICES_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,
@@ -91,27 +74,51 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
-case POST_DOCTORS_REQUEST : {
-    return {
-        ...state,
-        isFetching: true
-    };
-}
+        case types.POST_DOCTORS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
 
-case POST_DOCTORS_REQUEST_SUCCESS : {
-    return {
-        ...state,
-        isFetching: false
-    }
-}
+        case types.POST_DOCTORS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
 
-case POST_DOCTORS_REQUEST_FAIL : {
-    return {
-        ...state,
-        error: action.payload,
-        isFetching: false
-    }
-}
+        case types.POST_DOCTORS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// _______________________________________________________________________________
+
+        case types.POST_SERVICES_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.POST_SERVICES_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+
+        case types.POST_SERVICES_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
 
 // _______________________________________________________________________________
 
