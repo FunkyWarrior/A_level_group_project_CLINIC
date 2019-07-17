@@ -22,6 +22,7 @@ import Doctors from "./components/Doctors"
 import Services from "./components/Services"
 import Service from "./components/Service"
 import Appointment from "./components/Appointment"
+import Auth from './containers/auth'
 
 
 export class App extends React.Component {
@@ -60,6 +61,7 @@ export class App extends React.Component {
                             clearAppointment={this.props.clearAppointment}
                             putOrders={this.props.putOrders}
                         />} />
+                        <Route exact path="/auth" component={Auth} />
                     </Switch>
                 <Footer/>
             </div>

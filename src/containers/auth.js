@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { auth } from '../actions/auth';
-import { register } from '../actions/signUp'
+// import { auth } from '../actions/auth';
+// import { register } from '../actions/signUp'
 
 import SignUpForm from '../components/signUp';
 import SignInForm from '../components/signIn';
@@ -24,7 +24,7 @@ class Auth extends Component {
     return (
       <div className="auth">
         <div className="auth__content">
-          { auth ? (
+          {/* { auth ? ( */}
               <Loader flag={this.props.isFetching}>
                 <SignInForm error={this.props.errorFromAuth} submitHandler={this.props.auth} />
               </Loader>
@@ -39,7 +39,7 @@ class Auth extends Component {
           )}
 
           <div className="auth__additional-content">
-            {auth ? (
+            {/* {auth ? ( */}
               <p className="auth__text">
                 Do you have account ? {" "}
                 <span className="auth__toggle-span" onClick={this.toggleAuth}>
@@ -62,13 +62,13 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.auth.user,
-  isFetching: state.auth.isFetching,
-  errorFromAuth: state.auth.error,
-  successRegister: state.auth.successRegister
+//   user: state.auth.user,
+//   isFetching: state.auth.isFetching,
+//   errorFromAuth: state.auth.error,
+//   successRegister: state.auth.successRegister
 })
 
 export default connect(
   mapStateToProps,
-  { auth,register }
+//   { auth,register }
 )(Auth);
