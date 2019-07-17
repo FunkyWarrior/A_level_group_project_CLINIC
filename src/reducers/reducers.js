@@ -1,31 +1,4 @@
-import {
-    GET_DOCTORS_REQUEST,
-    GET_DOCTORS_REQUEST_SUCCESS,
-    GET_DOCTORS_REQUEST_FAIL,
-
-    GET_SERVICES_REQUEST,
-    GET_SERVICES_REQUEST_SUCCESS,
-    GET_SERVICES_REQUEST_FAIL,
-
-    GET_ALL_REQUEST,
-    GET_ALL_REQUEST_SUCCESS,
-    GET_ALL_REQUEST_FAIL,
-
-    PUT_ORDERS_REQUEST,
-    PUT_ORDERS_REQUEST_SUCCESS,
-    PUT_ORDERS_REQUEST_FAIL,
-
-    CHANGE_APPOINTMENT_DATE,
-    CHANGE_APPOINTMENT_DOCTOR,
-    CHANGE_APPOINTMENT_TIME,
-    CHANGE_APPOINTMENT_SPEC,
-    CHANGE_APPOINTMENT_COMMENT,
-    CLEAR_APPOINTMENT
-
-} from './actions'
-
-
-
+import * as types from '../actionsTypes/actionsTypes'
 
 const defaultState = {
     currentUser:{
@@ -80,7 +53,7 @@ export const appReducer = (state = defaultState,action) => {
     switch (action.type) {
 // -----------------------------------------------------------------------------------------------------------------
 
-        case CHANGE_APPOINTMENT_DATE : {
+        case types.CHANGE_APPOINTMENT_DATE : {
             return {
                 ...state,
                 appointment:{
@@ -94,7 +67,7 @@ export const appReducer = (state = defaultState,action) => {
             };
         }
 
-        case CHANGE_APPOINTMENT_DOCTOR : {
+        case types.CHANGE_APPOINTMENT_DOCTOR : {
             return {
                 ...state,
                 appointment:{
@@ -104,7 +77,7 @@ export const appReducer = (state = defaultState,action) => {
             };
         }
 
-        case CHANGE_APPOINTMENT_TIME : {
+        case types.CHANGE_APPOINTMENT_TIME : {
             return {
                 ...state,
                 appointment:{
@@ -114,7 +87,7 @@ export const appReducer = (state = defaultState,action) => {
             };
         }
 
-        case CHANGE_APPOINTMENT_SPEC : {
+        case types.CHANGE_APPOINTMENT_SPEC : {
             return {
                 ...state,
                 appointment:{
@@ -126,7 +99,7 @@ export const appReducer = (state = defaultState,action) => {
             };
         }
 
-        case CHANGE_APPOINTMENT_COMMENT : {
+        case types.CHANGE_APPOINTMENT_COMMENT : {
             return {
                 ...state,
                 appointment:{
@@ -136,7 +109,7 @@ export const appReducer = (state = defaultState,action) => {
             };
         }
 
-        case CLEAR_APPOINTMENT : {
+        case types.CLEAR_APPOINTMENT : {
             return {
                 ...state,
                 appointment: defaultState.appointment
@@ -146,14 +119,14 @@ export const appReducer = (state = defaultState,action) => {
 // -----------------------------------------------------------------------------------------------------------------
 
 
-        case PUT_ORDERS_REQUEST : {
+        case types.PUT_ORDERS_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case PUT_ORDERS_REQUEST_SUCCESS : {
+        case types.PUT_ORDERS_REQUEST_SUCCESS : {
             return {
                 ...state,
                 appointment: defaultState.appointment,
@@ -162,7 +135,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case PUT_ORDERS_REQUEST_FAIL : {
+        case types.PUT_ORDERS_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,
@@ -173,14 +146,14 @@ export const appReducer = (state = defaultState,action) => {
 // -----------------------------------------------------------------------------------------------------------------
 
 
-        case GET_ALL_REQUEST : {
+        case types.GET_ALL_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case GET_ALL_REQUEST_SUCCESS : {
+        case types.GET_ALL_REQUEST_SUCCESS : {
             return {
                 ...state,
                 doctors: action.payload.doctors,
@@ -192,7 +165,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case GET_ALL_REQUEST_FAIL : {
+        case types.GET_ALL_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,
@@ -202,14 +175,14 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-        case GET_DOCTORS_REQUEST : {
+        case types.GET_DOCTORS_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case GET_DOCTORS_REQUEST_SUCCESS : {
+        case types.GET_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
                 doctors:action.payload,
@@ -217,7 +190,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case GET_DOCTORS_REQUEST_FAIL : {
+        case types.GET_DOCTORS_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,
@@ -227,14 +200,14 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-        case GET_SERVICES_REQUEST : {
+        case types.GET_SERVICES_REQUEST : {
             return {
                 ...state,
                 isFetching: true
             };
         }
 
-        case GET_SERVICES_REQUEST_SUCCESS : {
+        case types.GET_SERVICES_REQUEST_SUCCESS : {
             return {
                 ...state,
                 services:action.payload,
@@ -242,7 +215,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-        case GET_SERVICES_REQUEST_FAIL : {
+        case types.GET_SERVICES_REQUEST_FAIL : {
             return {
                 ...state,
                 error:action.payload,

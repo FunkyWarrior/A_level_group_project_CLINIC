@@ -14,7 +14,7 @@ import {
     clearAppointment,
     putOrders,
 
-} from "./store/app/actions";
+} from "./actions/actions";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -36,7 +36,7 @@ export class App extends React.Component {
     render() {
         console.log(this.props.app)
         return (
-            <div className="App">
+            <div className="container">
                 <Header/>
                     <Switch>
                         <Route exact path="/" render={() => <div>Main</div>} />

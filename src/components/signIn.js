@@ -12,7 +12,9 @@ class SignIn extends Component {
                 type: 'email',
                 label: 'Email',
                 validation: {
-                    required: true
+                    requred: {
+                        cb: v => v.trim() === ""
+                    }
                 },
                 fail: false,
                 touch: false,
@@ -24,8 +26,12 @@ class SignIn extends Component {
                 type: 'password',
                 label: 'Password',
                 validation: {
-                    required: true,
-                    minL: 6
+                    requred: {
+                        cb: v => v.trim() === ""
+                    },
+                    minL: {
+                        cb: v => v.trim().length < 6
+                    }
                 },
                 fail: false,
                 touch: false,

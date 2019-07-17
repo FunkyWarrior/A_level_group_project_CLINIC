@@ -1,0 +1,47 @@
+.header {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+  
+    &__left-wrapper {
+      display: flex;
+    }
+  
+    &__logo-box {
+      margin-right: 40px;
+    }
+  
+    &__nav {
+      margin: 0;
+    }
+  
+    &__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      display: flex;
+    }
+  
+    &__item {
+      padding: 0;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+  
+  .search-bar{
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .search-bar input{
+    width: 75%;
+  }
+  
+  .some-wrapper {
+    display: flex;
+    justify-content: flex-end
+  }
