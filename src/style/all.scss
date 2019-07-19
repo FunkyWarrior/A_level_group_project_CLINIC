@@ -3,7 +3,7 @@ $main-title-color: #3b3b3b;
 $main-text-color: #101010;
 $main-color:   #789084;
 $hover-color: #b1e8ca;
-$opacity-color: rgba(17,17,17,0.7);
+$opacity-color: rgba(17,17,17,0.9);
 
 //
 
@@ -113,6 +113,7 @@ body {
 	}
 	img {
 		margin: 150px auto 30px;
+		max-width: 350px;
 		@media (max-width: 768px) {
 			max-width: 200px;	
 		}
