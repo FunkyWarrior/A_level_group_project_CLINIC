@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Input from './input';
-import Button from './button';
+import Button from './buttons/button';
 
 class SignIn extends Component {
     state = { 
