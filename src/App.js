@@ -3,16 +3,8 @@ import {connect} from 'react-redux'
 import {Switch, Route} from "react-router-dom";
 
 import {
-
     getDoctors,
     getServices,
-    setAppointmentDoctor,
-    setAppointmentTime,
-    setAppointmentSpec,
-    setAppointmentComment,
-    clearAppointment,
-
-
 } from "./actions/actions";
 
 import Header from "./components/header/index"
@@ -63,7 +55,6 @@ export class App extends React.Component {
     }
 
     render() {
-        console.log(this.props.app)
         return (
             <div className="container">
                 <Header/>
@@ -95,16 +86,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-
     getDoctors,
     getServices,
-    setAppointmentDoctor,
-    setAppointmentTime,
-    setAppointmentSpec,
-    setAppointmentComment,
-    clearAppointment,
-
-
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(App)

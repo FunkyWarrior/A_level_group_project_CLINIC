@@ -7,26 +7,30 @@ export default class Doctors extends React.Component {
     render() {
         const {data} = this.props;
         return (
-            <div style={{display:'flex', justifyContent:'center', flexWrap:'wrap'}}>
-                {data.map(el => (
-                    <div
-                        key={el._id}
-                        style={{display: 'flex', flexDirection: 'column', width: '300px', margin: '100px 20px'}}
-                    >
-                        <Link to={`/doctors/${el._id}`}>
-                            <p>{el.photo}</p>
-                            <p>{el.name}</p>
-                            <p>{el.lastName}</p>
-                            <p>{el.age}</p>
-                            <p>{el.skillsDescription}</p>
-                        </Link>
-                        {el.speciality.map(el => (
-                            <Link to={`/services/${el._id}`} key={el._id}>{el.name}</Link>
+            <div style={{margin:"100px 0"}}>
+                <div className="wrapper">
+                    <div className = "team-container">
+                        {data.map(el => (
+                            <div className="item"  key = {el._id} >
+                                <div className="photo"><img src= {el.photo} alt= {el.name}/></div>
+                                <h3>{el.name}</h3>
+                                <div className="desc">
+                                    <p className="experience">Опыт работы {new Date().toISOString().split('T')[0].split('-')[0] - el.experience.split('T')[0].split('-')[0]} лет</p>
+                                    <p className="rank">{el.profession}</p>
+                                </div>
+                                <div className="link-box">
+                                    <Link to = "/doctors" className = "btn link more">Подробнее ...</Link>
+                                    <Link to={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
+                                </div>
+                            </div>
                         ))}
-                        <Link to={`/appointment/${el._id}`}>Make an appointment</Link>
                     </div>
-                ))}
+                </div>
             </div>
         );
     }
 }
+
+
+
+
