@@ -9,7 +9,8 @@ const liArr = [
 	{ path: "/doctors",  id: 2,  text: "Специалисты"  },
 	{ path: "/services", id: 3,  text: "Услуги" },
 	{ path: "/reviews", id: 4, text: "Отзывы"  },
-	{ path: "/auth", id: 5, text: "Войти", hideWhenAuth: true }
+	{ path: "/admin", id: 5, text: "Admin"},
+	{ path: "/auth", id: 6, text: "Войти", hideWhenAuth: true }
 ];
 
 export default ( props ) => (

@@ -7,14 +7,15 @@ export default class Service extends React.Component {
 
     render() {
         const {his,data} = this.props;
-        const path = his.match.params.service;
+        const service = data.find(el => el._id === his.match.params.service)
+        console.log(this.props)
         return (
-            <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'10px 20px'}}>
-                {data[path].name}
-                <p>Duration:{data[path].duration}h</p>
-                <p>{data[path].description}</p>
-                <p>Price:{data[path].price}$</p>
-                <Link to={`/appointment/${path}`}>Make an appointment</Link>
+            <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
+                {service.name}
+                <p>Duration:{service.duration}h</p>
+                <p>{service.description}</p>
+                <p>Price:{service.price}$</p>
+                <Link to={`/appointment/${service}`}>Make an appointment</Link>
             </div>
         );
     }

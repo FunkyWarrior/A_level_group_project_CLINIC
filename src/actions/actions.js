@@ -1,11 +1,19 @@
 import * as types from '../actionsTypes/actionsTypes'
 
-const URL = "https://team-app-28f4a.firebaseio.com/";
+const URL = "https://api-clinics.herokuapp.com/api/v1/";
+
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const setAppointmentDate = payload => ({
-    type: types.CHANGE_APPOINTMENT_DATE,
+export const changeInputDoctorForm = payload => ({
+    type: types.CHANGE_INPUT_VALUE_DOCTOR_FORM,
+    payload
+});
+
+// -----------------------------------------------------------------------------------------------------------------
+
+export const setAppointmentShedule = payload => ({
+    type: types.CHANGE_APPOINTMENT_SHEDULE,
     payload
 });
 
@@ -36,63 +44,37 @@ export const clearAppointment = payload => ({
 
 // -----------------------------------------------------------------------------------------------------------------
 
-
-const putOrdersRequest = payload => ({
-    type: types.PUT_ORDERS_REQUEST,
+export const setSheduleDoctor = payload => ({
+    type: types.CHANGE_SHEDULE_DOCTOR,
     payload
 });
-
-const putOrdersSuccess = payload => ({
-    type: types.PUT_ORDERS_REQUEST_SUCCESS,
-    payload
-});
-
-const putOrdersFail = payload => ({
-    type: types.PUT_ORDERS_REQUEST_FAIL,
-    payload
-});
-
-export const putOrders = (payload) => dispatch => {
-    dispatch(putOrdersRequest());
-    return fetch(`${URL}/orders.json`, {
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(res => res.json())
-        .then(res => dispatch(putOrdersSuccess(res)))
-        .catch(err => dispatch(putOrdersFail(err)));
-
-};
-
 
 // -----------------------------------------------------------------------------------------------------------------
 
-const getAllRequest = payload => ({
-    type: types.GET_ALL_REQUEST,
-    payload
-});
+// const getAllRequest = payload => ({
+//     type: types.GET_ALL_REQUEST,
+//     payload
+// });
+//
+// const getAllRequestSuccess = payload => ({
+//     type: types.GET_ALL_REQUEST_SUCCESS,
+//     payload
+// });
+//
+// const getAllRequestFail = payload => ({
+//     type: types.GET_ALL_REQUEST_FAIL,
+//     payload
+// });
+//
+// export const getAll = () => dispatch => {
+//     dispatch(getAllRequest());
+//     return fetch(`${URL}.json`)
+//         .then(res => res.json())
+//         .then(res => dispatch(getAllRequestSuccess(res)))
+//         .catch(err => dispatch(getAllRequestFail(err)));
+// };
 
-const getAllRequestSuccess = payload => ({
-    type: types.GET_ALL_REQUEST_SUCCESS,
-    payload
-});
-
-const getAllRequestFail = payload => ({
-    type: types.GET_ALL_REQUEST_FAIL,
-    payload
-});
-
-export const getAll = () => dispatch => {
-    dispatch(getAllRequest());
-    return fetch(`${URL}.json`)
-        .then(res => res.json())
-        .then(res => dispatch(getAllRequestSuccess(res)))
-        .catch(err => dispatch(getAllRequestFail(err)));
-};
-
+// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
 const getDoctorsRequest = payload => ({
@@ -112,7 +94,9 @@ const getDoctorsRequestFail = payload => ({
 
 export const getDoctors = () => dispatch => {
     dispatch(getDoctorsRequest());
-    return fetch(`${URL}doctors.json`)
+    return fetch(`${URL}doctors`,{
+        credentials:"include"
+    })
         .then(res => res.json())
         .then(res => dispatch(getDoctorsRequestSuccess(res)))
         .catch(err => dispatch(getDoctorsRequestFail(err)));
@@ -136,14 +120,17 @@ const getServicesRequestFail = payload => ({
 
 export const getServices = () => dispatch => {
     dispatch(getServicesRequest());
-    return fetch(`${URL}services.json`)
+    return fetch(`${URL}services`,{
+        credentials:"include"
+    })
         .then(res => res.json())
         .then(res => dispatch(getServicesRequestSuccess(res)))
         .catch(err => dispatch(getServicesRequestFail(err)));
 };
 
-// _____________________________________________________________________________________
-export const postDoctorsRequest = payload => ({
+// -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
+const postDoctorsRequest = payload => ({
     type: types.POST_DOCTORS_REQUEST,
     payload
 });
@@ -159,9 +146,8 @@ const postDoctorsRequestFail = payload => ({
 });
 
 export const postDoctors = (payload) => dispatch => {
-    // console.log(payload)
     dispatch(postDoctorsRequest());
-    return fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
+    return fetch(`${URL}doctors`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -176,7 +162,7 @@ export const postDoctors = (payload) => dispatch => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const postServicesRequest = payload => ({
+const postServicesRequest = payload => ({
     type: types.POST_SERVICES_REQUEST,
     payload
 });
@@ -192,9 +178,8 @@ const postServicesRequestFail = payload => ({
 });
 
 export const postServices = (payload) => dispatch => {
-    // console.log(payload)
     dispatch(postServicesRequest());
-    return fetch("https://api-clinics.herokuapp.com/api/v1/services", {
+    return fetch(`${URL}services`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -207,4 +192,69 @@ export const postServices = (payload) => dispatch => {
         .catch(err => dispatch(postServicesRequestFail(err)))
 };
 
-// _____________________________________________________________
+// -----------------------------------------------------------------------------------------------------------------
+
+const postSheduleRequest = payload => ({
+    type: types.POST_SHEDULE_REQUEST,
+    payload
+});
+
+const postSheduleSuccess = payload => ({
+    type: types.POST_SHEDULE_REQUEST_SUCCESS,
+    payload
+});
+
+const postSheduleFail = payload => ({
+    type: types.POST_SHEDULE_REQUEST_FAIL,
+    payload
+});
+
+export const postShedule = (payload) => dispatch => {
+    dispatch(postSheduleRequest());
+    return fetch(`${URL}shedule`, {
+        method: "POST",
+        credentials:"include",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(res => res.json())
+        .then(res => dispatch(postSheduleSuccess(res)))
+        .catch(err => dispatch(postSheduleFail(err)));
+};
+
+// -----------------------------------------------------------------------------------------------------------------
+
+const postOrdersRequest = payload => ({
+    type: types.POST_ORDERS_REQUEST,
+    payload
+});
+
+const postOrdersSuccess = payload => ({
+    type: types.POST_ORDERS_REQUEST_SUCCESS,
+    payload
+});
+
+const postOrdersFail = payload => ({
+    type: types.POST_ORDERS_REQUEST_FAIL,
+    payload
+});
+
+export const postOrders = (payload) => dispatch => {
+    dispatch(postOrdersRequest());
+    return fetch(`${URL}orders`, {
+        method: "POST",
+        credentials:"include",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(res => res.json())
+        .then(res => dispatch(postOrdersSuccess(res)))
+        .catch(err => dispatch(postOrdersFail(err)));
+};
+
+// -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------

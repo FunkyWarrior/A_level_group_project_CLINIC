@@ -2,7 +2,7 @@ import React from 'react';
 // import {Link} from 'react-router-dom';
 
 
-import {postDoctors, postServices} from "../../store/app/actions";
+import {postDoctors, postServices} from "../../actions/actions";
 
 import Button from "../buttons/button";
 import About from "./aboutUs";

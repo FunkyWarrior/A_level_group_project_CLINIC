@@ -1,5 +1,57 @@
 import * as types from '../actionsTypes/actionsTypes'
 
+const doctorForm =[
+    {
+        id:1,
+        type:'text',
+        value:"",
+        name:'name',
+        placeholder:'Enter doctor Name and Last Name',
+        required:true
+    },
+    {
+        id:2,
+        type:'text',
+        value:"",
+        name:'experience',
+        placeholder:'Enter practice start date',
+        required:true
+    },
+    {
+        id:3,
+        type:'text',
+        value:"",
+        name:'photo',
+        placeholder:'Enter path to photo here',
+        required:true
+    },
+    {
+        id:4,
+        type:'text',
+        value:"",
+        name:'profession',
+        placeholder:'Enter profession here',
+        required:true
+    },
+    {
+        id:5,
+        type:'text',
+        value:"",
+        name:'skillsDescription',
+        placeholder:'Enter skills description here',
+        required:true
+    },
+    {
+        id:6,
+        type:'text',
+        value:"",
+        name:'speciality',
+        placeholder:'Enter array of service speciality description here',
+        required:true
+    }
+];
+
+
 const defaultState = {
     currentUser:{
         email:"dead1990bb@gmail.com",
@@ -14,33 +66,25 @@ const defaultState = {
         doctor:false,
     },
     doctors:[],
-    services:{
-        service1:{id:1},
-        service2:{id:2},
-        service3:{id:3},
-        service4:{id:4},
-        service5:{id:5},
-        service6:{id:6},
-        service7:{id:7},
-        service8:{id:8},
-        service9:{id:9},
+    postNewShedule:{
+        data:null,
+        doctor:null
     },
+    postNewDoctor:doctorForm,
+    sheduleMonthArray:null,
+    services:[],
     orders:[],
     users:[],
     reviews: [],
     appointment:{
-        date:{
-            year:0,
-            month:0,
-            day:0
-        },
-        price:null,
+        shedule:null,
         time:null,
-        doctorId:null,
+        doctor:null,
         spec:null,
-        user:null,
         comment:''
     },
+    timeArray:[],
+    wrongDate:true,
     isFetching:false,
     error: null,
 
@@ -51,19 +95,43 @@ const defaultState = {
 export const appReducer = (state = defaultState,action) => {
 
     switch (action.type) {
+
 // -----------------------------------------------------------------------------------------------------------------
 
-        case types.CHANGE_APPOINTMENT_DATE : {
+        case types.CHANGE_INPUT_VALUE_DOCTOR_FORM : {
+            return {
+                ...state,
+                postNewDoctor: state.postNewDoctor.map(el => el.id === +action.payload.target.id ? {
+                    ...el,
+                    value:action.payload.target.value
+                } : el)
+            };
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.CHANGE_APPOINTMENT_SHEDULE : {
+            let timeArray =[];
+            let doctor = state.doctors.find(el => el._id === state.appointment.doctor);
+            let shedule = doctor.shedule.find(el => el._id === action.payload);
+            let duration = state.services.find(el => el._id === state.appointment.spec).duration;
+            for (let index in shedule) {
+                let check = true;
+                for (let x=0;x < duration; x++){
+                    if (shedule[`${+index.split(':')[0]+x < 10 ? '0' +(+index.split(':')[0] + x) + ':00' : +index.split(':')[0]+ x + ':00'}`] !== true){
+                        check = false
+                    }
+                }
+                if (check) timeArray.push({[`${index}`]:shedule[`${index}`]});
+            }
             return {
                 ...state,
                 appointment:{
                     ...state.appointment,
-                    date:{
-                        year: action.payload.split('-')[0],
-                        month: action.payload.split('-')[1],
-                        day: action.payload.split('-')[2],
-                    }
-                }
+                    shedule:action.payload
+                },
+                timeArray:timeArray,
+                wrongDate: action.payload
             };
         }
 
@@ -72,7 +140,7 @@ export const appReducer = (state = defaultState,action) => {
                 ...state,
                 appointment:{
                     ...state.appointment,
-                    doctorId:action.payload
+                    doctor:action.payload
                 }
             };
         }
@@ -92,9 +160,9 @@ export const appReducer = (state = defaultState,action) => {
                 ...state,
                 appointment:{
                     ...state.appointment,
-                    spec:action.payload,
-                    id:state.orders[state.orders.length-1].id+1,
-                    price:+state.services[action.payload].price
+                    spec:state.services.find(el => el.name === action.payload)._id,
+                    shedule:null,
+                    time:null
                 }
             };
         }
@@ -118,59 +186,20 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-
-        case types.PUT_ORDERS_REQUEST : {
+        case types.CHANGE_SHEDULE_DOCTOR : {
+            let doctor = state.doctors.find(el=>el.name === action.payload);
+            let array = [[],[],[],[],[],[],[],[],[],[],[],[]];
+            doctor.shedule.map(el => {
+                array[new Date(el.data).getMonth()].push(el)
+            });
             return {
                 ...state,
-                isFetching: true
+                postNewShedule: {
+                    ...state.postNewShedule,
+                    doctor:doctor._id
+                },
+                sheduleMonthArray: array
             };
-        }
-
-        case types.PUT_ORDERS_REQUEST_SUCCESS : {
-            return {
-                ...state,
-                appointment: defaultState.appointment,
-                orders:action.payload,
-                isFetching: false
-            }
-        }
-
-        case types.PUT_ORDERS_REQUEST_FAIL : {
-            return {
-                ...state,
-                error:action.payload,
-                isFetching: false
-            }
-        }
-
-// -----------------------------------------------------------------------------------------------------------------
-
-
-        case types.GET_ALL_REQUEST : {
-            return {
-                ...state,
-                isFetching: true
-            };
-        }
-
-        case types.GET_ALL_REQUEST_SUCCESS : {
-            return {
-                ...state,
-                doctors: action.payload.doctors,
-                services: action.payload.services,
-                orders: action.payload.orders,
-                users: action.payload.users,
-                reviews: action.payload.reviews,
-                isFetching: false
-            }
-        }
-
-        case types.GET_ALL_REQUEST_FAIL : {
-            return {
-                ...state,
-                error:action.payload,
-                isFetching: false
-            }
         }
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -185,7 +214,7 @@ export const appReducer = (state = defaultState,action) => {
         case types.GET_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
-                doctors:action.payload,
+                doctors:action.payload.doctors,
                 isFetching: false
             }
         }
@@ -210,7 +239,7 @@ export const appReducer = (state = defaultState,action) => {
         case types.GET_SERVICES_REQUEST_SUCCESS : {
             return {
                 ...state,
-                services:action.payload,
+                services:action.payload.services,
                 isFetching: false
             }
         }
@@ -224,52 +253,80 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
-case types.POST_DOCTORS_REQUEST : {
-    return {
-        ...state,
-        isFetching: true
-    };
-}
 
-case types.POST_DOCTORS_REQUEST_SUCCESS : {
-    return {
-        ...state,
-        isFetching: false
-    }
-}
+        case types.POST_DOCTORS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
 
-case types.POST_DOCTORS_REQUEST_FAIL : {
-    return {
-        ...state,
-        error: action.payload,
-        isFetching: false
-    }
-}
+        case types.POST_DOCTORS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
 
-// _______________________________________________________________________________
+        case types.POST_DOCTORS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
 
-case types.POST_SERVICES_REQUEST : {
-    return {
-        ...state,
-        isFetching: true
-    };
-}
+// -----------------------------------------------------------------------------------------------------------------
 
-case types.POST_SERVICES_REQUEST_SUCCESS : {
-    return {
-        ...state,
-        isFetching: false
-    }
-}
+        case types.POST_SERVICES_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
 
-case types.POST_SERVICES_REQUEST_FAIL : {
-    return {
-        ...state,
-        error: action.payload,
-        isFetching: false
-    }
-}
+        case types.POST_SERVICES_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
 
+        case types.POST_SERVICES_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.POST_ORDERS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.POST_ORDERS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                appointment: defaultState.appointment,
+                orders:action.payload,
+                isFetching: false
+            }
+        }
+
+        case types.POST_ORDERS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error:action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
 
         default:
             return state
