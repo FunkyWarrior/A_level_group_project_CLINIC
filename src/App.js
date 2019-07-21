@@ -54,7 +54,6 @@ export class App extends React.Component {
     }
 
     render() {
-        console.log(this.props.app)
         return (
             <div className="container">
                 <Header/>
@@ -63,14 +62,14 @@ export class App extends React.Component {
                         <Route exact path="/doctors" render={() => <Doctors data={this.props.app.doctors} /> } />
                         <Route exact path="/services" render={() => <Services data={this.props.app.services} />} />
                         <Route exact path="/reviews" render={() => <div>Reviews</div>} />
-                        <Route path="/admin/" render={() => <Admin />} />
-                        <Route exact path="/services/:service" render={(props) => <Service
-                            his={props}
-                            data={this.props.app.services}
-                        />} />
-                        <Route  path="/appointment/:doctorId" render={(props) => <Appointment
-                            his={props}
-                        />} />
+                        <Route path="/admin/" component={Admin} />
+                        <Route exact path="/services/:service" render={(props) =>
+                            <Service
+                                his={props}
+                                data={this.props.app.services}
+                            />}
+                        />
+                        <Route  path="/appointment/:doctorId" component={Appointment}/>
                         <Route exact path="/auth" component={Auth} />
                     </Switch>
                 <Footer/>

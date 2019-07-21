@@ -7,8 +7,7 @@ export default class Service extends React.Component {
 
     render() {
         const {his,data} = this.props;
-        const service = data.find(el => el._id === his.match.params.service)
-        console.log(this.props)
+        const service = data.find(el => el._id === his.match.params.service);
         return (
             <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
                 {service.name}

@@ -127,10 +127,8 @@ export const appReducer = (state = defaultState,action) => {
             let shedule = doctor.shedule.find(el => el._id === action.payload);
             let duration = state.services.find(el => el._id === state.appointment.spec).duration;
             for (let index in shedule) {
-                console.log(index)
                 let check = true;
                 for (let x=0;x < duration; x++){
-
                     if (shedule[`${+index.split(':')[0]+x < 10 ? '0' +(+index.split(':')[0] + x) + ':00' : +index.split(':')[0]+ x + ':00'}`] !== true){
                         check = false
                     }
@@ -202,6 +200,7 @@ export const appReducer = (state = defaultState,action) => {
         case types.CHANGE_SHEDULE_DOCTOR : {
             let doctor = state.doctors.find(el=>el.name === action.payload);
             let array = [[],[],[],[],[],[],[],[],[],[],[],[]];
+            // eslint-disable-next-line array-callback-return
             doctor.shedule.map(el => {
                 array[new Date(el.data).getMonth()].push(el)
             });

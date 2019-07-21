@@ -8,7 +8,7 @@ const URL = "https://api-clinics.herokuapp.com/api/v1/";
 export const changeInputDoctorForm = payload => ({
     type: types.CHANGE_INPUT_VALUE_DOCTOR_FORM,
     payload
-})
+});
 
 // -----------------------------------------------------------------------------------------------------------------
 
@@ -56,32 +56,6 @@ export const setSheduleDoctor = payload => ({
     payload
 });
 
-// -----------------------------------------------------------------------------------------------------------------
-
-// const getAllRequest = payload => ({
-//     type: types.GET_ALL_REQUEST,
-//     payload
-// });
-//
-// const getAllRequestSuccess = payload => ({
-//     type: types.GET_ALL_REQUEST_SUCCESS,
-//     payload
-// });
-//
-// const getAllRequestFail = payload => ({
-//     type: types.GET_ALL_REQUEST_FAIL,
-//     payload
-// });
-//
-// export const getAll = () => dispatch => {
-//     dispatch(getAllRequest());
-//     return fetch(`${URL}.json`)
-//         .then(res => res.json())
-//         .then(res => dispatch(getAllRequestSuccess(res)))
-//         .catch(err => dispatch(getAllRequestFail(err)));
-// };
-
-// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
 const getDoctorsRequest = payload => ({

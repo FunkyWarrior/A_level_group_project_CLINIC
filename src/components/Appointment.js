@@ -16,7 +16,8 @@ import {
 export class Appoint extends React.Component {
 
     componentDidMount() {
-        this.props.setAppointmentDoctor(this.props.his.match.params.doctorId)
+        console.log(this.props)
+        this.props.setAppointmentDoctor(this.props.match.params.doctorId)
     }
 
     componentWillUnmount() {
@@ -25,8 +26,8 @@ export class Appoint extends React.Component {
 
     render() {
         const {doctors, appointment, timeArray, wrongDate,services} = this.props.app;
-        const {his, setAppointmentSpec, setAppointmentShedule, setAppointmentTime, setAppointmentComment, postOrders} = this.props;
-        const doctor = doctors.find(el => el._id === his.match.params.doctorId);
+        const {match, setAppointmentSpec, setAppointmentShedule, setAppointmentTime, setAppointmentComment, postOrders} = this.props;
+        const doctor = doctors.find(el => el._id === match.params.doctorId);
         let spec;
         if (appointment.spec){
             spec = services.find(el => el._id === appointment.spec)
