@@ -6,7 +6,9 @@ import {
     setSheduleDoctor,
     postShedule,
     changeInputDoctorForm,
-    postDoctors
+    postDoctors,
+    changeSelectedDoctor,
+    putDoctors
 } from "../../actions/actions";
 
 import Shedule from './Shedule'
@@ -18,8 +20,8 @@ export class Admin extends React.Component {
 
 
     render() {
-        const {doctors,postNewShedule,sheduleMonthArray,postNewDoctor} = this.props.app;
-        const {setSheduleDoctor,postShedule,changeInputDoctorForm,postDoctors} = this.props;
+        const {doctors,postNewShedule,sheduleMonthArray,postNewDoctor,changeDoctor} = this.props.app;
+        const {setSheduleDoctor,postShedule,changeInputDoctorForm,postDoctors,changeSelectedDoctor,putDoctors} = this.props;
         return (
             <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
                 <div>
@@ -36,6 +38,10 @@ export class Admin extends React.Component {
                         postShedule={postShedule}
                     />} />
                     <Route path='/admin/change-doctors' render={() => <ChangeDoctor
+                        putDoctors={putDoctors}
+                        changeDoctor={changeDoctor}
+                        doctors={doctors}
+                        changeSelectedDoctor={changeSelectedDoctor}
                         changeInputValues={changeInputDoctorForm}
                         postDoctors={postDoctors}
                         postNewDoctor={postNewDoctor}
@@ -57,7 +63,9 @@ const mapDispatchToProps = {
     setSheduleDoctor,
     postShedule,
     changeInputDoctorForm,
-    postDoctors
+    postDoctors,
+    changeSelectedDoctor,
+    putDoctors
 
 
 };

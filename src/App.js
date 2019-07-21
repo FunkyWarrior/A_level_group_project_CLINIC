@@ -24,13 +24,12 @@ export class App extends React.Component {
         this.props.getDoctors();
         this.props.getServices();
 
-     
-        fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
-            method: "GET",
-            credentials: "include"
-        })
-            .then(res => res.json())
-            .then(res => console.log (res))
+        // fetch("https://api-clinics.herokuapp.com/api/v1/orders", {
+        //     method: "GET",
+        //     credentials: "include"
+        // })
+        //     .then(res => res.json())
+        //     .then(res => console.log (res))
 
         // fetch("https://api-clinics.herokuapp.com/api/v1/services", {
         //     method: "GET",
@@ -55,6 +54,7 @@ export class App extends React.Component {
     }
 
     render() {
+        console.log(this.props.app)
         return (
             <div className="container">
                 <Header/>
@@ -63,7 +63,7 @@ export class App extends React.Component {
                         <Route exact path="/doctors" render={() => <Doctors data={this.props.app.doctors} /> } />
                         <Route exact path="/services" render={() => <Services data={this.props.app.services} />} />
                         <Route exact path="/reviews" render={() => <div>Reviews</div>} />
-                        <Route path="/admin/" render={(props) => <Admin />} />
+                        <Route path="/admin/" render={() => <Admin />} />
                         <Route exact path="/services/:service" render={(props) => <Service
                             his={props}
                             data={this.props.app.services}

@@ -8,6 +8,13 @@ const URL = "https://api-clinics.herokuapp.com/api/v1/";
 export const changeInputDoctorForm = payload => ({
     type: types.CHANGE_INPUT_VALUE_DOCTOR_FORM,
     payload
+})
+
+// -----------------------------------------------------------------------------------------------------------------
+
+export const changeSelectedDoctor = payload => ({
+    type: types.CHANGE_SELECTED_DOCTOR,
+    payload
 });
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -257,4 +264,35 @@ export const postOrders = (payload) => dispatch => {
 };
 
 // -----------------------------------------------------------------------------------------------------------------
+
+const putDoctorsRequest = payload => ({
+    type: types.PUT_DOCTORS_REQUEST,
+    payload
+});
+
+const putDoctorsRequestSuccess = payload => ({
+    type: types.PUT_DOCTORS_REQUEST_SUCCESS,
+    payload
+});
+
+const putDoctorsRequestFail = payload => ({
+    type: types.PUT_DOCTORS_REQUEST_FAIL,
+    payload
+});
+
+export const putDoctors = (payload) => dispatch => {
+    dispatch(putDoctorsRequest());
+    return fetch(`${URL}doctors/${payload.id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload.data)
+    })
+        .then(res => res.json())
+        .then(res => dispatch(putDoctorsRequestSuccess(res)))
+        .catch(err => dispatch(putDoctorsRequestFail(err)));
+};
+
 // -----------------------------------------------------------------------------------------------------------------

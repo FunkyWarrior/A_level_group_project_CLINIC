@@ -69,8 +69,8 @@ export class Appoint extends React.Component {
                         {appointment.spec &&
                             <input
                                 type="date"
-                                onChange={(e) => setAppointmentShedule(doctor.shedule.find(el => el.data === new Date(e.target.value).toISOString())
-                                    ? doctor.shedule.find(el => el.data === new Date(e.target.value).toISOString())._id
+                                onChange={(e) => setAppointmentShedule(doctor.shedule.find(el => new Date(el.data).toISOString().split('T')[0] === new Date(e.target.value).toISOString().split('T')[0])
+                                    ? doctor.shedule.find(el => new Date(el.data).toISOString().split('T')[0] === new Date(e.target.value).toISOString().split('T')[0])._id
                                     : null
                                 )}
                             />

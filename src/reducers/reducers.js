@@ -1,6 +1,6 @@
 import * as types from '../actionsTypes/actionsTypes'
 
-const doctorForm =[
+const postNewDoctorForm =[
     {
         id:1,
         type:'text',
@@ -70,7 +70,8 @@ const defaultState = {
         data:null,
         doctor:null
     },
-    postNewDoctor:doctorForm,
+    postNewDoctor:postNewDoctorForm,
+    changeDoctor:null,
     sheduleMonthArray:null,
     services:[],
     orders:[],
@@ -103,8 +104,18 @@ export const appReducer = (state = defaultState,action) => {
                 ...state,
                 postNewDoctor: state.postNewDoctor.map(el => el.id === +action.payload.target.id ? {
                     ...el,
-                    value:action.payload.target.value
+                    value:el.name === 'speciality' ? JSON.parse(action.payload.target.value) : action.payload.target.value
                 } : el)
+            };
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.CHANGE_SELECTED_DOCTOR : {
+            return {
+                ...state,
+                changeDoctor: state.doctors.find(el => el.name === action.payload)._id,
+                postNewDoctor:postNewDoctorForm
             };
         }
 
@@ -116,8 +127,10 @@ export const appReducer = (state = defaultState,action) => {
             let shedule = doctor.shedule.find(el => el._id === action.payload);
             let duration = state.services.find(el => el._id === state.appointment.spec).duration;
             for (let index in shedule) {
+                console.log(index)
                 let check = true;
                 for (let x=0;x < duration; x++){
+
                     if (shedule[`${+index.split(':')[0]+x < 10 ? '0' +(+index.split(':')[0] + x) + ':00' : +index.split(':')[0]+ x + ':00'}`] !== true){
                         check = false
                     }
@@ -322,6 +335,30 @@ export const appReducer = (state = defaultState,action) => {
             return {
                 ...state,
                 error:action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.PUT_DOCTORS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.PUT_DOCTORS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+
+        case types.PUT_DOCTORS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
                 isFetching: false
             }
         }
