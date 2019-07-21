@@ -42,10 +42,11 @@ export class Appoint extends React.Component {
         return (
             <>
                 {doctor &&
-                    <div style={{display:'flex',flexDirection:'column',width:'400px'}}>
+                    <div style={{display:'flex',flexDirection:'column',width:'400px',margin:'100px 0'}}>
                         <img src={doctor.photo} alt=""/>
                         <p>{doctor.name}</p>
-                        <p>{doctor.lastName}</p>
+                        <p>{doctor.profession}</p>
+                        <p>Опыт работы {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]} лет</p>
                         <p>{doctor.skillsDescription}</p>
 
                         {appointment.spec &&

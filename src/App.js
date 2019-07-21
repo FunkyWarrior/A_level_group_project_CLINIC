@@ -25,12 +25,12 @@ export class App extends React.Component {
         this.props.getServices();
 
      
-        // fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
-        //     method: "GET",
-        //     credentials: "include"
-        // })
-        //     .then(res => res.json())
-        //     .then(res => console.log (res))
+        fetch("https://api-clinics.herokuapp.com/api/v1/doctors", {
+            method: "GET",
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(res => console.log (res))
 
         // fetch("https://api-clinics.herokuapp.com/api/v1/services", {
         //     method: "GET",
@@ -43,7 +43,7 @@ export class App extends React.Component {
         //     method : "POST",
         //     credentials: "include",
         //     headers: {
-        //         "Content-Type":   "aplication/json"
+        //         "Content-Type": "application/json"
         //     },
         //     body: JSON.stringify ({
         //         email: "test@test.com",

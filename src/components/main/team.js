@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 export default class Team extends React.Component {
     render( ) {
         const {doctorsArr } = this.props
+        console.log(doctorsArr)
         return (
             <>
                 <h2>Наши врачи</h2>
@@ -21,7 +22,7 @@ export default class Team extends React.Component {
                             </div>
                              <div className="link-box">
                                 <Link to = "/doctors" className = "btn link more">Подробнее ...</Link>
-                                <Link to = "/doctors" className = "btn link ">Записаться на приём</Link>
+                                <Link to ={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
                             </div>
                         </div>
                     )}
