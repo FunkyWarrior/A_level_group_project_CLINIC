@@ -33,6 +33,7 @@ export const SignUpForm = ({ submitHandler, error, successRegister }) => {
 							onChange={onChangeHandler}
 							onFocus={focusEvent}
 							onBlur={blurEvent}
+							autoComplete="off"
 						/>
 					);
 				})}
