@@ -17,10 +17,10 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "reac
 )((props) =>
   <GoogleMap
     defaultZoom={15}
-    defaultCenter={{ lat: 49.987462, lng: 36.2305745 }}
+    defaultCenter={{ lat: 50.0362516, lng: 36.2210227 }}
     defaultType = {"hybrid"}
   >
-    {props.isMarkerShown && <Marker position={{ lat: 49.987462, lng: 36.2305745 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={{ lat: 50.0362516, lng: 36.2210227 }} onClick={props.onMarkerClick} />}
     
   </GoogleMap>
 )

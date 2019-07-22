@@ -61,7 +61,7 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "Образование:    <br> Московский Государственный Медико-стоматологический Университет (1986 г.), Интернатура — МГМСУ, Ординатура — кафедра хирургической стоматологии РМАПО (ЦНИИС).  <br>  Владеет современными методиками хирургической стоматологии и имплантологии, провел более 2000 операций по установке имплантатов, увеличения объема костной ткани и мягких тканей.   Прошел обучение у ведущих мировых специалистов в области имплантологии, костной пластики, пластики мягких тканей: Диплом University of Szeged, Faculty of Dentistry (Budapest) «Advanced Surgical Curriculum in Regenerative Implant Dentistry», January 2016 — June 2016 (Prof. Istvan Urban); «Пластическая хирургия в области зубов и имплантатов», Prof. Giovanni Zucchelli; «Advanced course in implant dentistry of the Clinic for fixed and Removable Prosthodontics and Material Science», University of Zurich, Switzerland; «Augmentation procedures part I: bone harvesting techniques, augmentation and soft tissue surgery», Prof. Dr. F. Khoury, Olsberg, Germany; «Augmentation procedures part II: bone grafting procedures and soft tissue management», Prof. Dr. F. Khoury, Olsberg, Germany; «SimPlant Academy Course on Computer Guided Dentistry», Leuven, Belgium; «Contemporary Esthetic Dentistry: non invasive and biological, on teeth and implants», Prof. Bernard Touati.",
                 "id": 1
             },
             {
@@ -124,14 +124,14 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "Профессор, доктор медицинских наук, заслуженный врач Украины, стоматолог-ортодонт. <br> Член Профессионального общества ортодонтов Украины, член итальянского общества ортодонтов.  Владеет методиками лечения: элайнерами, функциональными аппаратами и несъемной аппаратурой у детей, подростков и взрослых пациентов. Применяет технологии 3D для планирования ортодонтического лечения. Постоянный участник международных конференций, съездов, мастер-классов ведущих специалистов в области ортодонтии.",
                 "id": 2
             },
             {
                 "description": "Эллисон Кэмерон",
                 "photo": "./images/doctors/alison.jpg",
                 "experience": 6,
-                "rank": "Стоматолог-терапевт",
+                "rank": "Стоматолог-эндодонтист ",
                 "speciality": ["service1","service2","service3","service4","service5"],
                 "schedule": {
                     "08": {
@@ -187,7 +187,7 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "врач стоматолог эндодонтист, закончила ДГМУ, сертифицированный специалист в области эндодонтии под микроскопом, реставрации зубов под микроскопом, клинической парадонтологии, гнатологии, прошедшая обучениев в Германии - VDW курс по современной эндодонтической стоматологии с микроскопом 2012, имеет множество сертификатов и дипломов.",
                 "id": 3
             },
             {
@@ -250,14 +250,14 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "Образование: <br> Киевский Государственный Медицинский Институт, Интернатура МГМСУ, Курсы повышения квалификации в Италии, Германии, США.  <br> Обучение: <br>  Арнальдо Каселлучи, Италия — «Применение электронного микроскопа в эндодонтии», Discus Dental, Cologne, Germany — «Новые технологии в эндодонтии», Discus Dental, California, USA — «Системы отбеливания», «Smart Endodontics».  <br>  Специализация:  <br>  эндодонтия, отбеливание. Врач-эксперт компании Philihs. Член жюри конкурсов по эстетической стоматологии СТАР. Автор обучающих программ и ведущий обучающих семинаров и мастер-классов по эндодонтии и отбеливанию.",
                 "id": 4
             },
             {
                 "description": "Эрик Форман",
                 "photo": "./images/doctors/ericforman.jpg",
                 "experience": 10,
-                "rank": "Стоматолог-терапевт",
+                "rank": "Стоматолог-протезист",
                 "speciality": ["service1","service2","service3","service4","service5"],
                 "schedule": {
                     "08": {
@@ -313,14 +313,14 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "Образование: <br>   2009 — 2014 гг. — Ставропольский Государственный Медицинский Университет, стоматологический факультет. <br> 2014 — 2015 гг. — Интернатура, Московский Государственный Медико-стоматологический Университет по специальности «Стоматология общей практики».  <br>  2015 — 2017 гг. — Ординатура, Московский областной научно-исследовательский клинический институт имени М. Ф. Владимирского по специальности «Хирургическая стоматология». <br>   Обучение:  <br>  Курс Nobel Biocare: «Предсказуемая дентальная имплантация. От функции к эстетике» (г. Москва, 2018 год). <br>  Курс Dental Guru: «Одномоментная имплантация и немедленная нагрузка. Клинические и лабораторные этапы». <br>  Является участником международных конгрессов и мастер классов.",
                 "id": 5
             },
             {
                 "description": "Крис Тауб",
                 "photo":  "./images/doctors/kris_taub.jpg",
                 "experience": 20,
-                "rank": "Стоматолог-терапевт",
+                "rank": "Детский стоматолог",
                 "speciality": ["service1","service2","service3","service4","service5"],
                 "schedule": {
                     "08": {
@@ -376,7 +376,7 @@
                       "14": false
                     }
                   },
-                "skillsname": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, magnam. Maxime nisi dolorum consectetur dolor impedit veniam placeat nobis repudiandae quibusdam aperiam!",
+                "skillsname": "Образование <br> Харьковский медицинский университет по специальности «Ортодонтия», «Терапевтическая стоматология», «Ортопедическая стоматология», «Детская стоматология». <br> Специализация  <br>    Исправление прикуса; лечение тканей пародонта (пародонтоз, пародонтит); художественная реставрация зубов; все виды протезирования; эстетическая стоматология и хиругрия.",
                 "id": 6
             }
   ],

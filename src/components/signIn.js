@@ -140,7 +140,7 @@ class SignIn extends Component {
         const { error } = this.props;
         
         return (
-                <div className="auth__auth-box">
+         <div className="auth__auth-box">
                     <form onSubmit={this.submit} className="auth__auth-form">
                         {Object.keys(form).map(input_name => {
                             return (

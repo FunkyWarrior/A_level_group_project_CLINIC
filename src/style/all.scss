@@ -3,7 +3,7 @@ $main-title-color: #3b3b3b;
 $main-text-color: #101010;
 $main-color:   #789084;
 $hover-color: #b1e8ca;
-$opacity-color: rgba(17,17,17,0.9);
+$opacity-color: rgba(17,17,17,0.8);
 
 //
 
@@ -23,14 +23,16 @@ body {
 .container {
 	background-image: url(../assets/images/fon1.jpg);
 	background-size: cover;
+	min-height: 100vh;
 }
 .wrapper {
-	max-width: 1180px;
+	max-width: 1280px;
 	margin: 0 auto;
 }
 
 // header +  navigation
-.header {
+.header,
+.footer {
 	width: 100%;
 	padding: 10px;
 	display: flex;
@@ -101,6 +103,7 @@ body {
 	
 // banner + title
 .title-box {
+
 	color: $header-color;
 	margin: 0px 40px;
 	padding-bottom: 45px;
@@ -121,14 +124,15 @@ body {
 	h1{
 		text-transform: uppercase;
 		background-color: $opacity-color;
-		font-size: 52px;
+		width: 100%;
+		font-size: 40px;
 		padding: 35px;
 		line-height: 50px;
 		font-weight: bold;
 		margin: 70px auto 0;
 		text-align: center;
 		@media (max-width: 768px) {
-			font-size: 30px;
+			font-size: 25px;
 			padding: 15px;	
 		}
 	}
@@ -169,7 +173,7 @@ body {
 .team-container,
 h2  {
 	background-color: $opacity-color;
-	box-shadow: 0px 0px 10px 20px  $opacity-color;
+	box-shadow: 0px 0px 15px 15px  $opacity-color;
 	font-size: 20px;
 	line-height: 1.5em;
 	font-family: 'Montserrat', sans-serif;
@@ -191,6 +195,8 @@ h2 {
 	color: $main-color;
 	border-bottom: 1px solid $opacity-color;
 }
+// ____
+
 
 // second banner 
 .case {
@@ -271,7 +277,31 @@ h2 {
 
 }
 
+//  Footer
 
+.footer {
+	position: static;
+	margin-top: 100%;
+	background-image: url(../assets/images/bg2.jpg);
+	// background-size: 100vh;
+	background-repeat: no-repeat;
+	padding: 60px 25px;
+	color: $opacity-color;
+	font-size: 1.3em;
+	.logo-box {
+		margin-right: 50px;
+		@media (max-width: 768px) {
+			margin-right: 0;	
+		}
+	}
+	.logo-box  img {
+		width: 300px;
+		@media (max-width: 768px) {
+			width: 200px;	
+		}
+	}	
+	
+}
 
 
 
