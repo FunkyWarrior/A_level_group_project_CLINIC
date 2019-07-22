@@ -21,7 +21,7 @@ export const auth = payload => {
     return async dispatch => {
         dispatch(authRequest());
         try {
-            const { data } = await axios.post("http://subdomain.entony.fs.a-level.com.ua/api/auth/login", payload);
+            const { data } = await axios.post("https://api-clinics.herokuapp.com/api/v1/auth/login", payload);
             console.log('data',data)
             dispatch(authRequestSuccess(data));
         } catch (error){
@@ -50,7 +50,7 @@ export const register = payload => {
         dispatch(registerRequest());
         try {
             const { data } = await axios.post(
-                "http://subdomain.entony.fs.a-level.com.ua/api/auth/register",
+                "https://api-clinics.herokuapp.com/api/v1/auth/register",
                 payload
             );
            
