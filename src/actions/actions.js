@@ -5,15 +5,29 @@ const URL = "https://api-clinics.herokuapp.com/api/v1/";
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const changeInputDoctorForm = payload => ({
+export const changeInputValueDoctorForm = payload => ({
     type: types.CHANGE_INPUT_VALUE_DOCTOR_FORM,
     payload
 });
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const changeSelectedDoctor = payload => ({
-    type: types.CHANGE_SELECTED_DOCTOR,
+export const changeInputValueServiceForm = payload => ({
+    type: types.CHANGE_INPUT_VALUE_SERVICE_FORM,
+    payload
+});
+
+// -----------------------------------------------------------------------------------------------------------------
+
+export const changeSelectedDoctorId = payload => ({
+    type: types.CHANGE_SELECTED_DOCTOR_ID,
+    payload
+});
+
+// -----------------------------------------------------------------------------------------------------------------
+
+export const changeSelectedServiceId = payload => ({
+    type: types.CHANGE_SELECTED_SERVICE_ID,
     payload
 });
 
@@ -24,25 +38,35 @@ export const setAppointmentShedule = payload => ({
     payload
 });
 
+// -----------------------------------------------------------------------------------------------------------------
+
 export const setAppointmentDoctor = payload => ({
     type: types.CHANGE_APPOINTMENT_DOCTOR,
     payload
 });
+
+// -----------------------------------------------------------------------------------------------------------------
 
 export const setAppointmentTime = payload => ({
     type: types.CHANGE_APPOINTMENT_TIME,
     payload
 });
 
+// -----------------------------------------------------------------------------------------------------------------
+
 export const setAppointmentSpec = payload => ({
     type: types.CHANGE_APPOINTMENT_SPEC,
     payload
 });
 
+// -----------------------------------------------------------------------------------------------------------------
+
 export const setAppointmentComment = payload => ({
     type: types.CHANGE_APPOINTMENT_COMMENT,
     payload
 });
+
+// -----------------------------------------------------------------------------------------------------------------
 
 export const clearAppointment = payload => ({
     type: types.CLEAR_APPOINTMENT,
@@ -56,6 +80,7 @@ export const setSheduleDoctor = payload => ({
     payload
 });
 
+// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
 const getDoctorsRequest = payload => ({
@@ -84,6 +109,7 @@ export const getDoctors = () => dispatch => {
 };
 
 // -----------------------------------------------------------------------------------------------------------------
+
 const getServicesRequest = payload => ({
     type: types.GET_SERVICES_REQUEST,
     payload
@@ -111,6 +137,7 @@ export const getServices = () => dispatch => {
 
 // -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
+
 const postDoctorsRequest = payload => ({
     type: types.POST_DOCTORS_REQUEST,
     payload
@@ -238,6 +265,7 @@ export const postOrders = (payload) => dispatch => {
 };
 
 // -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
 
 const putDoctorsRequest = payload => ({
     type: types.PUT_DOCTORS_REQUEST,
@@ -269,4 +297,94 @@ export const putDoctors = (payload) => dispatch => {
         .catch(err => dispatch(putDoctorsRequestFail(err)));
 };
 
+// -----------------------------------------------------------------------------------------------------------------
+
+const putServicesRequest = payload => ({
+    type: types.PUT_SERVICES_REQUEST,
+    payload
+});
+
+const putServicesRequestSuccess = payload => ({
+    type: types.PUT_SERVICES_REQUEST_SUCCESS,
+    payload
+});
+
+const putServicesRequestFail = payload => ({
+    type: types.PUT_SERVICES_REQUEST_FAIL,
+    payload
+});
+
+export const putServices = (payload) => dispatch => {
+    dispatch(putServicesRequest());
+    return fetch(`${URL}services/${payload.id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload.data)
+    })
+        .then(res => res.json())
+        .then(res => dispatch(putServicesRequestSuccess(res)))
+        .catch(err => dispatch(putServicesRequestFail(err)));
+};
+
+// -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
+
+const deleteServicesRequest = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST,
+    payload
+});
+
+const deleteServicesRequestSuccess = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST_SUCCESS,
+    payload
+});
+
+const deleteServicesRequestFail = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST_FAIL,
+    payload
+});
+
+export const deleteServices = (payload) => dispatch => {
+    dispatch(deleteServicesRequest());
+    return fetch(`${URL}services/${payload}`, {
+        method: "DELETE",
+        credentials: "include"
+    })
+        .then(res => res.json())
+        .then(res => dispatch(deleteServicesRequestSuccess(res)))
+        .catch(err => dispatch(deleteServicesRequestFail(err)));
+};
+
+// -----------------------------------------------------------------------------------------------------------------
+
+const deleteDoctorsRequest = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST,
+    payload
+});
+
+const deleteDoctorsRequestSuccess = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST_SUCCESS,
+    payload
+});
+
+const deleteDoctorsRequestFail = payload => ({
+    type: types.DELETE_DOCTORS_REQUEST_FAIL,
+    payload
+});
+
+export const deleteDoctors = (payload) => dispatch => {
+    dispatch(deleteDoctorsRequest());
+    return fetch(`${URL}doctors/${payload}`, {
+        method: "DELETE",
+        credentials: "include"
+    })
+        .then(res => res.json())
+        .then(res => dispatch(deleteDoctorsRequestSuccess(res)))
+        .catch(err => dispatch(deleteDoctorsRequestFail(err)));
+};
+
+// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------

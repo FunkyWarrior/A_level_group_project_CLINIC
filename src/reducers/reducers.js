@@ -51,32 +51,61 @@ const postNewDoctorForm =[
     }
 ];
 
+const postNewServiceForm =[
+    {
+        id:1,
+        type:'text',
+        value:"",
+        name:'name',
+        placeholder:'Enter service Name',
+        required:true
+    },
+    {
+        id:2,
+        type:'text',
+        value:"",
+        name:'description',
+        placeholder:'Enter service description',
+        required:true
+    },
+    {
+        id:3,
+        type:'number',
+        value:"",
+        name:'duration',
+        placeholder:'Enter duration',
+        required:true
+    },
+    {
+        id:4,
+        type:'number',
+        value:"",
+        name:'price',
+        placeholder:'Enter price',
+        required:true
+    }
+];
+
 
 const defaultState = {
-    currentUser:{
-        email:"dead1990bb@gmail.com",
-        id:1,
-        name:"Borys",
-        lastName:"Kozhyn",
-        age:29,
-        phone:"380938807183",
-        avatar:"some avatar",
-        password:"123456",
-        root:false,
-        doctor:false,
-    },
     doctors:[],
-    postNewShedule:{
-        data:null,
-        doctor:null
-    },
-    postNewDoctor:postNewDoctorForm,
-    changeDoctor:null,
-    sheduleMonthArray:null,
     services:[],
     orders:[],
     users:[],
     reviews: [],
+
+    postNewShedule:{
+        data:null,
+        doctor:null
+    },
+    sheduleMonthArray:null,
+
+    postNewDoctor:postNewDoctorForm,
+    postNewService:postNewServiceForm,
+
+    changeDoctorId:null,
+    changeServiceId:null,
+
     appointment:{
         shedule:null,
         time:null,
@@ -84,6 +113,7 @@ const defaultState = {
         spec:null,
         comment:''
     },
+
     timeArray:[],
     wrongDate:true,
     isFetching:false,
@@ -111,11 +141,47 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-        case types.CHANGE_SELECTED_DOCTOR : {
+        case types.CHANGE_INPUT_VALUE_SERVICE_FORM : {
             return {
                 ...state,
-                changeDoctor: state.doctors.find(el => el.name === action.payload)._id,
-                postNewDoctor:postNewDoctorForm
+                postNewService: state.postNewService.map(el => el.id === +action.payload.target.id ? {
+                    ...el,
+                    value:action.payload.target.value
+                } : el)
+            };
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.CHANGE_SELECTED_DOCTOR_ID : {
+            let doctor = state.doctors.find(el => el.name === action.payload)
+            let result = Object.keys(doctor).map(key => {
+                return [key, doctor[key]];
+            });
+            return {
+                ...state,
+                changeDoctorId: state.doctors.find(el => el.name === action.payload)._id,
+                postNewDoctor:state.postNewDoctor.map(el => result.find(item => item[0] === el.name) ? {
+                    ...el,
+                    value:result.find(item => item[0] === el.name)[1]
+                } : el)
+            };
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.CHANGE_SELECTED_SERVICE_ID : {
+            let service = state.services.find(el => el.name === action.payload)
+            let result = Object.keys(service).map(key => {
+                return [key, service[key]];
+            });
+            return {
+                ...state,
+                changeServiceId: service._id,
+                postNewService: state.postNewService.map(el => result.find(item => item[0] === el.name) ? {
+                    ...el,
+                    value:result.find(item => item[0] === el.name)[1]
+                } : el)
             };
         }
 
@@ -215,6 +281,7 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
 
         case types.GET_DOCTORS_REQUEST : {
             return {
@@ -249,6 +316,11 @@ export const appReducer = (state = defaultState,action) => {
         }
 
         case types.GET_SERVICES_REQUEST_SUCCESS : {
+            action.payload.services.sort((a,b) => {
+                if (a.name.slice(0,1) < b.name.slice(0,1)) {return -1;}
+                if(a.name.slice(0,1) > b.name.slice(0,1)) {return 1;}
+                return 0
+            });
             return {
                 ...state,
                 services:action.payload.services,
@@ -265,6 +337,7 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
 
         case types.POST_DOCTORS_REQUEST : {
             return {
@@ -276,11 +349,40 @@ export const appReducer = (state = defaultState,action) => {
         case types.POST_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
+                postNewDoctor:postNewDoctorForm,
                 isFetching: false
             }
         }
 
         case types.POST_DOCTORS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.POST_SHEDULE_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.POST_SHEDULE_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                postNewShedule:{
+                    data:null,
+                    doctor:null
+                },
+                isFetching: false
+            }
+        }
+
+        case types.POST_SHEDULE_REQUEST_FAIL : {
             return {
                 ...state,
                 error: action.payload,
@@ -339,6 +441,7 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
 
         case types.PUT_DOCTORS_REQUEST : {
             return {
@@ -350,6 +453,8 @@ export const appReducer = (state = defaultState,action) => {
         case types.PUT_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
+                postNewDoctor:postNewDoctorForm,
+                changeId:null,
                 isFetching: false
             }
         }
@@ -362,6 +467,84 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.PUT_SERVICES_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.PUT_SERVICES_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                postNewService:postNewServiceForm,
+                changeId:null,
+                isFetching: false
+            }
+        }
+
+        case types.PUT_SERVICES_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.DELETE_DOCTORS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.DELETE_DOCTORS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                changeId:null,
+                isFetching: false
+            }
+        }
+
+        case types.DELETE_DOCTORS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        case types.DELETE_SERVICES_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.DELETE_SERVICES_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                changeId:null,
+                isFetching: false
+            }
+        }
+
+        case types.DELETE_SERVICES_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
         default:

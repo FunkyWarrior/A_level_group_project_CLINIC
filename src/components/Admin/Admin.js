@@ -5,14 +5,20 @@ import {Switch, Route} from "react-router-dom";
 import {
     setSheduleDoctor,
     postShedule,
-    changeInputDoctorForm,
+    changeInputValueDoctorForm,
+    changeInputValueServiceForm,
     postDoctors,
-    changeSelectedDoctor,
-    putDoctors
+    changeSelectedDoctorId,
+    changeSelectedServiceId,
+    putDoctors,
+    deleteDoctors,
+    postServices,
+    putServices,
+    deleteServices
 } from "../../actions/actions";
 
 import Shedule from './Shedule'
-import ChangeDoctor from './ChangeDoctor'
+import ChangeServicesDoctors from './ChangeServices-Doctors'
 
 
 
@@ -20,8 +26,30 @@ export class Admin extends React.Component {
 
 
     render() {
-        const {doctors,postNewShedule,sheduleMonthArray,postNewDoctor,changeDoctor} = this.props.app;
-        const {setSheduleDoctor,postShedule,changeInputDoctorForm,postDoctors,changeSelectedDoctor,putDoctors} = this.props;
+        const {
+            doctors,
+            services,
+            postNewShedule,
+            sheduleMonthArray,
+            postNewDoctor,
+            postNewService,
+            changeDoctorId,
+            changeServiceId
+        } = this.props.app;
+        const {
+            setSheduleDoctor,
+            postShedule,
+            changeInputValueDoctorForm,
+            changeInputValueServiceForm,
+            postDoctors,
+            changeSelectedDoctorId,
+            changeSelectedServiceId,
+            putDoctors,
+            deleteDoctors,
+            putServices,
+            deleteServices,
+            postServices
+        } = this.props;
         return (
             <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
                 <div>
@@ -37,16 +65,26 @@ export class Admin extends React.Component {
                         setSheduleDoctor={setSheduleDoctor}
                         postShedule={postShedule}
                     />} />
-                    <Route path='/admin/change-doctors' render={() => <ChangeDoctor
-                        putDoctors={putDoctors}
-                        changeDoctor={changeDoctor}
-                        doctors={doctors}
-                        changeSelectedDoctor={changeSelectedDoctor}
-                        changeInputValues={changeInputDoctorForm}
-                        postDoctors={postDoctors}
-                        postNewDoctor={postNewDoctor}
+                    <Route path='/admin/change-doctors' render={() => <ChangeServicesDoctors
+                        data={doctors}
+                        itemId={changeDoctorId}
+                        changeId={changeSelectedDoctorId}
+                        form={postNewDoctor}
+                        postItem={postDoctors}
+                        putItem={putDoctors}
+                        deleteItem={deleteDoctors}
+                        changeInputValues={changeInputValueDoctorForm}
                     />} />
-                    <Route path='/admin/change-services' render={() => <div>Services</div>} />
+                    <Route path='/admin/change-services' render={() => <ChangeServicesDoctors
+                        data={services}
+                        itemId={changeServiceId}
+                        changeId={changeSelectedServiceId}
+                        form={postNewService}
+                        postItem={postServices}
+                        putItem={putServices}
+                        deleteItem={deleteServices}
+                        changeInputValues={changeInputValueServiceForm}
+                    />} />
                 </Switch>
             </div>
         );
@@ -62,10 +100,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setSheduleDoctor,
     postShedule,
-    changeInputDoctorForm,
+    changeInputValueDoctorForm,
+    changeInputValueServiceForm,
     postDoctors,
-    changeSelectedDoctor,
-    putDoctors
+    changeSelectedDoctorId,
+    changeSelectedServiceId,
+    putDoctors,
+    deleteDoctors,
+    postServices,
+    putServices,
+    deleteServices
 
 
 };
