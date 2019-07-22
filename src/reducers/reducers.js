@@ -88,8 +88,17 @@ const postNewServiceForm =[
 
 
 const defaultState = {
+    user:localStorage.getItem('id') ? localStorage.getItem('id') : null,
     doctors:[],
     services:[],
+    servicesArray:{
+        surgeon:[],
+        kids:[],
+        orthodontist:[],
+        therapist:[],
+        implantologist: [],
+        endodontics:[],
+    },
     orders:[],
     users:[],
     reviews: [],
@@ -321,6 +330,75 @@ export const appReducer = (state = defaultState,action) => {
                 if(a.name.slice(0,1) > b.name.slice(0,1)) {return 1;}
                 return 0
             });
+                action.payload.services.map(el => {
+                    switch (el.description){
+                        case "Ортодонтия" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    orthodontist:state.servicesArray.orthodontist.push(el._id)
+                                }
+                            }
+                        }
+                        case "Детская стоматология" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    kids:state.servicesArray.kids.push(el._id)
+                                }
+                            }
+                        }
+                        case "Протезирование" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    implantologist:state.servicesArray.implantologist.push(el._id)
+                                }
+                            }
+                        }
+                        case "Имплантация" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    implantologist:state.servicesArray.implantologist.push(el._id)
+                                }
+                            }
+                        }
+                        case "Хирургия" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    surgeon:state.servicesArray.surgeon.push(el._id)
+                                }
+                            }
+                        }
+                        case "Эндодонтическое лечение с помощью микроскопа" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    endodontics:state.servicesArray.endodontics.push(el._id)
+                                }
+                            }
+                        }
+                        case "Лечение пародонтита" : {
+                            return {
+                                ...state,
+                                servicesArray:{
+                                    ...state.servicesArray,
+                                    therapist:state.servicesArray.therapist.push(el._id)
+                                }
+                            }
+                        }
+                        default: return el
+                    }
+                });
+
             return {
                 ...state,
                 services:action.payload.services,
