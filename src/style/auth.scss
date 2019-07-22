@@ -17,19 +17,22 @@ $opacity-color: rgba(17,17,17,0.8);
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-
+		background-color: $opacity-color;
 		padding: 2rem;
 		border: 1px solid #eee;
+		margin-top: 40px;
 	}
 
 	&__text {
 		font-size: 1.6rem;
+		color:	$hover-color;
 	}
 
 	&__toggle-span {
 		font-size: 1.6rem;
 		font-weight: bold;
 		color: rgb(102, 104, 223);
+		margin-left: 20px;
 		cursor: pointer;
 	}
 
@@ -45,7 +48,7 @@ $opacity-color: rgba(17,17,17,0.8);
 		margin-top: 1rem;
 		text-align: center;
 		width: 100%;
-		color: #8f240a;
+		color: #d7394c;
 		font-size: 2rem;
 	}
 
@@ -53,7 +56,7 @@ $opacity-color: rgba(17,17,17,0.8);
 		margin-top: 1rem;
 		text-align: center;
 		width: 100%;
-		color: #1eb437;
+		color: $hover-color;
 		font-size: 2rem;
 	}
 
@@ -61,9 +64,8 @@ $opacity-color: rgba(17,17,17,0.8);
 		width: 100%;
 		border: 1px solid #eee;
 		border-radius: 3px;
-
-		color: #fff;
-		background-color: #5f6df0;
+		color: $opacity-color;
+		background-color: $hover-color;
 		border: none;
 		cursor: pointer;
 		font-weight: 600;
@@ -75,8 +77,8 @@ $opacity-color: rgba(17,17,17,0.8);
 			outline: none;
 		}
 		&:hover {
-			color: #5f6df0;
-			background-color: #fff;
+			color:  $opacity-color;
+			background-color: $main-color;
 			outline: none;
 			transform: translateY(-1px);
 			box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -87,7 +89,7 @@ $opacity-color: rgba(17,17,17,0.8);
 		}
 
 		&:disabled {
-			color: #fff;
+			color: $main-title-color;
 			background-color: #eee;
 		}	
 	}
@@ -97,10 +99,12 @@ $opacity-color: rgba(17,17,17,0.8);
 .input-box {
 	display: flex;
 	flex-direction: column;
-
+	color: $header-color;
+	font-weight: 700;
+	margin-top: 10px;
 	&__input {
 		font-family: inherit;
-		color: inherit;
+		
 		font-size: 1.5rem;
 		padding: 0.5rem 1rem;
 		border-radius: 2px;
@@ -122,3 +126,6 @@ $opacity-color: rgba(17,17,17,0.8);
 		}
 	}
 }
+
+
+

@@ -22,7 +22,7 @@ body {
 
 .container {
 	background-image: url(../assets/images/fon1.jpg);
-	background-size: cover;
+	// background-size: cover;
 	min-height: 100vh;
 }
 .wrapper {
@@ -281,7 +281,7 @@ h2 {
 
 .footer {
 	position: static;
-	margin-top: 100%;
+	// top: 80%;
 	background-image: url(../assets/images/bg2.jpg);
 	// background-size: 100vh;
 	background-repeat: no-repeat;
@@ -305,7 +305,20 @@ h2 {
 
 
 
+// loadrer
+.loader-box {
+	border: none;
+	min-width: 100vw;
+	min-height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	// background-color: $opacity-color;
+	.loader {
+			margin: 0 auto;
+	}
 
+}
 
 
 

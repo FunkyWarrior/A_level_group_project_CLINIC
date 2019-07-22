@@ -56,8 +56,8 @@ export class App extends React.Component {
     render() {
         console.log(this.props.app.servicesArray)
         return (
-            <div className="container">
-                <Header/>
+            <>
+                    <Header/>
                     <Switch>
                         <Route exact path="/" component={Main} />
                         <Route exact path="/doctors" render={() => <Doctors data={this.props.app.doctors} /> } />
@@ -74,7 +74,7 @@ export class App extends React.Component {
                         <Route exact path="/auth" component={Auth} />
                     </Switch>
                 <Footer/>
-            </div>
+             </>
         );
     }
 }
