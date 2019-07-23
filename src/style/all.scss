@@ -278,12 +278,10 @@ h2 {
 }
 
 //  Footer
-
 .footer {
 	position: static;
-	// top: 80%;
 	background-image: url(../assets/images/bg2.jpg);
-	// background-size: 100vh;
+	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 60px 25px;
 	color: $opacity-color;
