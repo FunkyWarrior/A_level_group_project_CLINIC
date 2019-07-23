@@ -67,7 +67,7 @@
             {
                 "description": "Лиза Кадди",
                 "photo": "./images/doctors/lisa.jpg",
-                "experience": 15,
+                "experience": "2004-05-13",
                 "rank": "Стоматолог-ортодонт",
                 "speciality": ["5d320979dae390159ff7813e","5d320979dae390159ff78142","5d320979dae390159ff78135"],
                 "schedule": {
@@ -130,7 +130,7 @@
             {
                 "description": "Эллисон Кэмерон",
                 "photo": "./images/doctors/alison.jpg",
-                "experience": 6,
+                "experience": "2011-08-02",
                 "rank": "Стоматолог-эндодонтист ",
                 "speciality": ["5d320978dae390159ff780df","5d320979dae390159ff780f0","5d320979dae390159ff780f6","5d320978dae390159ff780d0","5d320979dae390159ff780ec"],
                 "schedule": {
@@ -193,7 +193,7 @@
             {
                 "description": "Лоренс Катнер",
                 "photo": "./images/doctors/lorenskatner.jpg",
-                "experience": 4,
+                "experience": "2015-10-01",
                 "rank": "Стоматолог-терапевт",
                 "speciality": ["5d320979dae390159ff780fd","5d320979dae390159ff78116","5d320979dae390159ff780fa","5d320979dae390159ff78104"],
                 "schedule": {
@@ -256,7 +256,7 @@
             {
                 "description": "Эрик Форман",
                 "photo": "./images/doctors/ericforman.jpg",
-                "experience": 10,
+                "experience": "2009-02-10",
                 "rank": "Стоматолог-протезист",
                 "speciality": ["5d320979dae390159ff78137","5d320979dae390159ff7811d","5d320979dae390159ff78140","5d320979dae390159ff78114","5d320979dae390159ff78118", "5d320979dae390159ff7811a", "5d320979dae390159ff78125", "5d32097adae390159ff7816a", "5d32097adae390159ff78161"],
                 "schedule": {
@@ -319,7 +319,7 @@
             {
                 "description": "Крис Тауб",
                 "photo":  "./images/doctors/kris_taub.jpg",
-                "experience": 20,
+                "experience": "1999-03-29",
                 "rank": "Детский стоматолог",
                 "speciality": ["5d32097adae390159ff781a3","5d32097adae390159ff7818d","5d32097adae390159ff78178","5d32097adae390159ff7817e","5d32097adae390159ff78186", "5d32097adae390159ff781a8", "5d32097adae390159ff7816f", "5d32097adae390159ff78188", "5d32097adae390159ff7819d", "5d320979dae390159ff78147", "5d32097adae390159ff7817c"],
                 "schedule": {
