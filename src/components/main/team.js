@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 // import Button from "../buttons/button";
 
 
@@ -20,10 +20,10 @@ export default class Team extends React.Component {
                                 <p className="experience">Опыт работы {new Date().toISOString().split('T')[0].split('-')[0] - el.experience.split('T')[0].split('-')[0]} лет</p>
                                 <p className="rank">{el.profession}</p>
                             </div>
-                             <div className="link-box">
+                             {/* <div className="link-box">
                                 <Link to = "/doctors" className = "btn link more">Подробнее ...</Link>
                                 <Link to ={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
-                            </div>
+                            </div> */}
                         </div>
                     )}
                  </div>

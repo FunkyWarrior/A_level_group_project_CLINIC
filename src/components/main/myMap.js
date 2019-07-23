@@ -1,6 +1,6 @@
 import React from "react"
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 // import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
 
 // const { InfoBox } = require("react-google-maps/lib/components/addons/InfoBox");

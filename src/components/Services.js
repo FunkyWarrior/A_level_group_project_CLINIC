@@ -15,7 +15,7 @@ export default class Services extends React.Component {
                             <p>{el.name}</p>
                             <p>Duration:{el.duration}h</p>
                             <p>{el.description}</p>
-                            <p>Price:{el.price}$</p>
+                            <p>Price:{el.price}грн.</p>
                             <div>
                                 <Link to={`/services/${el._id}`}>More Info</Link>
                                 <button>Make appointment</button>

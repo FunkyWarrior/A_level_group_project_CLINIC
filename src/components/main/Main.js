@@ -1,14 +1,9 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
-
-
-import {postDoctors, postServices} from "../../actions/actions";
 
 import Button from "../buttons/button";
 import About from "./aboutUs";
 import Team from "./team";
 // import MyMap from "./myMap";
-import Reviews from "./reviews";
 
 import {connect} from 'react-redux'
 
@@ -30,7 +25,8 @@ export class Main extends React.Component {
                         </div>
                 </div>
                  <div className="wrapper">
-                    <About/>
+                    <Team doctorsArr = {this.props.app.doctors}/>
+                  
                  </div>
                 <div className=" case">
                         <img className = "banner" src="./images/medical.jpeg" alt="medical"/>
@@ -39,13 +35,10 @@ export class Main extends React.Component {
                         </div>     
                  </div>
                  <div className="wrapper">
-                    <Team doctorsArr = {this.props.app.doctors}/>
+                 <About/>
                  </div>
                 <div className="case">
-                  {/* <MyMap /> */}
-                </div>
-                <div className="wrapper">
-                    <Reviews services = {this.props.app.doctors} postDoctors = {this.props.postDoctors}/>
+                    {/* <MyMap /> */}
                 </div>
             </main> 
         )
@@ -59,8 +52,8 @@ export class Main extends React.Component {
     };
     
     const mapDispatchToProps = {
-        postDoctors,
-        postServices
+        // postDoctors,
+        // postServices
     };
     
     export default connect (mapStateToProps,mapDispatchToProps)(Main)

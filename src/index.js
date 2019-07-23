@@ -10,6 +10,7 @@ import {Provider} from "react-redux";
 
 import "./style/normalize.css"
 import './style/all.scss'
+import "./style/style.css"
 import "./style/auth.scss"
 
 ReactDOM.render(

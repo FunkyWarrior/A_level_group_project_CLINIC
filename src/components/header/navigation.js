@@ -14,8 +14,10 @@ const liArr = [
 ];
 
 export default ( props ) => (
-    <nav className=" nav">
-		<ul className=" list">
+	<nav className=" nav icon-dehaze" 
+		// onClick = { ( ) => { document.querySelector('.list').style.display = " block"    }  }
+	>
+		<ul className=" list ">
 			{liArr.map(el => (
 				<li className="item" key={el.id}> 
 					<Link to={el.path}>{el.text}</Link>  
