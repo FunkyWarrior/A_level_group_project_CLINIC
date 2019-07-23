@@ -7,9 +7,9 @@ export default class Doctors extends React.Component {
     render() {
         const {data} = this.props;
         return (
-            <div style={{margin:"100px 0"}}>
+            <div className="main">
                 <div className="wrapper">
-                    <div className = "team-container">
+                    <div className = "doctors-wrap">
                         {data.map(el => (
                             <div className="item"  key = {el._id} >
                                 <div className="photo"><img src= {el.photo} alt= {el.name}/></div>
@@ -19,13 +19,13 @@ export default class Doctors extends React.Component {
                                     <p className="rank">{el.profession}</p>
                                 </div>
                                 <div className="link-box">
-                                    <Link to = "/doctors" className = "btn link more">Подробнее ...</Link>
+                                    <Link to = {`/doctors/${el._id}`} className = "btn link more">Подробнее ...</Link>
                                     <Link to={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
                                 </div>
                             </div>
                         ))}
                     </div>
-                </div>
+                </div>                
             </div>
         );
     }

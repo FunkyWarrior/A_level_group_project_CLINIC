@@ -1,21 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Switch, Route} from "react-router-dom";
+// import { BrowserHistory } from 'react-history'
 
 import {
     getDoctors,
     getServices,
 } from "./actions/actions";
 
+import Loader from "./components/loader"
 import Header from "./components/header/index"
-import Footer from "./components/Footer";
 import Main from "./components/main/Main";
 import Doctors from "./components/specialists/doctors";
-import Service from "./components/Service";
-import Appointment from "./components/Appointment";
+import MoreInfo from "./components/specialists/MoreInfo"
+// import Service from "./components/Service";
 import Services from "./components/Services"
+import Appointment from "./components/Appointment";
 import Auth from './containers/auth'
+import Footer from "./components/Footer";
 import Admin from './components/Admin/Admin'
+
 
 
 export class App extends React.Component {
@@ -64,16 +68,22 @@ export class App extends React.Component {
     render() {
         // console.log(this.props.app)
         return (
-            <>
+              <Loader flag={this.props.isFetching}>
                     <Header/>
                     <Switch>
                         <Route exact path="/" component={Main} />
                         <Route exact path="/doctors" render={() => <Doctors data={this.props.app.doctors} /> } />
+                        <Route exact path="/doctors/:doctor" render={(props) =>
+                            <MoreInfo
+                                his={props}
+                                data={this.props.app.doctors}
+                            />}
+                        />
                         <Route exact path="/services" render={() => <Services data={this.props.app.services} />} />
                         <Route exact path="/reviews" render={() => <div>Reviews</div>} />
                         <Route path="/admin/" component={Admin} />
                         <Route exact path="/services/:service" render={(props) =>
-                            <Service
+                            <MoreInfo
                                 his={props}
                                 data={this.props.app.services}
                             />}
@@ -82,7 +92,7 @@ export class App extends React.Component {
                         <Route exact path="/auth" component={Auth} />
                     </Switch>
                 <Footer/>
-             </>
+             </Loader>
         );
     }
 }

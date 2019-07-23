@@ -8,15 +8,13 @@ import Button from "../buttons/button";
 
 export default class Reviews extends React.Component {
     render( ) {
-        const {postDoctors } = this.props
+        // const {postDoctors } = this.props
         
         return (
             <>
                 <h2>Отзывы</h2>
                 <div classdescription = "reviews-container">
-                    <Button className = "btn" text = "POST to doctors"
-                        // onClick = { ( ) => {   doctors.map ( el => postDoctors ( el ) )  }  }
-                    />
+                        
                  </div>
             </>
         ) 
