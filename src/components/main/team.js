@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 export default class Team extends React.Component {
     render( ) {
         const {doctorsArr } = this.props
-        console.log(doctorsArr)
+        console.log (doctorsArr)
         return (
             <>
                 <h2>Наши врачи</h2>

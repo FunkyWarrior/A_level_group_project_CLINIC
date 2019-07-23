@@ -38,6 +38,14 @@ export class App extends React.Component {
         //     .then(res => res.json())
         //     .then(res => console.log (res))
 
+    //     fetch("https://api-clinics.herokuapp.com/api/v1/doctors",{
+    //         method: "GET",
+    //         credentials:"include"
+    //     })
+    //     .then(res => res.json())
+    //     .then(res => console.log (res))
+    // }
+
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
         //     credentials: "include",
@@ -54,7 +62,7 @@ export class App extends React.Component {
     }
 
     render() {
-        console.log(this.props.app.servicesArray)
+        console.log(this.props.app)
         return (
             <>
                     <Header/>
