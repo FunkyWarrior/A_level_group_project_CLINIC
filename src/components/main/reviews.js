@@ -4,7 +4,6 @@ import Button from "../buttons/button";
 // import { postServices} from "../../store/app/actions";
 
 
-// const doctors  = [ ]
 
 
 export default class Reviews extends React.Component {
@@ -15,9 +14,9 @@ export default class Reviews extends React.Component {
             <>
                 <h2>Отзывы</h2>
                 <div classdescription = "reviews-container">
-                    <Button className = "btn" text = "POST to servises"
-                    //  onClick = { ( ) => {   doctors.map ( el => postDoctors (el))           }  }
-                        />
+                    <Button className = "btn" text = "POST to doctors"
+                        // onClick = { ( ) => {   doctors.map ( el => postDoctors ( el ) )  }  }
+                    />
                  </div>
             </>
         ) 

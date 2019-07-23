@@ -8,7 +8,7 @@ import Button from "../buttons/button";
 import About from "./aboutUs";
 import Team from "./team";
 // import MyMap from "./myMap";
-// import Reviews from "./reviews";
+import Reviews from "./reviews";
 
 import {connect} from 'react-redux'
 
@@ -45,7 +45,7 @@ export class Main extends React.Component {
                   {/* <MyMap /> */}
                 </div>
                 <div className="wrapper">
-                    {/* <Reviews services = {this.props.app.doctors} postDoctors = {this.props.postDoctors}/> */}
+                    <Reviews services = {this.props.app.doctors} postDoctors = {this.props.postDoctors}/>
                 </div>
             </main> 
         )
