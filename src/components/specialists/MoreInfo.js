@@ -11,9 +11,9 @@ export default class MoreInfo extends React.Component {
 
         console.log (this.props, doctor)
         return (
-            <>
-           {doctor && <div >
-               <h3>{doctor.name}</h3> 
+            <main className = "main">
+           {doctor && <div className= "wrapper">
+               <h2>{doctor.name}</h2> 
                 <p>Duration:{doctor.profession}</p>
                 <p>{doctor.description}</p>
                 <p>Price:{doctor.experience}грн.</p>
@@ -28,7 +28,7 @@ export default class MoreInfo extends React.Component {
                 <Link to={`/appointment/${service}`}>Make an appointment</Link>
             </div>
             }
-            </>
+            </main>
         );
     }
 }

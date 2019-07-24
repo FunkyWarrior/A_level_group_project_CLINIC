@@ -18,6 +18,7 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	min-height: 100vh;
+	padding-top: 120px;
 }
 
 .container {
@@ -38,7 +39,7 @@ body {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
-   	margin: 0 auto;
+   	margin: 0 auto ;
     vertical-align: middle;
 	font-weight: 700;
 	background-color: $opacity-color;
@@ -353,7 +354,7 @@ h2 {
 // _____DOCTORS_____ 
 
 .doctors-wrap {
-	margin-top: 120px;
+	// margin-top: 120px;
 }
 
 
