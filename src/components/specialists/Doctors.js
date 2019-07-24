@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 export class Doctors extends React.Component {
-    render() {
+        render() {
         const {data} = this.props;
         return (
             <div className="main">
