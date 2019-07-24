@@ -60,7 +60,7 @@ export class Appoint extends React.Component {
                                         <p>Цена от {spec.price} грн.</p>
                                     </div>
                                      }
-                                    <select  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='choose spec'>
+                                    <select  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
                                         <option disabled >Выбор услуги</option>
                                         {
                                             doctor.speciality.map(el=> (
