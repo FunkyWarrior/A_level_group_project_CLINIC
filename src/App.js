@@ -43,7 +43,7 @@ export class App extends React.Component {
 
     render() {
         return (
-              <Loader flag={this.props.isFetching}>
+              <Loader flag={this.props.app.isFetching}>
                     <Header/>
                     <Switch>
                         <Route exact path="/" component={Main} />
