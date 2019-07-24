@@ -1,34 +1,44 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class MoreInfo extends React.Component {
-
-
+export class MoreInfo extends React.Component {
     render() {
-        const {his,data} = this.props;
-        const doctor = data.find(el => el._id === his.match.params.doctor);
-        const service = data.find(el => el._id === his.match.params.service);
-
-        console.log (this.props, doctor)
+        const {match,doctors,services} = this.props;
+        const doctor = doctors.find(el => el._id === match.params.doctor);
+        const service = services.find(el => el._id === match.params.service);
         return (
             <>
-           {doctor && <div >
-               <h3>{doctor.name}</h3> 
-                <p>Duration:{doctor.profession}</p>
-                <p>{doctor.description}</p>
-                <p>Price:{doctor.experience}грн.</p>
-                <Link to={`/doctors/${doctor}`}>Make an appointment</Link>
-            </div>} 
-            {
-                service  &&             <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
-                {service.name}
-                <p>Duration:{service.duration}h</p>
-                <p>{service.description}</p>
-                <p>Price:{service.price}грн.</p>
-                <Link to={`/appointment/${service}`}>Make an appointment</Link>
-            </div>
-            }
+               {doctor &&
+               <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
+                   <h3>{doctor.name}</h3>
+                   <img src={`.${doctor.photo}`} alt=""/>
+                   <p>{doctor.profession}</p>
+                   <p>Опыт работы более {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]} лет</p>
+                   <Link to={`/appointment/${doctor}`}>Make an appointment</Link>
+               </div>}
+
+                {service  &&
+                <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
+                    {service.name}
+                    <p>Duration:{service.duration}h</p>
+                    <p>{service.description}</p>
+                    <p>Price:{service.price}грн.</p>
+                    <Link to={`/appointment/${service}`}>Make an appointment</Link>
+                </div>}
             </>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        doctors:state.app.doctors,
+        services:state.app.services
+    }
+};
+
+const mapDispatchToProps = {
+};
+
+export default connect (mapStateToProps,mapDispatchToProps)(MoreInfo)
