@@ -1,6 +1,5 @@
 $header-color: #d4d5d7;
 $main-title-color: #3b3b3b;
-$main-text-color: #101010;
 $main-color:   #789084;
 $hover-color: #b1e8ca;
 $opacity-color: rgba(17,17,17,0.8);
@@ -18,7 +17,7 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	min-height: 100vh;
-	padding-top: 120px;
+	// padding-top: 120px;
 }
 
 .container {
@@ -26,7 +25,8 @@ body {
 	// background-size: cover;
 	min-height: 100vh;
 }
-.wrapper {
+.wrapper,
+.info-wrap {
 	max-width: 1280px;
 	margin: 0 auto;
 }
@@ -80,12 +80,13 @@ body {
 		&:last-child a {
 			color: $hover-color;
 			&:hover {
-				color: $main-title-color;
+				color: #4dea94;
 			}
 		}
 		a {
 			text-decoration: none;
 			color: $header-color;
+			padding: 20px 3px;
 			&:hover {
 				color: $hover-color;
 			}
@@ -172,10 +173,19 @@ body {
 	}
 }
 
+.link {
+	width: 100%;
+	display: block;
+	padding: 15px 2px;
+	text-align: center;
+}
+
+
 //  section About Us
 .aboutsection, 
 .team-container,
 .doctors-wrap,
+.info-wrap,
 h2  {
 	background-color: $opacity-color;
 	box-shadow: 0px 0px 15px 15px  $opacity-color;
@@ -271,11 +281,6 @@ h2 {
 		.link-box {
 			margin-top: 20px;
 		}
-		.link {
-			width: 100%;
-			display: block;
-			padding: 15px 2px;
-		}
 		.more {
 			background-color: $opacity-color;
 			&:hover {
@@ -309,7 +314,8 @@ h2 {
 		margin-right: 50px;
 		padding-top: 15px;
 		@media (max-width: 768px) {
-			margin-right: 0;	
+			margin-right: 0;
+			order: -1;	
 		}
 	}
 	.logo-box  img {
@@ -352,9 +358,45 @@ h2 {
 
 
 // _____DOCTORS_____ 
-
 .doctors-wrap {
-	margin-top: 120px;
+padding-top: 110px;	
 }
-
+.info-wrap {
+	padding: 110px 10px 25px;
+ 	min-height: 100vh;
+}
+.card {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
+	color: $header-color;
+	h3 {
+		margin-top: 0;
+		font-size: 2em;
+		@media (max-width: 768px) {
+			text-align: center;
+		}
+	}
+	.desc {
+		width: 50%;
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+	}
+	.card-item {
+		margin: 0 20px 10px; 
+		.highlights {
+			font-weight: 700;
+			color: $hover-color;
+		}
+		p {
+			margin: 10px 0;
+		}
+		img {
+			border-radius: 3px;
+			box-shadow: 1px 1px 15px 1px $hover-color;
+		}
+	}
+}
 

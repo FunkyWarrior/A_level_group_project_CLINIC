@@ -22,7 +22,8 @@ class Auth extends Component {
 
     return (
       <div className="main">
-        <div className="auth">
+        <div className="auth-wrapper">
+            <div className="auth">
           <div className="auth__content">
             { auth ? (
                 <Loader flag={this.props.isFetching}>
@@ -57,6 +58,8 @@ class Auth extends Component {
             </div>
           </div>
         </div>        
+      
+        </div>
       </div>
 
     );

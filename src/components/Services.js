@@ -11,7 +11,7 @@ export class Services extends React.Component {
                     <div className = "doctors-wrap">
                         {
                             data.map(el => (
-                                <div key={el._id} style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
+                                <div key={el._id} style={{display:'flex',flexDirection:'column', width:'200px', margin:'10px 20px'}}>
                                     <p>{el.name}</p>
                                     <p>Duration:{el.duration}h</p>
                                     <p>{el.description}</p>
