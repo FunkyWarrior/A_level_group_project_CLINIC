@@ -14,14 +14,14 @@ export class MoreInfo extends React.Component {
                     <div className = "info-wrap">
                         <div className="card">
                             <div className="card-item">
-                                <img src={`.${doctor.photo}`} alt=""/>
+                                <img src={`.${doctor.photo}`} alt={doctor.name}/>
                             </div>
                              <div className="card-item desc">
                                  <h3>{doctor.name}</h3>
                                 <p className = "highlights">{doctor.profession}</p>
                                 <p className = "highlights">Опыт работы более {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]} лет</p>
                                 {doctor.skillsDescription.split ("<br>").map ( (el, index) => (  <p key= {index}> { el } </p>)  ) }
-                                <Link to={`/appointment/${doctor}`} className = "btn link">Make an appointment</Link>
+                                <Link to={`/appointment/${doctor._id}`} className = "btn link">Записаться на приём</Link>
                              </div>
                         </div>
                     </div>}

@@ -1,6 +1,5 @@
 $header-color: #d4d5d7;
 $main-title-color: #3b3b3b;
-$main-text-color: #101010;
 $main-color:   #789084;
 $hover-color: #b1e8ca;
 $opacity-color: rgba(17,17,17,0.8);
@@ -81,12 +80,13 @@ body {
 		&:last-child a {
 			color: $hover-color;
 			&:hover {
-				color: $main-title-color;
+				color: #4dea94;
 			}
 		}
 		a {
 			text-decoration: none;
 			color: $header-color;
+			padding: 20px 3px;
 			&:hover {
 				color: $hover-color;
 			}
