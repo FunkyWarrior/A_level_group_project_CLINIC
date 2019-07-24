@@ -19,6 +19,7 @@ import Reviews from "./components/Reviews"
 import Admin from './components/Admin/Admin'
 import Auth from './containers/auth'
 import Footer from "./components/Footer";
+import Calendar from "./components/Calendar"
 
 export class App extends React.Component {
 
@@ -51,7 +52,7 @@ export class App extends React.Component {
                         <Route exact path="/services" component={Services} />
                         <Route exact path="/doctors/:doctor" component={MoreInfo} />
                         <Route exact path="/services/:service" component={MoreInfo} />
-                        <Route exact path="/reviews" component={Reviews}/>
+                        <Route exact path="/reviews" component={Calendar}/>
                         <Route path="/admin/" component={Admin} />
                         <Route exact path="/appointment/:doctorId" component={Appointment}/>
                         <Route exact path="/auth" component={Auth} />
