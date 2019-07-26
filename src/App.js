@@ -15,7 +15,7 @@ import Doctors from "./components/specialists/Doctors";
 import Services from "./components/Services"
 import MoreInfo from "./components/specialists/MoreInfo"
 import Appointment from "./components/Appointment";
-import Reviews from "./components/Reviews"
+// import Reviews from "./components/Reviews"
 import Admin from './components/Admin/Admin'
 import Auth from './containers/auth'
 import Footer from "./components/Footer";

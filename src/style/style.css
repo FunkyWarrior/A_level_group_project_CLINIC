@@ -46,26 +46,21 @@
       display: block;	
   }
 }
+
 .icon-chevron-right:before {
   content: "\e900";
 }
 .icon-chevron-left:before {
   content: "\e901";
 }
-.icon-th-menu:before {
-  content: "\e902";
-}
-.icon-calendar:before {
-  content: "\f073";
-}
-.icon-angle-double-down:before {
-  content: "\f103";
-}
 .icon-angle-left:before {
   content: "\f104";
 }
 .icon-angle-right:before {
   content: "\f105";
+}
+.icon-calendar:before {
+  content: "\f073";
 }
 .icon-commenting-o:before {
   content: "\f27b";
@@ -82,15 +77,14 @@
 .icon-user:before {
   content: "\e971";
 }
-.icon-menu:before {
-  content: "\e9bd";
-}
 .icon-exit:before {
   content: "\ea14";
 }
-.icon-facebook:before {
-  content: "\ea90";
+.icon-location:before {
+  content: "\e947";
+  font-size: 35px;
 }
-.icon-instagram:before {
-  content: "\ea92";
+.icon-phone:before {
+  content: "\e942";
+  font-size: 35px;
 }

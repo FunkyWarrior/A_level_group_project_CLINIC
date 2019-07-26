@@ -8,8 +8,9 @@ export default class AboutSection extends React.Component {
         return (
             <>
                 <div className="wrapper">
+                    <h2>О клинике</h2>
                     <div className="aboutsection">
-                        <h2>О клинике</h2>
+                      
                         <p>Стоматологическая клиника «Art Dental studio» – это современное медучреждение, 
                             которое оказывает полный спектр стоматологических услуг и использует при этом новейшее 
                             оборудование ведущих мировых производителей. 

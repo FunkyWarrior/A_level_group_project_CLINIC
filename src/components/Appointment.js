@@ -56,7 +56,7 @@ export class Appoint extends React.Component {
                                     <div>
                                         <p>{spec.name}</p>
                                         <p>Длительность: {spec.duration} ч.</p>
-                                        <p>{spec.description}</p>
+                                        {/* <p>{spec.description}</p> */}
                                         <p>Цена от {spec.price} грн.</p>
                                     </div>
                                      }

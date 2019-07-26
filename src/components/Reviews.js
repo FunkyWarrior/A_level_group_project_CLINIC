@@ -14,7 +14,7 @@ export default class Reviews extends React.Component {
             <>
                 <h2>Отзывы</h2>
                 <div classdescription = "reviews-container">
-                        
+                        ЗДЕСЬ БУДУТ ОТЗЫВА ПОСЕТИТЕЛЕЙ
                  </div>
             </>
         ) 

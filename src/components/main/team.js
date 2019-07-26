@@ -14,12 +14,15 @@ export default class Team extends React.Component {
                 <div className = "team-container">
                     {doctorsArr.map  ( el => 
                          <div className="item"  key = {el._id} >
-                             <div className="photo"><img src= {el.photo} alt= {el.name}/></div>
-                            <h3>{el.name}</h3>
-                            <div className="desc">
-                                <p className="experience">Опыт работы {new Date().toISOString().split('T')[0].split('-')[0] - el.experience.split('T')[0].split('-')[0]} лет</p>
-                                <p className="rank">{el.profession}</p>
-                            </div>
+                             <div className="photo">
+                                 <img src= {el.photo} alt= {el.name}/>
+                                <div className="desc">
+                                    <h3>{el.name}</h3>
+                                    <p className="experience">Опыт работы {new Date().toISOString().split('T')[0].split('-')[0] - el.experience.split('T')[0].split('-')[0]} лет</p>
+                                    <p className="rank">{el.profession}</p>
+                                </div>
+                             </div>
+                           
                              {/* <div className="link-box">
                                 <Link to = "/doctors" className = "btn link more">Подробнее ...</Link>
                                 <Link to ={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>

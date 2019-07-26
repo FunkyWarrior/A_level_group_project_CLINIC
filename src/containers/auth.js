@@ -23,44 +23,45 @@ class Auth extends Component {
     return (
       <div className="main">
         <div className="auth-wrapper">
+        <Loader flag={this.props.isFetching}>
             <div className="auth">
-          <div className="auth__content">
-            { auth ? (
-                <Loader flag={this.props.isFetching}>
-                  <SignInForm error={this.props.errorFromAuth} submitHandler={this.props.auth} />
-                </Loader>
-            ) : (
-                <Loader flag={this.props.isFetching}>
-                  <SignUpForm 
-                    error={this.props.errorFromAuth}
-                    submitHandler={this.props.register}
-                    successRegister={this.props.successRegister}
-                  />
-                </Loader>
-            )}
+              <div className="auth__content">
+                { auth ? (
+                    // <Loader flag={this.props.isFetching}>
+                      <SignInForm error={this.props.errorFromAuth} submitHandler={this.props.auth} />
+                    // {/* </Loader> */}
+                ) : (
+                    // <Loader flag={this.props.isFetching}>
+                      <SignUpForm 
+                        error={this.props.errorFromAuth}
+                        submitHandler={this.props.register}
+                        successRegister={this.props.successRegister}
+                      />
+                    // {/* </Loader> */}
+                )}
 
-            <div className="auth__additional-content">
-              {auth ? (
-                <p className="auth__text">
-                  Do you have account ? {" "}
-                  <span className="auth__toggle-span" onClick={this.toggleAuth}>
-                    Sing Up
-                  </span>
-                </p>
-              ) : (
-                <p className="auth__text">
-                  I have account{" "}
-                  <span className="auth__toggle-span" onClick={this.toggleAuth}>
-                    Sign In
-                  </span>
-                </p>
-              )}
+                <div className="auth__additional-content">
+                  {auth ? (
+                    <p className="auth__text">
+                      Do you have account ? {" "}
+                      <span className="auth__toggle-span" onClick={this.toggleAuth}>
+                        Sing Up
+                      </span>
+                    </p>
+                  ) : (
+                    <p className="auth__text">
+                      I have account{" "}
+                      <span className="auth__toggle-span" onClick={this.toggleAuth}>
+                        Sign In
+                      </span>
+                    </p>
+                  )}
+                </div>
             </div>
-          </div>
-        </div>        
-      
+          </div>        
+          </Loader>
         </div>
-      </div>
+     </div>
 
     );
   }

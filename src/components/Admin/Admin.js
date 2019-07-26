@@ -51,41 +51,43 @@ export class Admin extends React.Component {
             postServices
         } = this.props;
         return (
-            <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'100px 20px'}}>
-                <div>
-                    <Link to='/admin/change-shedule'>Shedule</Link>
-                    <Link to='/admin/change-doctors'>Doctors</Link>
-                    <Link to='/admin/change-services'>Services</Link>
+            <div className="main">
+                <div className="info-wrap">
+                    <div className = " btn-box">
+                        <Link to='/admin/change-shedule' className = "btn link admin">Shedule</Link>
+                        <Link to='/admin/change-doctors' className = "btn link admin">Doctors</Link>
+                        <Link to='/admin/change-services' className = "btn link admin">Services</Link>
+                    </div>
+                    <Switch>
+                        <Route path='/admin/change-shedule' render={() => <Shedule
+                            doctors={doctors}
+                            postNewShedule={postNewShedule}
+                            sheduleMonthArray={sheduleMonthArray}
+                            setSheduleDoctor={setSheduleDoctor}
+                            postShedule={postShedule}
+                        />} />
+                        <Route path='/admin/change-doctors' render={() => <ChangeServicesDoctors
+                            data={doctors}
+                            itemId={changeDoctorId}
+                            changeId={changeSelectedDoctorId}
+                            form={postNewDoctor}
+                            postItem={postDoctors}
+                            putItem={putDoctors}
+                            deleteItem={deleteDoctors}
+                            changeInputValues={changeInputValueDoctorForm}
+                        />} />
+                        <Route path='/admin/change-services' render={() => <ChangeServicesDoctors
+                            data={services}
+                            itemId={changeServiceId}
+                            changeId={changeSelectedServiceId}
+                            form={postNewService}
+                            postItem={postServices}
+                            putItem={putServices}
+                            deleteItem={deleteServices}
+                            changeInputValues={changeInputValueServiceForm}
+                        />} />
+                    </Switch>
                 </div>
-                <Switch>
-                    <Route path='/admin/change-shedule' render={() => <Shedule
-                        doctors={doctors}
-                        postNewShedule={postNewShedule}
-                        sheduleMonthArray={sheduleMonthArray}
-                        setSheduleDoctor={setSheduleDoctor}
-                        postShedule={postShedule}
-                    />} />
-                    <Route path='/admin/change-doctors' render={() => <ChangeServicesDoctors
-                        data={doctors}
-                        itemId={changeDoctorId}
-                        changeId={changeSelectedDoctorId}
-                        form={postNewDoctor}
-                        postItem={postDoctors}
-                        putItem={putDoctors}
-                        deleteItem={deleteDoctors}
-                        changeInputValues={changeInputValueDoctorForm}
-                    />} />
-                    <Route path='/admin/change-services' render={() => <ChangeServicesDoctors
-                        data={services}
-                        itemId={changeServiceId}
-                        changeId={changeSelectedServiceId}
-                        form={postNewService}
-                        postItem={postServices}
-                        putItem={putServices}
-                        deleteItem={deleteServices}
-                        changeInputValues={changeInputValueServiceForm}
-                    />} />
-                </Switch>
             </div>
         );
     }

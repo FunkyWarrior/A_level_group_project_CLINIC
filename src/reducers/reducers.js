@@ -337,7 +337,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    orthodontist:state.servicesArray.orthodontist.push(el._id)
+                                    orthodontist:state.servicesArray.orthodontist.push(el)
                                 }
                             }
                         }
@@ -346,7 +346,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    kids:state.servicesArray.kids.push(el._id)
+                                    kids:state.servicesArray.kids.push(el)
                                 }
                             }
                         }
@@ -355,7 +355,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantologist:state.servicesArray.implantologist.push(el._id)
+                                    implantologist:state.servicesArray.implantologist.push(el)
                                 }
                             }
                         }
@@ -364,7 +364,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantologist:state.servicesArray.implantologist.push(el._id)
+                                    implantologist:state.servicesArray.implantologist.push(el)
                                 }
                             }
                         }
@@ -373,7 +373,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    surgeon:state.servicesArray.surgeon.push(el._id)
+                                    surgeon:state.servicesArray.surgeon.push(el)
                                 }
                             }
                         }
@@ -382,7 +382,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    endodontics:state.servicesArray.endodontics.push(el._id)
+                                    endodontics:state.servicesArray.endodontics.push(el)
                                 }
                             }
                         }
@@ -391,7 +391,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    therapist:state.servicesArray.therapist.push(el._id)
+                                    therapist:state.servicesArray.therapist.push(el)
                                 }
                             }
                         }

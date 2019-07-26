@@ -4,6 +4,6 @@ export default ({ children, flag }) => (
     flag ?
         <div className = "loader-box">
             <img className = "loader" src="../images/loader.gif" alt="Loading"/>
-            <p>  Loading... </p>
+            {/* <p>  Loading... </p> */}
         </div>
     : children);

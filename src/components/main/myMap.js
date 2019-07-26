@@ -1,6 +1,6 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from "react";
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 // import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
 
 // const { InfoBox } = require("react-google-maps/lib/components/addons/InfoBox");
@@ -17,10 +17,10 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 )((props) =>
   <GoogleMap
     defaultZoom={15}
-    defaultCenter={{ lat: 50.0362516, lng: 36.2210227 }}
+    defaultCenter={{ lat: 49.992438, lng: 36.232169 }}
     defaultType = {"hybrid"}
   >
-    {props.isMarkerShown && <Marker position={{ lat: 50.0362516, lng: 36.2210227 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={{ lat: 49.992438, lng: 36.232169 }} onClick={props.onMarkerClick} />}
     
   </GoogleMap>
 )
