@@ -6,12 +6,15 @@ export default class Calendar extends Component {
         current:moment(),
     };
 
-    render() {
+    componentDidMount() {
         moment.locale('ru', {
             week : {
                 dow:1
             }
         });
+    }
+
+    render() {
         const {doctor,setAppointmentShedule} = this.props
         const {current} = this.state
         const daysArray = []
