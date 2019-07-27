@@ -1,19 +1,10 @@
 import React, {Component} from 'react';
 import moment from "moment";
-import {connect} from 'react-redux'
 
-export class Calendar extends Component {
+export default class Calendar extends Component {
     state={
         current:moment(),
     };
-
-
-    setDate = (e) => {
-        console.log(moment(e.target.id).format('YYYY-MM-DD'))
-        // console.log(this.props.doctors[0].shedule.find(el => el.data === e.target.id) ? this.props.doctors[0].shedule.find(el => el.data === e.target.id)._id : 'No such shedule')
-
-    };
-
 
     render() {
         moment.locale('ru', {
@@ -21,7 +12,7 @@ export class Calendar extends Component {
                 dow:1
             }
         });
-        const {doctors}=this.props
+        const {doctor,setAppointmentShedule} = this.props
         const {current} = this.state
         const daysArray = []
         for (let x=1; x <= current.daysInMonth();x++){
@@ -33,18 +24,18 @@ export class Calendar extends Component {
             daysArray.unshift(prevMonth.endOf('month').subtract(x-1,'days').format('YYYY-MM-DD'))
         }
         return (
-            <div style={{display:'flex',flexDirection:'column',margin:"100px 20px"}}>
+            <div style={{display:'flex',flexDirection:'column',margin:"0px 20px"}}>
                 <div style={{display:'flex',margin:'20px'}}>
                     <button onClick={() => this.setState({current:current.subtract(1,"month")})}>{'<'}</button>
-                    <h3>{current.format('MMMM-YYYY')}</h3>
+                    <h4 style={{margin:'0 20px'}}>{current.format('MMMM-YYYY')}</h4>
                     <button onClick={() => this.setState({current:current.add(1,"month")})}>{'>'}</button>
                 </div>
                 <div style={{display:'flex',}}>
-                    {moment.weekdays(true).map(el => (
-                            <p key={el} style={{margin:'0 20px'}}>{el}</p>
+                    {moment.weekdaysShort(true).map(el => (
+                            <p key={el} style={{margin:'0 6px'}}>{el}</p>
                     ))}
                 </div>
-                <div  style={{display:'flex',flexWrap:'wrap',maxWidth:'700px',margin:'5px'}}>
+                <div  style={{display:'flex',flexWrap:'wrap',maxWidth:'350px',margin:'5px'}}>
 
                     {daysArray.map(el => (
                         <button
@@ -54,14 +45,16 @@ export class Calendar extends Component {
                                 moment(el).format('YYYY-MM-DD') < moment().format('YYYY-MM-DD')
                                 || (moment(el).day()===6)
                                 || (moment(el).day()===0)
+                                || moment(el).month() !== current.month()
+                                || !doctor.shedule.find(item => item.data === el)
                             }
                             style={{
-                                height:'100px',
-                                width:'100px',
-                                backgroundColor:doctors[0] ? doctors[0].shedule.find(item => item.data === el) ? "lightgreen" : "coral" : null,
+                                height:'50px',
+                                width:'50px',
+                                backgroundColor:moment(el).month() === current.month() ? doctor.shedule.find(item => item.data === el) ? "lightgreen" : "coral" : "lightgrey",
                                 border:moment().format('YYYY-MM-DD') ===  moment(el).format('YYYY-MM-DD') ? "3px solid black" : null
                             }}
-                            onClick={this.setDate}
+                            onClick={(e) => setAppointmentShedule(e.target.id)}
                         >
                             {moment(el).format('DD')}
                         </button>
@@ -72,13 +65,3 @@ export class Calendar extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        doctors:state.app.doctors,
-    }
-};
-
-const mapDispatchToProps = {
-};
-
-export default connect (mapStateToProps,mapDispatchToProps)(Calendar)
