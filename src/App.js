@@ -15,7 +15,7 @@ import Doctors from "./components/specialists/Doctors";
 import Services from "./components/Services"
 import MoreInfo from "./components/specialists/MoreInfo"
 import Appointment from "./components/Appointment";
-// import Reviews from "./components/Reviews"
+import Reviews from "./components/Reviews"
 import Admin from './components/Admin/Admin'
 import Auth from './containers/auth'
 import Footer from "./components/Footer";
@@ -54,7 +54,7 @@ export class App extends React.Component {
                         <Route exact path="/services" component={Services} />
                         <Route exact path="/doctors/:doctor" component={MoreInfo} />
                         <Route exact path="/services/:service" component={MoreInfo} />
-                        <Route exact path="/reviews" component={Calendar}/>
+                        <Route exact path="/reviews" component={Reviews}/>
                         <Route path="/admin/" component={Admin} />
                         <Route exact path="/appointment/:doctorId" component={Appointment}/>
                         <Route exact path="/auth" component={Auth} />

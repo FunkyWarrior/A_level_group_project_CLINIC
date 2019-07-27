@@ -11,12 +11,15 @@ export default class Reviews extends React.Component {
         // const {postDoctors } = this.props
         
         return (
-            <>
-                <h2>Отзывы</h2>
+            <div className = "main">
+                <div className="info-wrap">
+                                    <h2>Отзывы</h2>
                 <div classdescription = "reviews-container">
-                        ЗДЕСЬ БУДУТ ОТЗЫВА ПОСЕТИТЕЛЕЙ
+                        ЗДЕСЬ БУДУТ ОТЗЫВЫ ПОСЕТИТЕЛЕЙ
                  </div>
-            </>
+                </div>
+
+            </div>
         ) 
     }
 }        
