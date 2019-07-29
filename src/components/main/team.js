@@ -28,7 +28,7 @@ export default class Team extends React.Component {
                                 <Link to ={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
                             </div> */}
                         </div>
-                    )}
+                    ) }
                  </div>
             </>
         ) 

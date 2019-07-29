@@ -2,7 +2,7 @@
 {
     "doctors": [
             {
-                "name": "Грегори Хаус",
+                "name": "Григорий Андреевич Катамаранов",
                 "photo": "./images/doctors/gregoryhaus.jpg",
                 "experience": "1991-03-22",
                 "rank": "Стоматолог-хирург",
@@ -65,7 +65,7 @@
                 "id": 1
             },
             {
-                "description": "Лиза Кадди",
+                "description": "Елизавета Борисовна Толдонова",
                 "photo": "./images/doctors/lisa.jpg",
                 "experience": "2004-05-13",
                 "rank": "Стоматолог-ортодонт",
@@ -128,7 +128,7 @@
                 "id": 2
             },
             {
-                "description": "Эллисон Кэмерон",
+                "description": "Анастасия Петровна Захарова",
                 "photo": "./images/doctors/alison.jpg",
                 "experience": "2011-08-02",
                 "rank": "Стоматолог-эндодонтист ",
@@ -191,7 +191,7 @@
                 "id": 3
             },
             {
-                "description": "Лоренс Катнер",
+                "description": "Виктор Николаевич Белый",
                 "photo": "./images/doctors/lorenskatner.jpg",
                 "experience": "2015-10-01",
                 "rank": "Стоматолог-терапевт",
@@ -254,7 +254,7 @@
                 "id": 4
             },
             {
-                "description": "Эрик Форман",
+                "description": "Иван Петрович Ефимов",
                 "photo": "./images/doctors/ericforman.jpg",
                 "experience": "2009-02-10",
                 "rank": "Стоматолог-протезист",
@@ -317,7 +317,7 @@
                 "id": 5
             },
             {
-                "description": "Крис Тауб",
+                "description": "Мирослав Артурович  Левандовский",
                 "photo":  "./images/doctors/kris_taub.jpg",
                 "experience": "1999-03-29",
                 "rank": "Детский стоматолог",

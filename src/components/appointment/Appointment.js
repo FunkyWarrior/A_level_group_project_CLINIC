@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import { CustomSelect } from "./select";
 
 import {
     setAppointmentSpec,
@@ -10,9 +11,9 @@ import {
     setAppointmentComment,
     postOrders
 
-} from "../actions/actions";
+} from "../../actions/actions";
 
-import Calendar from "../components/Calendar"
+import Calendar from "../../components/Calendar";
 
 export class Appoint extends React.Component {
 
@@ -44,6 +45,8 @@ export class Appoint extends React.Component {
                             <div className="card-item desc">
                                 <h3>{doctor.name}</h3>
                                 <p className = "highlights">{doctor.profession}</p>
+
+                                <CustomSelect label="Выбор услуги" />
 
                                 {appointment.spec &&
                                 <div>

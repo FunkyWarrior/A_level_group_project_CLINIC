@@ -14,12 +14,12 @@ import Main from "./components/main/Main";
 import Doctors from "./components/specialists/Doctors";
 import Services from "./components/Services"
 import MoreInfo from "./components/specialists/MoreInfo"
-import Appointment from "./components/Appointment";
+import Appointment from "./components/appointment/Appointment";
 import Reviews from "./components/Reviews"
 import Admin from './components/Admin/Admin'
 import Auth from './containers/auth'
 import Footer from "./components/Footer";
-import Calendar from "./components/Calendar"
+// import Calendar from "./components/Calendar"
 
 export class App extends React.Component {
 
@@ -27,7 +27,7 @@ export class App extends React.Component {
         this.props.getDoctors();
         this.props.getServices();
         
-        // console.log (this.props.app)
+        console.log (this.props.app)
         
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",

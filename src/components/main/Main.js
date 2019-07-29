@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-import Button from "../buttons/button";
+// import Button from "../buttons/button";
 import About from "./aboutUs";
 import Team from "./team";
 // import MyMap from "./myMap";
@@ -12,16 +13,14 @@ import {connect} from 'react-redux'
 export class Main extends React.Component {
  render() {
 
-        return (
+    return (
             <main className = "main">
                <div className="container">
                     <div className="wrapper">
                                 <div className="title-box">
                                     <img className = "logotype" src="./images/logo.png" alt=""/>
                                     <h1>Стоматология для всей семьи</h1>
-                                    <Button className = "btn" text = "Записаться на приём" 
-                                        onClick = { ( ) => {  } } 
-                                    />
+                                    <Link to={ `/appointment` } className = "btn ">Записаться на приём</Link>
                                 </div>
                     </div>
                 </div>
@@ -33,7 +32,7 @@ export class Main extends React.Component {
                 <div className=" case">
                         <img className = "banner" src="./images/medical.jpeg" alt="medical"/>
                         <div className="button-box">
-                            <Button className = "btn" text = "Записаться на приём" onClick = { ( ) => { } }/>
+                        <Link to={`/appointment`} className = "btn">Записаться на приём</Link>
                         </div>     
                  </div>
 
