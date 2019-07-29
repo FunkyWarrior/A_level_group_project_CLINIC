@@ -193,6 +193,7 @@ body {
 
 .admin {
 	width: 30%;	
+	margin: 0;
 }
 
 
@@ -495,4 +496,51 @@ aside {
 // _______ADMIN PANEL __________
 .btn-box {
 	display: flex;
+	justify-content: space-between;
 }
+.option {
+	width: 40%;
+	margin: 0 auto;
+}
+.admin-appointment {
+	width: 100%;
+}
+.shedule-container {
+	margin-top: 50px;
+	.input-box {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+	}
+	
+	.shedule-input {
+		// width: calc(20% - 20px);
+		margin: 20px 10px 0 0;
+		border: 1px solid $hover-color;
+		border-radius: 3px;
+		padding: 0.5rem;
+	}
+	.right {
+		margin-right: 0;
+	}
+
+	.shedule {
+		display: flex; 
+		margin: 10px 20px;
+		width: 100%;
+		flex-wrap: wrap;
+	}
+	.month {
+		color: $hover-color;
+		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+	}
+	.admin {
+		margin-top: 30px;
+		width: 100%;
+	}
+}
+

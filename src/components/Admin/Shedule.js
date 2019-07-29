@@ -21,33 +21,34 @@ export default class Shedule extends React.Component {
     render() {
         const {doctors,postNewShedule,sheduleMonthArray,setSheduleDoctor} = this.props;
         return (
-            <div style={{display:'flex',flexDirection:'column', width:'200px', margin:'10px 20px'}}>
+            <div  className = "shedule-container" >
+                <div className="option">
+                    <select className = "appointment admin-appointment"  onChange={(e) => setSheduleDoctor(e.target.value)} defaultValue='Выберите доктора'>
+                    <option disabled >Выберите доктора</option>
+                        {
+                            doctors.map(el=> (
+                                <option key={el._id} id={el._id}>{el.name}</option>
+                            ))
+                        }
+                    </select>
 
-
-                <select  onChange={(e) => setSheduleDoctor(e.target.value)} defaultValue='choose doctor'>
-                    <option disabled >choose doctor</option>
-                    {
-                        doctors.map(el=> (
-                            <option key={el._id} id={el._id}>{el.name}</option>
-                        ))
+                    {postNewShedule.doctor &&
+                        <div className = "input-box">
+                            <input className = "shedule-input " type="date" onChange={(e) => this.setState({startDate:e.target.value})}/>
+                            <input className = "shedule-input right" type="date" onChange={(e) => this.setState({endDate:e.target.value})}/>
+                        </div>
                     }
-                </select>
 
 
-                {postNewShedule.doctor &&
-                    <>
-                        <input type="date" onChange={(e) => this.setState({startDate:e.target.value})}/>
-                        <input type="date" onChange={(e) => this.setState({endDate:e.target.value})}/>
-                    </>
-                }
+                {(this.state.startDate && this.state.endDate) && <button className = "btn admin" onClick={this.post}>Post</button>}
 
-
-                {(this.state.startDate && this.state.endDate) && <button onClick={this.post}>Post</button>}
-
+                </div>
+                
 
                 {postNewShedule.doctor &&
-                    <div style={{display:'flex', margin:'10px 20px'}}>
-                        <p>{new Date().toLocaleString('ru',{month:'long'})}</p>
+                <>
+                    <p className = "month">{new Date().toLocaleString('ru',{month:'long'})}</p>
+                    <div className = "shedule">
                         {
                             sheduleMonthArray[new Date().getMonth()].map(el => (
                                 <div key={el._id} style={{margin:'10px 20px'}}>
@@ -61,9 +62,8 @@ export default class Shedule extends React.Component {
                             ))
                         }
                     </div>
+                </>
                 }
-
-
             </div>
         );
     }
