@@ -59,7 +59,7 @@ export class App extends React.Component {
                         <Route exact path="/appointment/:doctorId" component={Appointment}/>
                         <Route exact path="/auth" component={Auth} />
                     </Switch>
-                <Footer/>
+                <Footer />
              </Loader>
         );
     }

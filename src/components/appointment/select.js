@@ -1,12 +1,14 @@
 import React from "react";
 
+
+
 // _____
 // const {doctors, appointment, timeArray,services} = this.props.app;
 
 // ________
 const mock = [
-    { id: 1, text: "ONE" }, 
-    { id: 2, text: "TWO" }, 
+    { id: 1, text: "Закрытие рецессии десны" }, 
+    { id: 2, text: "Удаление кисты" }, 
     { id: 3, text: "THREE" }
 ];
 
@@ -19,6 +21,8 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 	const [value, toggleValue] = React.useState("");
 	const [inputValue, toggleInputValue] = React.useState("");
 	const list = React.createRef();
+
+
 
 	React.useEffect(() => {
 		document.addEventListener("mousedown", handleClickOutSide);
@@ -82,7 +86,7 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 					{label}
 				</label>
 			)}
-			<div className="select__value-box" onClick={() => toggleShow(true)}>
+			<div className="select__value-box " onClick={() => toggleShow(true)}>
 				{searchInput ? null : <span>{value} &nbsp;</span>}
 				<input
 					value={inputValue}
@@ -90,11 +94,12 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 					type={searchInput ? "text" : "hidden"}
 					onChange={chahgeValueEvent}
 					id="select"
-					className="select__input"
+					className="select__input icon-angle-down"
 				/>
+				<span class="icon-angle-down"></span>
 			</div>
 			{show && (
-				<ul className="select__list" ref={list}>
+				<ul className="select__list " ref={list}>
 					{emptyLine && (
 						<li className="select__item" onClick={clickOnEptyLine}>
 							&nbsp;

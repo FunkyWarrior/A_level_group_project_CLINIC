@@ -27,18 +27,18 @@ export default class Calendar extends Component {
             daysArray.unshift(prevMonth.endOf('month').subtract(x-1,'days').format('YYYY-MM-DD'))
         }
         return (
-            <div style={{display:'flex',flexDirection:'column',margin:"0px 20px"}}>
-                <div style={{display:'flex',margin:'20px'}}>
-                    <button onClick={() => this.setState({current:current.subtract(1,"month")})}>{'<'}</button>
-                    <h4 style={{margin:'0 20px'}}>{current.format('MMMM-YYYY')}</h4>
-                    <button onClick={() => this.setState({current:current.add(1,"month")})}>{'>'}</button>
+            <div className = "calendar-container">
+                <div className = "calendar-title-box" >
+                    <button className= "btn angle" onClick={() => this.setState({current:current.subtract(1,"month")})}><span class="icon-angle-left"></span></button>
+                    <h4>{current.format('MMMM-YYYY')}</h4>
+                    <button  className= "btn angle"  onClick={() => this.setState({current:current.add(1,"month")})}><span class="icon-angle-right"></span></button>
                 </div>
-                <div style={{display:'flex',}}>
+                <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (
-                            <p key={el} style={{margin:'0 6px'}}>{el}</p>
+                            <p key={el} >{el}</p>
                     ))}
                 </div>
-                <div  style={{display:'flex',flexWrap:'wrap',maxWidth:'350px',margin:'5px'}}>
+                <div  className = "days">
 
                     {daysArray.map(el => (
                         <button
@@ -54,8 +54,8 @@ export default class Calendar extends Component {
                             style={{
                                 height:'50px',
                                 width:'50px',
-                                backgroundColor:moment(el).month() === current.month() ? doctor.shedule.find(item => item.data === el) ? "lightgreen" : "coral" : "lightgrey",
-                                border:moment().format('YYYY-MM-DD') ===  moment(el).format('YYYY-MM-DD') ? "3px solid black" : null
+                                backgroundColor:moment(el).month() === current.month() ? doctor.shedule.find(item => item.data === el) ? "#b1e8ca" : "#ff9774" : "lightgrey",
+                                border:moment().format('YYYY-MM-DD') ===  moment(el).format('YYYY-MM-DD') ? "2px solid rgba(17,17,17,0.8)" : null
                             }}
                             onClick={(e) => setAppointmentShedule(e.target.id)}
                         >

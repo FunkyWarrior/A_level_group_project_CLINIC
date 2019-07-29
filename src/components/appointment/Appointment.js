@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import { CustomSelect } from "./select";
+// import { CustomSelect } from "./select";
 
 import {
     setAppointmentSpec,
@@ -13,7 +13,7 @@ import {
 
 } from "../../actions/actions";
 
-import Calendar from "../../components/Calendar";
+import Calendar from "./Calendar";
 
 export class Appoint extends React.Component {
 
@@ -46,18 +46,17 @@ export class Appoint extends React.Component {
                                 <h3>{doctor.name}</h3>
                                 <p className = "highlights">{doctor.profession}</p>
 
-                                <CustomSelect label="Выбор услуги" />
+                                {/* <CustomSelect label="Выбор услуги" /> */}
 
                                 {appointment.spec &&
                                 <div>
                                     <p>{spec.name}</p>
                                     <p>Длительность: {spec.duration} ч.</p>
-                                    {/* <p>{spec.description}</p> */}
                                     <p>Цена от {spec.price} грн.</p>
                                 </div>
                                 }
 
-                                <select  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
+                                <select className = "appointment"  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
                                     <option disabled >Выбор услуги</option>
                                     {
                                         doctor.speciality.map(el=> (
@@ -73,7 +72,7 @@ export class Appoint extends React.Component {
                                 {appointment.shedule &&
                                 <div>
                                     <div>
-                                        <select onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='choose time'>
+                                        <select className = "appointment" onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='choose time'>
                                             <option disabled >Выбор даты</option>
                                             {
                                                 timeArray.map(el=> (
@@ -87,8 +86,8 @@ export class Appoint extends React.Component {
 
                                 {appointment.time &&
                                 <div style={{display:"flex",flexDirection:"column"}}>
-                                    <input type='text' placeholder='Добавить комментарий' onChange={(e)=>setAppointmentComment(e.target.value)}/>
-                                    <button onClick={() => postOrders(appointment)}>Подтвердите запись</button>
+                                    <input className = "appointment comment" type='text' placeholder='Добавить комментарий' onChange={(e)=>setAppointmentComment(e.target.value)}/>
+                                    <button className = "btn link" onClick={() => postOrders(appointment)}>Подтвердите запись</button>
                                 </div>
                                 }
 

@@ -1,0 +1,42 @@
+$header-color: #d4d5d7;
+$main-title-color: #3b3b3b;
+$main-color:   #789084;
+$hover-color: #b1e8ca;
+$opacity-color: rgba(17,17,17,0.8);
+
+.calendar-container {
+    display: flex;
+    flex-direction: column ;
+    margin: 0px 20px;
+    .calendar-title-box {
+        display: flex;
+        align-self: flex-start;
+        margin: 20px 0;
+        flex-direction: row;
+        align-items: center;
+        h4 {
+            margin: 0 20px;
+        }
+    }
+    .weekdays {
+        display: flex;
+        p {
+            margin: 0 6px;
+        }
+    }
+    .days {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 350px;
+        margin: 5px 0;
+    }
+    .angle {
+        width: 30px;
+    }
+    button {
+        // color: $main-title-color;
+        &:focus {
+            outline: none;
+        }
+    }
+}

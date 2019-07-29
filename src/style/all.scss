@@ -450,6 +450,45 @@ h2 {
 }
 
 
+// _____t APPOINTMENT _________
+
+.appointment {
+	width: 100%;
+	display: flex;
+	border: 1px solid $hover-color;
+	border-radius: 3px;
+	padding: 0.5rem;
+	margin: 15px 0;
+	&:focus {
+		outline: none;
+	}
+}
+// .comment {
+// 	margin: 15px 0;
+// }
+
+
+
+
+// __________SIDEBAR __________
+aside {
+	position: fixed;
+	top: 50%;
+	right: 3%;
+	z-index: 999999;
+	.sidebar-ul {
+		list-style: none;
+		.sidebar-item {
+			margin-top: 15px;
+		}
+		
+	}
+	.nav-link {
+		text-decoration: none;
+		margin-top: 15px;
+		padding: 15px 0;
+	}
+}
 
 
 

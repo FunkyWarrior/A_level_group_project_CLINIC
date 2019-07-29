@@ -47,17 +47,29 @@
   }
 }
 
-.icon-chevron-right:before {
-  content: "\e900";
-}
-.icon-chevron-left:before {
-  content: "\e901";
-}
 .icon-angle-left:before {
   content: "\f104";
+  color:  var(--opacity-color);
+  font-size: 1.7em;
+  font-weight: 700;
 }
 .icon-angle-right:before {
   content: "\f105";
+  color:  var(--opacity-color);
+  font-size: 1.7em;
+  font-weight: 700;
+}
+.icon-angle-down:before {
+  content: "\f107";
+  color:  var(--hover-color);
+  position: absolute;
+  right: 15px;
+  top: 22%;
+}
+.icon-lens:before {
+  content: "\e901";
+  color:  var(--opacity-color);
+  margin: 15px 0;
 }
 .icon-calendar:before {
   content: "\f073";

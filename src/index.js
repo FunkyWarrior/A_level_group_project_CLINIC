@@ -12,6 +12,7 @@ import "./style/normalize.css"
 import './style/all.scss'
 import "./style/style.css"
 import "./style/select.scss"
+import "./style/calendar.scss"
 import "./style/auth.scss"
 
 ReactDOM.render(
