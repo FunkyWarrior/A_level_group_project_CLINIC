@@ -1,4 +1,7 @@
 import React from 'react';
+import moment from "moment";
+
+import Calendar from "../appointment/Calendar";
 
 export default class Shedule extends React.Component {
     state ={
@@ -10,16 +13,24 @@ export default class Shedule extends React.Component {
         let current = new Date(this.state.startDate);
         let end = new Date (this.state.endDate);
         while (current.toISOString().split('T')[0] <= end.toISOString().split('T')[0]){
-            this.props.postShedule({
-                ...this.props.postNewShedule,
-                data:current.toISOString().split('T')[0],
-            });
-            current =new Date(+current + 86400000)
+            if (moment(current).day()!==6 && moment(current).day()!==0){
+                this.props.postShedule({
+                    ...this.props.postNewShedule,
+                    data:current.toISOString().split('T')[0],
+                });
+            }
+
+            current = new Date(+current + 86400000)
         }
     };
 
     render() {
+<<<<<<< HEAD
         const { doctors, postNewShedule, sheduleMonthArray, setSheduleDoctor } = this.props;
+=======
+        console.log(this.props)
+        const {doctors,postNewShedule,sheduleMonthArray,setSheduleDoctor} = this.props;
+>>>>>>> 904bc8a7a3d95efb0629ac4c7827faaae6a2ebf4
         return (
             <div  className = "shedule-container" >
               
@@ -47,23 +58,7 @@ export default class Shedule extends React.Component {
                 
 
                 {postNewShedule.doctor &&
-                <>
-                    <p className = "month">{new Date().toLocaleString('ru',{month:'long'})}</p>
-                    <div className = "shedule">
-                        {
-                            sheduleMonthArray[new Date().getMonth()].map(el => (
-                                <div className = "days-of-month"  key={el._id}>
-                                    <p className = "title-day">{new Date(el.data).toISOString().split('T')[0].split('-')[2]}</p>
-                                    {
-                                        Object.keys(el).map(key=> {
-                                            return [key,el[key]]
-                                        }).map(el => ((typeof el[1]=== 'boolean') ? <p key={el[0]}>{el[0]}-{`${el[1]}`}</p> : null))
-                                    }
-                                </div>
-                            ))
-                        }
-                    </div>
-                </>
+                <Calendar doctor={doctors.find(el=> el._id === postNewShedule.doctor)} setAppointmentShedule={console.log}/>
                 }
             </div>
         );
