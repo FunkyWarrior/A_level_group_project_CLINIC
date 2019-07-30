@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from "moment";
 
 export default class Shedule extends React.Component {
     state ={
@@ -10,11 +11,14 @@ export default class Shedule extends React.Component {
         let current = new Date(this.state.startDate);
         let end = new Date (this.state.endDate);
         while (current.toISOString().split('T')[0] <= end.toISOString().split('T')[0]){
-            this.props.postShedule({
-                ...this.props.postNewShedule,
-                data:current.toISOString().split('T')[0],
-            });
-            current =new Date(+current + 86400000)
+            if (moment(current).day()!==6 && moment(current).day()!==0){
+                this.props.postShedule({
+                    ...this.props.postNewShedule,
+                    data:current.toISOString().split('T')[0],
+                });
+            }
+
+            current = new Date(+current + 86400000)
         }
     };
 
