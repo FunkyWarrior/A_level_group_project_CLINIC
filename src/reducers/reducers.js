@@ -6,7 +6,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'name',
-        placeholder:'Enter doctor Name and Last Name',
+        placeholder:'Введите ФИО сотрудника',
         required:true
     },
     {
@@ -14,7 +14,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'experience',
-        placeholder:'Enter practice start date',
+        placeholder:'Введите дату начала практики',
         required:true
     },
     {
@@ -22,7 +22,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'photo',
-        placeholder:'Enter path to photo here',
+        placeholder:'Добавьте фотографию',
         required:true
     },
     {
@@ -30,7 +30,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'profession',
-        placeholder:'Enter profession here',
+        placeholder:'Добавьте специализацию',
         required:true
     },
     {
@@ -38,7 +38,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'skillsDescription',
-        placeholder:'Enter skills description here',
+        placeholder:'Введите описание навыков здесь',
         required:true
     },
     {
@@ -46,7 +46,7 @@ const postNewDoctorForm =[
         type:'text',
         value:"",
         name:'speciality',
-        placeholder:'Enter array of service speciality description here',
+        placeholder:'Введите массив представляемых услуг',
         required:true
     }
 ];
@@ -57,7 +57,7 @@ const postNewServiceForm =[
         type:'text',
         value:"",
         name:'name',
-        placeholder:'Enter service Name',
+        placeholder:'Введите название сервиса',
         required:true
     },
     {
@@ -65,7 +65,7 @@ const postNewServiceForm =[
         type:'text',
         value:"",
         name:'description',
-        placeholder:'Enter service description',
+        placeholder:'Введите описание сервиса',
         required:true
     },
     {
@@ -73,7 +73,7 @@ const postNewServiceForm =[
         type:'number',
         value:"",
         name:'duration',
-        placeholder:'Enter duration',
+        placeholder:'Введите длительность (часы)',
         required:true
     },
     {
@@ -81,7 +81,7 @@ const postNewServiceForm =[
         type:'number',
         value:"",
         name:'price',
-        placeholder:'Enter price',
+        placeholder:'Введите стоимость сервиса',
         required:true
     }
 ];
@@ -98,7 +98,18 @@ const defaultState = {
         therapist:[],
         implantologist: [],
         endodontics:[],
+    //     [
+    //         [
+    //             "surg",
+    //             [{},{}]
+    //         ],
+    //         [
+    //             "kids",
+    //             [{},{}]
+    //         ]
+    //     ]
     },
+
     orders:[],
     users:[],
     reviews: [],

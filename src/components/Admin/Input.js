@@ -4,6 +4,7 @@ export default class Input extends React.Component {
     render(){
         return (
             <input
+                className = "appointment admin-form"
                 id={this.props.el.id}
                 type={this.props.el.type}
                 name={this.props.el.name}

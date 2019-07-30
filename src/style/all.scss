@@ -498,7 +498,8 @@ aside {
 	display: flex;
 	justify-content: space-between;
 }
-.option {
+.option,
+.change-services-doctors {
 	width: 40%;
 	margin: 0 auto;
 }
@@ -512,11 +513,8 @@ aside {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-
 	}
-	
 	.shedule-input {
-		// width: calc(20% - 20px);
 		margin: 20px 10px 0 0;
 		border: 1px solid $hover-color;
 		border-radius: 3px;
@@ -556,3 +554,23 @@ aside {
 
 }
 
+// ___ change-services-doctors____
+.change-services-doctors {
+	display: flex;
+	// flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	margin-top: 50px;
+	.form-doctors {
+		display: flex;
+		flex-direction: column;
+	}
+	.admin-form {
+		margin: 2px 0;
+
+	}
+	.admin-item {
+		width: 35%;
+		margin: 0 50px;
+	}
+}

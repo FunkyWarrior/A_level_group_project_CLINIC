@@ -29,9 +29,9 @@ export default class Calendar extends Component {
         return (
             <div className = "calendar-container">
                 <div className = "calendar-title-box" >
-                    <button className= "btn angle" onClick={() => this.setState({current:current.subtract(1,"month")})}><span class="icon-angle-left"></span></button>
+                    <button className= "btn angle" onClick={() => this.setState({current:current.subtract(1,"month")})}><span className="icon-angle-left"></span></button>
                     <h4>{current.format('MMMM-YYYY')}</h4>
-                    <button  className= "btn angle"  onClick={() => this.setState({current:current.add(1,"month")})}><span class="icon-angle-right"></span></button>
+                    <button  className= "btn angle"  onClick={() => this.setState({current:current.add(1,"month")})}><span className="icon-angle-right"></span></button>
                 </div>
                 <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (

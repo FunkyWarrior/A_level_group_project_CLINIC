@@ -25,12 +25,8 @@ export default class Shedule extends React.Component {
     };
 
     render() {
-<<<<<<< HEAD
+        console.log ( this.props )
         const { doctors, postNewShedule, sheduleMonthArray, setSheduleDoctor } = this.props;
-=======
-        console.log(this.props)
-        const {doctors,postNewShedule,sheduleMonthArray,setSheduleDoctor} = this.props;
->>>>>>> 904bc8a7a3d95efb0629ac4c7827faaae6a2ebf4
         return (
             <div  className = "shedule-container" >
               
@@ -38,9 +34,9 @@ export default class Shedule extends React.Component {
                     <select className = "appointment admin-appointment"  onChange={(e) => setSheduleDoctor(e.target.value)} defaultValue='Выберите доктора'>
                     <option disabled >Выберите доктора</option>
                         {
-                            doctors.map(el=> (
-                                <option key={el._id} id={el._id}>{el.name}</option>
-                            ))
+                            doctors.map ( el=> (
+                                <option key={el._id} id={el._id}> {el.name} </option>
+                            ) )
                         }
                     </select>
 
@@ -52,13 +48,13 @@ export default class Shedule extends React.Component {
                     }
 
 
-                { ( this.state.startDate && this.state.endDate ) && <button className = "btn admin" onClick = { this.post }>Отправить </button>}
+                { ( this.state.startDate && this.state.endDate ) && <button className = "btn admin" onClick = { this.post }> Отправить </button>}
 
                 </div>
                 
 
                 {postNewShedule.doctor &&
-                <Calendar doctor={doctors.find(el=> el._id === postNewShedule.doctor)} setAppointmentShedule={console.log}/>
+                <Calendar doctor={doctors.find (el => el._id === postNewShedule.doctor)} setAppointmentShedule = {console.log}/>
                 }
             </div>
         );

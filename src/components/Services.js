@@ -4,26 +4,32 @@ import {connect} from 'react-redux'
 
 export class Services extends React.Component {
     render() {
-        const {data} = this.props;
-        // console.log ("data:", {data})
+        const {data, categories} = this.props;
+
+        console.log ("data:", data);
+        console.log ("categories:", Object.values (categories))
+        // console.log ("this.props:", this.props.app)
 
         return (
             <div className="main">
                 <div className="wrapper">
                     <div className = "doctors-wrap">
-                        {
-                            data.map ( el => (
-                                <div key={el._id} className = "item">
-                                    <p>{el.name}</p>
-                                    <p>Длительность: {el.duration} ч.</p> 
-                                    <p>{el.description}</p>
-                                    <p>Цена: {el.price} грн.</p>
-                                    <div>
-                                        <Link to= {`/services/${el._id}`} className = "btn more "> Подробнее ... </Link>
-                                        <button className = "btn link"> Записаться на приём </button>
-                                    </div>
-                             </div>
-                            ) )
+                        { categories[0] &&
+                           categories.map ( el => 
+                                // el.map ( item => (
+                                //     <div key={item._id} className = "item">
+                                //         <p>{item.name}</p>
+                                //         <p>Длительность: {item.duration} ч.</p> 
+                                //         <p>{item.description}</p>
+                                //         <p>Цена: {item.price} грн.</p>
+                                //         <div>
+                                //         <Link to= {`/services/${item._id}`} className = "btn more "> Подробнее ... </Link>
+                                //         <button className = "btn link"> Записаться на приём </button>
+                                //     </div>
+                                // </div>
+                                // ))
+                                <p>{el}</p>
+                            )  
                         }
                     </div>
                 </div>
@@ -34,7 +40,9 @@ export class Services extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        data:state.app.services
+        app:state.app,
+        data:state.app.services,
+        categories:Object.keys (state.app.servicesArray)
     }
 };
 
