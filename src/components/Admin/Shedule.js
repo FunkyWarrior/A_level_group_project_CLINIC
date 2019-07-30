@@ -19,10 +19,11 @@ export default class Shedule extends React.Component {
     };
 
     render() {
-        const {doctors,postNewShedule,sheduleMonthArray,setSheduleDoctor} = this.props;
+        const { doctors, postNewShedule, sheduleMonthArray, setSheduleDoctor } = this.props;
         return (
             <div  className = "shedule-container" >
-                <div className="option">
+              
+                <div className = "option" >
                     <select className = "appointment admin-appointment"  onChange={(e) => setSheduleDoctor(e.target.value)} defaultValue='Выберите доктора'>
                     <option disabled >Выберите доктора</option>
                         {
@@ -34,13 +35,13 @@ export default class Shedule extends React.Component {
 
                     {postNewShedule.doctor &&
                         <div className = "input-box">
-                            <input className = "shedule-input " type="date" onChange={(e) => this.setState({startDate:e.target.value})}/>
-                            <input className = "shedule-input right" type="date" onChange={(e) => this.setState({endDate:e.target.value})}/>
+                            <input className = "shedule-input " type="date" onChange = { ( e ) => this.setState({startDate:e.target.value } ) }/>
+                            <input className = "shedule-input right" type="date" onChange = { ( e ) => this.setState ( { endDate:e.target.value } ) } />
                         </div>
                     }
 
 
-                {(this.state.startDate && this.state.endDate) && <button className = "btn admin" onClick={this.post}>Post</button>}
+                { ( this.state.startDate && this.state.endDate ) && <button className = "btn admin" onClick = { this.post }>Отправить </button>}
 
                 </div>
                 
@@ -51,8 +52,8 @@ export default class Shedule extends React.Component {
                     <div className = "shedule">
                         {
                             sheduleMonthArray[new Date().getMonth()].map(el => (
-                                <div key={el._id} style={{margin:'10px 20px'}}>
-                                    <p>{new Date(el.data).toISOString().split('T')[0].split('-')[2]}</p>
+                                <div className = "days-of-month"  key={el._id}>
+                                    <p className = "title-day">{new Date(el.data).toISOString().split('T')[0].split('-')[2]}</p>
                                     {
                                         Object.keys(el).map(key=> {
                                             return [key,el[key]]

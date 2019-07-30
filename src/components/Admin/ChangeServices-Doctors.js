@@ -17,6 +17,7 @@ export default class ChangeServicesDoctors extends React.Component {
             changeInputValues,
         } = this.props;
         return (
+            
             <div style={{display:'flex',flexDirection:'column', width:'400px', margin:'10px 20px'}}>
                 <form style={{display:"flex",flexDirection:"column"}} onSubmit={(e)=>{
                     e.preventDefault();

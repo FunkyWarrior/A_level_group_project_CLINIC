@@ -525,22 +525,34 @@ aside {
 	.right {
 		margin-right: 0;
 	}
-
-	.shedule {
-		display: flex; 
-		margin: 10px 20px;
-		width: 100%;
-		flex-wrap: wrap;
-	}
 	.month {
 		color: $hover-color;
 		text-transform: uppercase;
 		font-weight: 700;
 		letter-spacing: 0.2em;
-	}
+		}
 	.admin {
 		margin-top: 30px;
 		width: 100%;
 	}
+	.shedule {
+		display: flex; 
+		margin: 10px 0px;
+		width: 100%;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.days-of-month {
+			width: 15%;
+			border: 1px solid $hover-color;
+			border-radius: 3px;
+			margin: 10px 20px;
+			text-align: center;
+			.title-day {
+				border-bottom: 1px solid $hover-color;
+				margin: 5px 0;
+			}
+		}
+	}
+
 }
 

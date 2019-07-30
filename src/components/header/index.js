@@ -13,7 +13,7 @@ export default () => (
 					<img src= {logo} className = "logo" alt="logo"/>
 				</Link>
 			</div>
-			<Navigation></Navigation>
+			<Navigation/>
 	</header>
 );
 
