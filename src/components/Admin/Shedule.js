@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from "moment";
 
+import Calendar from "../appointment/Calendar";
+
 export default class Shedule extends React.Component {
     state ={
         startDate:null,
@@ -23,6 +25,7 @@ export default class Shedule extends React.Component {
     };
 
     render() {
+        console.log(this.props)
         const {doctors,postNewShedule,sheduleMonthArray,setSheduleDoctor} = this.props;
         return (
             <div  className = "shedule-container" >
@@ -50,23 +53,7 @@ export default class Shedule extends React.Component {
                 
 
                 {postNewShedule.doctor &&
-                <>
-                    <p className = "month">{new Date().toLocaleString('ru',{month:'long'})}</p>
-                    <div className = "shedule">
-                        {
-                            sheduleMonthArray[new Date().getMonth()].map(el => (
-                                <div key={el._id} style={{margin:'10px 20px'}}>
-                                    <p>{new Date(el.data).toISOString().split('T')[0].split('-')[2]}</p>
-                                    {
-                                        Object.keys(el).map(key=> {
-                                            return [key,el[key]]
-                                        }).map(el => ((typeof el[1]=== 'boolean') ? <p key={el[0]}>{el[0]}-{`${el[1]}`}</p> : null))
-                                    }
-                                </div>
-                            ))
-                        }
-                    </div>
-                </>
+                <Calendar doctor={doctors.find(el=> el._id === postNewShedule.doctor)} setAppointmentShedule={console.log}/>
                 }
             </div>
         );
