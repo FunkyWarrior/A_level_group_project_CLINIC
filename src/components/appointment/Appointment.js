@@ -13,6 +13,7 @@ import {
 
 } from "../../actions/actions";
 
+
 import Calendar from "./Calendar";
 
 export class Appoint extends React.Component {
@@ -66,7 +67,10 @@ export class Appoint extends React.Component {
                                 </select>
 
                                 {appointment.spec &&
-                                <Calendar doctor={doctor} setAppointmentShedule={setAppointmentShedule} />
+                                <Calendar
+                                    doctor={doctor}
+                                    action={setAppointmentShedule}
+                                />
                                 }
 
                                 {appointment.shedule &&
@@ -104,7 +108,7 @@ export class Appoint extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        app:state.app,
+        app:state.app
     }
 };
 
@@ -115,7 +119,7 @@ const mapDispatchToProps = {
     clearAppointment,
     setAppointmentTime,
     setAppointmentComment,
-    postOrders
+    postOrders,
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Appoint)

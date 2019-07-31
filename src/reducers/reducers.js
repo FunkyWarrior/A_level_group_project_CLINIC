@@ -1,91 +1,6 @@
 import * as types from '../actionsTypes/actionsTypes'
 
-const postNewDoctorForm =[
-    {
-        id:1,
-        type:'text',
-        value:"",
-        name:'name',
-        placeholder:'Введите ФИО сотрудника',
-        required:true
-    },
-    {
-        id:2,
-        type:'text',
-        value:"",
-        name:'experience',
-        placeholder:'Введите дату начала практики',
-        required:true
-    },
-    {
-        id:3,
-        type:'text',
-        value:"",
-        name:'photo',
-        placeholder:'Добавьте фотографию',
-        required:true
-    },
-    {
-        id:4,
-        type:'text',
-        value:"",
-        name:'profession',
-        placeholder:'Добавьте специализацию',
-        required:true
-    },
-    {
-        id:5,
-        type:'text',
-        value:"",
-        name:'skillsDescription',
-        placeholder:'Введите описание навыков здесь',
-        required:true
-    },
-    {
-        id:6,
-        type:'text',
-        value:"",
-        name:'speciality',
-        placeholder:'Введите массив представляемых услуг',
-        required:true
-    }
-];
-
-const postNewServiceForm =[
-    {
-        id:1,
-        type:'text',
-        value:"",
-        name:'name',
-        placeholder:'Введите название сервиса',
-        required:true
-    },
-    {
-        id:2,
-        type:'text',
-        value:"",
-        name:'description',
-        placeholder:'Введите описание сервиса',
-        required:true
-    },
-    {
-        id:3,
-        type:'number',
-        value:"",
-        name:'duration',
-        placeholder:'Введите длительность (часы)',
-        required:true
-    },
-    {
-        id:4,
-        type:'number',
-        value:"",
-        name:'price',
-        placeholder:'Введите стоимость сервиса',
-        required:true
-    }
-];
-
+import {postNewDoctorForm,postNewServiceForm} from '../utils/formFields'
 
 const defaultState = {
     user:localStorage.getItem('id') ? localStorage.getItem('id') : null,
@@ -97,17 +12,7 @@ const defaultState = {
         orthodontist:[],
         therapist:[],
         implantologist: [],
-        endodontics:[],
-    //     [
-    //         [
-    //             "surg",
-    //             [{},{}]
-    //         ],
-    //         [
-    //             "kids",
-    //             [{},{}]
-    //         ]
-    //     ]
+        endodontics:[]
     },
 
     orders:[],
@@ -118,7 +23,6 @@ const defaultState = {
         data:null,
         doctor:null
     },
-    sheduleMonthArray:null,
 
     postNewDoctor:postNewDoctorForm,
     postNewService:postNewServiceForm,
@@ -465,8 +369,8 @@ export const appReducer = (state = defaultState,action) => {
             return {
                 ...state,
                 postNewShedule:{
+                    ...state.postNewShedule,
                     data:null,
-                    doctor:null
                 },
                 isFetching: false
             }
