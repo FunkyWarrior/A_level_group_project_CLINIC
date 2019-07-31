@@ -54,7 +54,10 @@ export default class Shedule extends React.Component {
                 
 
                 {postNewShedule.doctor &&
-                <Calendar doctor={doctors.find (el => el._id === postNewShedule.doctor)} setAppointmentShedule = {console.log}/>
+                <Calendar
+                    doctor={doctors.find (el => el._id === postNewShedule.doctor)}
+                    action = {console.log}
+                />
                 }
             </div>
         );

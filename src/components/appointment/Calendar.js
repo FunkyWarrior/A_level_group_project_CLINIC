@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import moment from "moment";
+import {connect} from "react-redux";
 
-export default class Calendar extends Component {
-    state={
-        current:moment(),
-    };
+import {
+    createCalendarMonthArray,
+    changeCalendarMonth,
+
+} from "../../actions/calendar";
+
+export class Calendar extends Component {
 
     componentDidMount() {
         moment.locale('ru', {
@@ -12,54 +16,52 @@ export default class Calendar extends Component {
                 dow:1
             }
         });
+        this.props.createCalendarMonthArray(this.props.doctor)
     }
 
+    addMonth = () => {
+        this.props.changeCalendarMonth(1);
+        this.props.createCalendarMonthArray(this.props.doctor)
+    };
+
+    subMonth = () => {
+        this.props.changeCalendarMonth(-1);
+        this.props.createCalendarMonthArray(this.props.doctor)
+    };
+
+    action = (e) => {
+        this.props.action(e.target.id)
+    };
+
     render() {
-        const {doctor,setAppointmentShedule} = this.props
-        const {current} = this.state
-        const daysArray = []
-        for (let x=1; x <= current.daysInMonth();x++){
-            daysArray.push(current.date(x).format('YYYY-MM-DD'))
-        }
-        const prevMonth = moment(current).subtract(1,'months')
-        const startDay = current.startOf('month').day() === 0 ? 7 : current.startOf('month').day()
-        for (let x=1; x < startDay ;x++){
-            daysArray.unshift(prevMonth.endOf('month').subtract(x-1,'days').format('YYYY-MM-DD'))
-        }
+        const {current,monthArray} = this.props;
         return (
             <div className = "calendar-container">
                 <div className = "calendar-title-box" >
-                    <button className= "btn angle" onClick={() => this.setState({current:current.subtract(1,"month")})}><span className="icon-angle-left"></span></button>
+                    <button className= "btn angle" onClick={this.subMonth}><span className="icon-angle-left"></span></button>
                     <h4>{current.format('MMMM-YYYY')}</h4>
-                    <button  className= "btn angle"  onClick={() => this.setState({current:current.add(1,"month")})}><span className="icon-angle-right"></span></button>
+                    <button  className= "btn angle"  onClick={this.addMonth}><span className="icon-angle-right"></span></button>
                 </div>
                 <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (
-                            <p key={el} >{el}</p>
+                        <p key={el}>{el}</p>
                     ))}
                 </div>
                 <div  className = "days">
-
-                    {daysArray.map(el => (
+                    {monthArray.map(el => (
                         <button
-                            key={el}
-                            id={el}
-                            disabled={
-                                moment(el).format('YYYY-MM-DD') < moment().format('YYYY-MM-DD')
-                                || (moment(el).day()===6)
-                                || (moment(el).day()===0)
-                                || moment(el).month() !== current.month()
-                                || !doctor.shedule.find(item => item.data === el)
-                            }
+                            key={el.day}
+                            id={el.day}
+                            disabled={el.disabled}
                             style={{
-                                height:'50px',
-                                width:'50px',
-                                backgroundColor:moment(el).month() === current.month() ? doctor.shedule.find(item => item.data === el) ? "#b1e8ca" : "#ff9774" : "lightgrey",
-                                border:moment().format('YYYY-MM-DD') ===  moment(el).format('YYYY-MM-DD') ? "2px solid rgba(17,17,17,0.8)" : null
+                                width:"50px",
+                                height:"50px",
+                                backgroundColor:el.backgroundColor,
+                                border:el.border
                             }}
-                            onClick={(e) => setAppointmentShedule(e.target.id)}
+                            onClick={this.action}
                         >
-                            {moment(el).format('DD')}
+                            {moment(el.day).format('DD')}
                         </button>
                     ))}
                 </div>
@@ -67,4 +69,18 @@ export default class Calendar extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        current:state.calendar.current,
+        monthArray:state.calendar.monthArray
+    }
+};
+
+const mapDispatchToProps = {
+    createCalendarMonthArray,
+    changeCalendarMonth,
+};
+
+export default connect (mapStateToProps,mapDispatchToProps)(Calendar)
 
