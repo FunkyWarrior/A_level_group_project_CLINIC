@@ -47,7 +47,7 @@ export default class ChangeServicesDoctors extends React.Component {
                 </div>
 
                 <div className="admin-item">
-                    <select  className = "appointment admin-form"  onChange={(e)=>changeId(e.target.value)} defaultValue='choose item'>
+                    <select  className = "appointment admin-form"  onChange={(e)=>changeId(e.target.value)} defaultValue='Выбрать'>
                         <option disabled >Выбрать</option>
                         {
                             data.map(el=> (
@@ -87,7 +87,7 @@ export default class ChangeServicesDoctors extends React.Component {
                             <input
                                 className = "btn link"
                                 type='submit'
-                                value='Change Selected Item'
+                                value='Изменить выбранный элемент'
                             />
                         </form>
                     }

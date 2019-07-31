@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {Switch, Route} from "react-router-dom";
 // import { BrowserHistory } from 'react-history'
 
@@ -8,16 +8,17 @@ import {
     getServices,
 } from "./actions/actions";
 
-import Loader from "./components/loader"
-import Header from "./components/header/index"
+import Loader from "./components/loader";
+import Header from "./components/header/index";
 import Main from "./components/main/Main";
 import Doctors from "./components/specialists/Doctors";
-import Services from "./components/Services"
-import MoreInfo from "./components/specialists/MoreInfo"
+import Services from "./components/servises/Services";
+import Categories from "./components/servises/categories"
+import MoreInfo from "./components/specialists/MoreInfo";
 import Appointment from "./components/appointment/Appointment";
-import Reviews from "./components/Reviews"
-import Admin from './components/Admin/Admin'
-import Auth from './containers/auth'
+import Reviews from "./components/Reviews";
+import Admin from './components/Admin/Admin';
+import Auth from './containers/auth';
 import Footer from "./components/Footer";
 // import Calendar from "./components/Calendar"
 
@@ -27,7 +28,7 @@ export class App extends React.Component {
         this.props.getDoctors();
         this.props.getServices();
         
-        console.log (this.props.app)
+        // console.log (this.props.app)
         
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
@@ -53,7 +54,7 @@ export class App extends React.Component {
                         <Route exact path="/doctors" component={Doctors} />
                         <Route exact path="/services" component={Services} />
                         <Route exact path="/doctors/:doctor" component={MoreInfo} />
-                        <Route exact path="/services/:service" component={MoreInfo} />
+                        <Route exact path="/services/:service" component={Categories} />
                         <Route exact path="/reviews" component={Reviews}/>
                         <Route path="/admin/" component={Admin} />
                         <Route exact path="/appointment/:doctorId" component={Appointment}/>

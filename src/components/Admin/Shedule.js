@@ -26,7 +26,7 @@ export default class Shedule extends React.Component {
 
     render() {
         console.log ( this.props )
-        const { doctors, postNewShedule, sheduleMonthArray, setSheduleDoctor } = this.props;
+        const { doctors, postNewShedule,  setSheduleDoctor } = this.props;
         return (
             <div  className = "shedule-container" >
               
@@ -60,3 +60,4 @@ export default class Shedule extends React.Component {
         );
     }
 }
+// sheduleMonthArray,

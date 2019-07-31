@@ -36,8 +36,8 @@ export class Main extends React.Component {
                     </div>
                 </div>
 
-                    <div className="wrapper" id = "team">
-                        <Team doctorsArr = {this.props.app.doctors}/>
+                    <div className="wrapper"  id = "team">
+                        <Team doctorsArr = {this.props.app.doctors} />
                     </div>
 
                 <div className=" case" id = "banner">
@@ -47,7 +47,7 @@ export class Main extends React.Component {
                         </div>     
                  </div>
 
-                 <div className="wrapper" id = "about">
+                 <div className="wrapper"  id = "about">
                     <About/>
                  </div>
 
