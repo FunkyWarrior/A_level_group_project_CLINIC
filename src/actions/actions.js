@@ -99,6 +99,7 @@ const getDoctorsRequestFail = payload => ({
 });
 
 export const getDoctors = () => dispatch => {
+    console.log('get')
     dispatch(getDoctorsRequest());
     return fetch(`${URL}doctors`,{
         credentials:"include"
@@ -228,7 +229,7 @@ export const postShedule = (payload) => dispatch => {
         body: JSON.stringify(payload)
     })
         .then(res => res.json())
-        .then(res => dispatch(postSheduleSuccess(res)))
+        .then(res => dispatch(postSheduleSuccess(res))).then(dispatch(getDoctors()))
         .catch(err => dispatch(postSheduleFail(err)));
 };
 

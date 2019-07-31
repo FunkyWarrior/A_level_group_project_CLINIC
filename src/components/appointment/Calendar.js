@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import moment from "moment";
 import {connect} from "react-redux";
 
 import {
     createCalendarMonthArray,
     changeCalendarMonth,
+    resetCurrent
 
 } from "../../actions/calendar";
 
-export class Calendar extends Component {
+export class Calendar extends React.Component {
 
     componentDidMount() {
         moment.locale('ru', {
@@ -17,6 +18,13 @@ export class Calendar extends Component {
             }
         });
         this.props.createCalendarMonthArray(this.props.doctor)
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.doctor !== this.props.doctor) this.props.createCalendarMonthArray(this.props.doctor)
+    }
+
+    componentWillUnmount() {
+        this.props.resetCurrent()
     }
 
     addMonth = () => {
@@ -38,9 +46,13 @@ export class Calendar extends Component {
         return (
             <div className = "calendar-container">
                 <div className = "calendar-title-box" >
-                    <button className= "btn angle" onClick={this.subMonth}><span className="icon-angle-left"></span></button>
+                    <button className= "btn angle" onClick={this.subMonth}>
+                        <span className="icon-angle-left"></span>
+                    </button>
                     <h4>{current.format('MMMM-YYYY')}</h4>
-                    <button  className= "btn angle"  onClick={this.addMonth}><span className="icon-angle-right"></span></button>
+                    <button  className= "btn angle"  onClick={this.addMonth}>
+                        <span className="icon-angle-right"></span>
+                    </button>
                 </div>
                 <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (
@@ -80,6 +92,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     createCalendarMonthArray,
     changeCalendarMonth,
+    resetCurrent
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Calendar)

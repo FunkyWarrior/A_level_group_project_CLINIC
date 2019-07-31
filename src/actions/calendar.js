@@ -10,3 +10,8 @@ export const changeCalendarMonth = payload => ({
     payload
 });
 
+export const resetCurrent = payload => ({
+    type: types.RESET_CALENDAR_CURRENT,
+    payload
+});
+

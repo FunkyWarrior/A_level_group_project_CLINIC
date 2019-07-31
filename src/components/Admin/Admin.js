@@ -24,13 +24,11 @@ import ChangeServicesDoctors from './ChangeServices-Doctors'
 
 export class Admin extends React.Component {
 
-
     render() {
         const {
             doctors,
             services,
             postNewShedule,
-            sheduleMonthArray,
             postNewDoctor,
             postNewService,
             changeDoctorId,
@@ -50,6 +48,7 @@ export class Admin extends React.Component {
             deleteServices,
             postServices
         } = this.props;
+
         return (
             <div className="main">
                 <div className="info-wrap">
@@ -62,7 +61,6 @@ export class Admin extends React.Component {
                         <Route path='/admin/change-shedule' render={() => <Shedule
                             doctors={doctors}
                             postNewShedule={postNewShedule}
-                            sheduleMonthArray={sheduleMonthArray}
                             setSheduleDoctor={setSheduleDoctor}
                             postShedule={postShedule}
                         />} />
@@ -112,8 +110,6 @@ const mapDispatchToProps = {
     postServices,
     putServices,
     deleteServices
-
-
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

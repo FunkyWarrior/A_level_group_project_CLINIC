@@ -10,7 +10,7 @@ export const calendarReducer = (state = defaultState, action) => {
     switch(action.type){
 
         case types.CREATE_CALENDAR_MONTH_ARRAY: {
-            const daysArray = []
+            const daysArray = [];
             for (let x=1; x <= state.current.daysInMonth();x++){
                 let day = {
                     day:"",
@@ -32,7 +32,6 @@ export const calendarReducer = (state = defaultState, action) => {
 
             const prevMonth = moment(state.current).subtract(1,'months');
             const startDay = state.current.startOf('month').day() === 0 ? 7 : state.current.startOf('month').day();
-
             for (let x=1; x < startDay ;x++){
                 let day = {
                     day:"",
@@ -58,18 +57,21 @@ export const calendarReducer = (state = defaultState, action) => {
         }
 
         case types.CHANGE_CALENDAR_MONTH: {
-            console.log(action.payload)
-            console.log(state.current)
             return {
                 ...state,
                 current: state.current.add(action.payload,"month")
             };
         }
 
+        case types.RESET_CALENDAR_CURRENT: {
+            return {
+                ...state,
+                current: moment()
+            };
+        }
 
 
         default:
             return state
     }
-
-}
+};
