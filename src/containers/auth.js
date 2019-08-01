@@ -15,10 +15,20 @@ class Auth extends Component {
 
   render() {
     const { auth } = this.state;
+    const { user } = this.props
+    console.log('userProps',this.props.user)
+    
+    if(Object.keys(user).length !== 0 && user.role === "User") {
+      return <Redirect to="/user" />
+      }
 
-    if(this.props.user) {
-      return <Redirect to='/' />;
-    }
+      if(Object.keys(user).length !== 0 && user.role === "Doctor") {
+        return <Redirect to="/admin" />
+      }
+      
+      if(Object.keys(user).length !== 0 && user.role === "Admin") {
+        return <Redirect to="/admin" />
+      }
 
     return (
       <div className="main">
