@@ -10,6 +10,9 @@ $opacity-color: rgba(17,17,17,0.8);
 	background-color: $opacity-color;
 	min-height: 100vh;
 	min-width: 100vw;
+	@media (max-width: 1024px) {
+		min-height: 84vh;
+	}
 }
 
 .auth {
@@ -18,16 +21,20 @@ $opacity-color: rgba(17,17,17,0.8);
 
 
 	&__content {
-		width: 30rem;
+		width: 28rem;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		background-color: $opacity-color;
-		padding: 2rem;
+		background-color: rgba(17, 17, 17, 0.8);
+		padding: 1.5rem;
 		border: 1px solid #eee;
 		margin-top: 40px;
+		@media (max-width: 1024px) {
+			top: 35%;
+		}
 	}
+	
 
 	&__text {
 		font-size: 1.6rem;

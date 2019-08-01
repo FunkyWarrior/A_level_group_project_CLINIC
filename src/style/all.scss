@@ -8,24 +8,36 @@ $opacity-color: rgba(17,17,17,0.8);
 
 body {
 	font-family: 'Lato', sans-serif;
-	font-size: 16px;
-
+	font-size: 14px;
 }
 
 .main {
 	background-image: url(../assets/images/fon6.jpg);
 	background-size: cover;
 	background-attachment: fixed;
-	min-height: 100vh;
+	min-height: 80vh;
 	scroll-behavior: smooth;
-	// padding-top: 120px;
 }
 
 .container {
 	background-image: url(../assets/images/fon1.jpg);
 	background-size: cover;
 	min-height: 100vh;
+	
+	@media (max-width: 768px) {
+		background-position-x: -270px;
+	}
+	@media (max-width: 414px) {
+		background-position-x: -330px;
+	}
+	@media (max-width: 375px) {
+		background-position-x: -285px;
+	}
+	@media (max-width: 320px) {
+		background-position-x: -250px;
+	}
 }
+
 .wrapper,
 .info-wrap {
 	max-width: 1280px;
@@ -50,7 +62,7 @@ body {
 
 	& .nav {
 		margin-top: 25px;
-		font-size: 14px;
+		font-size: 1em;
 		line-height: 24px;
 		font-weight: bold;
 		letter-spacing: 0.075em;
@@ -124,22 +136,39 @@ body {
 		margin: 150px auto 30px;
 		max-width: 300px;
 		@media (max-width: 768px) {
+			// max-width: 200px;	
+			margin-top: 250px;
+		}
+		@media (max-width: 414px) {
 			max-width: 200px;	
+			margin-top: 175px;
+		}
+		@media (max-width: 375px) {
+			max-width: 200px;	
+			margin-bottom: 5px;
 		}
 	}
 	h1{
 		text-transform: uppercase;
 		background-color: $opacity-color;
 		width: 100%;
-		font-size: 40px;
+		font-size: 2.6em;
 		padding: 35px;
 		line-height: 50px;
 		font-weight: bold;
 		margin: 30px auto 0;
 		text-align: center;
 		@media (max-width: 768px) {
-			font-size: 25px;
+			font-size: 30px;
 			padding: 15px;	
+		}
+		@media (max-width: 414px) {
+			font-size: 20px;
+			// padding: 15px;	
+		}
+		@media (max-width: 375px) {
+			font-size: 15px;
+			padding: 5px;	
 		}
 	}
 }
@@ -360,6 +389,7 @@ h2 {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 700;
 		font-size: 1.3em;
+		margin: 5px;
 	}
 	.logo-box {
 		margin-right: 0px;
@@ -374,6 +404,12 @@ h2 {
 		@media (max-width: 768px) {
 			width: 250px;	
 		}
+		@media (max-width: 414px) {
+			width: 200px;	
+		}
+		@media (max-width: 375px) {
+			width: 150px;	
+		}
 	}	
 	.contacts {
 		background-color: $opacity-color;
@@ -384,6 +420,9 @@ h2 {
 		font-size: 1em;
 		@media (max-width: 768px) {
 			width: 100%;
+		}
+		@media (max-width: 768px) {
+			font-size: 0.7em;
 		}
 	}
 	
@@ -412,6 +451,11 @@ h2 {
 // _____DOCTORS_____ 
 .doctors-wrap {
 	padding-top: 110px;	
+	.item h3 {
+		@media (max-width: 375px) {
+			font-size: 1em;
+		}
+	}
 }
 .info-wrap {
 	padding: 110px 10px 25px;
@@ -425,7 +469,7 @@ h2 {
 	color: $header-color;
 	h3 {
 		margin: 0;
-		font-size: 2em;
+		font-size: 1.8em;
 		line-height: 2em;
 		text-align:  center;
 		@media (max-width: 768px) {
@@ -434,6 +478,9 @@ h2 {
 	}
 	.desc {
 		width: 50%;
+		@media (max-width: 1024px) {
+			width: 60%;
+		}
 		@media (max-width: 768px) {
 			width: 100%;
 		}
@@ -479,19 +526,27 @@ h2 {
 aside {
 	position: fixed;
 	top: 50%;
-	right: 3%;
+	right: 2%;
 	z-index: 999999;
 	.sidebar-ul {
 		list-style: none;
 		.sidebar-item {
 			margin-top: 15px;
 		}
-		
 	}
 	.nav-link {
 		text-decoration: none;
 		margin-top: 15px;
 		padding: 15px 0;
+	}
+	@media (max-width: 1024px) {
+		top: 70%;	
+	}
+	@media (max-width: 375px) {
+		top: 75%;	
+	}
+	@media (max-width: 320px) {
+		top: 25%;	
 	}
 }
 
@@ -612,12 +667,22 @@ aside {
 // ______services________
 	.serv-wrap {
 		width: 100%;
-
 		display: flex;
+		flex-wrap:wrap;
 		.servise-name {
+			width: 45%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
 			border: 1px solid$hover-color;
 			margin: 10px;
-			min-width: 30%;
 			text-align: center;
+			p {
+				margin: 5px 10px;
+			}
 		}
+	}
+	.service-btn {
+		background-color: $hover-color;
 	}

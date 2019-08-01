@@ -70,7 +70,32 @@
   content: "\e901";
   color:  var(--opacity-color);
   margin: 15px 0;
+  font-size: 1.6em;
 }
+@media (max-width: 1024px) {
+	.icon-lens:before {
+		color:  var(--hover-color);
+	}
+}
+@media (max-width: 414px) {
+	.icon-lens:before {
+    color:  var(--hover-color);
+    font-size: 1em;
+  }
+}
+@media (max-width: 375px) {
+  .icon-lens:before {
+    /* color:  var(--hover-color); */
+    font-size: 0.9em;
+  }
+}  
+@media (max-width: 320px) {
+  .icon-lens:before {
+    color:  var(--opacity-color);
+    /* font-size: 0.9em; */
+  }
+}  
+
 .icon-calendar:before {
   content: "\f073";
 }

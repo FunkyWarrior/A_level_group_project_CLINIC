@@ -12,8 +12,8 @@ import Loader from "./components/loader";
 import Header from "./components/header/index";
 import Main from "./components/main/Main";
 import Doctors from "./components/specialists/Doctors";
-import Services from "./components/servises/Services";
-import Categories from "./components/servises/categories"
+import Services from "./components/services/Services";
+import Categories from "./components/services/categories"
 import MoreInfo from "./components/specialists/MoreInfo";
 import Appointment from "./components/appointment/Appointment";
 import Reviews from "./components/Reviews";
@@ -27,12 +27,7 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
-<<<<<<< HEAD
-        
-        // console.log (this.props.app)
-        
-=======
->>>>>>> ff3f53df4e902acee8dc75802682ebb15c73edfb
+
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
         //     credentials: "include",
