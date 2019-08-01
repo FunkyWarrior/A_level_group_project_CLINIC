@@ -27,12 +27,7 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
-<<<<<<< HEAD
-        
-        // console.log (this.props.app)
-        
-=======
->>>>>>> ff3f53df4e902acee8dc75802682ebb15c73edfb
+
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
         //     credentials: "include",

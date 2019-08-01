@@ -35,13 +35,9 @@ export default class Shedule extends React.Component {
     };
 
     render() {
-<<<<<<< HEAD
-        console.log ( this.props )
-        const { doctors, postNewShedule,  setSheduleDoctor } = this.props;
-=======
         const {doctors, postNewShedule} = this.props;
-        const doctor = doctors.find(el => el._id === postNewShedule.doctor)
->>>>>>> ff3f53df4e902acee8dc75802682ebb15c73edfb
+        const doctor = doctors.find(el => el._id === postNewShedule.doctor);
+
         return (
             <div  className = "shedule-container" >
                 <div className = "option" >
@@ -76,4 +72,3 @@ export default class Shedule extends React.Component {
         );
     }
 }
-// sheduleMonthArray,
