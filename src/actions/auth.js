@@ -22,8 +22,12 @@ export const auth = payload => {
         dispatch(authRequest());
         try {
             const { data } = await axios.post("https://api-clinics.herokuapp.com/api/v1/auth/login", payload);
+            localStorage.setItem("userId",JSON.stringify(data.user._id))
             console.log('data',data)
             dispatch(authRequestSuccess(data));
+
+           
+            
         } catch (error){
             dispatch(authRequestFail(error));
         }

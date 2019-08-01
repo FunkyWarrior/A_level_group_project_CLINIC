@@ -36,7 +36,8 @@ export default class Shedule extends React.Component {
 
     render() {
         const {doctors, postNewShedule} = this.props;
-        const doctor = doctors.find(el => el._id === postNewShedule.doctor)
+        const doctor = doctors.find(el => el._id === postNewShedule.doctor);
+
         return (
             <div  className = "shedule-container" >
                 <div className = "option" >
@@ -71,4 +72,3 @@ export default class Shedule extends React.Component {
         );
     }
 }
-// sheduleMonthArray,

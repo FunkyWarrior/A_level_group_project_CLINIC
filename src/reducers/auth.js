@@ -1,9 +1,8 @@
 import * as types from '../actionsTypes/actionsTypes'
 
 const initialState = {
-    user: null,
+    user: {},
     isFetching: false,
-    token:null,
     error:null,
     successRegister: null
 }
@@ -15,8 +14,10 @@ export default (state = initialState, action) => {
         }
 
         case types.AUTH_REQUEST_SUCCESS: {
-            const { user, token } = action.payload;
-            return {...state, isFetching: false, user, token };
+            const { user } = action.payload;
+            const updatedUser = {...user, role: user.doctor ? "Doctor" : user.role ? "Admin" : "User"} 
+            console.log("user", updatedUser)
+            return {...state, isFetching: false, user: updatedUser };
         }
 
         case types.AUTH_REQUEST_FAIL: {
