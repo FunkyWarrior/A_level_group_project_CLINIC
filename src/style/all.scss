@@ -441,6 +441,16 @@ h2 {
 		position: fixed;
 		top: 30%;
 		left: 40%;
+		@media (max-width: 1024px) {
+			left: 35%;
+		}
+		@media (max-width: 768px) {
+			left: 30%;
+		}
+		@media (max-width: 768px) {
+			left: 25%;
+			width: 50%;
+		}
 	}
 
 }
@@ -451,6 +461,9 @@ h2 {
 // _____DOCTORS_____ 
 .doctors-wrap {
 	padding-top: 110px;	
+	@media (max-width: 768px) {
+		padding-top: 65px;
+	}
 	.item h3 {
 		@media (max-width: 375px) {
 			font-size: 1em;
@@ -637,6 +650,9 @@ aside {
 .services {
 	width: 100%;
 	min-height: 100vh;
+	@media (max-width: 414px) {
+		margin: 25px 0;
+	}
 	.categories {
 		padding-top: 50px;
 		width: 100%;
@@ -644,13 +660,29 @@ aside {
 		flex-direction: row;
 		justify-content: space-around;	
 		flex-wrap: wrap;
+		align-content: flex-start;
+		@media (max-width: 768px) {
+			padding-top: 5px;
+		}
 		.service-type {
-			width: 35%;
+			width: 85%;
+			// p {
+			// 	@media (max-width: 414px) {
+			// 		margin: 10px 0;
+			// 	}
+			// 	@media (max-width: 414px) {
+			// 		margin: 5px 0;
+			// 	}
+			// 	@media (max-width: 375px) {
+			// 		font-size: 0.8em;
+			// 	}
+			// }
 			.categories-link {
 				display: block;
+				position: relative;
 				border: 1px solid $hover-color;
 				border-radius: 3px;
-				margin: 15px;
+				margin: 25px 15px;
 				padding: 10px;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -658,6 +690,35 @@ aside {
 				letter-spacing: 0.1em;
 				text-align: center;
 				color: $header-color;
+				box-shadow: 0px 0px 10px 0px $hover-color;
+				&:hover {
+					background-color: $main-color;
+				}
+				@media (max-width: 768px) {
+					margin: 15px;
+				}
+				@media (max-width: 414px) {
+					margin: 5px 0;
+				}
+				@media (max-width: 320px) {
+					margin: 5px;
+					padding: 5px 10px;
+				}
+			}
+			@media (max-width: 1024px) {
+				width: 65%;
+				margin-top: 40px;
+			}
+			@media (max-width: 768px) {
+				width: 65%;
+				margin: 10px;
+			}
+			@media (max-width: 414px) {
+				width: 100%;
+				margin: 10px;
+			}
+			@media (max-width: 320px) {
+				margin: 7px;
 			}
 		}
 	}
@@ -669,20 +730,40 @@ aside {
 		width: 100%;
 		display: flex;
 		flex-wrap:wrap;
-		.servise-name {
-			width: 45%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			border: 1px solid$hover-color;
-			margin: 10px;
-			text-align: center;
-			p {
-				margin: 5px 10px;
-			}
+		justify-content: space-between;
+	}
+	.servise-name {
+		width: 95%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-content: stretch;
+		align-items: center;
+		border: 1px solid$hover-color;
+		margin: 10px auto;
+		text-align: center;
+		p {
+			flex-basis: 30%;
+			margin: 5px 10px;
+		}
+		@media (max-width: 414px) {
+			width: 100%;
 		}
 	}
 	.service-btn {
 		background-color: $hover-color;
+		width: 100%;
+		margin: 5px;
+	}
+
+	// _______________ACCORDION___________
+	#accordion {
+		.service-type {
+			.servise-name {
+				display: none;
+			}
+			&:target .servise-name {
+				display: flex;
+			}
+		}
 	}

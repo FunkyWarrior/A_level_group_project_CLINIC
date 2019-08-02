@@ -13,7 +13,7 @@ import Header from "./components/header/index";
 import Main from "./components/main/Main";
 import Doctors from "./components/specialists/Doctors";
 import Services from "./components/services/Services";
-import Categories from "./components/services/categories"
+// import Categories from "./components/services/categories"
 import MoreInfo from "./components/specialists/MoreInfo";
 import Appointment from "./components/appointment/Appointment";
 import Reviews from "./components/Reviews";
@@ -132,16 +132,15 @@ export class App extends React.Component {
               <Loader flag={this.props.app.isFetching}>
                     <Header/>
                     <Switch>
-
-                        {route.map(el => (
-					        <PrivateRoute
-                                protectedRoute={el.protected}
-                                key={el.id}
-                                exact={el.exact}
-                                path={el.path}
-                                component={el.component}
-                            />
-				        ))}
+                        <Route exact path="/" component={Main} />
+                        <Route exact path="/doctors" component={Doctors} />
+                        <Route exact path="/services" component={Services} />
+                        <Route exact path="/doctors/:doctor" component={MoreInfo} />
+                        {/* <Route exact path="/services/:service" component={Categories} /> */}
+                        <Route exact path="/reviews" component={Reviews}/>
+                        <Route path="/admin/" component={Admin} />
+                        <Route exact path="/appointment/:doctorId" component={Appointment}/>
+                        <Route exact path="/auth" component={Auth} />
                     </Switch>
                 <Footer />
              </Loader>
