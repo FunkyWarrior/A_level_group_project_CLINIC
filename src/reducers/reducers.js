@@ -7,11 +7,11 @@ const defaultState = {
     doctors:[],
     services:[],
     servicesArray:{
-        surgeon:[],
+        surgery:[],
         kids:[],
-        orthodontist:[],
-        therapist:[],
-        implantologist: [],
+        orthodontics:[],
+        therapy:[],
+        implantology: [],
         endodontics:[]
     },
 
@@ -253,7 +253,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    orthodontist:state.servicesArray.orthodontist.push(el)
+                                    orthodontics:state.servicesArray.orthodontics.push(el)
                                 }
                             }
                         }
@@ -271,7 +271,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantologist:state.servicesArray.implantologist.push(el)
+                                    implantology:state.servicesArray.implantology.push(el)
                                 }
                             }
                         }
@@ -280,7 +280,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantologist:state.servicesArray.implantologist.push(el)
+                                    implantology:state.servicesArray.implantology.push(el)
                                 }
                             }
                         }
@@ -289,7 +289,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    surgeon:state.servicesArray.surgeon.push(el)
+                                    surgery:state.servicesArray.surgery.push(el)
                                 }
                             }
                         }
@@ -307,7 +307,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    therapist:state.servicesArray.therapist.push(el)
+                                    therapy:state.servicesArray.therapy.push(el)
                                 }
                             }
                         }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 
@@ -22,13 +22,24 @@ export class Services extends React.Component {
             <div className="main">
                 <div className="wrapper">
                     <div className = "doctors-wrap  services">
-                        <div className = "categories" >
-      
-                            { servArray.map ( (el, index )=> (
-                                <div className="service-type" key = {index}>                           
-                                        <Link to = {`/services/${el[0]}`} className = "categories-link" key = {index}>
-                                            <p>{el[0]}</p>
-                                        </Link>
+                        <div className = "categories" id = "accordion">
+                                 { servArray.map ( (el, index )=> (
+                                <div className="service-type" key = {index} id = {`item${index}`}>                           
+                                        <a href =  {`#item${index}`} className = "categories-link icon-angle-down" key = {index}>
+                                            {el[0]}
+                                        </a>
+                                        {   el[1].map ((item, index) => (
+                                          
+                                          <div className = "servise-name" key = {index} >
+                                              <p>{item.name}</p>
+                                              {/* <p>Длительность: {item.duration} ч.</p>  */}
+                                              <p>Стоимость: {item.price} грн.</p>
+                                              <div>
+                                                  
+                                                  <button className = "btn service-btn"> Записаться </button>
+                                              </div>
+                                          </div>
+                                      ))}
                                 </div>
                             ) ) 
                             }
