@@ -57,7 +57,7 @@ export class Appoint extends React.Component {
                                 </div>
                                 }
 
-                                <select className = "appointment"  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
+                                <select className = "appointment "  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
                                     <option disabled >Выбор услуги</option>
                                     {
                                         doctor.speciality.map(el=> (
@@ -74,18 +74,20 @@ export class Appoint extends React.Component {
                                 }
 
                                 {appointment.shedule &&
-                                <div>
-                                    <div>
-                                        <select className = "appointment" onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='choose time'>
-                                            <option disabled >Выбор даты</option>
-                                            {
-                                                timeArray.map(el=> (
-                                                    <option key={Object.keys(el)[0]}> {Object.keys(el)[0]} </option>
-                                                ))
-                                            }
-                                        </select>
+                             
+                                   <div className = "appointment-time" >
+                                        <div className="btn-box"  >
+                                        {   timeArray.map ( (el, index)=> (
+                                            
+                                                <label  key={Object.keys(el)[0]} >
+                                                    <input type ="radio" name = "choise-time"   id = {index} onChange={(e)=> setAppointmentTime(e.target.value)}
+                                                  value =  {Object.keys(el)[0]}  />
+                                                   {Object.keys(el)[0]}
+                                                </label>
+                                            ))
+                                        }
+                                            </div>
                                     </div>
-                                </div>
                                 }
 
                                 {appointment.time &&
@@ -124,3 +126,11 @@ const mapDispatchToProps = {
 
 export default connect (mapStateToProps,mapDispatchToProps)(Appoint)
 
+
+
+
+// <div className = "btn appointment-link" onClick={(e)=> setAppointmentTime(e.target.value)}  key={Object.keys(el)[0]} >
+// {Object.keys(el)[0]} 
+// </div>
+
+// setAppointmentTime

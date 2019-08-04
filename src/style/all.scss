@@ -173,7 +173,7 @@ body {
 	}
 }
 
-// button
+// buttons
 .btn {
 	display: block;
 	min-height: 50px;
@@ -224,7 +224,11 @@ body {
 	width: 30%;	
 	margin: 0;
 }
-
+.nav-exit {
+	background-color: none;
+	border: none;	
+	height: 30px;
+}
 
 //  section About Us
 .aboutsection, 
@@ -371,6 +375,8 @@ h2 {
 	}
 }
 
+
+
 //  Footer
 .footer {
 	font-family: 'Montserrat', sans-serif;
@@ -515,7 +521,7 @@ h2 {
 }
 
 
-// _____t APPOINTMENT _________
+// _____ APPOINTMENT _________
 
 .appointment {
 	width: 100%;
@@ -524,13 +530,46 @@ h2 {
 	border-radius: 3px;
 	padding: 0.5rem;
 	margin: 15px 0;
-	&:focus {
+	color: $opacity-color;
+	background-color: $header-color;
+	cursor: pointer;
+	-webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none;       /* remove default arrow */
+ 	&:focus {
 		outline: none;
 	}
 }
-// .comment {
-// 	margin: 15px 0;
-// }
+.appointment-time {
+	.btn-box {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		margin: 30px 0;
+		input[type = "radio"] {
+			display: none;
+		}
+		label {
+			display: flex;
+			margin: 10px 10px 3px 0;
+			text-align: center;
+			padding: 5px 10px;
+			min-width: 80px;
+			background-color: $hover-color;
+			color: $opacity-color;
+			&:hover {
+				background-color: $main-color;
+				color: $header-color;
+			}
+		}
+		label input:checked ~ label {
+			background-color: $main-color;
+			color: $header-color;
+		  }
+	}
+
+}
 
 
 
