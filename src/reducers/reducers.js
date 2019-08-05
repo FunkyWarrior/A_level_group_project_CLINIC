@@ -7,12 +7,12 @@ const defaultState = {
     doctors:[],
     services:[],
     servicesArray:{
-        surgery:[],
-        kids:[],
-        orthodontics:[],
-        therapy:[],
-        implantology: [],
-        endodontics:[]
+        'Хирургия':[],
+        'Детская стоматология':[],
+        'Ортодонтия':[],
+        'Терапия':[],
+        'Имплантология': [],
+        'Эндодонтия':[]
     },
 
     orders:[],
@@ -39,7 +39,6 @@ const defaultState = {
     },
 
     timeArray:[],
-    wrongDate:true,
     isFetching:false,
     error: null,
 
@@ -132,8 +131,7 @@ export const appReducer = (state = defaultState,action) => {
                     ...state.appointment,
                     shedule:shedule._id
                 },
-                timeArray:timeArray,
-                wrongDate: action.payload
+                timeArray:timeArray
             };
         }
 
@@ -253,7 +251,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    orthodontics:state.servicesArray.orthodontics.push(el)
+                                    'Ортодонтия':state.servicesArray['Ортодонтия'].push(el)
                                 }
                             }
                         }
@@ -262,7 +260,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    kids:state.servicesArray.kids.push(el)
+                                    'Детская стоматология':state.servicesArray['Детская стоматология'].push(el)
                                 }
                             }
                         }
@@ -271,7 +269,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantology:state.servicesArray.implantology.push(el)
+                                    'Имплантология':state.servicesArray['Имплантология'].push(el)
                                 }
                             }
                         }
@@ -280,7 +278,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    implantology:state.servicesArray.implantology.push(el)
+                                    'Имплантология':state.servicesArray['Имплантология'].push(el)
                                 }
                             }
                         }
@@ -289,7 +287,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    surgery:state.servicesArray.surgery.push(el)
+                                    'Хирургия':state.servicesArray['Хирургия'].push(el)
                                 }
                             }
                         }
@@ -298,7 +296,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    endodontics:state.servicesArray.endodontics.push(el)
+                                    'Эндодонтия':state.servicesArray['Эндодонтия'].push(el)
                                 }
                             }
                         }
@@ -307,7 +305,7 @@ export const appReducer = (state = defaultState,action) => {
                                 ...state,
                                 servicesArray:{
                                     ...state.servicesArray,
-                                    therapy:state.servicesArray.therapy.push(el)
+                                    'Терапия':state.servicesArray['Терапия'].push(el)
                                 }
                             }
                         }

@@ -3,35 +3,48 @@ import Input from './Input'
 
 export default class ChangeServicesDoctors extends React.Component {
 
+    postNewItem = (e) => {
+        const obj = {};
+        e.preventDefault();
+        this.props.form.map(el => {
+            obj[el.name] = el.value
+        });
+        this.props.postItem(obj)
+    };
+
+    changeItem = (e) => {
+        const obj = {};
+        e.preventDefault();
+        this.props.form.map(el => {
+            if (el.value !== '')
+                obj[el.name] = el.value
+        });
+        this.props.putItem({data:obj,id:this.props.itemId})
+
+    };
+
+    deleteItem = () => {
+        this.props.deleteItem(this.props.itemId)
+    };
+
+    changeId = (e) => {
+        this.props.changeId(e.target.value)
+    };
 
     render() {
-        const obj = {};
         const {
             data,
             itemId,
             form,
-            postItem,
-            putItem,
-            deleteItem,
-            changeId,
             changeInputValues,
         } = this.props;
         return (
-
             <div className = "change-services-doctors">
                 <div className="admin-item">
-                    <form className ="form-doctors"   onSubmit={(e)=>{
-                        e.preventDefault();
-                        // eslint-disable-next-line array-callback-return
-                        form.map(el => {
-                            obj[el.name] = el.value
-                        });
-                        postItem(obj)
-                    }}
-                    >
+                    <form className ="form-doctors" onSubmit={this.postNewItem}>
                         {
                             form.map(el => (
-                                <Input 
+                                <Input
                                     key={el.id}
                                     id={el.id}
                                     el={el}
@@ -39,15 +52,14 @@ export default class ChangeServicesDoctors extends React.Component {
                                 />
                             ))
                         }
-                        <input className = "btn link" 
-                            type='submit'
-                            value='Добавить '
+                        <input className = "btn link"
+                               type='submit'
+                               value='Добавить '
                         />
                     </form>
                 </div>
-
                 <div className="admin-item">
-                    <select  className = "appointment admin-form"  onChange={(e)=>changeId(e.target.value)} defaultValue='Выбрать'>
+                    <select  className = "appointment admin-form"  onChange={this.changeId} defaultValue='Выбрать'>
                         <option disabled >Выбрать</option>
                         {
                             data.map(el=> (
@@ -55,23 +67,9 @@ export default class ChangeServicesDoctors extends React.Component {
                             ))
                         }
                     </select>
-                    {itemId &&
-                    <button className = "btn link" onClick={()=>deleteItem(itemId)} style={{backgroundColor:"#ff9774"}}>Удалить карточку сотрудника</button>
-                    }
 
-                    {
-                        <form  onSubmit={(e)=>{
-                            e.preventDefault();
-                            // eslint-disable-next-line array-callback-return
-                            form.map(el => {
-                                if (el.value !== '')
-                                    obj[el.name] = el.value
-                            });
-                            putItem({data:obj,id:itemId})
-
-                        }}>
-
-                            {itemId &&
+                    <form  onSubmit={this.props.changeItem}>
+                        {itemId &&
                             form.map(el => {
                                 el.required = false;
                                 return (
@@ -83,15 +81,17 @@ export default class ChangeServicesDoctors extends React.Component {
                                     />
                                 )
                             })
-                            }
-                            <input
-                                className = "btn link"
-                                type='submit'
-                                value='Изменить выбранный элемент'
-                            />
-                        </form>
+                        }
+                        <input
+                            className = "btn link"
+                            type='submit'
+                            value='Изменить выбранный элемент'
+                        />
+                    </form>
+                    {itemId &&
+                    <button className = "btn link" onClick={this.deleteItem} style={{backgroundColor:"#ff9774"}}>Удалить выбранный элемент</button>
                     }
-               </div>
+                </div>
             </div>
         );
     }

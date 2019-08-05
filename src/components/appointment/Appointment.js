@@ -76,8 +76,8 @@ export class Appoint extends React.Component {
                                 {appointment.shedule &&
                                 <div>
                                     <div>
-                                        <select className = "appointment" onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='choose time'>
-                                            <option disabled >Выбор даты</option>
+                                        <select className = "appointment" onChange={(e)=>setAppointmentTime(e.target.value)} defaultValue='Выбор времени'>
+                                            <option disabled >Выбор времени</option>
                                             {
                                                 timeArray.map(el=> (
                                                     <option key={Object.keys(el)[0]}> {Object.keys(el)[0]} </option>

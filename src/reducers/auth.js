@@ -1,7 +1,7 @@
 import * as types from '../actionsTypes/actionsTypes'
 
 const initialState = {
-    user: {},
+    user:{},
     isFetching: false,
     error:null,
     successRegister: null

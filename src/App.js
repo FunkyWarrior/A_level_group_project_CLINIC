@@ -128,6 +128,7 @@ export class App extends React.Component {
     }
 
     render() {
+        console.log(this.props.app)
         return (
               <Loader flag={this.props.app.isFetching}>
                     <Header/>
