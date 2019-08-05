@@ -26,9 +26,26 @@ export class Appoint extends React.Component {
         this.props.clearAppointment()
     }
 
+    setSpec = (e) => {
+        this.props.setAppointmentSpec(e.target.value)
+    };
+
+    setTime = (e) => {
+        this.props.setAppointmentTime(e.target.value)
+    };
+
+    setComment = (e) => {
+        this.props.setAppointmentComment(e.target.value)
+    };
+
+    postOrder = () => {
+        this.props.postOrders(this.props.app.appointment)
+    };
+
+
     render() {
         const {doctors, appointment, timeArray,services} = this.props.app;
-        const {match, setAppointmentSpec, setAppointmentShedule, setAppointmentTime, setAppointmentComment, postOrders} = this.props;
+        const {match, setAppointmentShedule} = this.props;
         const doctor = doctors.find(el => el._id === match.params.doctorId);
         let spec;
         if (appointment.spec){
@@ -57,7 +74,7 @@ export class Appoint extends React.Component {
                                 </div>
                                 }
 
-                                <select className = "appointment "  onChange={(e)=>setAppointmentSpec(e.target.value)} defaultValue='Выбор услуги'>
+                                <select className = "appointment "  onChange={this.setSpec} defaultValue='Выбор услуги'>
                                     <option disabled >Выбор услуги</option>
                                     {
                                         doctor.speciality.map(el=> (
@@ -79,11 +96,15 @@ export class Appoint extends React.Component {
                                    <div className = "appointment-time" >
                                         <div className="btn-box"  >
                                         {   timeArray.map ( (el, index)=> (
-                                            
-                                                <label  key={Object.keys(el)[0]} >
-                                                    <input type ="radio" name = "choise-time"   id = {index} onChange={(e)=> setAppointmentTime(e.target.value)}
-                                                  value =  {Object.keys(el)[0]}  />
-                                                   {Object.keys(el)[0]}
+
+                                                <label  key={Object.keys(el)} >
+                                                    <input
+                                                        type ="radio"
+                                                        name = "choise-time"
+                                                        id = {index} onChange={this.setTime}
+                                                        value =  {Object.keys(el)}
+                                                    />
+                                                   {Object.keys(el)}
                                                 </label>
                                             ))
                                         }
@@ -93,8 +114,8 @@ export class Appoint extends React.Component {
 
                                 {appointment.time &&
                                 <div style={{display:"flex",flexDirection:"column"}}>
-                                    <input className = "appointment comment" type='text' placeholder='Добавить комментарий' onChange={(e)=>setAppointmentComment(e.target.value)}/>
-                                    <button className = "btn link" onClick={() => postOrders(appointment)}>Подтвердите запись</button>
+                                    <input className = "appointment comment" type='text' placeholder='Добавить комментарий' onChange={this.setComment}/>
+                                    <button className = "btn link" onClick={this.postOrder}>Подтвердите запись</button>
                                 </div>
                                 }
 
@@ -126,12 +147,3 @@ const mapDispatchToProps = {
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Appoint)
-
-
-
-
-// <div className = "btn appointment-link" onClick={(e)=> setAppointmentTime(e.target.value)}  key={Object.keys(el)[0]} >
-// {Object.keys(el)[0]} 
-// </div>
-
-// setAppointmentTime
