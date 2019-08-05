@@ -69,8 +69,9 @@
 .icon-lens:before {
   content: "\e901";
   color:  var(--opacity-color);
-  margin: 15px 0;
   font-size: 1.6em;
+  margin: 15px 0;
+
 }
 @media (max-width: 1024px) {
 	.icon-lens:before {
@@ -116,6 +117,8 @@
 }
 .icon-exit:before {
   content: "\ea14";
+  color:  var(--opacity-color);
+  font-size: 1.6em;
 }
 .icon-location:before {
   content: "\e947";
