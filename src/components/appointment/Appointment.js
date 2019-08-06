@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import moment from "moment";
-// import { CustomSelect } from "./select";
+import { CustomSelect } from "./select";
 
 import {
     setAppointmentSpec,
@@ -15,7 +15,7 @@ import {
 } from "../../actions/actions";
 
 
-import Calendar from "./Calendar";
+import Calendar from "../Calendar";
 
 export class Appoint extends React.Component {
     state = {
@@ -31,7 +31,7 @@ export class Appoint extends React.Component {
     }
 
     setSpec = (e) => {
-        this.props.setAppointmentSpec(e.target.value)
+        this.props.setAppointmentSpec(e)
     };
 
     setShedule = (e) => {
@@ -73,18 +73,11 @@ export class Appoint extends React.Component {
                                 <h3>{doctor.name}</h3>
                                 <p className = "highlights">{doctor.profession}</p>
 
-                                {/* <CustomSelect label="Выбор услуги" /> */}
+                                <CustomSelect label="Выбор услуги" options = { doctor.speciality} clickOptionEvent = {this.setSpec} />
 
                                
 
-                                <select className = "appointment "  onChange={this.setSpec} defaultValue='Выбор услуги'>
-                                    <option disabled >Выбор услуги</option>
-                                    {
-                                        doctor.speciality.map(el=> (
-                                            <option key={el._id}>{el.name}</option>
-                                        ))
-                                    }
-                                </select>
+
 
                                 {appointment.spec &&
                                     <Calendar
@@ -167,3 +160,14 @@ const mapDispatchToProps = {
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Appoint)
+
+
+
+// <select className = "appointment "  onChange={this.setSpec} defaultValue='Выбор услуги'>
+//      <option disabled >Выбор услуги</option>
+//         {
+//             doctor.speciality.map(el=> (
+//                 <option key={el._id}>{el.name}</option>
+//              ))
+//         }
+// </select>

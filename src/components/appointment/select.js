@@ -2,20 +2,11 @@ import React from "react";
 
 
 
-// _____
-// const {doctors, appointment, servicesArray} = this.props.app;
-
-// ________
-const mock = [
-    { id: 1, text: "Закрытие рецессии десны" }, 
-    { id: 2, text: "Удаление кисты" }, 
-    { id: 3, text: "THREE" }
-];
 
 
 
+export const CustomSelect = ({ label, options , emptyLine = false, searchInput = true,  reset, clickOptionEvent = () =>{} }) => {
 
-export const CustomSelect = ({ label, options = mock, emptyLine = false, searchInput = true, reset }) => {
 	const [copyOption, setCopyOption] = React.useState([]);
 	const [show, toggleShow] = React.useState(false);
 	const [value, toggleValue] = React.useState("");
@@ -52,6 +43,7 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 	};
 
 	const toggleEvent = text => {
+		if (typeof clickOptionEvent === "function" ) clickOptionEvent(text);
 		toggleValue(text);
 		toggleInputValue(text);
 		toggleShow(false);
@@ -72,7 +64,7 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 			setCopyOption(options);
 			toggleInputValue(value);
 		} else {
-			const filtered = copyOption.filter(el => el.text.toLowerCase().indexOf(value.toLowerCase()) >= 0);
+			const filtered = copyOption.filter(el => el.name.toLowerCase().indexOf(value.toLowerCase()) >= 0);
 
 			setCopyOption(filtered);
 			toggleInputValue(value);
@@ -80,7 +72,7 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 	};
 
 	return (
-		<div className="select">
+		<div className="select ">
 			{label && (
 				<label htmlFor="select" className="select__lable">
 					{label}
@@ -96,7 +88,7 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 					id="select"
 					className="select__input icon-angle-down"
 				/>
-				<span class="icon-angle-down"></span>
+				<span className="icon-angle-down"></span>
 			</div>
 			{show && (
 				<ul className="select__list " ref={list}>
@@ -106,8 +98,8 @@ export const CustomSelect = ({ label, options = mock, emptyLine = false, searchI
 						</li>
 					)}
 					{copyOption.map(el => (
-						<li className="select__item" key={el.id} onClick={toggleEvent.bind(null, el.text)}>
-							{el.text}
+						<li className="select__item" key={el._id} onClick={toggleEvent.bind(null, el.name)}>
+							{el.name}
 						</li>
 					))}
 				</ul>

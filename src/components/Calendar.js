@@ -8,7 +8,7 @@ import {
     changeCalendarMonth,
     resetCurrent
 
-} from "../../actions/calendar";
+} from "../actions/calendar";
 
 export class Calendar extends React.Component {
 

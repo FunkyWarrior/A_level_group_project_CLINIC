@@ -240,7 +240,7 @@ aside {
 	text-transform: uppercase;
 	text-decoration: none;
 	letter-spacing: 0.05em;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-weight: bold;
 	line-height: 35px;
 	padding-top: 7px;
@@ -271,9 +271,11 @@ aside {
 }
 
 .more {
-	background-color: $opacity-color;
+	background-color: $main-color;
+	color: $opacity-color;
 	&:hover {
-		background-color: $main-color;
+	color: $main-color;
+	background-color: $opacity-color;
 	}
 }
 
@@ -372,7 +374,7 @@ h2 {
 	}
 	.item {
 		width: 20%;
-		margin: 10px 30px; 
+		margin: 10px 40px; 
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -380,7 +382,7 @@ h2 {
 		border-radius: 5px;
 		box-shadow: 0px 2px 8px 1px $main-color;
 		.photo {
-			border-radius: 5px;
+			border-radius: 5px; 
 			img {
 				border-radius: 5px;
 				width: 100%;
@@ -414,7 +416,7 @@ h2 {
 
 .team-container {
 	.item {
-		max-height: 365px;
+		max-height: 100%;
 		position: relative;
 		.desc {
 			position: absolute;
@@ -422,10 +424,13 @@ h2 {
 			left: 0;
 			display: none;
 			background-color: $opacity-color;
+			border-radius: 5px;
+			line-height: 1.2em;
 			height: 100%;
 		}
 		.photo {
 			overflow: hidden;
+			line-height: 0;
 			&:hover .desc {
 				display: flex;
 				flex-direction: column;
@@ -440,7 +445,16 @@ h2 {
 	}
 }
 
-
+// .doctors-wrap {
+// 	.item {
+// 		.photo {
+// 			height: 30vh;
+// 		}
+// 		.desc {
+// 			background-color: $opacity-color;
+// 		}
+// 	}
+// }
 
 //  ______Footer______
 .footer {
@@ -509,12 +523,31 @@ h2 {
 	@media (max-width: 768px) {
 		padding-top: 65px;
 	}
-	.item h3 {
-		font-size: 1em;
-		@media (max-width: 375px) {
-			font-size: 0.8em;
+	.item {
+		
+		.photo {
+			position: relative;
+			.hover-block {
+				display: none;
+				height: 100%;
+				width: 100%;
+				background-color: $opacity-color;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			&:hover .hover-block {
+				display: block;
+			}
 		}
-	}
+
+		h3 {
+			font-size: 1em;
+			@media (max-width: 375px) {
+				font-size: 0.8em;
+			}
+		}
+	}	
 }
 .info-wrap {
 	padding: 110px 10px 25px;

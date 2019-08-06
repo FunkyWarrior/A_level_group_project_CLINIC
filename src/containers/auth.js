@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 import { auth, register } from '../actions/auth';
 
-import {SignUpForm} from '../components/signUp';
-import {SignInForm} from '../components/signIn';
+import {SignUpForm} from '../components/auth/signUp';
+import {SignInForm} from '../components/auth/signIn';
 import Loader from '../components/loader';
 
 class Auth extends Component {

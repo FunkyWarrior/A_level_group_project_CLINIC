@@ -1,10 +1,10 @@
 import React from "react";
 
-import { useForm } from "./hooks/useForm";
-import Input from "./input";
+import { useForm } from "../hooks/useForm";
+import Input from "../input";
 
-import Button from "./button";
-import { logInForm } from "../utils/formFields";
+import Button from "../buttons/button";
+import { logInForm } from "../../utils/formFields";
 
 export const SignInForm = ({ error, submitHandler }) => {
 	const [form, { onChangeHandler, returnAllValues, focusEvent, blurEvent }] = useForm(logInForm);

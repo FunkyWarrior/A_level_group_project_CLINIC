@@ -1,10 +1,10 @@
 import React from "react";
 
-import { signUpForm } from "../utils/formFields";
-import { useForm } from "./hooks/useForm";
+import { signUpForm } from "../../utils/formFields";
+import { useForm } from "../hooks/useForm";
 
-import Input from "./input";
-import Button from "./button";
+import Input from "../input";
+import Button from "../buttons/button";
 
 export const SignUpForm = ({ submitHandler, error, successRegister }) => {
 	const [form, { onChangeHandler, returnAllValues, focusEvent, blurEvent }] = useForm(signUpForm);
