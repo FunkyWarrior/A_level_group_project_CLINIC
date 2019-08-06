@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from "moment";
 import {connect} from "react-redux";
+import 'moment/locale/ru';
 
 import {
     createCalendarMonthArray,
@@ -12,11 +13,7 @@ import {
 export class Calendar extends React.Component {
 
     componentDidMount() {
-        moment.locale('ru', {
-            week : {
-                dow:1
-            }
-        });
+        moment.locale('ru');
         this.props.createCalendarMonthArray(this.props.doctor)
     }
     componentDidUpdate(prevProps) {
@@ -38,7 +35,7 @@ export class Calendar extends React.Component {
     };
 
     action = (e) => {
-        this.props.action(e.target.id)
+        this.props.action(e)
     };
 
     render() {
@@ -56,7 +53,7 @@ export class Calendar extends React.Component {
                 </div>
                 <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (
-                        <p key={el}>{el}</p>
+                        <p style={{ width:"40px",height:"40px"}} key={el}>{el}</p>
                     ))}
                 </div>
                 <div  className = "days">
