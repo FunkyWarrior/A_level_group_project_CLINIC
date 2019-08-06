@@ -3,7 +3,7 @@ import React from "react";
 
 
 // _____
-// const {doctors, appointment, timeArray,services} = this.props.app;
+// const {doctors, appointment, servicesArray} = this.props.app;
 
 // ________
 const mock = [

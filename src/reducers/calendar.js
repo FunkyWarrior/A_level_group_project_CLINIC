@@ -16,7 +16,7 @@ export const calendarReducer = (state = defaultState, action) => {
                     day:"",
                     disabled:false,
                     backgroundColor:"",
-                    border:""
+                    border:"", 
                 };
                 let el = state.current.date(x).format('YYYY-MM-DD');
                 day.day = el;
@@ -31,13 +31,13 @@ export const calendarReducer = (state = defaultState, action) => {
             }
 
             const prevMonth = moment(state.current).subtract(1,'months');
-            const startDay = state.current.startOf('month').day() === 0 ? 7 : state.current.startOf('month').day();
-            for (let x=1; x < startDay ;x++){
+            const startDay = state.current.startOf ('month').day ( ) === 0 ? 7 : state.current.startOf('month').day( );
+            for (let x=1; x < startDay; x++){
                 let day = {
-                    day:"",
-                    disabled:false,
-                    backgroundColor:"",
-                    border:""
+                    day: "",
+                    disabled: false,
+                    backgroundColor: "",
+                    border: "",
                 };
                 let el = prevMonth.endOf('month').subtract(x-1,'days').format('YYYY-MM-DD');
                 day.day = el;

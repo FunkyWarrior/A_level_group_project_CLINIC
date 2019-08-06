@@ -23,7 +23,9 @@ body {
 	background-image: url(../assets/images/fon1.jpg);
 	background-size: cover;
 	min-height: 100vh;
-	
+	@media (max-width: 1024px) {
+		background-position-x: -450px;
+	}
 	@media (max-width: 768px) {
 		background-position-x: -270px;
 	}
@@ -44,7 +46,62 @@ body {
 	margin: 0 auto;
 }
 
-// header +  navigation
+// __________SIDEBAR __________
+aside {
+	position: fixed;
+	top: 50%;
+	right: 2%;
+	z-index: 999999;
+	.sidebar-ul {
+		list-style: none;
+		.sidebar-item {
+			margin-top: 15px;
+		}
+	}
+	.nav-link {
+		text-decoration: none;
+		margin-top: 15px;
+		padding: 15px 0;
+	}
+	@media (max-width: 1024px) {
+		top: 70%;	
+	}
+	@media (max-width: 375px) {
+		top: 75%;	
+	}
+	@media (max-width: 320px) {
+		top: 25%;	
+	}
+}
+
+// _______loadrer______________
+.loader-box {
+	border: none;
+	min-width: 100vw;
+	min-height: 100vh;
+	background-color: $opacity-color;
+	.loader {
+		margin: 0 auto;
+		position: fixed;
+		top: 30%;
+		left: 40%;
+		@media (max-width: 1024px) {
+			left: 35%;
+		}
+		@media (max-width: 768px) {
+			left: 30%;
+		}
+		@media (max-width: 768px) {
+			left: 25%;
+			width: 50%;
+		}
+	}
+
+}
+
+
+
+// _______header +  navigation______________
 .header,
 .footer {
 	width: 100%;
@@ -120,7 +177,7 @@ body {
 	}	
 }
 	
-// banner + title
+// ________banner + title_________
 .title-box {
 	color: $header-color;
 	margin: 0px 40px;
@@ -173,7 +230,7 @@ body {
 	}
 }
 
-// buttons
+// ________buttons _________
 .btn {
 	display: block;
 	min-height: 50px;
@@ -183,7 +240,7 @@ body {
 	text-transform: uppercase;
 	text-decoration: none;
 	letter-spacing: 0.05em;
-	font-size: 15px;
+	font-size: 0.8em;
 	font-weight: bold;
 	line-height: 35px;
 	padding-top: 7px;
@@ -229,8 +286,9 @@ body {
 	border: none;	
 	height: 30px;
 }
+// ______________________________________//
 
-//  section About Us
+//  ___________section About Us______________
 .aboutsection, 
 .team-container,
 .doctors-wrap,
@@ -258,11 +316,14 @@ h2 {
 	box-shadow: none;
 	color: $main-color;
 	border-bottom: 1px solid $opacity-color;
+	@media (max-width: 1024px) {
+		padding: 2px 15px;
+	}
 }
 // ____
 
 
-// second banner 
+// ____________second banner____________ 
 .case {
 	position: relative;
 	.banner {
@@ -297,21 +358,21 @@ h2 {
 	}
 }
 
-// shortly about doctors 
+// ______shortly about doctors ________
 .team-container,
 .doctors-wrap {
 	color: $header-color;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: stretch;
 	padding: 15px 5px 50px;
 	@media (max-width: 768px) {
 		justify-content: center;
 	}
 	.item {
-		width: 25%;
-		margin: 10px; 
+		width: 20%;
+		margin: 10px 30px; 
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -328,10 +389,14 @@ h2 {
 		}
 		h3 {
 			margin: 10px;
-			// font-size: 18px;
+			font-size: 1em;
 		}
 		p {
 			margin: 5px;
+			font-size: 0.9em;
+		} 
+		.link	{
+			font-size: 0.6em;
 		}
 		// .link-box {
 		// 	margin-top: 20px;
@@ -377,7 +442,7 @@ h2 {
 
 
 
-//  Footer
+//  ______Footer______
 .footer {
 	font-family: 'Montserrat', sans-serif;
 	position: static;
@@ -436,32 +501,6 @@ h2 {
 
 
 
-// loadrer
-.loader-box {
-	border: none;
-	min-width: 100vw;
-	min-height: 100vh;
-	background-color: $opacity-color;
-	.loader {
-		margin: 0 auto;
-		position: fixed;
-		top: 30%;
-		left: 40%;
-		@media (max-width: 1024px) {
-			left: 35%;
-		}
-		@media (max-width: 768px) {
-			left: 30%;
-		}
-		@media (max-width: 768px) {
-			left: 25%;
-			width: 50%;
-		}
-	}
-
-}
-
-
 
 
 // _____DOCTORS_____ 
@@ -471,8 +510,9 @@ h2 {
 		padding-top: 65px;
 	}
 	.item h3 {
+		font-size: 1em;
 		@media (max-width: 375px) {
-			font-size: 1em;
+			font-size: 0.8em;
 		}
 	}
 }
@@ -509,6 +549,7 @@ h2 {
 		.highlights {
 			font-weight: 700;
 			color: $hover-color;
+			letter-spacing: 0.1em;
 		}
 		p {
 			margin: 10px 0;
@@ -539,6 +580,9 @@ h2 {
  	&:focus {
 		outline: none;
 	}
+	option {
+		max-width: 90%;
+	}
 }
 .appointment-time {
 	.btn-box {
@@ -554,16 +598,19 @@ h2 {
 			display: flex;
 			margin: 10px 10px 3px 0;
 			text-align: center;
-			padding: 5px 10px;
-			min-width: 80px;
+			padding: 5px 15px;
+			min-width: 100px;
 			background-color: $hover-color;
 			color: $opacity-color;
 			&:hover {
 				background-color: $main-color;
 				color: $header-color;
 			}
+			span {
+				margin: 0px auto;
+			}
 		}
-		label input:checked ~ label {
+		label input[type = "radio"]:checked {
 			background-color: $main-color;
 			color: $header-color;
 		  }
@@ -574,33 +621,6 @@ h2 {
 
 
 
-// __________SIDEBAR __________
-aside {
-	position: fixed;
-	top: 50%;
-	right: 2%;
-	z-index: 999999;
-	.sidebar-ul {
-		list-style: none;
-		.sidebar-item {
-			margin-top: 15px;
-		}
-	}
-	.nav-link {
-		text-decoration: none;
-		margin-top: 15px;
-		padding: 15px 0;
-	}
-	@media (max-width: 1024px) {
-		top: 70%;	
-	}
-	@media (max-width: 375px) {
-		top: 75%;	
-	}
-	@media (max-width: 320px) {
-		top: 25%;	
-	}
-}
 
 
 

@@ -53,9 +53,9 @@ export class Admin extends React.Component {
             <div className="main">
                 <div className="info-wrap">
                     <div className = " btn-box">
-                        <Link to='/admin/change-shedule' className = "btn link admin">Shedule</Link>
-                        <Link to='/admin/change-doctors' className = "btn link admin">Doctors</Link>
-                        <Link to='/admin/change-services' className = "btn link admin">Services</Link>
+                        <Link to='/admin/change-shedule' className = "btn link admin">Расписание</Link>
+                        <Link to='/admin/change-doctors' className = "btn link admin">Сотрудники</Link>
+                        <Link to='/admin/change-services' className = "btn link admin">Сервисы</Link>
                     </div>
                     <Switch>
                         <Route path='/admin/change-shedule' render={() => <Shedule

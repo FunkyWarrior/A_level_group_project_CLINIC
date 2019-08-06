@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import moment from "moment";
 // import { CustomSelect } from "./select";
 
 import {
@@ -17,6 +18,9 @@ import {
 import Calendar from "./Calendar";
 
 export class Appoint extends React.Component {
+    state = {
+        pickedDate:null
+    };
 
     componentDidMount() {
         this.props.setAppointmentDoctor(this.props.match.params.doctorId)
@@ -28,6 +32,11 @@ export class Appoint extends React.Component {
 
     setSpec = (e) => {
         this.props.setAppointmentSpec(e.target.value)
+    };
+
+    setShedule = (e) => {
+        this.setState({pickedDate:e.target.id});
+        this.props.setAppointmentShedule(e.target.id)
     };
 
     setTime = (e) => {
@@ -45,7 +54,7 @@ export class Appoint extends React.Component {
 
     render() {
         const {doctors, appointment, timeArray,services} = this.props.app;
-        const {match, setAppointmentShedule} = this.props;
+        const {match} = this.props;
         const doctor = doctors.find(el => el._id === match.params.doctorId);
         let spec;
         if (appointment.spec){
@@ -66,13 +75,7 @@ export class Appoint extends React.Component {
 
                                 {/* <CustomSelect label="Выбор услуги" /> */}
 
-                                {appointment.spec &&
-                                <div>
-                                    <p>{spec.name}</p>
-                                    <p>Длительность: {spec.duration} ч.</p>
-                                    <p>Цена от {spec.price} грн.</p>
-                                </div>
-                                }
+                               
 
                                 <select className = "appointment "  onChange={this.setSpec} defaultValue='Выбор услуги'>
                                     <option disabled >Выбор услуги</option>
@@ -84,41 +87,58 @@ export class Appoint extends React.Component {
                                 </select>
 
                                 {appointment.spec &&
-                                <Calendar
-                                    doctor={doctor}
-                                    action={setAppointmentShedule}
-                                />
+                                    <Calendar
+                                        doctor={doctor}
+                                        action={this.setShedule}
+                                    />
                                 }
 
-                                {appointment.shedule &&
 
-                             
+
+                                {appointment.shedule &&
                                    <div className = "appointment-time" >
                                         <div className="btn-box"  >
-                                        {   timeArray.map ( (el, index)=> (
-
-                                                <label  key={Object.keys(el)} >
-                                                    <input
-                                                        type ="radio"
-                                                        name = "choise-time"
-                                                        id = {index} onChange={this.setTime}
-                                                        value =  {Object.keys(el)}
-                                                    />
-                                                   {Object.keys(el)}
-                                                </label>
-                                            ))
+                                            {
+                                                timeArray.map ( (el, index) => (
+                                                    <label  key={Object.keys(el)} >
+                                                        <input
+                                                            type ="radio"
+                                                            name = "choise-time"
+                                                            id = {index} onChange={this.setTime}
+                                                            value =  {Object.keys(el)}
+                                                        />
+                                                        <span> {Object.keys(el)}</span>
+                                                       
+                                                    </label>
+                                                ))
+                                            }
+                                        </div>
+                                   </div>
+                                }
+                                 {appointment.spec &&
+                                    <div>
+                                        <p>{spec.name}</p>
+                                        <p>Длительность: {spec.duration} ч.</p>
+                                        <p>Цена от {spec.price} грн.</p>
+                                        {this.state.pickedDate &&
+                                            <p>{moment(this.state.pickedDate).format('DD-MMMM-YYYY')}</p>
                                         }
-                                            </div>
+                                        {appointment.time &&
+                                            <p>{appointment.time}</p>
+                                        }
                                     </div>
                                 }
 
                                 {appointment.time &&
                                 <div style={{display:"flex",flexDirection:"column"}}>
-                                    <input className = "appointment comment" type='text' placeholder='Добавить комментарий' onChange={this.setComment}/>
+                                    <input
+                                        className = "appointment comment"
+                                        type='text'
+                                        placeholder='Добавить комментарий'
+                                        onChange={this.setComment}/>
                                     <button className = "btn link" onClick={this.postOrder}>Подтвердите запись</button>
                                 </div>
                                 }
-
                             </div>
                         </div>
                     </div>
