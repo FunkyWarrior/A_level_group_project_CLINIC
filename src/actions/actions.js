@@ -99,7 +99,7 @@ const getDoctorsRequestFail = payload => ({
 });
 
 export const getDoctors = () => dispatch => {
-    console.log('get')
+    // console.log('get')
     dispatch(getDoctorsRequest());
     return fetch(`${URL}doctors`,{
         credentials:"include"

@@ -39,7 +39,7 @@ export const SignInForm = ({ error, submitHandler }) => {
 				})}
 				{error && <p className="auth__error-auth-text">{error}</p>}
 				<div className="auth__control-box">
-					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Log In" />
+					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Войти" />
 				</div>
 			</form>
 		</div>

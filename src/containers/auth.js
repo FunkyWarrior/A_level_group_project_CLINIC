@@ -16,19 +16,21 @@ class Auth extends Component {
   render() {
     const { auth } = this.state;
     const { user } = this.props
-    console.log('userProps',this.props.user)
+
     
-    if(Object.keys(user).length !== 0 && user.role === "User") {
+    if(user) 
+    {if(Object.keys(user).length !== 0 && !user.role && !user.doctor) {
       return <Redirect to="/user" />
       }
 
-      if(Object.keys(user).length !== 0 && user.role === "Doctor") {
+      if(Object.keys(user).length !== 0 && user.role && !user.doctor) {
         return <Redirect to="/admin" />
       }
       
-      if(Object.keys(user).length !== 0 && user.role === "Admin") {
-        return <Redirect to="/admin" />
+      if(Object.keys(user).length !== 0 && user.doctor && !user.role) {
+        return <Redirect to="/reviews" />
       }
+    }
 
     return (
       <div className="main">
@@ -53,16 +55,16 @@ class Auth extends Component {
                 <div className="auth__additional-content">
                   {auth ? (
                     <p className="auth__text">
-                      Do you have account ? {" "}
+                    У вас есть акаунт ? {" "}
                       <span className="auth__toggle-span" onClick={this.toggleAuth}>
-                        Sing Up
+                        Зарегистрироваться
                       </span>
                     </p>
                   ) : (
                     <p className="auth__text">
-                      I have account{" "}
+                      У меня есть акаунт{" "}
                       <span className="auth__toggle-span" onClick={this.toggleAuth}>
-                        Sign In
+                       Войти
                       </span>
                     </p>
                   )}

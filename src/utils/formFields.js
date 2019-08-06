@@ -18,7 +18,7 @@ export const logInForm = {
 			id: 2,
 			name: "password",
 			type: "password",
-			label: "Password",
+			label: "Пароль",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""
@@ -55,7 +55,7 @@ export const signUpForm = {
 			id: 2,
 			type: "text",
 			name: "firstName",
-			label: "First Name",
+			label: "Имя",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""
@@ -72,7 +72,7 @@ export const signUpForm = {
 			id: 3,
 			type: "text",
 			name: "lastName",
-			label: "Last Name",
+			label: "Фамилия",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""
@@ -86,7 +86,7 @@ export const signUpForm = {
 			id: 4,
 			type: "number",
 			name: "phone",
-			label: "Phone",
+			label: "Телефон",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""
@@ -100,7 +100,7 @@ export const signUpForm = {
 			id: 5,
 			name: "password",
 			type: "password",
-			label: "Password",
+			label: "Пароль",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""
@@ -117,7 +117,7 @@ export const signUpForm = {
 			id: 6,
 			name: "confirmPassword",
 			type: "password",
-			label: "Confirm Password",
+			label: "Повторите пароль",
 			validation: {
 				requred: {
 					cb: v => v.trim() === ""

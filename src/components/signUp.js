@@ -40,7 +40,7 @@ export const SignUpForm = ({ submitHandler, error, successRegister }) => {
 				{successRegister && <p className="auth__success-auth-text">{successRegister}</p>}
 				{error && <p className="auth__error-auth-text">{error}</p>}
 				<div className="auth__control-box">
-					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Log In" />
+					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Зарегистрироваться" />
 				</div>
 			</form>
 		</div>

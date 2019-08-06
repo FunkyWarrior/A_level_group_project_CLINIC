@@ -6,7 +6,12 @@ import {Switch, Route} from "react-router-dom";
 import {
     getDoctors,
     getServices,
+   
 } from "./actions/actions";
+
+import {
+    getUser,
+} from "./actions/auth"
 
 import Loader from "./components/loader";
 import Header from "./components/header/index";
@@ -96,7 +101,7 @@ const route = [
         id: 9,
         exact: true,
 		path: "/user",
-		protected: false,
+		protected: true,
 		component: User
     },
     {
@@ -111,6 +116,10 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
+
+       if(localStorage.getItem('userId')){
+       this.props.getUser()
+       }
 
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
@@ -128,20 +137,19 @@ export class App extends React.Component {
     }
 
     render() {
-        console.log(this.props.app)
         return (
               <Loader flag={this.props.app.isFetching}>
                     <Header/>
                     <Switch>
-                        <Route exact path="/" component={Main} />
-                        <Route exact path="/doctors" component={Doctors} />
-                        <Route exact path="/services" component={Services} />
-                        <Route exact path="/doctors/:doctor" component={MoreInfo} />
-                        {/* <Route exact path="/services/:service" component={Categories} /> */}
-                        <Route exact path="/reviews" component={Reviews}/>
-                        <Route path="/admin/" component={Admin} />
-                        <Route exact path="/appointment/:doctorId" component={Appointment}/>
-                        <Route exact path="/auth" component={Auth} />
+                        {route.map(el => (
+					        <PrivateRoute
+                                protectedRoute={el.protected}
+                                key={el.id}
+                                exact={el.exact}
+                                path={el.path}
+                                component={el.component}
+                            />
+				        ))}
                     </Switch>
                 <Footer />
              </Loader>
@@ -152,12 +160,14 @@ export class App extends React.Component {
 const mapStateToProps = state => {
     return {
         app:state.app,
+        user:state.auth.user
     }
 };
 
 const mapDispatchToProps = {
     getDoctors,
     getServices,
+    getUser,
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(App)

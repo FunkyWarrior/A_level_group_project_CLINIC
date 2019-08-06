@@ -15,9 +15,7 @@ export default (state = initialState, action) => {
 
         case types.AUTH_REQUEST_SUCCESS: {
             const { user } = action.payload;
-            const updatedUser = {...user, role: user.doctor ? "Doctor" : user.role ? "Admin" : "User"} 
-            console.log("user", updatedUser)
-            return {...state, isFetching: false, user: updatedUser };
+            return {...state, isFetching: false, user: user };
         }
 
         case types.AUTH_REQUEST_FAIL: {
@@ -35,6 +33,18 @@ export default (state = initialState, action) => {
 
         case types.REGISTRATION_REQUEST_FAIL: {
             return { ...state, isFetching: false, error: action.payload.response.data.message}
+        }
+
+        case types.GET_USER_REQUEST: {
+            return { ...state, isFetching: true}
+        }
+
+        case types.GET_USER_REQUEST_SUCCESS: {
+            return {...state,isFetching: false, user: action.payload.user}
+        }
+        
+        case types.USER_LOGOUT: {
+            return { ...state, user: initialState.user}
         }
         
         default:

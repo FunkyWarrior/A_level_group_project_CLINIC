@@ -22,8 +22,7 @@ export const auth = payload => {
         dispatch(authRequest());
         try {
             const { data } = await axios.post("https://api-clinics.herokuapp.com/api/v1/auth/login", payload);
-            localStorage.setItem("userId",JSON.stringify(data.user._id))
-            console.log('data',data)
+            localStorage.setItem("userId",data.user._id)
             dispatch(authRequestSuccess(data));
 
            
@@ -64,3 +63,36 @@ export const register = payload => {
         }
     };
 };
+
+
+const getUserRequest = payload => {
+    return {
+    type: types.GET_USER_REQUEST,
+    payload
+}}
+
+const getUserRequestSuccess = payload => ({
+    type: types.GET_USER_REQUEST_SUCCESS,
+    payload
+})
+
+const getUserRequestFail = payload => ({
+    type: types.GET_USER_REQUEST_FAIL,
+    payload
+})
+
+export const getUser = () => dispatch => {
+    dispatch(getUserRequest());
+    return fetch(`https://api-clinics.herokuapp.com/api/v1/users/` + localStorage.getItem('userId'),{
+        credentials:"include"
+    })
+        .then(res => res.json())
+        .then(res => dispatch(getUserRequestSuccess(res)))
+        .catch(err => dispatch(getUserRequestFail(err)));
+};
+
+
+export const userLogout = payload => ({
+    type: types.USER_LOGOUT,
+    payload
+})
