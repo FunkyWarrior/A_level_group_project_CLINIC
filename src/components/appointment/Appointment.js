@@ -60,7 +60,6 @@ export class Appoint extends React.Component {
         if (appointment.spec){
             spec = services.find(el => el._id === appointment.spec)
         }
-        console.log(this.props.app.appointment)
         return (
             <>
                 <div className="main">
