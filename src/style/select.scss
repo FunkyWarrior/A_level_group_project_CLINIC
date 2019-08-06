@@ -9,13 +9,14 @@ $opacity-color: rgba(17,17,17,0.8);
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	font-family: 'Lato', sans-serif;
 
 	&__list {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 		width: 100%;
-		background-color: #fff;
+		background-color: $opacity-color;
 
 		position: absolute;
 		left: 0;
@@ -24,8 +25,10 @@ $opacity-color: rgba(17,17,17,0.8);
 	}
 
 	&__value-box {
-        position: relative;
-		border: 1px solid #eee;
+        // position: relative;
+		border: 1px solid $main-color;
+		background-color: $header-color;
+		color: $opacity-color;
 		border-radius: 3px;
 		padding: 0.5rem;
 	}
@@ -35,14 +38,18 @@ $opacity-color: rgba(17,17,17,0.8);
 		padding: 0.5rem;
 		cursor: pointer;
 		&:hover {
-			background-color: #eee;
+			background-color: $main-color;
+			color:$opacity-color;
+			font-weight: 700;
 		}
 	}
 
 	&__input {
+		position: relative;
         border: none;
         background: none;
-
+		color: $opacity-color;
+		font-weight: 700;
 		width: 100%;
 		&:focus {
 			outline: none;

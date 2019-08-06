@@ -61,10 +61,10 @@
 }
 .icon-angle-down:before {
   content: "\f107";
-  color:  var(--hover-color);
+  color:  var(--opacity-color);
   position: absolute;
   right: 15px;
-  top: 22%;
+  top: 55%;
 }
 .icon-lens:before {
   content: "\e901";

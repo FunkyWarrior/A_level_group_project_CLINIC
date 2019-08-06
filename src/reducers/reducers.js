@@ -115,7 +115,7 @@ export const appReducer = (state = defaultState,action) => {
             let doctor = state.doctors.find(el => el._id === state.appointment.doctor);
             let shedule = doctor.shedule.find(el => el.data === action.payload);
             let duration = state.services.find(el => el._id === state.appointment.spec).duration;
-            console.log(shedule,action.payload)
+            console.log(shedule,  action.payload)
             for (let index in shedule) {
                 let check = true;
                 for (let x=0;x < duration; x++){

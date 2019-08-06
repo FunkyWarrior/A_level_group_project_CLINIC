@@ -9,7 +9,6 @@ $opacity-color: rgba(17,17,17,0.8);
 .auth-wrapper {
 	background-color: $opacity-color;
 	min-height: 100vh;
-	min-width: 100vw;
 	@media (max-width: 1024px) {
 		min-height: 84vh;
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from "moment";
 
-import Calendar from "../appointment/Calendar";
+import Calendar from "../Calendar";
 
 export default class Shedule extends React.Component {
     state ={

@@ -1,13 +1,13 @@
 import React from "react";
 
-import { signUpForm } from "../utils/formFields";
-import { useForm } from "./hooks/useForm";
+import { useForm } from "../hooks/useForm";
+import Input from "../input";
 
-import Input from "./input";
-import Button from "./button";
+import Button from "../buttons/button";
+import { logInForm } from "../../utils/formFields";
 
-export const SignUpForm = ({ submitHandler, error, successRegister }) => {
-	const [form, { onChangeHandler, returnAllValues, focusEvent, blurEvent }] = useForm(signUpForm);
+export const SignInForm = ({ error, submitHandler }) => {
+	const [form, { onChangeHandler, returnAllValues, focusEvent, blurEvent }] = useForm(logInForm);
 
 	const submit = e => {
 		e.preventDefault();
@@ -17,7 +17,7 @@ export const SignUpForm = ({ submitHandler, error, successRegister }) => {
 	};
 
 	return (
-		<div>
+		<div className="auth__auth-box">
 			<form onSubmit={submit} className="auth__auth-form">
 				{Object.keys(form.form).map(input_name => {
 					return (
@@ -37,10 +37,9 @@ export const SignUpForm = ({ submitHandler, error, successRegister }) => {
 						/>
 					);
 				})}
-				{successRegister && <p className="auth__success-auth-text">{successRegister}</p>}
 				{error && <p className="auth__error-auth-text">{error}</p>}
 				<div className="auth__control-box">
-					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Зарегистрироваться" />
+					<Button disabled={!form.validForm} className="auth__submit-btn" type="submit" text="Войти" />
 				</div>
 			</form>
 		</div>

@@ -14,6 +14,7 @@ import "./style/style.css"
 import "./style/select.scss"
 import "./style/calendar.scss"
 import "./style/auth.scss"
+import "./style/modal.scss"
 
 ReactDOM.render(
     <Provider store={store}>
