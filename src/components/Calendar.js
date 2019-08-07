@@ -63,8 +63,6 @@ export class Calendar extends React.Component {
                             id={el.day}
                             disabled={el.disabled}
                             style={{
-                                width:"50px",
-                                height:"50px",
                                 backgroundColor:el.backgroundColor,
                                 border:el.border
                             }}
