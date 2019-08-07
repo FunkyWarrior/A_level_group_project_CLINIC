@@ -13,7 +13,7 @@ import {
     setAppointmentComment,
     postOrders
 
-} from "../../actions/actions";
+} from "../../actions/appointment";
 
 
 import Calendar from "../Calendar";
@@ -32,17 +32,12 @@ export class Appoint extends React.Component {
     }
 
     setSpec = (e) => {
-        this.props.setAppointmentSpec(e)
+        this.props.setAppointmentSpec({data:e, services:this.props.services})
     };
 
     setShedule = (e) => {
         this.setState({pickedDate:e.target.id});
-        this.props.setAppointmentShedule(e.target.id)
-    };
-
-    setShedule = (e) => {
-        this.setState({pickedDate:e.target.id});
-        this.props.setAppointmentShedule(e.target.id)
+        this.props.setAppointmentShedule({data:e.target.id, services:this.props.services, doctors:this.props.doctors})
     };
 
     setTime = (e) => {
@@ -54,17 +49,16 @@ export class Appoint extends React.Component {
     };
 
     postOrder = () => {
-        this.props.postOrders(this.props.app.appointment)
+        this.props.postOrders(this.props.appointment.appointment)
     };
 
 
     render() {
-        const {doctors, appointment, timeArray,services} = this.props.app;
-        const {match} = this.props;
+        const {appointment, timeArray, doctors,services,match} = this.props;
         const doctor = doctors.find(el => el._id === match.params.doctorId);
         let spec;
-        if (appointment.spec){
-            spec = services.find(el => el._id === appointment.spec)
+        if (appointment.specId){
+            spec = services.find(el => el._id === appointment.specId)
         }
         return (
             <>
@@ -81,7 +75,7 @@ export class Appoint extends React.Component {
 
                                 <CustomSelect label="Выбор услуги" options = { doctor.speciality} clickOptionEvent = {this.setSpec} />
 
-                                {appointment.spec &&
+                                {appointment.specId &&
                                 <div>
                                     <p>{spec.name}</p>
                                     <p>Длительность: {spec.duration} ч.</p>
@@ -95,14 +89,14 @@ export class Appoint extends React.Component {
                                 </div>
                                 }
 
-                                {appointment.spec &&
+                                {appointment.specId &&
                                     <Calendar
                                         doctor={doctor}
                                         action={this.setShedule}
                                     />
                                 }
 
-                                {appointment.shedule &&
+                                {appointment.sheduleId &&
                                    <div className = "appointment-time" >
                                         <div className="btn-box"  >
                                             {
@@ -147,7 +141,10 @@ export class Appoint extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        app:state.app
+        appointment:state.appointment.appointment,
+        timeArray:state.appointment.timeArray,
+        doctors:state.app.doctors,
+        services:state.app.services
     }
 };
 

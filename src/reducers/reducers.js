@@ -30,15 +30,6 @@ const defaultState = {
     changeDoctorId:null,
     changeServiceId:null,
 
-    appointment:{
-        shedule:null,
-        time:null,
-        doctor:null,
-        spec:null,
-        comment:''
-    },
-
-    timeArray:[],
     isFetching:false,
     error: null,
 
@@ -105,82 +96,6 @@ export const appReducer = (state = defaultState,action) => {
                     ...el,
                     value:result.find(item => item[0] === el.name)[1]
                 } : el)
-            };
-        }
-
-// -----------------------------------------------------------------------------------------------------------------
-
-        case types.CHANGE_APPOINTMENT_SHEDULE : {
-            let timeArray =[];
-            let doctor = state.doctors.find(el => el._id === state.appointment.doctor);
-            let shedule = doctor.shedule.find(el => el.data === action.payload);
-            let duration = state.services.find(el => el._id === state.appointment.spec).duration;
-            console.log(shedule,  action.payload)
-            for (let index in shedule) {
-                let check = true;
-                for (let x=0;x < duration; x++){
-                    if (shedule[`${+index.split(':')[0]+x < 10 ? '0' +(+index.split(':')[0] + x) + ':00' : +index.split(':')[0]+ x + ':00'}`] !== true){
-                        check = false
-                    }
-                }
-                if (check) timeArray.push({[`${index}`]:shedule[`${index}`]});
-            }
-            return {
-                ...state,
-                appointment:{
-                    ...state.appointment,
-                    shedule:shedule._id
-                },
-                timeArray:timeArray
-            };
-        }
-
-        case types.CHANGE_APPOINTMENT_DOCTOR : {
-            return {
-                ...state,
-                appointment:{
-                    ...state.appointment,
-                    doctor:action.payload
-                }
-            };
-        }
-
-        case types.CHANGE_APPOINTMENT_TIME : {
-            return {
-                ...state,
-                appointment:{
-                    ...state.appointment,
-                    time:action.payload
-                }
-            };
-        }
-
-        case types.CHANGE_APPOINTMENT_SPEC : {
-            return {
-                ...state,
-                appointment:{
-                    ...state.appointment,
-                    spec:state.services.find(el => el.name === action.payload)._id,
-                    shedule:null,
-                    time:null
-                }
-            };
-        }
-
-        case types.CHANGE_APPOINTMENT_COMMENT : {
-            return {
-                ...state,
-                appointment:{
-                    ...state.appointment,
-                    comment:action.payload
-                }
-            };
-        }
-
-        case types.CLEAR_APPOINTMENT : {
-            return {
-                ...state,
-                appointment: defaultState.appointment
             };
         }
 
