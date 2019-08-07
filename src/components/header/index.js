@@ -1,5 +1,4 @@
 import React from "react";
-// import Scrollchor from 'react-scrollchor';
 import {Link}  from "react-router-dom"
 import logo from "../../assets/images/logo.png";
 import Navigation from "./navigation"

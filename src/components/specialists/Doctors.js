@@ -13,10 +13,12 @@ export class Doctors extends React.Component {
                             data.map(el => (
                                 <div className="item"  key = {el._id} >
                                     <div className="photo">
-                                        <img src= {el.photo} alt= {el.name}/>
-                                        <div className="hover-block">
-                                            <Link to = {`/doctors/${el._id}`} className = "btn link more">Подробнее ...</Link>
-                                        </div>
+                                        <Link to = {`/doctors/${el._id}`} >
+                                            <img src= {el.photo} alt= {el.name}/>
+                                            <div className="hover-block">
+                                                <div className = "btn link more">Подробнее ... </div>
+                                            </div>
+                                        </Link>
                                     </div>
                                     
                                     <div className="desc">

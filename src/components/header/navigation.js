@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-// import Scrollchor from 'react-scrollchor';
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
