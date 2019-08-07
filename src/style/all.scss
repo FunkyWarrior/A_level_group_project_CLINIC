@@ -208,10 +208,11 @@ aside {
 	h1{
 		text-transform: uppercase;
 		background-color: $opacity-color;
-		width: 100%;
-		font-size: 2.6em;
+		width: 85%;
+		font-size: 2.4em;
 		padding: 35px;
-		line-height: 50px;
+		line-height: 1em;
+		letter-spacing: 0.05em;
 		font-weight: bold;
 		margin: 30px auto 0;
 		text-align: center;
@@ -234,7 +235,7 @@ aside {
 .btn {
 	display: block;
 	min-height: 50px;
-	width: 70%;
+	width: 60%;
 	margin: 20px auto;
 	color: $main-color;
 	text-transform: uppercase;
@@ -498,7 +499,7 @@ h2 {
 	color: $header-color;
 	h3 {
 		margin: 0;
-		font-size: 1.8em;
+		font-size: 1.6em;
 		line-height: 2em;
 		text-align:  center;
 		@media (max-width: 768px) {
@@ -506,12 +507,15 @@ h2 {
 		}
 	}
 	.desc {
-		width: 50%;
+		width: 60%;
 		@media (max-width: 1024px) {
-			width: 60%;
+			width: 70%;
 		}
 		@media (max-width: 768px) {
 			width: 100%;
+		}
+		.link {
+				font-size: 0.8em;
 		}
 	}
 	.card-item {
@@ -526,6 +530,7 @@ h2 {
 		}
 		img {
 			border-radius: 3px;
+			width: 85%;
 			box-shadow: 1px 1px 15px 1px $hover-color;
 		}
 	}
@@ -589,6 +594,18 @@ h2 {
 
 }
 
+.comment-input {
+	display: flex;
+	flex-direction: column;
+}
+.comment {
+	resize: none;
+	background-color: $main-color;
+	&::placeholder {
+		color: $opacity-color;  
+	  }
+}
+
 
 
 //  ______Footer______
@@ -620,15 +637,15 @@ h2 {
 		}
 	}
 	.logo-box  img {
-		width: 300px;
+		width: 250px;
 		@media (max-width: 768px) {
-			width: 250px;	
-		}
-		@media (max-width: 414px) {
 			width: 200px;	
 		}
-		@media (max-width: 375px) {
+		@media (max-width: 414px) {
 			width: 150px;	
+		}
+		@media (max-width: 375px) {
+			width: 100px;	
 		}
 	}	
 	.contacts {
@@ -638,6 +655,7 @@ h2 {
 		min-width: 30%;
 		text-align: center;
 		font-size: 1em;
+		font-weight: 400;
 		@media (max-width: 768px) {
 			width: 100%;
 		}
@@ -852,5 +870,9 @@ h2 {
 			&:target .servise-name {
 				display: flex;
 			}
+		}
+		.icon-angle-down:before {
+			top: 22%;
+			color: $header-color;
 		}
 	}

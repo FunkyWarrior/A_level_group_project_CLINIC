@@ -81,20 +81,7 @@ export class Appoint extends React.Component {
 
                                 <CustomSelect label="Выбор услуги" options = { doctor.speciality} clickOptionEvent = {this.setSpec} />
 
-                                {appointment.spec &&
-                                <div>
-                                    <p>{spec.name}</p>
-                                    <p>Длительность: {spec.duration} ч.</p>
-                                    <p>Цена от {spec.price} грн.</p>
-                                    {this.state.pickedDate &&
-                                        <p>{moment(this.state.pickedDate).format('DD-MMMM-YYYY')}</p>
-                                    }
-                                    {appointment.time &&
-                                        <p>{appointment.time}</p>
-                                    }
-                                </div>
-                                }
-
+                               
                                 {appointment.spec &&
                                     <Calendar
                                         doctor={doctor}
@@ -124,12 +111,26 @@ export class Appoint extends React.Component {
 
                                 }
 
+                            {appointment.spec &&
+                                <div>
+                                    <p>{spec.name}</p>
+                                    <p>Длительность: {spec.duration} ч.</p>
+                                    <p>Цена от {spec.price} грн.</p>
+                                    {this.state.pickedDate &&
+                                        <p>{moment(this.state.pickedDate).format('DD-MMMM-YYYY')}</p>
+                                    }
+                                    {appointment.time &&
+                                        <p>{appointment.time}</p>
+                                    }
+                                </div>
+                            }
+
                                 {appointment.time &&
-                                <div style={{display:"flex",flexDirection:"column"}}>
-                                    <input
+                                <div className = "comment-input" >
+                                    <textarea
                                         className = "appointment comment"
-                                        type='text'
-                                        placeholder='Добавить комментарий'
+                                        rows="3"
+                                        placeholder = "Добавить комментарий "
                                         onChange={this.setComment}/>
                                     <button className = "btn link" onClick={this.postOrder}>Подтвердите запись</button>
                                 </div>

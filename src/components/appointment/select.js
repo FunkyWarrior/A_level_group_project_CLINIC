@@ -84,6 +84,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 					value={inputValue}
 					autoComplete="off"
 					type={searchInput ? "text" : "hidden"}
+					readOnly="readonly"
 					onChange={chahgeValueEvent}
 					id="select"
 					className="select__input icon-angle-down"
