@@ -1,3 +1,18 @@
+import React from 'react';
+
+import Main from "../components/main/Main";
+import Doctors from "../components/specialists/Doctors";
+import Services from "../components/services/Services";
+import MoreInfo from "../components/specialists/MoreInfo";
+import Reviews from "../components/Reviews";
+import Admin from "../components/Admin/Admin";
+import Appointment from "../components/appointment/Appointment";
+import Auth from "../containers/auth";
+import User from "../components/user";
+const PAGENOTFOUND = () => <div>PAGE 404 NOT FOUND</div>;
+
+
+
 export const logInForm = {
 	form: {
 		email: {
@@ -222,4 +237,83 @@ export const postNewServiceForm =[
 		placeholder:'Введите стоимость сервиса',
 		required:true
 	}
+];
+
+export const route = [
+	{
+		id: 1,
+		exact: true,
+		path: "/",
+		protected: false,
+		// hasAccess: [],
+		component: Main
+	},
+	{
+		id: 2,
+		exact: true,
+		path: "/doctors",
+		protected: false,
+		component: Doctors
+	},
+	{
+		id: 3,
+		exact: true,
+		path: "/services",
+		protected: false,
+		component: Services
+	},
+	{
+		id: 3,
+		exact: true,
+		path: "/doctors/:doctor",
+		protected: false,
+		component: MoreInfo
+	},
+	{
+		id: 4,
+		exact: true,
+		path: "/services/:service",
+		protected: false,
+		component: MoreInfo
+	},
+	{
+		id: 5,
+		exact: true,
+		path: "/reviews",
+		protected: false,
+		component: Reviews
+	},
+	{
+		id: 6,
+		exact: false,
+		path: "/admin",
+		protected: true,
+		component: Admin
+	},
+	{
+		id: 7,
+		exact: true,
+		path: "/appointment/:doctorId",
+		protected: false,
+		component: Appointment
+	},
+	{
+		id: 8,
+		exact: true,
+		path: "/auth",
+		protected: false,
+		component: Auth
+	},
+	{
+		id: 9,
+		exact: true,
+		path: "/user",
+		protected: true,
+		component: User
+	},
+	{
+		id: 10,
+		component: PAGENOTFOUND
+	},
+
 ];
