@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import moment from "moment";
 import { CustomSelect } from "./select";
 
+
 import {
     setAppointmentSpec,
     setAppointmentShedule,
@@ -32,6 +33,11 @@ export class Appoint extends React.Component {
 
     setSpec = (e) => {
         this.props.setAppointmentSpec(e)
+    };
+
+    setShedule = (e) => {
+        this.setState({pickedDate:e.target.id});
+        this.props.setAppointmentShedule(e.target.id)
     };
 
     setShedule = (e) => {
@@ -75,9 +81,19 @@ export class Appoint extends React.Component {
 
                                 <CustomSelect label="Выбор услуги" options = { doctor.speciality} clickOptionEvent = {this.setSpec} />
 
-                               
-
-
+                                {appointment.spec &&
+                                <div>
+                                    <p>{spec.name}</p>
+                                    <p>Длительность: {spec.duration} ч.</p>
+                                    <p>Цена от {spec.price} грн.</p>
+                                    {this.state.pickedDate &&
+                                        <p>{moment(this.state.pickedDate).format('DD-MMMM-YYYY')}</p>
+                                    }
+                                    {appointment.time &&
+                                        <p>{appointment.time}</p>
+                                    }
+                                </div>
+                                }
 
                                 {appointment.spec &&
                                     <Calendar
@@ -85,8 +101,6 @@ export class Appoint extends React.Component {
                                         action={this.setShedule}
                                     />
                                 }
-
-
 
                                 {appointment.shedule &&
                                    <div className = "appointment-time" >
@@ -100,26 +114,14 @@ export class Appoint extends React.Component {
                                                             id = {index} onChange={this.setTime}
                                                             value =  {Object.keys(el)}
                                                         />
-                                                        <span> {Object.keys(el)}</span>
-                                                       
+
+                                                        {Object.keys(el)}
                                                     </label>
                                                 ))
                                             }
                                         </div>
                                    </div>
-                                }
-                                 {appointment.spec &&
-                                    <div>
-                                        <p>{spec.name}</p>
-                                        <p>Длительность: {spec.duration} ч.</p>
-                                        <p>Цена от {spec.price} грн.</p>
-                                        {this.state.pickedDate &&
-                                            <p>{moment(this.state.pickedDate).format('DD-MMMM-YYYY')}</p>
-                                        }
-                                        {appointment.time &&
-                                            <p>{appointment.time}</p>
-                                        }
-                                    </div>
+
                                 }
 
                                 {appointment.time &&
