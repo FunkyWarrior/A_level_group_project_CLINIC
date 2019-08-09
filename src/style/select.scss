@@ -7,10 +7,18 @@ $opacity-color: rgba(17,17,17,0.8);
 .select {
 	width: 90%;
 	display: flex;
+	margin: 40px auto 15px;
 	flex-direction: column;
 	position: relative;
 	font-family: 'Lato', sans-serif;
+	font-size: 0.9em;
 	cursor: pointer;
+	@media (max-width: 769px) {
+		max-width: 100%;
+	}
+	@media (max-width: 414px) {
+		width: 90%;
+	}
 
 	&__list {
 		list-style: none;
@@ -18,7 +26,6 @@ $opacity-color: rgba(17,17,17,0.8);
 		margin: 0;
 		width: 100%;
 		background-color: $main-color;
-
 		position: absolute;
 		left: 0;
 		top: 100%;
@@ -31,12 +38,13 @@ $opacity-color: rgba(17,17,17,0.8);
 		background-color: $header-color;
 		color: $opacity-color;
 		border-radius: 3px;
-		padding: 0.5rem;
+		padding: 0.3rem 0.5rem;
 	}
 
 	&__item {
 		display: flex;
-		padding: 0.5rem;
+		padding: 0.2rem 0.5rem;
+		font-weight: 400;
 		cursor: pointer;
 		&:hover {
 			background-color: $main-color;
@@ -45,6 +53,7 @@ $opacity-color: rgba(17,17,17,0.8);
 	}
 
 	&__input {
+		font-family: 'Lato', sans-serif;
 		position: relative;
         border: none;
         background: none;

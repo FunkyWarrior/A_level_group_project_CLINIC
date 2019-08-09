@@ -87,9 +87,11 @@ aside {
 		left: 40%;
 		@media (max-width: 1024px) {
 			left: 35%;
+			width: 20%;
 		}
 		@media (max-width: 768px) {
 			left: 30%;
+			width: 15%;
 		}
 		@media (max-width: 768px) {
 			left: 25%;
@@ -494,48 +496,168 @@ h2 {
 .card {
 	display: flex;
 	justify-content: space-around;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	color: $header-color;
 	h3 {
 		margin: 0;
-		font-size: 1.6em;
-		line-height: 2em;
+		font-size: 1.4em;
+		line-height: 1.6em;
 		text-align:  center;
 		@media (max-width: 768px) {
 			text-align: center;
 		}
-	}
-	.desc {
-		width: 60%;
-		@media (max-width: 1024px) {
-			width: 70%;
-		}
-		@media (max-width: 768px) {
-			width: 100%;
-		}
-		.link {
-				font-size: 0.8em;
+		@media (max-width: 320px) {
+			font-size: 1.2em;
 		}
 	}
 	.card-item {
 		margin: 0 20px 10px; 
+		@media (max-width: 414px) {
+			margin: 0;
+		}
+		p {
+			margin: 5px 0;
+			text-align: left;
+		}
+		img {
+			border-radius: 3px;
+			box-shadow: 1px 1px 15px 1px $hover-color;
+		}	
+	}
+}
+		
+.present {
+	flex-basis: 20%;
+	display: flex;
+	justify-content: space-evenly;
+	transition: all 0.5s ease;
+	@media (max-width: 769px) {
+		flex-direction: column;
+		flex-basis: 100%;
+	}
+	@media (max-width: 414px) {
+		flex-basis: 65%;
+	}
+	.photo {
+		text-align:center;
+		img {
+			width: 55%;
+			@media (max-width: 769px) {
+				width: 30%;
+			}
+			@media (max-width: 414px) {
+			width: 50%;
+			}
+		}
+	}
+	.order {
+		// flex-basis: 55%;
+		transition: all 0.5s ease;
 		.highlights {
 			font-weight: 700;
 			color: $hover-color;
 			letter-spacing: 0.1em;
-		}
-		p {
-			margin: 10px 0;
-		}
-		img {
-			border-radius: 3px;
-			width: 85%;
-			box-shadow: 1px 1px 15px 1px $hover-color;
+			text-align: center;
+			@media (max-width: 819px) {
+				text-align: center;
+			}
 		}
 	}
 }
-
+.card .desc {
+	transition: all 0.5s ease;
+	display: flex;
+	flex-direction: row;
+	flex-basis: 100%;
+	justify-content: space-evenly;
+	padding: 5px 20px;
+	@media (max-width: 769px) {
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center;
+		margin-top: 60px;
+	}
+	@media (max-width: 414px) {
+		margin: 5px;
+		padding: 5px;
+	}
+	@media (max-width: 320px) {
+		margin: 0px;
+	}
+	.date-container {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		transition: all 0.5s ease;
+		max-width: 40%;
+		@media (max-width: 769px) {
+			max-width: 80%;
+		}
+		@media (max-width: 414px) {
+			max-width: 100%;
+		}
+		.appointment-time {
+			transition: all 0.5s ease;
+			.btn-box {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				margin: 55px 0 10px;
+				@media (max-width: 1024px) {
+					margin-top: 10px;
+				}
+			}
+			.radio {
+				display: none;
+			}
+			.radio-btn {
+				flex-basis: 10%;
+			}
+			label {
+				margin: 10px 10px 3px 10px;
+				padding: 3px 10px;
+				display: block;
+				min-width: 75px;	
+				background-color: $hover-color;
+				color: $opacity-color;
+				&:hover {
+					background-color: $main-color;
+					color: $header-color;
+				}
+				@media (max-width: 320px) {
+					margin: 10px 5px 3px 10px;
+				}
+			}
+			.radio-btn input[type="radio"]:checked + label {
+				background-color: $main-color;
+				color: $header-color;
+			}
+		}
+	}
+	.order-information {
+		order: -1;	
+		margin-top: 15px;
+		padding: 5px 10px;
+		text-align: center;
+		width: 45%;
+		transition: all 0.5s ease;
+		@media (max-width: 414px) {
+			width: 85%;
+		}
+		p {
+			text-align: left;
+			font-size: 0.8em;
+			line-height: 1.2em;
+		}
+		.link {
+			font-size: 0.7em;
+			padding: 10px;
+			margin: 10px 0;
+		}
+	}
+}
 
 
 // _____ APPOINTMENT _________
@@ -560,50 +682,13 @@ h2 {
 		max-width: 90%;
 	}
 }
-.appointment-time {
-	.btn-box {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-		margin: 30px 0;
-		input[type = "radio"] {
-			display: none;
-		}
-		label {
-			display: flex;
-			margin: 10px 10px 3px 0;
-			text-align: center;
-			padding: 5px 15px;
-			min-width: 100px;
-			background-color: $hover-color;
-			color: $opacity-color;
-			&:hover {
-				background-color: $main-color;
-				color: $header-color;
-			}
-			span {
-				margin: 0px auto;
-			}
-		}
-		label input[type = "radio"]:checked {
-			background-color: $main-color;
-			color: $header-color;
-		  }
-	}
 
-}
-
-.comment-input {
-	display: flex;
-	flex-direction: column;
-}
 .comment {
 	resize: none;
 	background-color: $main-color;
 	&::placeholder {
 		color: $opacity-color;  
-	  }
+	}
 }
 
 

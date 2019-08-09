@@ -78,7 +78,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 					{label}
 				</label>
 			)}
-			<div className="select__value-box " onClick={() => toggleShow(true)}>
+			<div className="select__value-box icon-angle-down" onClick={() => toggleShow(true)}>
 				{searchInput ? null : <span>{value} &nbsp;</span>}
 				<input
 					value={inputValue}
@@ -87,7 +87,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 					readOnly="readonly"
 					onChange={chahgeValueEvent}
 					id="select"
-					className="select__input icon-angle-down"
+					className="select__input"
 				/>
 				<span className="icon-angle-down"></span>
 			</div>
