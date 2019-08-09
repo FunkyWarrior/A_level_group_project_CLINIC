@@ -53,7 +53,7 @@ export class Calendar extends React.Component {
                 </div>
                 <div className = "weekdays">
                     {moment.weekdaysShort(true).map(el => (
-                        <p style={{ width:"40px",height:"40px"}} key={el}>{el}</p>
+                        <p  key={el}>{el}</p>
                     ))}
                 </div>
                 <div  className = "days">

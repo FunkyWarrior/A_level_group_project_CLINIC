@@ -50,13 +50,13 @@
   content: "\f104";
   color:  var(--opacity-color);
   font-size: 1.7em;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 .icon-angle-right:before {
   content: "\f105";
   color:  var(--opacity-color);
   font-size: 1.7em;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 .icon-angle-down:before {
   content: "\f107";
