@@ -69,30 +69,30 @@ export const getDoctors = () => dispatch => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-const getServicesRequest = payload => ({
-    type: types.GET_SERVICES_REQUEST,
-    payload
-});
-
-const getServicesRequestSuccess = payload => ({
-    type: types.GET_SERVICES_REQUEST_SUCCESS,
-    payload
-});
-
-const getServicesRequestFail = payload => ({
-    type: types.GET_SERVICES_REQUEST_FAIL,
-    payload
-});
-
-export const getServices = () => dispatch => {
-    dispatch(getServicesRequest());
-    return fetch(`${URL}services`,{
-        credentials:"include"
-    })
-        .then(res => res.json())
-        .then(res => dispatch(getServicesRequestSuccess(res)))
-        .catch(err => dispatch(getServicesRequestFail(err)));
-};
+// const getServicesRequest = payload => ({
+//     type: types.GET_SERVICES_REQUEST,
+//     payload
+// });
+//
+// const getServicesRequestSuccess = payload => ({
+//     type: types.GET_SERVICES_REQUEST_SUCCESS,
+//     payload
+// });
+//
+// const getServicesRequestFail = payload => ({
+//     type: types.GET_SERVICES_REQUEST_FAIL,
+//     payload
+// });
+//
+// export const getServices = () => dispatch => {
+//     dispatch(getServicesRequest());
+//     return fetch(`${URL}services`,{
+//         credentials:"include"
+//     })
+//         .then(res => res.json())
+//         .then(res => dispatch(getServicesRequestSuccess(res)))
+//         .catch(err => dispatch(getServicesRequestFail(err)));
+// };
 
 // -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------

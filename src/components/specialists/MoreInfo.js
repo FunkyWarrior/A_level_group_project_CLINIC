@@ -47,7 +47,7 @@ export class MoreInfo extends React.Component {
 const mapStateToProps = state => {
     return {
         doctors:state.app.doctors,
-        services:state.app.services
+        services:state.services.services
     }
 };
 

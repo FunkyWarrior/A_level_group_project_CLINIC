@@ -27,7 +27,6 @@ export class Admin extends React.Component {
     render() {
         const {
             doctors,
-            services,
             postNewShedule,
             postNewDoctor,
             postNewService,
@@ -35,6 +34,7 @@ export class Admin extends React.Component {
             changeServiceId
         } = this.props.app;
         const {
+            services,
             setSheduleDoctor,
             postShedule,
             changeInputValueDoctorForm,
@@ -94,6 +94,7 @@ export class Admin extends React.Component {
 const mapStateToProps = state => {
     return {
         app:state.app,
+        services: state.services.services
     }
 };
 

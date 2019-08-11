@@ -28,7 +28,10 @@ export default class ChangeServicesDoctors extends React.Component {
     };
 
     changeId = (e) => {
-        this.props.changeId(e.target.value)
+        this.props.changeId({
+            item:e.target.value,
+            data:this.props.data
+        })
     };
 
     render() {

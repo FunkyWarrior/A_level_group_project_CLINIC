@@ -10,6 +10,8 @@ import {
 
 
 export class Reviews extends React.Component {
+
+
     render( ) {
         const {postNewDoctor,doctors,servicesArray} = this.props.app
         const servArray =  Object.keys(servicesArray).map(key => {

@@ -3,17 +3,7 @@ import * as types from '../actionsTypes/actionsTypes'
 import {postNewDoctorForm,postNewServiceForm} from '../utils/formFields'
 
 const defaultState = {
-    user:localStorage.getItem('id') ? localStorage.getItem('id') : null,
     doctors:[],
-    services:[],
-    servicesArray:{
-        'Хирургия':[],
-        'Детская стоматология':[],
-        'Ортодонтия':[],
-        'Терапия':[],
-        'Имплантология': [],
-        'Эндодонтия':[]
-    },
 
     orders:[],
     users:[],
@@ -68,13 +58,13 @@ export const appReducer = (state = defaultState,action) => {
 // -----------------------------------------------------------------------------------------------------------------
 
         case types.CHANGE_SELECTED_DOCTOR_ID : {
-            let doctor = state.doctors.find(el => el.name === action.payload)
+            let doctor = action.payload.data.find(el => el.name === action.payload.item)
             let result = Object.keys(doctor).map(key => {
                 return [key, doctor[key]];
             });
             return {
                 ...state,
-                changeDoctorId: state.doctors.find(el => el.name === action.payload)._id,
+                changeDoctorId: action.payload.data.find(el => el.name === action.payload.item)._id,
                 postNewDoctor:state.postNewDoctor.map(el => result.find(item => item[0] === el.name) ? {
                     ...el,
                     value:result.find(item => item[0] === el.name)[1]
@@ -85,7 +75,7 @@ export const appReducer = (state = defaultState,action) => {
 // -----------------------------------------------------------------------------------------------------------------
 
         case types.CHANGE_SELECTED_SERVICE_ID : {
-            let service = state.services.find(el => el.name === action.payload)
+            let service = action.payload.data.find(el => el.name === action.payload.item)
             let result = Object.keys(service).map(key => {
                 return [key, service[key]];
             });
@@ -144,104 +134,7 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-// -----------------------------------------------------------------------------------------------------------------
 
-        case types.GET_SERVICES_REQUEST : {
-            return {
-                ...state,
-                isFetching: true
-            };
-        }
-
-        case types.GET_SERVICES_REQUEST_SUCCESS : {
-            action.payload.services.sort((a,b) => {
-                if (a.name.slice(0,1) < b.name.slice(0,1)) {return -1;}
-                if(a.name.slice(0,1) > b.name.slice(0,1)) {return 1;}
-                return 0
-            });
-                action.payload.services.map(el => {
-                    switch (el.description){
-                        case "Ортодонтия" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Ортодонтия':state.servicesArray['Ортодонтия'].push(el)
-                                }
-                            }
-                        }
-                        case "Детская стоматология" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Детская стоматология':state.servicesArray['Детская стоматология'].push(el)
-                                }
-                            }
-                        }
-                        case "Протезирование" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Имплантология':state.servicesArray['Имплантология'].push(el)
-                                }
-                            }
-                        }
-                        case "Имплантация" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Имплантология':state.servicesArray['Имплантология'].push(el)
-                                }
-                            }
-                        }
-                        case "Хирургия" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Хирургия':state.servicesArray['Хирургия'].push(el)
-                                }
-                            }
-                        }
-                        case "Эндодонтическое лечение с помощью микроскопа" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Эндодонтия':state.servicesArray['Эндодонтия'].push(el)
-                                }
-                            }
-                        }
-                        case "Лечение пародонтита" : {
-                            return {
-                                ...state,
-                                servicesArray:{
-                                    ...state.servicesArray,
-                                    'Терапия':state.servicesArray['Терапия'].push(el)
-                                }
-                            }
-                        }
-                        default: return el
-                    }
-                });
-
-            return {
-                ...state,
-                services:action.payload.services,
-                isFetching: false
-            }
-        }
-
-        case types.GET_SERVICES_REQUEST_FAIL : {
-            return {
-                ...state,
-                error:action.payload,
-                isFetching: false
-            }
-        }
 
 // -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------

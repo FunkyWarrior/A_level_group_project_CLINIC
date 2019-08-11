@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Switch} from "react-router-dom";
 
-import {getDoctors, getServices} from "./actions/actions";
+import {getDoctors} from "./actions/actions";
+import {getServices, getCategories} from "./actions/services";
 import {getUser} from "./actions/auth"
 
 import Loader from "./components/loader";
@@ -18,6 +19,7 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
+        this.props.getCategories();
 
        if(localStorage.getItem('userId')) this.props.getUser()
 
@@ -66,6 +68,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     getDoctors,
     getServices,
+    getCategories,
     getUser
 };
 

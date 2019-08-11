@@ -29,7 +29,10 @@ export class Appoint extends React.Component {
     }
 
     setSpec = (e) => {
-        this.props.setAppointmentSpec({data: e, services: this.props.services})
+        this.props.setAppointmentSpec({
+            data: e,
+            services: this.props.services
+        })
     };
 
     setShedule = (e) => {
@@ -61,7 +64,6 @@ export class Appoint extends React.Component {
         if (appointment.specId) {
             spec = services.find(el => el._id === appointment.specId)
         }
-        console.log(appointment)
         return (
             <>
                 <div className="main">
@@ -150,7 +152,7 @@ const mapStateToProps = state => {
         appointment: state.appointment.appointment,
         timeArray: state.appointment.timeArray,
         doctors: state.app.doctors,
-        services: state.app.services
+        services: state.services.services
     };
 };
 
