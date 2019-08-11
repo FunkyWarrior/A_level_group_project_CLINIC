@@ -333,8 +333,6 @@ export const appReducer = (state = defaultState,action) => {
         case types.POST_ORDERS_REQUEST_SUCCESS : {
             return {
                 ...state,
-                appointment: defaultState.appointment,
-                orders:action.payload,
                 isFetching: false
             }
         }

@@ -33,6 +33,7 @@ export const appointmentReducer = (state = defaultState, action) => {
                 appointment:{
                     ...state.appointment,
                     sheduleId:shedule._id,
+                    time:null
                 },
                 timeArray:timeArray
             };

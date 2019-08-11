@@ -81,5 +81,6 @@ export const postOrders = (payload) => dispatch => {
     })
         .then(res => res.json())
         .then(res => dispatch(postOrdersSuccess(res)))
+        .then(dispatch(clearAppointment()))
         .catch(err => dispatch(postOrdersFail(err)));
 };
