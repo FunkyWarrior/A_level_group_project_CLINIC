@@ -8,55 +8,75 @@ import {
 } from "../actions/actions";
 
 
-
 export class Reviews extends React.Component {
 
 
-    render( ) {
-        const {postNewDoctor,doctors,servicesArray} = this.props.app
-        const servArray =  Object.keys(servicesArray).map(key => {
-            return [key, servicesArray[key]];
-        })
-        let doctor
-        if (doctors[0]) {
-            doctor = doctors[2].speciality
-        }
-        console.log(doctor)
-        console.log(servArray)
+    render() {
+        const {doctor, categories, changeFlag} = this.props
 
+        // let doctor
+        // if (doctors[0]) {
+        //     doctor = doctors[2].speciality
+        // }
+        console.log(this.props)
         return (
-           <div style={{display:'flex',margin:'100px 5px'}}>
-               {doctor &&
-                   servArray.map(el => (
-                       <div key={[el[0]]}>
-                           <p>{el[0]}</p>
-
+            <>
+                <div style={{
+                    position: 'fixed',
+                    right: '0',
+                    left: '0',
+                    display: 'flex',
+                    justifyContent:'center',
+                    backgroundColor: 'black',
+                    margin: '5% auto',
+                    width: '80%',
+                    fontSize: '12px',
+                    zIndex: '2'
+                }}>
+                    {categories.map(el => (
+                        <div key={el._id} style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            wrap: 'nowrap',
+                            textAlign:'start',
+                            width:'20%'
+                        }}>
+                            <p>{el.name}</p>
                             {
-                                el[1].map(item => (
-                                    <div key={item._id} style={{display:'flex',margin:'5px 5px',flexDirection:'column',width:'200px'}}>
-                                        <label >
+                                el.services.map(item => (
+                                    <div key={item._id} >
+                                        <label>
                                             <input
                                                 type="checkbox"
                                                 value={item._id}
-                                                defaultChecked={doctor.find(spec => spec._id === item._id)}
+                                                defaultChecked={doctor ? doctor.find(spec => spec._id === item._id) : false}
                                             />
                                             {item.name}
                                         </label>
                                     </div>
                                 ))
                             }
-
-                       </div>
-                   ))
-               }
-           </div>
-        ) 
+                        </div>
+                    ))
+                    }
+                </div>
+                <div style={{
+                    position: 'fixed',
+                    top: '0',
+                    left: "0",
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'black',
+                    opacity: '0.5'
+                }} onClick={changeFlag}></div>
+            </>
+        )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        app:state.app,
+        categories: state.services.categories
     }
 };
 
@@ -64,7 +84,7 @@ const mapDispatchToProps = {
     changeInputValueDoctorForm,
 };
 
-export default connect (mapStateToProps,mapDispatchToProps)(Reviews)
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews)
 
 // <div className = "main">
 //     <div className="info-wrap">
