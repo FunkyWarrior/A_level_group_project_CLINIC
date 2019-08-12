@@ -1,25 +1,48 @@
 import React from 'react';
 import Input from './Input'
+import CheckBoxWindow from "./CheckBoxWindow";
 
 export default class ChangeServicesDoctors extends React.Component {
+    state = {
+        flag: false,
+    };
+
+    componentDidUpdate(prevProps) {
+        if (this.props.data !== prevProps.data) this.setState({flag: false})
+    };
+
+    changeFlag = (e) => {
+        e.preventDefault();
+        this.setState({flag: !this.state.flag})
+    };
 
     postNewItem = (e) => {
         const obj = {};
         e.preventDefault();
+        // eslint-disable-next-line array-callback-return
         this.props.form.map(el => {
             obj[el.name] = el.value
         });
-        this.props.postItem(obj)
+        this.props.postItem(this.props.categories? {
+            ...obj,
+            speciality:this.props.specialityArray
+        } : obj)
     };
 
     changeItem = (e) => {
         const obj = {};
         e.preventDefault();
+        // eslint-disable-next-line array-callback-return
         this.props.form.map(el => {
-            if (el.value !== '')
-                obj[el.name] = el.value
+            if (el.value !== '') obj[el.name] = el.value
         });
-        this.props.putItem({data:obj,id:this.props.itemId})
+        this.props.putItem({
+            data: this.props.categories? {
+                ...obj,
+                speciality:this.props.specialityArray
+            } : obj,
+            id: this.props.itemId
+        })
 
     };
 
@@ -28,68 +51,65 @@ export default class ChangeServicesDoctors extends React.Component {
     };
 
     changeId = (e) => {
-        this.props.changeId(e.target.value)
+        this.props.changeId({
+            item: e.target.value,
+            data: this.props.data
+        })
     };
 
     render() {
         const {
+            categories,
             data,
             itemId,
             form,
             changeInputValues,
+            changeSpecialityArray,
+            specialityArray
         } = this.props;
+        let doctor = data.find(el => el._id === itemId);
+        if (doctor) doctor = doctor.speciality;
+        console.log(data,specialityArray)
         return (
-            <div className = "change-services-doctors">
+            <div className="change-services-doctors">
+                {this.state.flag &&
+                <CheckBoxWindow categories={categories} specialityArray={specialityArray} changeFlag={this.changeFlag} changeSpecialityArray={changeSpecialityArray}/>}
                 <div className="admin-item">
-                    <form className ="form-doctors" onSubmit={this.postNewItem}>
+                    <form className="form-doctors" onSubmit={itemId ? this.changeItem : this.postNewItem}>
                         {
-                            form.map(el => (
-                                <Input
-                                    key={el.id}
-                                    id={el.id}
-                                    el={el}
-                                    changeInputValues={changeInputValues}
-                                />
-                            ))
+                            form.map(el => {
+                                el.required = !itemId;
+                                    return (
+                                        <Input
+                                            key={el.id}
+                                            id={el.id}
+                                            el={el}
+                                            changeInputValues={changeInputValues}
+                                        />
+                                    )
+                            })
                         }
-                        <input className = "btn link"
+                        {categories && <button onClick={this.changeFlag}>Choose Services</button>}
+                        <input className="btn link"
                                type='submit'
-                               value='Добавить '
+                               value={itemId ? 'Изменить'  : 'Добавить'}
                         />
                     </form>
                 </div>
                 <div className="admin-item">
-                    <select  className = "appointment admin-form"  onChange={this.changeId} defaultValue='Выбрать'>
-                        <option disabled >Выбрать</option>
+                    <select className="appointment admin-form" onChange={this.changeId} defaultValue='Выбрать'>
+                        <option >Выбрать</option>
                         {
-                            data.map(el=> (
+                            data.map(el => (
                                 <option key={el._id}>{el.name}</option>
                             ))
                         }
                     </select>
 
-                    <form  onSubmit={this.props.changeItem}>
-                        {itemId &&
-                            form.map(el => {
-                                el.required = false;
-                                return (
-                                    <Input
-                                        key={el.id}
-                                        id={el.id}
-                                        el={el}
-                                        changeInputValues={changeInputValues}
-                                    />
-                                )
-                            })
-                        }
-                        <input
-                            className = "btn link"
-                            type='submit'
-                            value='Изменить выбранный элемент'
-                        />
-                    </form>
+
                     {itemId &&
-                    <button className = "btn link" onClick={this.deleteItem} style={{backgroundColor:"#ff9774"}}>Удалить выбранный элемент</button>
+                    <button className="btn link" onClick={this.deleteItem} style={{backgroundColor: "#ff9774"}}>Удалить
+                        выбранный элемент</button>
                     }
                 </div>
             </div>

@@ -33,43 +33,8 @@ export const changeSelectedServiceId = payload => ({
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const setAppointmentShedule = payload => ({
-    type: types.CHANGE_APPOINTMENT_SHEDULE,
-    payload
-});
-
-// -----------------------------------------------------------------------------------------------------------------
-
-export const setAppointmentDoctor = payload => ({
-    type: types.CHANGE_APPOINTMENT_DOCTOR,
-    payload
-});
-
-// -----------------------------------------------------------------------------------------------------------------
-
-export const setAppointmentTime = payload => ({
-    type: types.CHANGE_APPOINTMENT_TIME,
-    payload
-});
-
-// -----------------------------------------------------------------------------------------------------------------
-
-export const setAppointmentSpec = payload => ({
-    type: types.CHANGE_APPOINTMENT_SPEC,
-    payload
-});
-
-// -----------------------------------------------------------------------------------------------------------------
-
-export const setAppointmentComment = payload => ({
-    type: types.CHANGE_APPOINTMENT_COMMENT,
-    payload
-});
-
-// -----------------------------------------------------------------------------------------------------------------
-
-export const clearAppointment = payload => ({
-    type: types.CLEAR_APPOINTMENT,
+export const changeSpecialityArray = payload => ({
+    type: types.CHANGE_SPECIALITY_ARRAY,
     payload
 });
 
@@ -111,30 +76,30 @@ export const getDoctors = () => dispatch => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-const getServicesRequest = payload => ({
-    type: types.GET_SERVICES_REQUEST,
-    payload
-});
-
-const getServicesRequestSuccess = payload => ({
-    type: types.GET_SERVICES_REQUEST_SUCCESS,
-    payload
-});
-
-const getServicesRequestFail = payload => ({
-    type: types.GET_SERVICES_REQUEST_FAIL,
-    payload
-});
-
-export const getServices = () => dispatch => {
-    dispatch(getServicesRequest());
-    return fetch(`${URL}services`,{
-        credentials:"include"
-    })
-        .then(res => res.json())
-        .then(res => dispatch(getServicesRequestSuccess(res)))
-        .catch(err => dispatch(getServicesRequestFail(err)));
-};
+// const getServicesRequest = payload => ({
+//     type: types.GET_SERVICES_REQUEST,
+//     payload
+// });
+//
+// const getServicesRequestSuccess = payload => ({
+//     type: types.GET_SERVICES_REQUEST_SUCCESS,
+//     payload
+// });
+//
+// const getServicesRequestFail = payload => ({
+//     type: types.GET_SERVICES_REQUEST_FAIL,
+//     payload
+// });
+//
+// export const getServices = () => dispatch => {
+//     dispatch(getServicesRequest());
+//     return fetch(`${URL}services`,{
+//         credentials:"include"
+//     })
+//         .then(res => res.json())
+//         .then(res => dispatch(getServicesRequestSuccess(res)))
+//         .catch(err => dispatch(getServicesRequestFail(err)));
+// };
 
 // -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
@@ -231,38 +196,6 @@ export const postShedule = (payload) => dispatch => {
         .then(res => res.json())
         .then(res => dispatch(postSheduleSuccess(res))).then(dispatch(getDoctors()))
         .catch(err => dispatch(postSheduleFail(err)));
-};
-
-// -----------------------------------------------------------------------------------------------------------------
-
-const postOrdersRequest = payload => ({
-    type: types.POST_ORDERS_REQUEST,
-    payload
-});
-
-const postOrdersSuccess = payload => ({
-    type: types.POST_ORDERS_REQUEST_SUCCESS,
-    payload
-});
-
-const postOrdersFail = payload => ({
-    type: types.POST_ORDERS_REQUEST_FAIL,
-    payload
-});
-
-export const postOrders = (payload) => dispatch => {
-    dispatch(postOrdersRequest());
-    return fetch(`${URL}orders`, {
-        method: "POST",
-        credentials:"include",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(res => res.json())
-        .then(res => dispatch(postOrdersSuccess(res)))
-        .catch(err => dispatch(postOrdersFail(err)));
 };
 
 // -----------------------------------------------------------------------------------------------------------------

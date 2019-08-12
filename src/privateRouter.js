@@ -8,7 +8,6 @@ export const PrivateRoute = ({ component: Component, protectedRoute, ...rest }) 
 		render={props => {
 			if (protectedRoute) {
 				const token = localStorage.getItem("userId");
-				console.log('token', token)
 				if (!token) {
 					return <Redirect to="/auth" />;
 				}
