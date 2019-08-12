@@ -23,9 +23,9 @@ body {
 	background-image: url(../assets/images/fon1.jpg);
 	background-size: cover;
 	min-height: 100vh;
-	@media (max-width: 1024px) {
-		background-position-x: -450px;
-	}
+	// @media (max-width: 1024px) {
+	// 	background-position-x: -450px;
+	// }
 	@media (max-width: 768px) {
 		background-position-x: -270px;
 	}
@@ -390,7 +390,6 @@ h2 {
 				border-radius: 5px;
 				width: 100%;
 			}
-			
 		}
 		h3 {
 			margin: 10px;
@@ -408,9 +407,9 @@ h2 {
 		// }
 
 		@media (max-width: 768px) {
-			width: 45%;
+			width: 30%;
 		}
-		@media (max-width: 630px) {
+		@media (max-width: 414px) {
 			width: 100%;
 		}
 	}
@@ -447,9 +446,6 @@ h2 {
 	}
 	}
 }
-
-
-
 
 
 
@@ -491,8 +487,34 @@ h2 {
 }
 .info-wrap {
 	padding: 110px 10px 25px;
- 	min-height: 100vh;
+	min-height: 100vh;
+	flex-direction: row;
+	 .info {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		color: $header-color;
+		.info-item {
+			margin: 0 20px 10px; 
+			@media (max-width: 414px) {
+				margin: 0;
+			}
+			p {
+				margin: 5px 0;
+				text-align: left;
+			}
+			img {
+				border-radius: 3px;
+				box-shadow: 1px 1px 15px 1px $hover-color;
+			}	
+		}
+		.info-desc {
+			width: 50%;
+		}
+	}
 }
+
+
 .card {
 	display: flex;
 	justify-content: space-around;
@@ -525,8 +547,7 @@ h2 {
 			box-shadow: 1px 1px 15px 1px $hover-color;
 		}	
 	}
-}
-		
+}		
 .present {
 	flex-basis: 20%;
 	display: flex;

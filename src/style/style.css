@@ -118,6 +118,7 @@
   content: "\ea14";
   color:  var(--hover-color);
   font-size: 1.6em;
+  margin-left: 20px;
 }
 .icon-location:before {
   content: "\e947";

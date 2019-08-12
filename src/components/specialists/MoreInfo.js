@@ -13,11 +13,11 @@ export class MoreInfo extends React.Component {
             <div className="main">
                 {doctor &&
                     <div className = "info-wrap">
-                        <div className="card">
-                            <div className="card-item">
+                        <div className="info">
+                            <div className="info-item">
                                 <img src={`.${doctor.photo}`} alt={doctor.name}/>
                             </div>
-                             <div className="card-item desc">
+                             <div className="info-item info-desc">
                                  <h3> {doctor.name} </h3>
                                 <p className = "highlights">{doctor.profession}</p>
                                 <p className = "highlights">Опыт работы более {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]}  лет</p>

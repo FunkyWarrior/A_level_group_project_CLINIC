@@ -14,6 +14,7 @@ export class Services extends React.Component {
     // console.log ("categories:", Object.values (categories))
     // console.log ("servArray:", servArray)
     // console.log ("this.props:", this.props.app)
+    console.log ("state.app.services", this.props.app.services.category)
 
     return (
       <div className="main">
@@ -47,13 +48,15 @@ export class Services extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    app: state.app,
-    // data:state.app.services,
-    categories: state.app.servicesArray
+        app:state.app,
+        // data:state.app.services.category,
+        categories:state.app.servicesArray
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  
+};
 
 export default connect(
   mapStateToProps,

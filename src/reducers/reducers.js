@@ -35,10 +35,10 @@ const defaultState = {
         time:null,
         doctor:null,
         spec:null,
-        comment:''
-    },
+        comment:  " "
+      },
 
-    timeArray:[],
+    timeArray:[ ],
     isFetching:false,
     error: null,
 

@@ -199,7 +199,7 @@ export const postNewDoctorForm =[
 		type:'text',
 		value:"",
 		name:'speciality',
-		placeholder:'Введите массив представляемых услуг',
+		placeholder:'Выберите предоставляемые услуги',
 		required:true
 	}
 ];

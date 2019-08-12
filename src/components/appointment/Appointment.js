@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import moment from "moment";
-import { CustomSelect } from "./select";
+import { CustomSelect } from "../hooks/select";
 
 import {
   setAppointmentSpec,
@@ -162,11 +162,3 @@ export default connect(
   mapDispatchToProps
 )(Appoint);
 
-// <select className = "appointment "  onChange={this.setSpec} defaultValue='Выбор услуги'>
-//      <option disabled >Выбор услуги</option>
-//         {
-//             doctor.speciality.map(el=> (
-//                 <option key={el._id}>{el.name}</option>
-//              ))
-//         }
-// </select>
