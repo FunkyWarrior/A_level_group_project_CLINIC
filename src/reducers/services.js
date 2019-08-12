@@ -2,7 +2,9 @@ import * as types from '../actionsTypes/actionsTypes'
 
 const defaultState = {
     services:[],
-    categories:[]
+    categories:[],
+    isFetching: false,
+    error:null
 };
 
 export const servicesReducer = (state = defaultState, action) => {

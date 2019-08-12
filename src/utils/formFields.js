@@ -193,14 +193,6 @@ export const postNewDoctorForm =[
 		name:'skillsDescription',
 		placeholder:'Введите описание навыков здесь',
 		required:true
-	},
-	{
-		id:6,
-		type:'text',
-		value:"",
-		name:'speciality',
-		placeholder:'Введите массив представляемых услуг',
-		required:true
 	}
 ];
 

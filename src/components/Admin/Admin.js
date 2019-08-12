@@ -14,7 +14,8 @@ import {
     deleteDoctors,
     postServices,
     putServices,
-    deleteServices
+    deleteServices,
+    changeSpecialityArray
 } from "../../actions/actions";
 
 import Shedule from './Shedule'
@@ -31,10 +32,9 @@ export class Admin extends React.Component {
             postNewDoctor,
             postNewService,
             changeDoctorId,
-            changeServiceId
-        } = this.props.app;
-        const {
+            changeServiceId,
             services,
+            categories,
             setSheduleDoctor,
             postShedule,
             changeInputValueDoctorForm,
@@ -46,7 +46,9 @@ export class Admin extends React.Component {
             deleteDoctors,
             putServices,
             deleteServices,
-            postServices
+            postServices,
+            changeSpecialityArray,
+            specialityArray
         } = this.props;
 
         return (
@@ -65,7 +67,9 @@ export class Admin extends React.Component {
                             postShedule={postShedule}
                         />} />
                         <Route path='/admin/change-doctors' render={() => <ChangeServicesDoctors
+                            categories={categories}
                             data={doctors}
+                            specialityArray={specialityArray}
                             itemId={changeDoctorId}
                             changeId={changeSelectedDoctorId}
                             form={postNewDoctor}
@@ -73,6 +77,7 @@ export class Admin extends React.Component {
                             putItem={putDoctors}
                             deleteItem={deleteDoctors}
                             changeInputValues={changeInputValueDoctorForm}
+                            changeSpecialityArray={changeSpecialityArray}
                         />} />
                         <Route path='/admin/change-services' render={() => <ChangeServicesDoctors
                             data={services}
@@ -93,8 +98,15 @@ export class Admin extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        app:state.app,
-        services: state.services.services
+        doctors:state.app.doctors,
+        postNewShedule:state.app.postNewShedule,
+        postNewDoctor:state.app.postNewDoctor,
+        postNewService:state.app.postNewService,
+        changeDoctorId:state.app.changeDoctorId,
+        changeServiceId:state.app.changeServiceId,
+        specialityArray:state.app.specialityArray,
+        services: state.services.services,
+        categories: state.services.categories
     }
 };
 
@@ -110,7 +122,8 @@ const mapDispatchToProps = {
     deleteDoctors,
     postServices,
     putServices,
-    deleteServices
+    deleteServices,
+    changeSpecialityArray
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

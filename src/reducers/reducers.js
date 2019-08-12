@@ -16,9 +16,9 @@ const defaultState = {
 
     postNewDoctor:postNewDoctorForm,
     postNewService:postNewServiceForm,
-
     changeDoctorId:null,
     changeServiceId:null,
+    specialityArray:[],
 
     isFetching:false,
     error: null,
@@ -32,6 +32,18 @@ export const appReducer = (state = defaultState,action) => {
     switch (action.type) {
 
 // -----------------------------------------------------------------------------------------------------------------
+
+        case types.CHANGE_SPECIALITY_ARRAY : {
+            const arr = state.specialityArray.slice();
+            action.payload.checked ? arr.push(action.payload.value) : arr.splice(arr.indexOf(action.payload.value),1);
+            return {
+                ...state,
+                specialityArray: arr
+            };
+        }
+
+// -----------------------------------------------------------------------------------------------------------------
+
 
         case types.CHANGE_INPUT_VALUE_DOCTOR_FORM : {
             return {
@@ -58,34 +70,43 @@ export const appReducer = (state = defaultState,action) => {
 // -----------------------------------------------------------------------------------------------------------------
 
         case types.CHANGE_SELECTED_DOCTOR_ID : {
-            let doctor = action.payload.data.find(el => el.name === action.payload.item)
-            let result = Object.keys(doctor).map(key => {
-                return [key, doctor[key]];
-            });
+            let doctor = action.payload.data.find(el => el.name === action.payload.item);
+            let result;
+            let specArray=[];
+            if (doctor){
+                result = Object.keys(doctor).map(key => {
+                    return [key, doctor[key]];
+                });
+                doctor.speciality.map(el => specArray.push(el._id))
+            }
             return {
                 ...state,
-                changeDoctorId: action.payload.data.find(el => el.name === action.payload.item)._id,
-                postNewDoctor:state.postNewDoctor.map(el => result.find(item => item[0] === el.name) ? {
+                specialityArray:specArray,
+                changeDoctorId: doctor ? doctor._id : null,
+                postNewDoctor:doctor ? state.postNewDoctor.map(el => result.find(item => item[0] === el.name) ? {
                     ...el,
                     value:result.find(item => item[0] === el.name)[1]
-                } : el)
+                } : el) : postNewDoctorForm
             };
         }
 
 // -----------------------------------------------------------------------------------------------------------------
 
         case types.CHANGE_SELECTED_SERVICE_ID : {
-            let service = action.payload.data.find(el => el.name === action.payload.item)
-            let result = Object.keys(service).map(key => {
-                return [key, service[key]];
-            });
+            let service = action.payload.data.find(el => el.name === action.payload.item);
+            let result;
+                if (service){
+                    result = Object.keys(service).map(key => {
+                        return [key, service[key]];
+                    });
+                }
             return {
                 ...state,
-                changeServiceId: service._id,
-                postNewService: state.postNewService.map(el => result.find(item => item[0] === el.name) ? {
+                changeServiceId: service ? service._id : null,
+                postNewService: service ? state.postNewService.map(el => result.find(item => item[0] === el.name) ? {
                     ...el,
                     value:result.find(item => item[0] === el.name)[1]
-                } : el)
+                } : el) : postNewServiceForm
             };
         }
 

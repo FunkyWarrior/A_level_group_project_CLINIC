@@ -33,6 +33,13 @@ export const changeSelectedServiceId = payload => ({
 
 // -----------------------------------------------------------------------------------------------------------------
 
+export const changeSpecialityArray = payload => ({
+    type: types.CHANGE_SPECIALITY_ARRAY,
+    payload
+});
+
+// -----------------------------------------------------------------------------------------------------------------
+
 export const setSheduleDoctor = payload => ({
     type: types.CHANGE_SHEDULE_DOCTOR,
     payload
