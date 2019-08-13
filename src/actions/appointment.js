@@ -1,5 +1,7 @@
 import * as types from "../actionsTypes/actionsTypes";
 
+import axios from 'axios'
+
 const URL = "https://api-clinics.herokuapp.com/api/v1/";
 
 export const setAppointmentShedule = payload => ({
@@ -69,18 +71,38 @@ const postOrdersFail = payload => ({
 
 // -----------------------------------------------------------------------------------------------------------------
 
-export const postOrders = (payload) => dispatch => {
-    dispatch(postOrdersRequest());
-    return fetch(`${URL}orders`, {
-        method: "POST",
-        credentials:"include",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(res => res.json())
-        .then(res => dispatch(postOrdersSuccess(res)))
-        .then(dispatch(clearAppointment()))
-        .catch(err => dispatch(postOrdersFail(err)));
-};
+// export const postOrders = (payload) => dispatch => {
+//     dispatch(postOrdersRequest());
+//     return fetch(`${URL}orders`, {
+//         method: "POST",
+//         credentials:"include",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payload)
+//     })
+//         .then(res => res.json())
+//         .then(res => dispatch(postOrdersSuccess(res)))
+//         .then(dispatch(clearAppointment()))
+//         .catch(err => dispatch(postOrdersFail(err)));
+// };
+export const postOrders = payload => {
+    return async dispatch => {
+        dispatch(postOrdersRequest());
+        try {
+            const { data } = await axios({
+                method:'POST',
+                url:`${URL}orders`,
+                data: payload  
+            });
+            dispatch(postOrdersSuccess(data))
+            dispatch(clearAppointment());
+            console.log('post',data)
+
+           
+            
+        } catch (error){
+            dispatch(postOrdersFail(error));
+        }
+    }
+}
