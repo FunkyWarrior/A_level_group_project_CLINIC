@@ -44,6 +44,7 @@ $opacity-color: rgba(17,17,17,0.8);
 	&__item {
 		display: flex;
 		padding: 0.2rem 0.5rem;
+		text-align: left;
 		font-weight: 400;
 		cursor: pointer;
 		&:hover {

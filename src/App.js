@@ -19,11 +19,8 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
-<<<<<<< HEAD
         console.log(this.props.app)
-=======
         this.props.getCategories();
->>>>>>> ffc22fefa05d985c41e67b265e33a56a26cd6bfe
 
        if(localStorage.getItem('userId')) this.props.getUser()
 

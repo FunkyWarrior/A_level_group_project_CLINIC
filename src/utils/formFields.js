@@ -172,9 +172,10 @@ export const postNewDoctorForm =[
 	},
 	{
 		id:3,
-		type:'text',
+		type:'file',
 		value:"",
 		name:'photo',
+		className: "btn link",
 		placeholder:'Добавьте фотографию',
 		required:true
 	},
@@ -193,17 +194,6 @@ export const postNewDoctorForm =[
 		name:'skillsDescription',
 		placeholder:'Введите описание навыков здесь',
 		required:true
-<<<<<<< HEAD
-	},
-	{
-		id:6,
-		type:'text',
-		value:"",
-		name:'speciality',
-		placeholder:'Выберите предоставляемые услуги',
-		required:true
-=======
->>>>>>> ffc22fefa05d985c41e67b265e33a56a26cd6bfe
 	}
 ];
 

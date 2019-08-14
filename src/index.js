@@ -15,6 +15,8 @@ import "./style/select.scss"
 import "./style/calendar.scss"
 import "./style/auth.scss"
 import "./style/modal.scss"
+import "./style/checkBoxWindow.scss"
+
 
 ReactDOM.render(
     <Provider store={store}>

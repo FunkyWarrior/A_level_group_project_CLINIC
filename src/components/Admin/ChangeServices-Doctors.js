@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from './Input'
 import CheckBoxWindow from "./CheckBoxWindow";
+import { CustomSelect } from "../hooks/select";
 
 export default class ChangeServicesDoctors extends React.Component {
     state = {
@@ -52,7 +53,7 @@ export default class ChangeServicesDoctors extends React.Component {
 
     changeId = (e) => {
         this.props.changeId({
-            item: e.target.value,
+            item: e,
             data: this.props.data
         })
     };
@@ -84,12 +85,13 @@ export default class ChangeServicesDoctors extends React.Component {
                                             key={el.id}
                                             id={el.id}
                                             el={el}
+                                            className = {el.className}
                                             changeInputValues={changeInputValues}
                                         />
                                     )
                             })
                         }
-                        {categories && <button onClick={this.changeFlag}>Choose Services</button>}
+                        {categories && <button className = " btn servise-btn" onClick={this.changeFlag}>Выбрать сервисы</button>}
                         <input className="btn link"
                                type='submit'
                                value={itemId ? 'Изменить'  : 'Добавить'}
@@ -97,16 +99,12 @@ export default class ChangeServicesDoctors extends React.Component {
                     </form>
                 </div>
                 <div className="admin-item">
-                    <select className="appointment admin-form" onChange={this.changeId} defaultValue='Выбрать'>
-                        <option >Выбрать</option>
-                        {
-                            data.map(el => (
-                                <option key={el._id}>{el.name}</option>
-                            ))
-                        }
-                    </select>
 
-
+                    <CustomSelect
+                         label="Выбрать"
+                         options={data}
+                         clickOptionEvent={this.changeId}
+                    />
                     {itemId &&
                     <button className="btn link" onClick={this.deleteItem} style={{backgroundColor: "#ff9774"}}>Удалить
                         выбранный элемент</button>

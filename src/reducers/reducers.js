@@ -20,18 +20,6 @@ const defaultState = {
     changeServiceId:null,
     specialityArray:[],
 
-<<<<<<< HEAD
-    appointment:{
-        shedule:null,
-        time:null,
-        doctor:null,
-        spec:null,
-        comment:  " "
-      },
-
-    timeArray:[ ],
-=======
->>>>>>> ffc22fefa05d985c41e67b265e33a56a26cd6bfe
     isFetching:false,
     error: null,
 
