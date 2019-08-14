@@ -1,8 +1,11 @@
 import * as types from '../actionsTypes/actionsTypes'
 
+import {adminChangeUserForm} from "../utils/formFields"
+
 const defaultState = {
     user:null,
     findUserInput:'',
+    changeUserForm:adminChangeUserForm,
     isFetching: false,
     error:null
 };
@@ -18,9 +21,16 @@ export const userReducer = (state = defaultState, action) => {
         }
 
         case types.FIND_USER_REQUEST_SUCCESS : {
+            const data = state.findUserInput.includes('@') ? action.payload.users[0] : action.payload.user;
+            state.changeUserForm.map(el => console.log(Object.keys(data).find(item => item === el.name)))
             return {
                 ...state,
-                user:state.findUserInput.includes('@') ? action.payload.users[0] : action.payload.user,
+                user:data,
+                changeUserForm:state.changeUserForm.map(el => Object.keys(data).find(item => item === el.name) ? {
+                    ...el,
+                    value:data[`${el.name}`]
+                } : el),
+                error:action.payload.message,
                 isFetching: false
             };
         }

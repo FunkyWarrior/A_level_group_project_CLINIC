@@ -60,7 +60,9 @@ export class Admin extends React.Component {
             findUserInput,
             changeFindUserInput,
             findUser,
-            deleteUser
+            deleteUser,
+            userError,
+            changeUserForm
         } = this.props;
 
         return (
@@ -108,6 +110,8 @@ export class Admin extends React.Component {
                             changeFindUserInput={changeFindUserInput}
                             findUser={findUser}
                             deleteUser={deleteUser}
+                            error={userError}
+                            changeUserForm={changeUserForm}
                         />} />
                     </Switch>
                 </div>
@@ -128,7 +132,9 @@ const mapStateToProps = state => {
         services: state.services.services,
         categories: state.services.categories,
         user:state.user.user,
-        findUserInput:state.user.findUserInput
+        findUserInput:state.user.findUserInput,
+        userError:state.user.error,
+        changeUserForm:state.user.changeUserForm,
     }
 };
 
@@ -143,9 +149,6 @@ const mapDispatchToProps = {
     putDoctors,
     deleteDoctors,
     postServices,
-    putServices,
-    deleteServices,
-    changeSpecialityArray,
     putServices,
     deleteServices,
     changeSpecialityArray,

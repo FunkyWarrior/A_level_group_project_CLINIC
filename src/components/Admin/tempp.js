@@ -1,14 +1,23 @@
 import React from 'react';
 
+
+import Input from "./Input"
+
 export default class Tempp extends React.Component {
 
-changeUserInput = (e) => {
+    changeUserInput = (e) => {
     this.props.changeFindUserInput(e.target.value)
-}
+    };
 
-findUser = () => {
-    this.props.findUser(this.props.findUserInput.includes('@') ? '?email='+this.props.findUserInput : this.props.findUserInput)
-}
+    findUser = () => {
+        this.props.findUser(this.props.findUserInput.includes('@') ? '?email='+this.props.findUserInput : this.props.findUserInput)
+    };
+
+    enterPressed = (e) => {
+        if (e.key === 'Enter') {
+            this.findUser();
+        }
+    };
 
     render(){
         const {
@@ -16,27 +25,30 @@ findUser = () => {
             findUserInput,
             changeFindUserInput,
             findUser,
-            deleteUser
-        } = this.props
-        console.log(this.props)
+            deleteUser,
+            changeUserForm,
+            error
+        } = this.props;
         return (
            <div>
-                <input type='text' onChange={this.changeUserInput}></input>
+                <input type='text' name='find_user' onKeyDown={this.enterPressed} onChange={this.changeUserInput} ></input>
                 {findUserInput && 
-                    <button onClick={this.findUser}>Find User</button>
+                    <button id='enter' addEvent onClick={this.findUser}>Find User</button>
                 }
-                {user && 
-                    <div>
-                        <p>{user.firstName}</p>
-                        <p>{user.lastName}</p>
-                        <p>{user.email}</p>
-                        <p>{user.role}</p>
-                        <p>{user.doctor}</p>
-                        <p>{user.createdAt}</p>
-                        <p>{user._id}</p>
-                    </div>
+                {user &&
+                <div>
+
+                    {changeUserForm.map(el => <Input key={el.id} el={el} changeInputValues={console.log} className={'hello'}/>)}
+                </div>
+
                 }
+               {error &&
+                   <div>
+                       <p>User not found</p>
+                   </div>
+               }
            </div>
         );
     }
 };
+

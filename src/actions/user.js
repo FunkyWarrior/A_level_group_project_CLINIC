@@ -26,14 +26,13 @@ const findUserRequestFail = payload => ({
 });
 
 export const findUser = (payload) => dispatch => {
-    console.log(payload)
     dispatch(findUserRequest());
     return fetch(`${URL}`+payload,{
         credentials:"include"
     })
         .then(res => res.json())
         .then(res => {
-            dispatch(findUserRequestSuccess(res)) 
+            dispatch(findUserRequestSuccess(res));
             console.log(res)
         })
         .catch(err => dispatch(findUserRequestFail(err)));
@@ -84,12 +83,12 @@ const putUserRequestFail = payload => ({
 });
 
 export const putUser = (payload) => dispatch => {
-    dispatch(deleteUserRequest());
+    dispatch(putUserRequest());
     return fetch(`${URL}${payload}`, {
         method: "DELETE",
         credentials: "include"
     })
         .then(res => res.json())
-        .then(res => dispatch(deleteUserRequestSuccess(res)))
-        .catch(err => dispatch(deleteUserRequestFail(err)));
+        .then(res => dispatch(putUserRequestSuccess(res)))
+        .catch(err => dispatch(putUserRequestFail(err)));
 };
