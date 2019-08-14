@@ -18,7 +18,14 @@ import {
     changeSpecialityArray
 } from "../../actions/actions";
 
+import {
+    changeFindUserInput,
+    findUser,
+    deleteUser
+} from "../../actions/user"
+
 import Shedule from './Shedule'
+import Tempp from './tempp'
 import ChangeServicesDoctors from './ChangeServices-Doctors'
 
 
@@ -48,7 +55,12 @@ export class Admin extends React.Component {
             deleteServices,
             postServices,
             changeSpecialityArray,
-            specialityArray
+            specialityArray,
+            user,
+            findUserInput,
+            changeFindUserInput,
+            findUser,
+            deleteUser
         } = this.props;
 
         return (
@@ -58,6 +70,7 @@ export class Admin extends React.Component {
                         <Link to='/admin/change-shedule' className = "btn link admin">Расписание</Link>
                         <Link to='/admin/change-doctors' className = "btn link admin">Сотрудники</Link>
                         <Link to='/admin/change-services' className = "btn link admin">Сервисы</Link>
+                        <Link to='/admin/change-user' className = "btn link admin">Пользователи</Link>
                     </div>
                     <Switch>
                         <Route path='/admin/change-shedule' render={() => <Shedule
@@ -89,6 +102,13 @@ export class Admin extends React.Component {
                             deleteItem={deleteServices}
                             changeInputValues={changeInputValueServiceForm}
                         />} />
+                        <Route path='/admin/change-user' render={() => <Tempp
+                            user={user}
+                            findUserInput={findUserInput}
+                            changeFindUserInput={changeFindUserInput}
+                            findUser={findUser}
+                            deleteUser={deleteUser}
+                        />} />
                     </Switch>
                 </div>
             </div>
@@ -106,7 +126,9 @@ const mapStateToProps = state => {
         changeServiceId:state.app.changeServiceId,
         specialityArray:state.app.specialityArray,
         services: state.services.services,
-        categories: state.services.categories
+        categories: state.services.categories,
+        user:state.user.user,
+        findUserInput:state.user.findUserInput
     }
 };
 
@@ -123,7 +145,13 @@ const mapDispatchToProps = {
     postServices,
     putServices,
     deleteServices,
-    changeSpecialityArray
+    changeSpecialityArray,
+    putServices,
+    deleteServices,
+    changeSpecialityArray,
+    changeFindUserInput,
+    findUser,
+    deleteUser
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

@@ -53,7 +53,15 @@ export class Appoint extends React.Component {
     };
 
     postOrder = () => {
-        this.props.postOrders(this.props.appointment.appointment)
+        console.log(this.props.appointment)
+        this.props.postOrders({
+            shedule: this.props.appointment.sheduleId,
+            time: this.props.appointment.time,
+            doctor: this.props.appointment.doctorId,
+            spec: this.props.appointment.specId,
+            comment: this.props.appointment.comment,
+            user: this.props.user
+        })
     };
 
 
@@ -152,7 +160,8 @@ const mapStateToProps = state => {
         appointment: state.appointment.appointment,
         timeArray: state.appointment.timeArray,
         doctors: state.app.doctors,
-        services: state.services.services
+        services: state.services.services,
+        user:state.auth.user
     };
 };
 
