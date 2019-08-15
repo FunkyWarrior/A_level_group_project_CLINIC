@@ -53,14 +53,13 @@ export class Appoint extends React.Component {
     };
 
     postOrder = () => {
-        console.log(this.props.appointment)
         this.props.postOrders({
             shedule: this.props.appointment.sheduleId,
             time: this.props.appointment.time,
             doctor: this.props.appointment.doctorId,
             spec: this.props.appointment.specId,
             comment: this.props.appointment.comment,
-            user: this.props.user
+            user: this.props.user._id
         })
     };
 

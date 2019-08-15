@@ -15,10 +15,10 @@ export const appointmentReducer = (state = defaultState, action) => {
     switch(action.type){
 
         case types.CHANGE_APPOINTMENT_SHEDULE : {
-            let timeArray =[];
-            let doctor = action.payload.doctors.find(el => el._id === state.appointment.doctorId);
-            let shedule = doctor.shedule.find(el => el.data === action.payload.data);
-            let duration = action.payload.services.find(el => el._id === state.appointment.specId).duration;
+            const timeArray =[];
+            const doctor = action.payload.doctors.find(el => el._id === state.appointment.doctorId);
+            const shedule = doctor.shedule.find(el => el.data === action.payload.data);
+            const duration = action.payload.services.find(el => el._id === state.appointment.specId).duration;
             for (let index in shedule) {
                 let check = true;
                 for (let x=0;x < duration; x++){

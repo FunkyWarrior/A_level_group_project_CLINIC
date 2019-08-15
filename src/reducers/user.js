@@ -22,7 +22,6 @@ export const userReducer = (state = defaultState, action) => {
 
         case types.FIND_USER_REQUEST_SUCCESS : {
             const data = state.findUserInput.includes('@') ? action.payload.users[0] : action.payload.user;
-            state.changeUserForm.map(el => console.log(Object.keys(data).find(item => item === el.name)));
             return {
                 ...state,
                 user: data,
@@ -58,7 +57,6 @@ export const userReducer = (state = defaultState, action) => {
         }
 
         case types.CHANGE_INPUT_VALUE_USER_FORM : {
-            console.log(action.payload.target);
             const data = action.payload.target;
             return {
                 ...state,
