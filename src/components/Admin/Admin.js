@@ -26,7 +26,7 @@ import {
 } from "../../actions/user"
 
 import Shedule from './Shedule'
-import Tempp from './tempp'
+import ChangeUser from './ChangeUser'
 import ChangeServicesDoctors from './ChangeServices-Doctors'
 
 
@@ -106,7 +106,7 @@ export class Admin extends React.Component {
                             deleteItem={deleteServices}
                             changeInputValues={changeInputValueServiceForm}
                         />} />
-                        <Route path='/admin/change-user' render={() => <Tempp
+                        <Route path='/admin/change-user' render={() => <ChangeUser
                             user={user}
                             findUserInput={findUserInput}
                             changeFindUserInput={changeFindUserInput}
