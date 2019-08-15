@@ -2,8 +2,12 @@ import React from 'react';
 
 
 import Input from "./Input"
+import ConfirmButton from "../ConfirmButton";
 
 export default class ChangeUser extends React.Component {
+    state = {
+        showConfirm: false,
+    };
 
     changeUserInput = (e) => {
         this.props.changeFindUserInput(e.target.value)
@@ -29,8 +33,13 @@ export default class ChangeUser extends React.Component {
         console.log(obj) //заменить на putUsers
     };
 
-    deleteUser = () => {
-        console.log(this.props.user._id) // заменить на deleteUser
+    changeConfirm = (action, text) => {
+        this.setState({showConfirm: !this.state.showConfirm})
+    };
+
+    deleteUser = (e) => {
+        console.log(this.props.user._id); // заменить на deleteUser
+        this.changeConfirm()
     };
 
     render() {
@@ -44,7 +53,7 @@ export default class ChangeUser extends React.Component {
         return (
             <div
                 style={{
-                    display:'flex'
+                    display: 'flex'
                 }}
             >
                 <div>
@@ -74,7 +83,7 @@ export default class ChangeUser extends React.Component {
                             )}
                         </form>
                         <button onClick={this.changeUser}>Change</button>
-                        <button onClick={this.deleteUser}>DELETE</button>
+                        <button onClick={this.changeConfirm}>DELETE</button>
                     </div>
                     }
 
@@ -87,6 +96,12 @@ export default class ChangeUser extends React.Component {
                 <div>
                     <p>User List will be here</p>
                 </div>
+                {
+                    this.state.showConfirm &&
+                    <ConfirmButton yes={this.deleteUser} no={this.changeConfirm}
+                                   text={'Are you sure you want to Delete User?'}
+                    />
+                }
             </div>
         );
     }
