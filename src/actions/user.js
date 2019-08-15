@@ -6,9 +6,12 @@ const URL = "https://api-clinics.herokuapp.com/api/v1/users/";
 export const changeFindUserInput = payload => ({
     type:types.CHANGE_INPUT_VALUE_FIND_USER,
     payload
-})
+});
 
-
+export const changeInputValueUserForm = payload => ({
+    type:types.CHANGE_INPUT_VALUE_USER_FORM,
+    payload
+});
 
 const findUserRequest = payload => ({
     type: types.FIND_USER_REQUEST,
@@ -33,7 +36,6 @@ export const findUser = (payload) => dispatch => {
         .then(res => res.json())
         .then(res => {
             dispatch(findUserRequestSuccess(res));
-            console.log(res)
         })
         .catch(err => dispatch(findUserRequestFail(err)));
 };

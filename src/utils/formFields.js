@@ -267,37 +267,37 @@ export const adminChangeUserForm =[
 	},
 	{
 		id:5,
-		type:'radio',
+		type:'text',
 		value:"",
-		name:'role',
+		name:'_id',
 		required:true
 	},
 	{
 		id:6,
 		type:'radio',
-		value:"",
+		value:true,
 		name:'role',
 		required:true
 	},
 	{
 		id:7,
 		type:'radio',
-		value:"",
-		name:'doctor',
+		value:false,
+		name:'role',
 		required:true
 	},
 	{
 		id:8,
 		type:'radio',
-		value:"",
+		value:true,
 		name:'doctor',
 		required:true
 	},
 	{
 		id:9,
-		type:'text',
-		value:"",
-		name:'_id',
+		type:'radio',
+		value:false,
+		name:'doctor',
 		required:true
 	}
 

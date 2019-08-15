@@ -19,6 +19,15 @@ export default class Tempp extends React.Component {
         }
     };
 
+    changeUser = (e) => {
+        const obj = {}
+        e.preventDefault()
+        this.props.changeUserForm.map(el => {
+            obj[el.name] = el.type === 'radio' ? el.checked ? el.value : !el.value : el.value
+        });
+        console.log(obj)
+    };
+
     render(){
         const {
             user,
@@ -26,26 +35,37 @@ export default class Tempp extends React.Component {
             changeFindUserInput,
             findUser,
             deleteUser,
+            changeInputValueUserForm,
             changeUserForm,
             error
         } = this.props;
+        console.log(this.props)
         return (
            <div>
-                <input type='text' name='find_user' onKeyDown={this.enterPressed} onChange={this.changeUserInput} ></input>
+                <input type='text' name='find_user' onKeyDown={this.enterPressed} onChange={this.changeUserInput} />
                 {findUserInput && 
-                    <button id='enter' addEvent onClick={this.findUser}>Find User</button>
+                    <button id='enter' onClick={this.findUser}>Find User</button>
                 }
                 {user &&
-                <div>
-
-                    {changeUserForm.map(el => <Input key={el.id} el={el} changeInputValues={console.log} className={'hello'}/>)}
-                </div>
-
+                    <div>
+                        <form onSubmit={this.changeUser} className="form-doctors">
+                            {changeUserForm.map(el =>
+                                <Input
+                                    key={el.id}
+                                    el={el}
+                                    changeInputValues={changeInputValueUserForm}
+                                    className={el.className}
+                                />
+                            )}
+                            <button type='submit'>Change</button>
+                        </form>
+                    </div>
                 }
-               {error &&
-                   <div>
-                       <p>User not found</p>
-                   </div>
+
+                {error &&
+                    <div>
+                        <p>User not found</p>
+                    </div>
                }
            </div>
         );
