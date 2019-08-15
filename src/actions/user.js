@@ -6,9 +6,12 @@ const URL = "https://api-clinics.herokuapp.com/api/v1/users/";
 export const changeFindUserInput = payload => ({
     type:types.CHANGE_INPUT_VALUE_FIND_USER,
     payload
-})
+});
 
-
+export const changeInputValueUserForm = payload => ({
+    type:types.CHANGE_INPUT_VALUE_USER_FORM,
+    payload
+});
 
 const findUserRequest = payload => ({
     type: types.FIND_USER_REQUEST,
@@ -26,15 +29,13 @@ const findUserRequestFail = payload => ({
 });
 
 export const findUser = (payload) => dispatch => {
-    console.log(payload)
     dispatch(findUserRequest());
     return fetch(`${URL}`+payload,{
         credentials:"include"
     })
         .then(res => res.json())
         .then(res => {
-            dispatch(findUserRequestSuccess(res)) 
-            console.log(res)
+            dispatch(findUserRequestSuccess(res));
         })
         .catch(err => dispatch(findUserRequestFail(err)));
 };
@@ -84,12 +85,12 @@ const putUserRequestFail = payload => ({
 });
 
 export const putUser = (payload) => dispatch => {
-    dispatch(deleteUserRequest());
+    dispatch(putUserRequest());
     return fetch(`${URL}${payload}`, {
         method: "DELETE",
         credentials: "include"
     })
         .then(res => res.json())
-        .then(res => dispatch(deleteUserRequestSuccess(res)))
-        .catch(err => dispatch(deleteUserRequestFail(err)));
+        .then(res => dispatch(putUserRequestSuccess(res)))
+        .catch(err => dispatch(putUserRequestFail(err)));
 };
