@@ -52,10 +52,12 @@ export default class ChangeServicesDoctors extends React.Component {
     };
 
     changeId = (e) => {
+        console.log ("data", this.props.data)
         this.props.changeId({
-            item: e,
-            data: this.props.data
+            item: e.target,
+            data: this.props.data,
         })
+        
     };
 
     render() {
@@ -70,7 +72,7 @@ export default class ChangeServicesDoctors extends React.Component {
         } = this.props;
         let doctor = data.find(el => el._id === itemId);
         if (doctor) doctor = doctor.speciality;
-        console.log(data,specialityArray)
+        // console.log(data,specialityArray)
         return (
             <div className="change-services-doctors">
                 {this.state.flag &&

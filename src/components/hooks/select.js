@@ -93,16 +93,20 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 			</div>
 			{show && (
 				<ul className="select__list " ref={list}>
-					{emptyLine && (
-						<li className="select__item" onClick={clickOnEptyLine}>
-							&nbsp;
-						</li>
-					)}
-					{copyOption.map(el => (
-						<li className="select__item" key={el._id} onClick={toggleEvent.bind(null, el.name)}>
-							{el.name}
-						</li>
-					))}
+					<div className="scrollbar" id ="style">
+							<div className="force-overflow"></div>
+						
+						{emptyLine && (
+							<li className="select__item" onClick={clickOnEptyLine}>
+								&nbsp;
+							</li>
+						)}
+						{copyOption.map(el => (
+							<li className="select__item" key={el._id} onClick={toggleEvent.bind(null, el.name)}>
+								{el.name}
+							</li>
+						))}
+					</div>
 				</ul>
 			)}
 		</div>
