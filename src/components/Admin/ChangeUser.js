@@ -30,7 +30,7 @@ export default class ChangeUser extends React.Component {
         this.props.changeUserForm.map(el => {
             obj[el.name] = el.type === 'radio' ? el.checked ? el.value : !el.value : el.value
         });
-        console.log(obj) //заменить на putUsers
+        this.props.putUser({data:obj,path:this.props.user._id})
     };
 
     changeConfirm = (action, text) => {
@@ -38,7 +38,7 @@ export default class ChangeUser extends React.Component {
     };
 
     deleteUser = (e) => {
-        console.log(this.props.user._id); // заменить на deleteUser
+        this.props.deleteUser(this.props.user._id);
         this.changeConfirm()
     };
 

@@ -22,7 +22,8 @@ import {
     changeFindUserInput,
     findUser,
     deleteUser,
-    changeInputValueUserForm
+    changeInputValueUserForm,
+    putUser
 } from "../../actions/user"
 
 import Shedule from './Shedule'
@@ -64,7 +65,8 @@ export class Admin extends React.Component {
             deleteUser,
             userError,
             changeUserForm,
-            changeInputValueUserForm
+            changeInputValueUserForm,
+            putUser
         } = this.props;
 
         return (
@@ -115,6 +117,7 @@ export class Admin extends React.Component {
                             error={userError}
                             changeUserForm={changeUserForm}
                             changeInputValueUserForm={changeInputValueUserForm}
+                            putUser={putUser}
                         />} />
                     </Switch>
                 </div>
@@ -158,7 +161,8 @@ const mapDispatchToProps = {
     changeFindUserInput,
     findUser,
     deleteUser,
-    changeInputValueUserForm
+    changeInputValueUserForm,
+    putUser
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)
