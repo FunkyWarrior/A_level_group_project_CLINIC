@@ -5,15 +5,6 @@ import {postNewDoctorForm,postNewServiceForm} from '../utils/formFields'
 const defaultState = {
     doctors:[],
 
-    orders:[],
-    users:[],
-    reviews: [],
-
-    postNewShedule:{
-        data:null,
-        doctor:null
-    },
-
     postNewDoctor:postNewDoctorForm,
     postNewService:postNewServiceForm,
     changeDoctorId:null,
@@ -22,7 +13,6 @@ const defaultState = {
 
     isFetching:false,
     error: null,
-
 };
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -98,19 +88,6 @@ export const appReducer = (state = defaultState,action) => {
         }
 
 // -----------------------------------------------------------------------------------------------------------------
-
-        case types.CHANGE_SHEDULE_DOCTOR : {
-            let doctor = state.doctors.find(el=>el.name === action.payload);
-            return {
-                ...state,
-                postNewShedule: {
-                    ...state.postNewShedule,
-                    doctor:doctor._id
-                },
-            };
-        }
-
-// -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
         case types.GET_DOCTORS_REQUEST : {
@@ -136,8 +113,6 @@ export const appReducer = (state = defaultState,action) => {
             }
         }
 
-
-
 // -----------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------
 
@@ -157,34 +132,6 @@ export const appReducer = (state = defaultState,action) => {
         }
 
         case types.POST_DOCTORS_REQUEST_FAIL : {
-            return {
-                ...state,
-                error: action.payload,
-                isFetching: false
-            }
-        }
-
-// -----------------------------------------------------------------------------------------------------------------
-
-        case types.POST_SHEDULE_REQUEST : {
-            return {
-                ...state,
-                isFetching: true
-            };
-        }
-
-        case types.POST_SHEDULE_REQUEST_SUCCESS : {
-            return {
-                ...state,
-                postNewShedule:{
-                    ...state.postNewShedule,
-                    data:null,
-                },
-                isFetching: false
-            }
-        }
-
-        case types.POST_SHEDULE_REQUEST_FAIL : {
             return {
                 ...state,
                 error: action.payload,
