@@ -16,6 +16,7 @@ export default class Input extends React.Component {
                 required={el.required}
                 pattern={el.pattern}
                 checked={el.checked}
+                readOnly={el.readOnly}
                 onChange={(e) => changeInputValues(e)}
             />
         );

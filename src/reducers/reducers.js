@@ -71,21 +71,14 @@ export const appReducer = (state = defaultState,action) => {
 
         case types.CHANGE_SELECTED_DOCTOR_ID : {
             let doctor = action.payload.data.find(el => el.name === action.payload.item);
-            let result;
             let specArray=[];
-            if (doctor){
-                result = Object.keys(doctor).map(key => {
-                    return [key, doctor[key]];
-                });
-                doctor.speciality.map(el => specArray.push(el._id))
-            }
             return {
                 ...state,
                 specialityArray:specArray,
                 changeDoctorId: doctor ? doctor._id : null,
-                postNewDoctor:doctor ? state.postNewDoctor.map(el => result.find(item => item[0] === el.name) ? {
+                postNewDoctor:doctor ? state.postNewDoctor.map(el => Object.keys(doctor).find(item => item === el.name) ? {
                     ...el,
-                    value:result.find(item => item[0] === el.name)[1]
+                    value:doctor[el.name]
                 } : el) : postNewDoctorForm
             };
         }
@@ -94,18 +87,12 @@ export const appReducer = (state = defaultState,action) => {
 
         case types.CHANGE_SELECTED_SERVICE_ID : {
             let service = action.payload.data.find(el => el.name === action.payload.item);
-            let result;
-                if (service){
-                    result = Object.keys(service).map(key => {
-                        return [key, service[key]];
-                    });
-                }
             return {
                 ...state,
                 changeServiceId: service ? service._id : null,
-                postNewService: service ? state.postNewService.map(el => result.find(item => item[0] === el.name) ? {
+                postNewService: service ? state.postNewService.map(el => Object.keys(service).find(item => item === el.name) ? {
                     ...el,
-                    value:result.find(item => item[0] === el.name)[1]
+                    value:service[el.name]
                 } : el) : postNewServiceForm
             };
         }
@@ -114,18 +101,12 @@ export const appReducer = (state = defaultState,action) => {
 
         case types.CHANGE_SHEDULE_DOCTOR : {
             let doctor = state.doctors.find(el=>el.name === action.payload);
-            let array = [[],[],[],[],[],[],[],[],[],[],[],[]];
-            // eslint-disable-next-line array-callback-return
-            doctor.shedule.map(el => {
-                array[new Date(el.data).getMonth()].push(el)
-            });
             return {
                 ...state,
                 postNewShedule: {
                     ...state.postNewShedule,
                     doctor:doctor._id
                 },
-                sheduleMonthArray: array
             };
         }
 
