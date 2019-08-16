@@ -141,30 +141,6 @@ export const appReducer = (state = defaultState,action) => {
 
 // -----------------------------------------------------------------------------------------------------------------
 
-        case types.POST_SERVICES_REQUEST : {
-            return {
-                ...state,
-                isFetching: true
-            };
-        }
-
-        case types.POST_SERVICES_REQUEST_SUCCESS : {
-            return {
-                ...state,
-                isFetching: false
-            }
-        }
-
-        case types.POST_SERVICES_REQUEST_FAIL : {
-            return {
-                ...state,
-                error: action.payload,
-                isFetching: false
-            }
-        }
-
-// -----------------------------------------------------------------------------------------------------------------
-
         case types.POST_ORDERS_REQUEST : {
             return {
                 ...state,
@@ -201,7 +177,7 @@ export const appReducer = (state = defaultState,action) => {
             return {
                 ...state,
                 postNewDoctor:postNewDoctorForm,
-                changeId:null,
+                changeDoctorId:null,
                 isFetching: false
             }
         }
@@ -227,7 +203,7 @@ export const appReducer = (state = defaultState,action) => {
             return {
                 ...state,
                 postNewService:postNewServiceForm,
-                changeId:null,
+                changeServiceId:null,
                 isFetching: false
             }
         }
@@ -253,7 +229,7 @@ export const appReducer = (state = defaultState,action) => {
         case types.DELETE_DOCTORS_REQUEST_SUCCESS : {
             return {
                 ...state,
-                changeId:null,
+                changeDoctorId:null,
                 isFetching: false
             }
         }
@@ -278,7 +254,7 @@ export const appReducer = (state = defaultState,action) => {
         case types.DELETE_SERVICES_REQUEST_SUCCESS : {
             return {
                 ...state,
-                changeId:null,
+                changeServiceId:null,
                 isFetching: false
             }
         }
