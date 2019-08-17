@@ -7,7 +7,6 @@ import UserInfo from '../components/userInfo'
 import UserOrders from '../components/userOrders'
 
 import { getOrders,getUserOrders } from "../actions/orders"
-import { putUser,changeInputValueUserForm, setBasicFormValue } from '../actions/auth'
 
 class UserContainer extends Component {
 
@@ -23,7 +22,8 @@ class UserContainer extends Component {
     // }
 
     render() { 
-        const {currentUser,changeUserForm,changeInputValueUserForm, setBasicFormValue, dataOrders, getUserOrders} = this.props
+        // const {currentUser, dataOrders, getUserOrders} = this.props
+        const { currentUser } = this.props
         // console.log('user',currentUser)
         // console.log('Orders',dataOrders)
         return (
@@ -37,10 +37,6 @@ class UserContainer extends Component {
                     <Route path='/user/orders' component={ UserOrders } />
                     <Route path='/user/info' render={() => <UserInfo
                             user={currentUser}
-                            form={changeUserForm}
-                            putItem= {setBasicFormValue}
-                            postItem= {putUser}
-                            changeInputValues={changeInputValueUserForm}
                         />} />
                  </Switch>
                 </div>
@@ -57,4 +53,4 @@ const mapStateToProps = state => {
         changeUserForm: state.auth.changeUserForm
     }
 }
-export default connect(mapStateToProps, { getOrders, putUser,changeInputValueUserForm, setBasicFormValue,getUserOrders })(UserContainer);
+export default connect(mapStateToProps, { getOrders,getUserOrders })(UserContainer);

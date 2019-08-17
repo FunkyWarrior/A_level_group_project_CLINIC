@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from './Admin/Input'
+// import Input from './Admin/Input'
 
 
 class UserInfo extends React.Component {
@@ -8,25 +8,13 @@ class UserInfo extends React.Component {
  
     }
     render() { 
-        const { form, user, putItem,postItem, changeInputValues} = this.props
+        const { } = this.props
         // console.log('putItem', putItem)
         return ( 
             <div>
                 <div className="admin-item">
                     <form className="form-doctors" onSubmit={this.changeItem}>
-                        {
-                            form.map(el => {
-                                
-                                    return (
-                                        <Input
-                                            key={el.id}
-                                            id={el.id}
-                                            el={el}
-                                            changeInputValues={changeInputValues}
-                                        />
-                                    )
-                            })
-                        }
+               <div>Change user</div>
                         <input className="btn link"
                                type='submit'
                                value= 'Изменить'
