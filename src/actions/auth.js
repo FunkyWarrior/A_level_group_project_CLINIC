@@ -91,6 +91,45 @@ export const getUser = () => dispatch => {
         .catch(err => dispatch(getUserRequestFail(err)));
 };
 
+const putUserRequest = payload => ({
+    type: types.PUT_USER_REQUEST,
+    payload
+});
+
+const putUserRequestSuccess = payload => ({
+    type: types.PUT_USER_REQUEST_SUCCESS,
+    payload
+});
+
+const putUserRequestFail = payload => ({
+    type: types.PUT_USER_REQUEST_FAIL,
+    payload
+});
+
+export const putUser = (payload) => dispatch => {
+    dispatch(putUserRequest());
+    return fetch(` https://api-clinics.herokuapp.com/api/v1/users/` + localStorage.getItem('userId'), {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload.data)
+    })
+        .then(res => res.json())
+        .then(res => dispatch(putUserRequestSuccess(res)))
+        .catch(err => dispatch(putUserRequestFail(err)));
+};
+
+export const changeInputValueUserForm = payload => ({
+    type: types.CHANGE_INPUT_VALUE_USER_FORM,
+    payload
+});
+
+export const setBasicFormValue = payload => ({
+    type: types.USER_CHANGE_FORM_INFO,
+    payload
+})
 
 export const userLogout = payload => ({
     type: types.USER_LOGOUT,

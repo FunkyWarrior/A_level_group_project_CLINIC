@@ -8,7 +8,7 @@ import Reviews from "../components/Reviews";
 import Admin from "../components/Admin/Admin";
 import Appointment from "../components/appointment/Appointment";
 import Auth from "../containers/auth";
-import User from "../components/user";
+import User from "../containers/user";
 const PAGENOTFOUND = () => <div>PAGE 404 NOT FOUND</div>;
 
 
@@ -231,6 +231,50 @@ export const postNewServiceForm =[
 	}
 ];
 
+export const changeUserForm = [
+	{
+		id:1,
+		type:'text',
+		value:"",
+		name:'firstName',
+		placeholder:'Введите Имя',
+		required:true
+	},
+	{
+		id:2,
+		type:'text',
+		value:"",
+		name:'lastName',
+		placeholder:'Введите Фамилию',
+		required:true
+	},
+	{
+		id:3,
+		type:'number',
+		value:"",
+		name:'phone',
+		placeholder:'Введите ваш номер',
+		required:true
+	},
+	{
+		id:4,
+		type:'password',
+		value:"",
+		name:'password',
+		placeholder:'Введите новый пароль',
+		required:true
+	},
+	{
+		id:5,
+		type:'password',
+		value:"",
+		name:'confirmPassword',
+		placeholder:'Повторите пароль',
+		required:true
+	}
+	
+];
+
 export const route = [
 	{
 		id: 1,
@@ -298,7 +342,7 @@ export const route = [
 	},
 	{
 		id: 9,
-		exact: true,
+		exact: false,
 		path: "/user",
 		protected: true,
 		component: User
