@@ -172,9 +172,10 @@ export const postNewDoctorForm =[
 	},
 	{
 		id:3,
-		type:'text',
+		type:'file',
 		value:"",
 		name:'photo',
+		className: "btn link",
 		placeholder:'Добавьте фотографию',
 		required:true
 	},
@@ -229,6 +230,79 @@ export const postNewServiceForm =[
 		placeholder:'Введите стоимость сервиса',
 		required:true
 	}
+];
+
+export const adminChangeUserForm =[
+	{
+		id:1,
+		type:'text',
+		value:"",
+		name:'firstName',
+		placeholder:'Введите Имя',
+		required:true
+	},
+	{
+		id:2,
+		type:'text',
+		value:"",
+		name:'lastName',
+		placeholder:'Введите Фамилию',
+		required:true
+	},
+	{
+		id:3,
+		type:'email',
+		value:"",
+		name:'email',
+		placeholder:'Введите E-mail',
+		readOnly:true,
+		required:true
+	},
+	{
+		id:4,
+		type:'phone',
+		value:"",
+		name:'phone',
+		placeholder:'Введите номер телефона',
+		required:true
+	},
+	{
+		id:5,
+		type:'text',
+		value:"",
+		name:'_id',
+		readOnly:true,
+		required:true
+	},
+	{
+		id:6,
+		type:'radio',
+		value:true,
+		name:'role',
+		required:true
+	},
+	{
+		id:7,
+		type:'radio',
+		value:false,
+		name:'role',
+		required:true
+	},
+	{
+		id:8,
+		type:'radio',
+		value:true,
+		name:'doctor',
+		required:true
+	},
+	{
+		id:9,
+		type:'radio',
+		value:false,
+		name:'doctor',
+		required:true
+	}
+
 ];
 
 export const route = [

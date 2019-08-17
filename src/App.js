@@ -6,7 +6,7 @@ import {getDoctors} from "./actions/actions";
 import {getServices, getCategories} from "./actions/services";
 import {getUser} from "./actions/auth"
 
-import Loader from "./components/loader";
+import Loader from "./components/hooks/loader";
 import Header from "./components/header/index";
 import Footer from "./components/Footer";
 import {route} from './utils/formFields'
@@ -19,6 +19,7 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
+        console.log(this.props.app)
         this.props.getCategories();
 
        if(localStorage.getItem('userId')) this.props.getUser()

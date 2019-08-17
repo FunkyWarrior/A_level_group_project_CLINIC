@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Switch, Route} from "react-router-dom";
 import {
-    setSheduleDoctor,
-    postShedule,
     changeInputValueDoctorForm,
     changeInputValueServiceForm,
     postDoctors,
@@ -12,13 +10,30 @@ import {
     changeSelectedServiceId,
     putDoctors,
     deleteDoctors,
-    postServices,
-    putServices,
-    deleteServices,
     changeSpecialityArray
 } from "../../actions/actions";
 
+import {
+    changeFindUserInput,
+    findUser,
+    deleteUser,
+    changeInputValueUserForm,
+    putUser
+} from "../../actions/user"
+
+import {
+    postServices,
+    putServices,
+    deleteServices
+} from "../../actions/services"
+
+import {
+    setSheduleDoctor,
+    postShedule,
+} from "../../actions/shedule"
+
 import Shedule from './Shedule'
+import ChangeUser from './ChangeUser'
 import ChangeServicesDoctors from './ChangeServices-Doctors'
 
 
@@ -48,7 +63,16 @@ export class Admin extends React.Component {
             deleteServices,
             postServices,
             changeSpecialityArray,
-            specialityArray
+            specialityArray,
+            user,
+            findUserInput,
+            changeFindUserInput,
+            findUser,
+            deleteUser,
+            userError,
+            changeUserForm,
+            changeInputValueUserForm,
+            putUser
         } = this.props;
 
         return (
@@ -58,6 +82,7 @@ export class Admin extends React.Component {
                         <Link to='/admin/change-shedule' className = "btn link admin">Расписание</Link>
                         <Link to='/admin/change-doctors' className = "btn link admin">Сотрудники</Link>
                         <Link to='/admin/change-services' className = "btn link admin">Сервисы</Link>
+                        <Link to='/admin/change-user' className = "btn link admin">Пользователи</Link>
                     </div>
                     <Switch>
                         <Route path='/admin/change-shedule' render={() => <Shedule
@@ -89,6 +114,17 @@ export class Admin extends React.Component {
                             deleteItem={deleteServices}
                             changeInputValues={changeInputValueServiceForm}
                         />} />
+                        <Route path='/admin/change-user' render={() => <ChangeUser
+                            user={user}
+                            findUserInput={findUserInput}
+                            changeFindUserInput={changeFindUserInput}
+                            findUser={findUser}
+                            deleteUser={deleteUser}
+                            error={userError}
+                            changeUserForm={changeUserForm}
+                            changeInputValueUserForm={changeInputValueUserForm}
+                            putUser={putUser}
+                        />} />
                     </Switch>
                 </div>
             </div>
@@ -99,14 +135,18 @@ export class Admin extends React.Component {
 const mapStateToProps = state => {
     return {
         doctors:state.app.doctors,
-        postNewShedule:state.app.postNewShedule,
+        postNewShedule:state.shedule.postNewShedule,
         postNewDoctor:state.app.postNewDoctor,
         postNewService:state.app.postNewService,
         changeDoctorId:state.app.changeDoctorId,
         changeServiceId:state.app.changeServiceId,
         specialityArray:state.app.specialityArray,
         services: state.services.services,
-        categories: state.services.categories
+        categories: state.services.categories,
+        user:state.user.user,
+        findUserInput:state.user.findUserInput,
+        userError:state.user.error,
+        changeUserForm:state.user.changeUserForm,
     }
 };
 
@@ -123,7 +163,12 @@ const mapDispatchToProps = {
     postServices,
     putServices,
     deleteServices,
-    changeSpecialityArray
+    changeSpecialityArray,
+    changeFindUserInput,
+    findUser,
+    deleteUser,
+    changeInputValueUserForm,
+    putUser
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

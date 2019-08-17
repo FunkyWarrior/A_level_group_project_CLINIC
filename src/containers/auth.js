@@ -6,7 +6,7 @@ import { auth, register } from '../actions/auth';
 
 import {SignUpForm} from '../components/auth/signUp';
 import {SignInForm} from '../components/auth/signIn';
-import Loader from '../components/loader';
+import Loader from '../components/hooks/loader';
 
 class Auth extends Component {
   state = { auth: true };

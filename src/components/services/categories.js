@@ -50,8 +50,8 @@
 // const mapStateToProps = state => {
 //     return {
 //         app:state.app,
-//         // data:state.app.services,
-//         categories:state.app.servicesArray
+//         data:state.services.services,
+//         categories:state.services.categories
 //     }
 // };
 

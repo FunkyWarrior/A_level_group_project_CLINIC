@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from "moment";
 
+import { CustomSelect } from "../hooks/select"
 import Calendar from "../Calendar";
 
 export default class Shedule extends React.Component {
@@ -10,7 +11,7 @@ export default class Shedule extends React.Component {
     };
 
     post = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         let current = new Date(this.state.startDate);
         let end = new Date (this.state.endDate);
         while (current.toISOString().split('T')[0] <= end.toISOString().split('T')[0]){
@@ -31,25 +32,23 @@ export default class Shedule extends React.Component {
         this.setState ( { endDate:e.target.value } )
     };
     setDoctor = (e) => {
-        this.props.setSheduleDoctor(e.target.value)
+        this.props.setSheduleDoctor({data:e,doctors:this.props.doctors})
+  
     };
 
     render() {
         const {doctors, postNewShedule} = this.props;
         const doctor = doctors.find(el => el._id === postNewShedule.doctor);
-
         return (
             <div  className = "shedule-container" >
                 <div className = "option" >
-                    <select className = "appointment admin-appointment"  onChange={this.setDoctor} defaultValue={doctor ? doctor.name : 'Выберите доктора'}>
-                        <option disabled >Выберите доктора</option>
-                        {
-                            doctors.map ( el=> (
-                                <option key={el._id} id={el._id}> {el.name} </option>
-                            ) )
-                        }
-                    </select>
 
+                    <CustomSelect
+                        label="Выберите доктора"
+                        options= {doctors }
+                        clickOptionEvent={this.setDoctor}
+                    /> 
+                    
                     {postNewShedule.doctor &&
                         <div className = "input-box">
                             <input className = "shedule-input " type="date" onChange = {this.changeStart}/>
@@ -65,10 +64,12 @@ export default class Shedule extends React.Component {
                 {postNewShedule.doctor &&
                     <Calendar
                         doctor={doctor}
-                        action = {console.log}
+                        action = {console.log }
                     />
                 }
             </div>
         );
     }
 }
+
+  

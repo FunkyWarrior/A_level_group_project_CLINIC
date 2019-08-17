@@ -118,6 +118,7 @@
   content: "\ea14";
   color:  var(--hover-color);
   font-size: 1.6em;
+  margin-left: 20px;
 }
 .icon-location:before {
   content: "\e947";
@@ -126,4 +127,8 @@
 .icon-phone:before {
   content: "\e942";
   font-size: 35px;
+}
+
+.icon-done:before {
+  content: "\e900";
 }

@@ -23,9 +23,9 @@ body {
 	background-image: url(../assets/images/fon1.jpg);
 	background-size: cover;
 	min-height: 100vh;
-	@media (max-width: 1024px) {
-		background-position-x: -450px;
-	}
+	// @media (max-width: 1024px) {
+	// 	background-position-x: -450px;
+	// }
 	@media (max-width: 768px) {
 		background-position-x: -270px;
 	}
@@ -100,7 +100,6 @@ aside {
 	}
 
 }
-
 
 
 // _______header +  navigation______________
@@ -271,6 +270,14 @@ aside {
 	display: block;
 	padding: 15px 2px;
 	text-align: center;
+	@media (max-width: 1024px) {
+		font-size: 0.7em;
+		padding: 5px 2px;
+	}
+	@media (max-width: 768px) {
+		font-size: 0.6em;
+		padding: 5px 2px;
+	}
 }
 
 .more {
@@ -282,9 +289,20 @@ aside {
 	}
 }
 
-.admin {
-	width: 30%;	
+
+.servise-btn {
+	font-size: 0.7em;
 	margin: 0;
+	width: 100%;
+	line-height: 2em;
+	padding: 3px;
+	min-height: 35px;
+	margin: 2px 0;
+	background-color: $main-color;
+	color: $header-color;
+	&:hover {
+		color: $opacity-color;
+	}
 }
 .nav-exit {
 	background-color: none;
@@ -301,12 +319,11 @@ aside {
 h2  {
 	background-color: $opacity-color;
 	box-shadow: 0px 0px 15px 15px  $opacity-color;
-	font-size: 20px;
+	font-size: 1.2em;
 	line-height: 1.5em;
 	font-family: 'Montserrat', sans-serif;
 	color: $header-color;
 	text-align: justify;
-	
 	padding: 15px 15px 50px;
 	@media (max-width: 768px) {
 		padding: 3px;
@@ -384,13 +401,18 @@ h2 {
 		justify-content: space-between;
 		border-radius: 5px;
 		box-shadow: 0px 2px 8px 1px $main-color;
+		@media (max-width: 768px) {
+			width: 30%;
+		}
+		@media (max-width: 414px) {
+			width: 100%;
+		}
 		.photo {
 			border-radius: 5px; 
 			img {
 				border-radius: 5px;
 				width: 100%;
 			}
-			
 		}
 		h3 {
 			margin: 10px;
@@ -407,12 +429,6 @@ h2 {
 		// 	margin-top: 20px;
 		// }
 
-		@media (max-width: 768px) {
-			width: 45%;
-		}
-		@media (max-width: 630px) {
-			width: 100%;
-		}
 	}
 
 }
@@ -447,9 +463,6 @@ h2 {
 	}
 	}
 }
-
-
-
 
 
 
@@ -491,8 +504,34 @@ h2 {
 }
 .info-wrap {
 	padding: 110px 10px 25px;
- 	min-height: 100vh;
+	min-height: 100vh;
+	flex-direction: row;
+	 .info {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		color: $header-color;
+		.info-item {
+			margin: 0 20px 10px; 
+			@media (max-width: 414px) {
+				margin: 0;
+			}
+			p {
+				margin: 5px 0;
+				text-align: left;
+			}
+			img {
+				border-radius: 3px;
+				box-shadow: 1px 1px 15px 1px $hover-color;
+			}	
+		}
+		.info-desc {
+			width: 50%;
+		}
+	}
 }
+
+
 .card {
 	display: flex;
 	justify-content: space-around;
@@ -525,8 +564,7 @@ h2 {
 			box-shadow: 1px 1px 15px 1px $hover-color;
 		}	
 	}
-}
-		
+}		
 .present {
 	flex-basis: 20%;
 	display: flex;
@@ -758,23 +796,47 @@ h2 {
 // _______ADMIN PANEL __________
 .btn-box {
 	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 	justify-content: space-between;
+	@media (max-width: 768px) {
+		justify-content: center;
+	}
+	.admin {
+		width: 20%;	
+		margin: 3px;
+		@media (max-width: 768px) {
+			width: 80%;	
+			margin: 10px 5px;
+		}
+	}
 }
 .option,
 .change-services-doctors {
 	width: 40%;
 	margin: 0 auto;
+	align-items: center;
+	@media (max-width: 768px) {
+		flex-direction: column-reverse;
+		width: 85%;
+	}
+	@media (max-width: 414px) {
+		width: 100%;
+	}
 }
 .admin-appointment {
 	width: 100%;
 }
 .shedule-container {
 	margin-top: 50px;
+	.option {
+		width: 80%;
+	}
 	.input-box {
-		width: 100%;
+		width: 90%;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		justify-content: center;
 	}
 	.shedule-input {
 		margin: 20px 10px 0 0;
@@ -819,10 +881,14 @@ h2 {
 // ___ change-services-doctors____
 .change-services-doctors {
 	display: flex;
-	// flex-direction: column;
 	justify-content: center;
 	width: 100%;
 	margin-top: 50px;
+	align-content: stretch;
+	align-items: flex-start;
+	@media (max-width: 768px) {
+		align-content: center;
+	}
 	.form-doctors {
 		display: flex;
 		flex-direction: column;
@@ -833,18 +899,24 @@ h2 {
 	.admin-item {
 		width: 35%;
 		margin: 0 50px;
+		@media (max-width: 768px) {
+			width: 85%;
+			margin-bottom: 30px;
+		}
+
 	}
 }
 
 // ______categories _________
 .services {
 	width: 100%;
+	padding-top: 110px;	
 	min-height: 100vh;
 	@media (max-width: 414px) {
 		margin: 25px 0;
 	}
 	.categories {
-		padding-top: 50px;
+		// padding-top: 50px;
 		width: 100%;
 		display: flex;
 		flex-direction: row;
@@ -856,23 +928,12 @@ h2 {
 		}
 		.service-type {
 			width: 85%;
-			// p {
-			// 	@media (max-width: 414px) {
-			// 		margin: 10px 0;
-			// 	}
-			// 	@media (max-width: 414px) {
-			// 		margin: 5px 0;
-			// 	}
-			// 	@media (max-width: 375px) {
-			// 		font-size: 0.8em;
-			// 	}
-			// }
 			.categories-link {
 				display: block;
 				position: relative;
 				border: 1px solid $hover-color;
 				border-radius: 3px;
-				margin: 25px 15px;
+				// margin: 25px 15px;
 				padding: 10px;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -896,7 +957,7 @@ h2 {
 				}
 			}
 			@media (max-width: 1024px) {
-				width: 65%;
+				width: 75%;
 				margin-top: 40px;
 			}
 			@media (max-width: 768px) {
@@ -947,8 +1008,12 @@ h2 {
 	}
 
 	// _______________ACCORDION___________
-	#accordion {
+	#accordion {	
 		.service-type {
+			&:target {
+				padding-top: 110px;				
+			}
+		
 			.servise-name {
 				display: none;
 			}

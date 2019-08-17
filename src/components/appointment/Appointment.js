@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import moment from "moment";
-import {CustomSelect} from "./select";
+import { CustomSelect } from "../hooks/select";
 
 import {
     setAppointmentSpec,
@@ -53,12 +53,14 @@ export class Appoint extends React.Component {
     };
 
     postOrder = () => {
-        this.props.postOrders({      shedule: this.props.appointment.sheduleId,
+        this.props.postOrders({
+            shedule: this.props.appointment.sheduleId,
             time: this.props.appointment.time,
             doctor: this.props.appointment.doctorId,
             spec: this.props.appointment.specId,
             comment: this.props.appointment.comment,
-            user: this.props.user})
+            user: this.props.user._id
+        })
     };
 
 
@@ -158,7 +160,7 @@ const mapStateToProps = state => {
         timeArray: state.appointment.timeArray,
         doctors: state.app.doctors,
         services: state.services.services,
-        user: state.auth.user
+        user:state.auth.user
     };
 };
 

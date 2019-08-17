@@ -12,10 +12,12 @@ export class Services extends React.Component {
                     <div className="doctors-wrap  services">
                         <div className="categories" id="accordion">
                             {categories.map(el => (
-                                <div className="service-type" key={el._id} id={`item${el._id}`}>
-                                    <a href={`#item${el._id}`} className="categories-link icon-angle-down" key={el._id}>
-                                        {el.name}
+                                
+                                <div className="service-type" key={el._id} id={`item${el._id}`} >
+                                    <a href={`#item${el._id}`} className="categories-link icon-angle-down" key={el._id} >
+                                         {el.name}
                                     </a>
+
                                     {el.services.map(item => (
                                         <div className="servise-name" key={item._id}>
                                             <p>{item.name}</p>
@@ -28,6 +30,7 @@ export class Services extends React.Component {
                                         </div>
                                     ))}
                                 </div>
+
                             ))}
                         </div>
                     </div>
@@ -43,6 +46,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Services);
