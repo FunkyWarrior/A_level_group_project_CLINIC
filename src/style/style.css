@@ -65,6 +65,7 @@
   right: 15px;
   top: 55%;
 }
+
 .icon-lens:before {
   content: "\e901";
   color:  var(--opacity-color);

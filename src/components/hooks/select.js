@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-export const CustomSelect = ({ label, options , emptyLine = false, searchInput = true,  reset, clickOptionEvent = () =>{} }) => {
+export const CustomSelect = ({ label, options , emptyLine = true, searchInput = true,  reset, clickOptionEvent = () =>{} }) => {
 
 	const [copyOption, setCopyOption] = React.useState([]);
 	const [show, toggleShow] = React.useState(false);
@@ -78,7 +78,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 					{label}
 				</label>
 			)}
-			<div className="select__value-box icon-angle-down" onClick={() => toggleShow(true)}>
+			<div className="select__value-box" onClick={() => toggleShow(true)}>
 				{searchInput ? null : <span>{value} &nbsp;</span>}
 				<input
 					value={inputValue}
@@ -87,7 +87,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 					readOnly="readonly"
 					onChange={chahgeValueEvent}
 					id="select"
-					className="select__input"
+					className="select__input  icon-angle-down"
 				/>
 				<span className="icon-angle-down"></span>
 			</div>
@@ -98,7 +98,7 @@ export const CustomSelect = ({ label, options , emptyLine = false, searchInput =
 						
 						{emptyLine && (
 							<li className="select__item" onClick={clickOnEptyLine}>
-								&nbsp;
+								Выбрать 
 							</li>
 						)}
 						{copyOption.map(el => (

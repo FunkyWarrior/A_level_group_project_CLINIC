@@ -112,7 +112,7 @@ export default class ChangeServicesDoctors extends React.Component {
                 <div className="admin-item">
 
                     <CustomSelect
-                        label="Выбрать"
+                        // label="Выбрать"
                         options={data}
                         clickOptionEvent={this.changeId}
                     />

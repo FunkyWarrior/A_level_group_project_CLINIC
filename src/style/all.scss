@@ -889,6 +889,9 @@ h2 {
 	@media (max-width: 768px) {
 		align-content: center;
 	}
+	.select .icon-angle-down:before {
+		top: 35%;
+	  }
 	.form-doctors {
 		display: flex;
 		flex-direction: column;
@@ -1014,7 +1017,7 @@ h2 {
 				padding-top: 110px;				
 			}
 		
-			.servise-name {
+		.servise-name {
 				display: none;
 			}
 			&:target .servise-name {
