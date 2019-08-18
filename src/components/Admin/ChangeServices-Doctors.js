@@ -14,10 +14,6 @@ export default class ChangeServicesDoctors extends React.Component {
         this.setState({showConfirm: !this.state.showConfirm})
     };
 
-    componentDidUpdate(prevProps) {
-        if (this.props.data !== prevProps.data) this.setState({flag: false})
-    };
-
     changeFlag = (e) => {
         e.preventDefault();
         this.setState({flag: !this.state.flag})
@@ -50,7 +46,6 @@ export default class ChangeServicesDoctors extends React.Component {
             } : obj,
             id: this.props.itemId
         })
-
     };
 
     deleteItem = () => {
@@ -59,12 +54,10 @@ export default class ChangeServicesDoctors extends React.Component {
     };
 
     changeId = (e) => {
-        console.log ("data", this.props.data)
         this.props.changeId({
-            item: e.target,
+            item: e,
             data: this.props.data,
         })
-        
     };
 
     render() {
@@ -77,14 +70,16 @@ export default class ChangeServicesDoctors extends React.Component {
             changeSpecialityArray,
             specialityArray
         } = this.props;
-        let doctor = data.find(el => el._id === itemId);
-        if (doctor) doctor = doctor.speciality;
-        // console.log(data,specialityArray)
         return (
             <div className="change-services-doctors">
                 {this.state.flag &&
-                <CheckBoxWindow categories={categories} specialityArray={specialityArray} changeFlag={this.changeFlag}
-                                changeSpecialityArray={changeSpecialityArray}/>}
+                <CheckBoxWindow
+                    categories={categories}
+                    specialityArray={specialityArray}
+                    changeFlag={this.changeFlag}
+                    changeSpecialityArray={changeSpecialityArray}
+                />
+                }
                 <div className="admin-item">
                     <form className="form-doctors" onSubmit={itemId ? this.changeItem : this.postNewItem}>
                         {
@@ -103,14 +98,14 @@ export default class ChangeServicesDoctors extends React.Component {
                         }
                         {categories &&
                         <button className=" btn servise-btn" onClick={this.changeFlag}>Выбрать сервисы</button>}
-                        <input className="btn link"
-                               type='submit'
-                               value={itemId ? 'Изменить' : 'Добавить'}
+                        <input
+                            className="btn link"
+                            type='submit'
+                            value={itemId ? 'Изменить' : 'Добавить'}
                         />
                     </form>
                 </div>
                 <div className="admin-item">
-
                     <CustomSelect
                         // label="Выбрать"
                         options={data}
@@ -123,8 +118,11 @@ export default class ChangeServicesDoctors extends React.Component {
                     }
                 </div>
                 {this.state.showConfirm &&
-                <ConfirmButton yes={this.deleteItem} no={this.changeConfirm}
-                               text={'Are you sure you want to Delete Item?'}/>
+                <ConfirmButton
+                    yes={this.deleteItem}
+                    no={this.changeConfirm}
+                    text={'Are you sure you want to Delete Item?'}
+                />
                 }
             </div>
         );

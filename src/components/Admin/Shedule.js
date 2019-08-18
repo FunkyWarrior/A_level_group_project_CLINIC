@@ -11,7 +11,7 @@ export default class Shedule extends React.Component {
     };
 
     post = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         let current = new Date(this.state.startDate);
         let end = new Date (this.state.endDate);
         while (current.toISOString().split('T')[0] <= end.toISOString().split('T')[0]){
@@ -32,8 +32,7 @@ export default class Shedule extends React.Component {
         this.setState ( { endDate:e.target.value } )
     };
     setDoctor = (e) => {
-        console.log (e)
-        this.props.setSheduleDoctor(e)
+        this.props.setSheduleDoctor({data:e,doctors:this.props.doctors})
   
     };
 

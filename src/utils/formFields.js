@@ -255,6 +255,7 @@ export const adminChangeUserForm =[
 		value:"",
 		name:'email',
 		placeholder:'Введите E-mail',
+		readOnly:true,
 		required:true
 	},
 	{
@@ -270,6 +271,7 @@ export const adminChangeUserForm =[
 		type:'text',
 		value:"",
 		name:'_id',
+		readOnly:true,
 		required:true
 	},
 	{

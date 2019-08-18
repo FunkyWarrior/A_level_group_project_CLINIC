@@ -33,6 +33,30 @@ export const servicesReducer = (state = defaultState, action) => {
             }
         }
 
+
+        case types.POST_SERVICES_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.POST_SERVICES_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+
+        case types.POST_SERVICES_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+
         case types.GET_CATEGORIES_REQUEST : {
             return {
                 ...state,

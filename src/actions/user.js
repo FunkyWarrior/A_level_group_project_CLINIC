@@ -86,9 +86,13 @@ const putUserRequestFail = payload => ({
 
 export const putUser = (payload) => dispatch => {
     dispatch(putUserRequest());
-    return fetch(`${URL}${payload}`, {
-        method: "DELETE",
-        credentials: "include"
+    return fetch(`${URL}${payload.path}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload.data)
     })
         .then(res => res.json())
         .then(res => dispatch(putUserRequestSuccess(res)))

@@ -6,6 +6,7 @@ import auth from './auth';
 import {appointmentReducer} from "./appointment";
 import {servicesReducer} from "./services";
 import {userReducer} from "./user";
+import {sheduleReducer} from "./shedule";
 
 
 
@@ -15,5 +16,6 @@ export default combineReducers({
     calendar:calendarReducer,
     appointment:appointmentReducer,
     services:servicesReducer,
-    user:userReducer
+    user:userReducer,
+    shedule:sheduleReducer
 })

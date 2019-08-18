@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Switch, Route} from "react-router-dom";
 import {
-    setSheduleDoctor,
-    postShedule,
     changeInputValueDoctorForm,
     changeInputValueServiceForm,
     postDoctors,
@@ -12,9 +10,6 @@ import {
     changeSelectedServiceId,
     putDoctors,
     deleteDoctors,
-    postServices,
-    putServices,
-    deleteServices,
     changeSpecialityArray
 } from "../../actions/actions";
 
@@ -22,8 +17,20 @@ import {
     changeFindUserInput,
     findUser,
     deleteUser,
-    changeInputValueUserForm
+    changeInputValueUserForm,
+    putUser
 } from "../../actions/user"
+
+import {
+    postServices,
+    putServices,
+    deleteServices
+} from "../../actions/services"
+
+import {
+    setSheduleDoctor,
+    postShedule,
+} from "../../actions/shedule"
 
 import Shedule from './Shedule'
 import ChangeUser from './ChangeUser'
@@ -64,7 +71,8 @@ export class Admin extends React.Component {
             deleteUser,
             userError,
             changeUserForm,
-            changeInputValueUserForm
+            changeInputValueUserForm,
+            putUser
         } = this.props;
 
         return (
@@ -115,6 +123,7 @@ export class Admin extends React.Component {
                             error={userError}
                             changeUserForm={changeUserForm}
                             changeInputValueUserForm={changeInputValueUserForm}
+                            putUser={putUser}
                         />} />
                     </Switch>
                 </div>
@@ -126,7 +135,7 @@ export class Admin extends React.Component {
 const mapStateToProps = state => {
     return {
         doctors:state.app.doctors,
-        postNewShedule:state.app.postNewShedule,
+        postNewShedule:state.shedule.postNewShedule,
         postNewDoctor:state.app.postNewDoctor,
         postNewService:state.app.postNewService,
         changeDoctorId:state.app.changeDoctorId,
@@ -158,7 +167,8 @@ const mapDispatchToProps = {
     changeFindUserInput,
     findUser,
     deleteUser,
-    changeInputValueUserForm
+    changeInputValueUserForm,
+    putUser
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)
