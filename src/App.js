@@ -5,6 +5,7 @@ import {Switch} from "react-router-dom";
 import {getDoctors} from "./actions/actions";
 import {getServices, getCategories} from "./actions/services";
 import {getUser} from "./actions/auth"
+import {getOrders} from "./actions/orders"
 
 import Loader from "./components/hooks/loader";
 import Header from "./components/header/index";
@@ -19,8 +20,8 @@ export class App extends React.Component {
     componentDidMount() {
         this.props.getDoctors();
         this.props.getServices();
-        console.log(this.props.app)
         this.props.getCategories();
+        // this.props.getOrders();
 
        if(localStorage.getItem('userId')) this.props.getUser()
 
@@ -70,7 +71,8 @@ const mapDispatchToProps = {
     getDoctors,
     getServices,
     getCategories,
-    getUser
+    getUser,
+    getOrders
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(App)

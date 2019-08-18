@@ -13,6 +13,34 @@ export const changeInputValueUserForm = payload => ({
     payload
 });
 
+const getUsersRequest = payload => ({
+    type: types.GET_USERS_REQUEST,
+    payload
+});
+
+const getUsersRequestSuccess = payload => ({
+    type: types.GET_USERS_REQUEST_SUCCESS,
+    payload
+});
+
+const getUsersRequestFail = payload => ({
+    type: types.GET_USERS_REQUEST_FAIL,
+    payload
+});
+
+export const getUsers = () => dispatch => {
+    dispatch(getUsersRequest());
+    return fetch(`${URL}`,{
+        credentials:"include"
+    })
+        .then(res => res.json())
+        .then(res => {
+            dispatch(getUsersRequestSuccess(res));
+        })
+        .catch(err => dispatch(getUsersRequestFail(err)));
+};
+
+
 const findUserRequest = payload => ({
     type: types.FIND_USER_REQUEST,
     payload
@@ -41,19 +69,18 @@ export const findUser = (payload) => dispatch => {
 };
 
 
-
 const deleteUserRequest = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST,
+    type: types.DELETE_USER_REQUEST,
     payload
 });
 
 const deleteUserRequestSuccess = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST_SUCCESS,
+    type: types.DELETE_USER_REQUEST_SUCCESS,
     payload
 });
 
 const deleteUserRequestFail = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST_FAIL,
+    type: types.DELETE_USER_REQUEST_FAIL,
     payload
 });
 

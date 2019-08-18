@@ -1,36 +1,88 @@
 import * as types from '../actionsTypes/actionsTypes'
 
-const initialState = {
+const defaultState = {
     orders:[],
-    isFetching: false,
+    ordersArray:[],
+    findOrderInput:'',
     error:null,
-    userOrders: [],
-}
+    isFetching:false,
+    searching:false,
+};
 
-export default (state = initialState, action) => {
-    switch(action.type){
-        case types.GET_ORDERS_REQUEST: {
-            return {...state, isFetching: true};
+export const ordersReducer = (state = defaultState, action) => {
+    switch (action.type) {
+
+        case types.CHANGE_INPUT_VALUE_FIND_ORDER : {
+            return {
+                ...state,
+                findOrderInput:action.payload
+            };
         }
 
-        case types.GET_ORDERS_REQUEST_SUCCESS: { 
-            return {...state, isFetching: false, orders: action.payload.orders};
+        case types.FIND_ORDERS_ARRAY : {
+            if(!isNaN(+state.findOrderInput)){
+                return {
+                    ...state,
+                    ordersArray:state.orders.filter(el => el.orderNumber === +state.findOrderInput),
+                    searching:true,
+                }
+            }
+            if(state.findOrderInput.includes('@')){
+                return {
+                    ...state,
+                    ordersArray:state.orders.filter(el => el.user.email === state.findOrderInput),
+                    searching:true,
+                }
+            }
+            return {
+                ...state,
+                searching:true,
+            };
         }
 
-        case types.USER_ORDERS: {
-            // console.log(action.payload)
-            // console.log(state.orders)
-            const userOrdersArray = state.orders.filter(userOrder => userOrder.user === action.payload._id)
-            console.log('userOrders',userOrdersArray)
-            return  {...state, isFetching: false,}
+        case types.CHANGE_INPUT_VALUE_ORDER_FORM : {
+            return {
+                ...state,
+            };
         }
 
-        case types.GET_ORDERS_REQUEST_FAIL: {
-            return {...state, isFetching: false}
-            // return {...state, isFetching: false,error: action.payload.response.data.message };
+
+        case types.GET_ORDERS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
         }
+
+        case types.GET_ORDERS_REQUEST_SUCCESS : {
+            const res = action.payload.res.orders;
+            const doctors = action.payload.data.doctors;
+            const services = action.payload.data.services;
+            const users = action.payload.data.users;
+            // eslint-disable-next-line array-callback-return
+            res.map(el => {
+                if(doctors.find(doc => doc._id === el.doctor))el.doctor = doctors.find(doc => doc._id === el.doctor);
+                if(services.find(spec => spec._id === el.spec))el.spec = services.find(spec => spec._id === el.spec);
+                if(users.find(us => us._id === el.user))el.user = users.find(us => us._id === el.user)
+            });
+            return {
+                ...state,
+                orders: res
+            };
+        }
+
+        case types.GET_ORDERS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
+
+
 
         default:
-             return state
+            return state
     }
-}
+};
