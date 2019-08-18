@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Switch, Route} from "react-router-dom";
+
 import {
     changeInputValueDoctorForm,
     changeInputValueServiceForm,
@@ -18,7 +19,8 @@ import {
     findUser,
     deleteUser,
     changeInputValueUserForm,
-    putUser
+    putUser,
+    getUsers,
 } from "../../actions/user"
 
 import {
@@ -32,9 +34,16 @@ import {
     postShedule,
 } from "../../actions/shedule"
 
+import  {
+    getOrders,
+    changeInputFindOrder,
+    findOrdersArray
+} from "../../actions/orders"
+
 import Shedule from './Shedule'
 import ChangeUser from './ChangeUser'
 import ChangeServicesDoctors from './ChangeServices-Doctors'
+import Orders from "./Orders";
 
 
 
@@ -65,6 +74,7 @@ export class Admin extends React.Component {
             changeSpecialityArray,
             specialityArray,
             user,
+            users,
             findUserInput,
             changeFindUserInput,
             findUser,
@@ -72,7 +82,15 @@ export class Admin extends React.Component {
             userError,
             changeUserForm,
             changeInputValueUserForm,
-            putUser
+            putUser,
+            getUsers,
+            getOrders,
+            orders,
+            changeInputFindOrder,
+            findOrderInput,
+            findOrdersArray,
+            ordersArray,
+            searching
         } = this.props;
 
         return (
@@ -83,6 +101,7 @@ export class Admin extends React.Component {
                         <Link to='/admin/change-doctors' className = "btn link admin">Сотрудники</Link>
                         <Link to='/admin/change-services' className = "btn link admin">Сервисы</Link>
                         <Link to='/admin/change-user' className = "btn link admin">Пользователи</Link>
+                        <Link to='/admin/change-orders' className = "btn link admin">Заказы</Link>
                     </div>
                     <Switch>
                         <Route path='/admin/change-shedule' render={() => <Shedule
@@ -116,6 +135,7 @@ export class Admin extends React.Component {
                         />} />
                         <Route path='/admin/change-user' render={() => <ChangeUser
                             user={user}
+                            users={users}
                             findUserInput={findUserInput}
                             changeFindUserInput={changeFindUserInput}
                             findUser={findUser}
@@ -124,6 +144,20 @@ export class Admin extends React.Component {
                             changeUserForm={changeUserForm}
                             changeInputValueUserForm={changeInputValueUserForm}
                             putUser={putUser}
+                            getUsers={getUsers}
+                        />} />
+                        <Route path='/admin/change-orders' render={() => <Orders
+                            getOrders={getOrders}
+                            orders={orders}
+                            doctors={doctors}
+                            services={services}
+                            users={users}
+                            findOrderInput={findOrderInput}
+                            ordersArray={ordersArray}
+                            searching={searching}
+                            changeInputFindOrder={changeInputFindOrder}
+                            findOrdersArray={findOrdersArray}
+                            getUsers={getUsers}
                         />} />
                     </Switch>
                 </div>
@@ -147,6 +181,12 @@ const mapStateToProps = state => {
         findUserInput:state.user.findUserInput,
         userError:state.user.error,
         changeUserForm:state.user.changeUserForm,
+        users:state.user.users,
+        orders:state.orders.orders,
+        findOrdersArray:state.orders.findOrdersArray,
+        findOrderInput:state.orders.findOrderInput,
+        ordersArray:state.orders.ordersArray,
+        searching:state.orders.searching
     }
 };
 
@@ -168,7 +208,11 @@ const mapDispatchToProps = {
     findUser,
     deleteUser,
     changeInputValueUserForm,
-    putUser
+    putUser,
+    getUsers,
+    getOrders,
+    changeInputFindOrder,
+    findOrdersArray
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

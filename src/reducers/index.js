@@ -7,6 +7,7 @@ import {appointmentReducer} from "./appointment";
 import {servicesReducer} from "./services";
 import {userReducer} from "./user";
 import {sheduleReducer} from "./shedule";
+import {ordersReducer} from "./orders";
 
 
 
@@ -17,5 +18,6 @@ export default combineReducers({
     appointment:appointmentReducer,
     services:servicesReducer,
     user:userReducer,
-    shedule:sheduleReducer
+    shedule:sheduleReducer,
+    orders:ordersReducer
 })
