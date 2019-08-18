@@ -4,6 +4,7 @@ import {adminChangeUserForm} from "../utils/formFields"
 
 const defaultState = {
     user: null,
+    users:[],
     findUserInput: '',
     changeUserForm: adminChangeUserForm,
     isFetching: false,
@@ -12,6 +13,55 @@ const defaultState = {
 
 export const userReducer = (state = defaultState, action) => {
     switch (action.type) {
+
+        case types.CHANGE_INPUT_VALUE_FIND_USER : {
+            return {
+                ...state,
+                findUserInput: action.payload
+            };
+        }
+
+        case types.CHANGE_INPUT_VALUE_USER_FORM : {
+            const data = action.payload.target;
+            return {
+                ...state,
+                changeUserForm: state.changeUserForm.map(el => el.name === data.name ? el.type === 'radio' ?
+                    {
+                        ...el,
+                        checked: !el.checked
+                    } :
+                    {
+                        ...el,
+                        value: data.value
+                    } :
+                    el
+                ),
+            };
+        }
+
+        case types.GET_USERS_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.GET_USERS_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                users: action.payload.users,
+                isFetching: false
+            };
+        }
+
+        case types.GET_USERS_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        }
+
 
         case types.FIND_USER_REQUEST : {
             return {
@@ -49,29 +99,26 @@ export const userReducer = (state = defaultState, action) => {
             }
         }
 
-        case types.CHANGE_INPUT_VALUE_FIND_USER : {
+        case types.PUT_USER_REQUEST : {
             return {
                 ...state,
-                findUserInput: action.payload
+                isFetching: true
             };
         }
 
-        case types.CHANGE_INPUT_VALUE_USER_FORM : {
-            const data = action.payload.target;
+        case types.PUT_USER_REQUEST_SUCCESS : {
             return {
                 ...state,
-                changeUserForm: state.changeUserForm.map(el => el.name === data.name ? el.type === 'radio' ?
-                    {
-                        ...el,
-                        checked: !el.checked
-                    } :
-                    {
-                        ...el,
-                        value: data.value
-                    } :
-                    el
-                ),
+                isFetching: false
             };
+        }
+
+        case types.PUT_USER_REQUEST_FAIL : {
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
         }
 
         case types.DELETE_USER_REQUEST : {
@@ -84,7 +131,6 @@ export const userReducer = (state = defaultState, action) => {
         case types.DELETE_USER_REQUEST_SUCCESS : {
             return {
                 ...state,
-                services: action.payload,
                 isFetching: false
             };
         }
