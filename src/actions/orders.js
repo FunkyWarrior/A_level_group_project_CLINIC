@@ -34,6 +34,11 @@ const getOrdersFail = payload => ({
     payload
 });
 
+export const getUserOrders = payload => ({
+    type: types.USER_ORDERS,
+    payload
+})
+
 export const getOrders = (payload) => dispatch => {
     dispatch(getOrdersRequest());
     return fetch(`${URL}`,{

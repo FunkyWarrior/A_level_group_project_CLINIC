@@ -106,6 +106,11 @@ const putUserRequestSuccess = payload => ({
     payload
 });
 
+const changeDataInCurrentUser = payload => ({
+    type: types.CHANGE_DATA_IN_CURRENT_USER,
+    payload
+})
+
 const putUserRequestFail = payload => ({
     type: types.PUT_USER_REQUEST_FAIL,
     payload
@@ -113,6 +118,7 @@ const putUserRequestFail = payload => ({
 
 export const putUser = (payload) => dispatch => {
     dispatch(putUserRequest());
+   
     return fetch(`${URL}${payload.path}`, {
         method: "PUT",
         credentials: "include",
@@ -123,5 +129,6 @@ export const putUser = (payload) => dispatch => {
     })
         .then(res => res.json())
         .then(res => dispatch(putUserRequestSuccess(res)))
+        .then(dispatch(changeDataInCurrentUser(payload.data)))
         .catch(err => dispatch(putUserRequestFail(err)));
 };

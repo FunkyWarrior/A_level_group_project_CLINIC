@@ -91,8 +91,14 @@ export const getUser = () => dispatch => {
         .catch(err => dispatch(getUserRequestFail(err)));
 };
 
-
 export const userLogout = payload => ({
     type: types.USER_LOGOUT,
     payload
 })
+
+export const changeInputValueUserUserForm = payload => (
+    {
+        type:types.CHANGE_INPUT_VALUE_USER_USER_FORM,
+        payload
+    }
+)

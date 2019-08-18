@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { userLogout} from "../../actions/auth"
 
 class Header extends Component {
+	state = {
+		
+	}
 
 	logoutHandler  = (e) => {
 		localStorage.removeItem('userId')

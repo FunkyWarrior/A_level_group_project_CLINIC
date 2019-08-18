@@ -4,6 +4,7 @@ const defaultState = {
     orders:[],
     ordersArray:[],
     findOrderInput:'',
+    userOrdersArray:[],
     error:null,
     isFetching:false,
     searching:false,
@@ -79,7 +80,17 @@ export const ordersReducer = (state = defaultState, action) => {
             }
         }
 
-
+        case types.USER_ORDERS: {
+            //  console.log(action.payload)
+            // console.log(state.orders)
+             const userOrderArray = state.orders.filter(userOrder => userOrder.user === action.payload._id)
+            //  console.log('userOrders',userOrderArray)
+             return  {
+                 ...state,
+                 userOrdersArray:userOrderArray,
+                isFetching: false,}
+        }
+                  
 
 
         default:
