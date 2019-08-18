@@ -26,51 +26,48 @@ class Orders extends Component {
         const{findOrderInput,ordersArray,searching,orders} = this.props;
         console.log(this.props);
         return (
-            <div style={{
-                display:'flex',
-            }}>
-                <div style={{
-                    width:'50%'
-                }}>
-                    <input type="text" onKeyDown={this.enterPressed} onChange={this.changeInputFindOrder}/>
+            <div className = "orders-container">
+                <div className = "orders-item find-order">
+                    <input className = " appointment admin-form" type="text" onKeyDown={this.enterPressed} onChange={this.changeInputFindOrder}/>
                     {findOrderInput &&
-                    <button id='enter' onClick={this.findOrders}>Find User</button>
+                    <button className = "btn service-btn"  id='enter' onClick={this.findOrders}>Найти</button>
                     }
-                    {searching && ordersArray.length === 0 && <p>Order not found</p>}
+                    {searching && ordersArray.length === 0 && <p>Заказ не найден</p>}
                     {ordersArray.map(el => (
-                        <div key={el._id} style={{
-                            display:'flex',
-
-                        }}>
-                            <Link to={`/order/${el._id}`}>{el.orderNumber}</Link>
-                            <div>
+                        <div className = "order"  key={el._id}>
+                            <div className = "order-date">
+                                <Link to={`/order/${el._id}`} className = "order-info">{el.orderNumber}</Link>
                                 <p>{el.date.split('T')[0]}</p>
                                 <p>{el.time}</p>
                             </div>
-                            <Link to={`/user/${el.user._id}`}>{el.user.email}</Link>
-                            <Link to={`/doctors/${el.doctor._id}`}>{el.doctor.name}</Link>
-                            <Link to={`/services/${el.spec._id}`}>{el.spec.name}</Link>
+                            <div className="name-info">
+                                <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
+                                <div className="info-serv-doc">
+                                    <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
+                                    <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
+                                </div>                                
+                            </div>
                         </div>
                     ))}
                 </div>
-                <div style={{
+                <div className = "orders-item" style={{
                     display:'flex',
                     flexDirection:'column',
-                    width:'50%'
                 }}>
                     {orders.map(el => (
-                        <div key={el._id} style={{
-                            display:'flex',
-
-                        }}>
-                            <Link to={`/order/${el._id}`}>{el.orderNumber}</Link>
-                            <div>
+                        <div  className = "order"  key={el._id} >
+                            <div className = "order-date">
+                                <Link to={`/order/${el._id}`} className = "order-info">{el.orderNumber}</Link>
                                 <p>{el.date.split('T')[0]}</p>
                                 <p>{el.time}</p>
                             </div>
-                            <Link to={`/user/${el.user._id}`}>{el.user.email}</Link>
-                            <Link to={`/doctors/${el.doctor._id}`}>{el.doctor.name}</Link>
-                            <Link to={`/services/${el.spec._id}`}>{el.spec.name}</Link>
+                            <div className="name-info">
+                                <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
+                                <div className="info-serv-doc">
+                                    <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
+                                    <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

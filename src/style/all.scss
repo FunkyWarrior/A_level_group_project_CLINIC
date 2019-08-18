@@ -1024,7 +1024,7 @@ h2 {
 		flex-basis: 50%;
 	}
 	.change-user-form {
-		 margin-top: 30px;
+		//  margin-top: 30px;
 		 form {
 			 display: flex;
 			flex-direction: column;
@@ -1068,6 +1068,59 @@ h2 {
 	}
 }
 
+// __________orders-container_____________
+.orders-container {
+	display: flex;
+	justify-content: space-between;
+	.orders-item {
+		width: 55%;
+		margin: 15px;
+	}
+	.find-order {
+		max-width: 30%;	
+	}
+	.order {
+		display: flex;
+		flex-direction: column;
+		padding: 10px 25px;
+		border: 1px solid $main-color;
+		border-radius:  3px;
+		margin: 10px 0;
+	}
+	.order-info {
+		text-decoration: none;
+		color: $header-color;
+		padding: 5px;
+	}
+	.order-date {
+		display: flex;
+		justify-content: space-between;
+		margin: 10px 0;
+		color: $hover-color;
+		a {
+			color: $hover-color;
+		}
+		p {
+			margin: 0;
+		}
+	}
+	.name-info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.info-serv-doc {
+			display: flex;
+			margin-left: 10px;
+			flex-basis: 75%;
+			justify-content: space-between;
+			a {
+				display: flex;
+				margin: 0 10px;
+			}
+		}
+	}
+
+}
 
 
 	// _______________ACCORDION___________

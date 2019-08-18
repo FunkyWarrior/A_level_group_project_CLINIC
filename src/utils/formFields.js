@@ -8,7 +8,7 @@ import Reviews from "../components/Reviews";
 import Admin from "../components/Admin/Admin";
 import Appointment from "../components/appointment/Appointment";
 import Auth from "../containers/auth";
-import User from "../components/user";
+import User from "../containers/user";
 
 
 const PAGENOTFOUND = () => 
