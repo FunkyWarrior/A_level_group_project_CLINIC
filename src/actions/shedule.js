@@ -2,6 +2,8 @@ import * as types from '../actionsTypes/actionsTypes'
 import {getDoctors} from "./actions";
 
 
+const URL = "https://api-clinics.herokuapp.com/api/v1/";
+
 export const setSheduleDoctor = payload => ({
     type: types.CHANGE_SHEDULE_DOCTOR,
     payload

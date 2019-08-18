@@ -101,6 +101,11 @@ aside {
 
 }
 
+// _________page-not-found_____________
+.page-not-found {
+	text-align: center;
+	margin: 0 auto;
+}
 
 // _______header +  navigation______________
 .header,
@@ -150,6 +155,8 @@ aside {
 		}
 		&:last-child a {
 			color: $hover-color;
+			text-align: start;
+			vertical-align: top;
 			&:hover {
 				color: #4dea94;
 			}
@@ -268,7 +275,7 @@ aside {
 .more {
 	width: 100%;
 	display: block;
-	padding: 15px 2px;
+	padding: 10px 2px;
 	text-align: center;
 	@media (max-width: 1024px) {
 		font-size: 0.7em;
@@ -290,12 +297,12 @@ aside {
 }
 
 
-.servise-btn {
+.service-btn {
 	font-size: 0.7em;
 	margin: 0;
 	width: 100%;
 	line-height: 2em;
-	padding: 3px;
+	padding: 0.5rem;
 	min-height: 35px;
 	margin: 2px 0;
 	background-color: $main-color;
@@ -446,6 +453,7 @@ h2 {
 			border-radius: 5px;
 			line-height: 1.2em;
 			height: 100%;
+			width: 100%;
 		}
 		.photo {
 			overflow: hidden;
@@ -503,7 +511,7 @@ h2 {
 	}	
 }
 .info-wrap {
-	padding: 110px 10px 25px;
+	padding: 110px 20px 25px;
 	min-height: 100vh;
 	flex-direction: row;
 	 .info {
@@ -706,7 +714,7 @@ h2 {
 	border: 1px solid $hover-color;
 	border-radius: 3px;
 	padding: 0.5rem;
-	margin: 15px 0;
+	margin: 10px 0;
 	color: $opacity-color;
 	background-color: $header-color;
 	cursor: pointer;
@@ -803,8 +811,9 @@ h2 {
 		justify-content: center;
 	}
 	.admin {
-		width: 20%;	
+		width: 15%;	
 		margin: 3px;
+		font-size: 0.7em;
 		@media (max-width: 768px) {
 			width: 80%;	
 			margin: 10px 5px;
@@ -890,7 +899,7 @@ h2 {
 		align-content: center;
 	}
 	.select .icon-angle-down:before {
-		top: 35%;
+		top: 55%;
 	  }
 	.form-doctors {
 		display: flex;
@@ -1004,15 +1013,67 @@ h2 {
 			width: 100%;
 		}
 	}
-	.service-btn {
-		background-color: $hover-color;
-		width: 100%;
-		margin: 5px;
+
+// ________change-user-container_________
+.change-user-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	padding: 5px 10px;
+	.input-box {
+		flex-basis: 50%;
 	}
+	.change-user-form {
+		 margin-top: 30px;
+		 form {
+			 display: flex;
+			flex-direction: column;
+		 }
+	}
+	.change-user-radio {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin: 55px 0 10px;
+		@media (max-width: 1024px) {
+			margin-top: 10px;
+			display: flex;
+		}
+
+		input[type = "radio"] {
+			display: none;
+		  }
+		  .radio {
+			padding-left: 20px;
+		  }
+		  input[type = "radio"] +label::before {
+			content: "";
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			background-color: $opacity-color;
+			border: 1px solid $main-color;
+			border-radius: 50%;
+			vertical-align: middle;
+			margin: 10px 10px 10px -10px;
+		  }
+		   input[type = "radio"]:checked + label::before {
+			content: "";
+			color: $main-color;
+			text-align: center;
+			font-size: 16px;
+			background-color: $hover-color;
+			font-weight: bold;
+		  }
+	}
+}
+
+
 
 	// _______________ACCORDION___________
 	#accordion {	
 		.service-type {
+			margin: 25px 0 5px;
 			&:target {
 				padding-top: 110px;				
 			}

@@ -23,12 +23,13 @@ export const userReducer = (state = defaultState, action) => {
 
         case types.CHANGE_INPUT_VALUE_USER_FORM : {
             const data = action.payload.target;
+            console.log (data)
             return {
                 ...state,
-                changeUserForm: state.changeUserForm.map(el => el.name === data.name ? el.type === 'radio' ?
+                changeUserForm: state.changeUserForm.map(el => el.inputName === data.inputName ? el.type === 'radio' ?
                     {
                         ...el,
-                        checked: !el.checked
+                        checked: true
                     } :
                     {
                         ...el,
@@ -75,14 +76,15 @@ export const userReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 user: data,
-                changeUserForm: state.changeUserForm.map(el => Object.keys(data).find(item => item === el.name) ? el.type === 'radio' ?
+                changeUserForm: state.changeUserForm.map(el => Object.keys(data).find(item =>
+                     item === el.inputName) ? el.type === 'radio' ?
                     {
                         ...el,
-                        checked: data[`${el.name}`] === el.value
+                        // checked: data[`${el.inputName}`] === el.value
                     } :
                     {
                     ...el,
-                    value: data[`${el.name}`]
+                    value: data[`${el.inputName}`]
                     } :
                     el
                 ),

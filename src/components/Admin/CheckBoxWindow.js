@@ -8,6 +8,7 @@ class CheckBoxWindow extends React.Component {
 
     render() {
         const {categories, changeFlag,specialityArray} = this.props;
+        console.log(this.props)
         return (
             <>
                 <div className = "check-container">

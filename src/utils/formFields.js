@@ -9,7 +9,17 @@ import Admin from "../components/Admin/Admin";
 import Appointment from "../components/appointment/Appointment";
 import Auth from "../containers/auth";
 import User from "../components/user";
-const PAGENOTFOUND = () => <div>PAGE 404 NOT FOUND</div>;
+
+
+const PAGENOTFOUND = () => 
+	<div className="main">
+		<div className="info-wrap">
+			<div className="page-not-found">
+				<h1>PAGE 404 NOT FOUND</h1>
+				<img src="./images/logo.png" alt=""/>			
+			</div>
+		</div>
+	</div>;
 
 
 
@@ -172,10 +182,10 @@ export const postNewDoctorForm =[
 	},
 	{
 		id:3,
-		type:'file',
+		type:'text',
 		value:"",
 		name:'photo',
-		className: "btn link",
+		className: "btn service-btn",
 		placeholder:'Добавьте фотографию',
 		required:true
 	},
@@ -237,7 +247,8 @@ export const adminChangeUserForm =[
 		id:1,
 		type:'text',
 		value:"",
-		name:'firstName',
+		inputName:'firstName',
+		pageValue : "Имя" ,
 		placeholder:'Введите Имя',
 		required:true
 	},
@@ -245,7 +256,8 @@ export const adminChangeUserForm =[
 		id:2,
 		type:'text',
 		value:"",
-		name:'lastName',
+		inputName:'lastName',
+		pageValue : "Фамилия" ,
 		placeholder:'Введите Фамилию',
 		required:true
 	},
@@ -253,7 +265,8 @@ export const adminChangeUserForm =[
 		id:3,
 		type:'email',
 		value:"",
-		name:'email',
+		inputName:'email',
+		pageValue : "E-mail" ,
 		placeholder:'Введите E-mail',
 		readOnly:true,
 		required:true
@@ -262,47 +275,49 @@ export const adminChangeUserForm =[
 		id:4,
 		type:'phone',
 		value:"",
-		name:'phone',
+		inputName:'phone',
+		pageValue : "Номер телефона" ,
 		placeholder:'Введите номер телефона',
 		required:true
 	},
-	{
-		id:5,
-		type:'text',
-		value:"",
-		name:'_id',
-		readOnly:true,
-		required:true
-	},
+	// {
+	// 	id:5,
+	// 	type:'text',
+	// 	value:"",
+	// 	name:'_id',
+	// 	readOnly:true,
+	// 	required:true
+	// },
 	{
 		id:6,
 		type:'radio',
-		value:true,
-		name:'role',
-		required:true
+		value: 'role',
+		pageValue : "Админ",
+		name: 'access',
+		inputName:'role',
+		required:true,
+		className:"radio"
 	},
 	{
 		id:7,
 		type:'radio',
-		value:false,
-		name:'role',
-		required:true
+		value: 'doctor',
+		inputName:  'doctor',
+		pageValue : "Доктор",
+		name:'access',
+		required:true,
+		className:"radio"
 	},
 	{
 		id:8,
 		type:'radio',
-		value:true,
-		name:'doctor',
-		required:true
+		value: 'user',
+		inputName:  'user',
+		pageValue : "Пользователь",
+		name:'access',
+		required:true,
+		className:"radio"
 	},
-	{
-		id:9,
-		type:'radio',
-		value:false,
-		name:'doctor',
-		required:true
-	}
-
 ];
 
 export const route = [

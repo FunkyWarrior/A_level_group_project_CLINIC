@@ -86,6 +86,7 @@ export class Appoint extends React.Component {
                                         <p className="highlights">{doctor.profession}</p>
                                         <CustomSelect
                                             label="Выбор услуги"
+                                            emptyLine = {false}
                                             options={doctor.speciality}
                                             clickOptionEvent={this.setSpec}
                                         />

@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-export const CustomSelect = ({ label, options , emptyLine = true, searchInput = true,  reset, clickOptionEvent = () =>{} }) => {
+export const CustomSelect = ({ label, options , emptyLine, searchInput = true,  reset, clickOptionEvent = () =>{} }) => {
 
 	const [copyOption, setCopyOption] = React.useState([]);
 	const [show, toggleShow] = React.useState(false);
@@ -49,7 +49,8 @@ export const CustomSelect = ({ label, options , emptyLine = true, searchInput = 
 		toggleShow(false);
 	};
 
-	const clickOnEptyLine = () => {
+	const clickOnEptyLine = (text) => {
+		if (typeof clickOptionEvent === "function" ) clickOptionEvent(text);
 		toggleValue("");
 		toggleInputValue("");
 

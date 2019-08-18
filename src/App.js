@@ -14,6 +14,9 @@ import {route} from './utils/formFields'
 import { PrivateRoute } from "./privateRouter";
 
 
+function  makeHashchange (event) {
+    window.scroll(0, 0)
+} 
 
 export class App extends React.Component {
 
@@ -24,6 +27,8 @@ export class App extends React.Component {
         // this.props.getOrders();
 
        if(localStorage.getItem('userId')) this.props.getUser()
+
+       window.addEventListener = ( "hashchange", makeHashchange) 
 
         // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
         //     method : "POST",
@@ -39,7 +44,9 @@ export class App extends React.Component {
         //     .then (res => res.json ())
         //     .then (res => console.log (res))
     }
-
+    componentDidUnMount () {
+        window.removeEventListener  ( "hashchange", makeHashchange)  
+    }
     render() {
         return (
               <Loader flag={this.props.app.isFetching}>

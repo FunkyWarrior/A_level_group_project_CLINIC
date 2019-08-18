@@ -70,6 +70,7 @@ export default class ChangeServicesDoctors extends React.Component {
             changeSpecialityArray,
             specialityArray
         } = this.props;
+        console.log ( itemId)
         return (
             <div className="change-services-doctors">
                 {this.state.flag &&
@@ -97,7 +98,7 @@ export default class ChangeServicesDoctors extends React.Component {
                             })
                         }
                         {categories &&
-                        <button className=" btn servise-btn" onClick={this.changeFlag}>Выбрать сервисы</button>}
+                        <button className=" btn service-btn" onClick={this.changeFlag}>Выбрать сервисы</button>}
                         <input
                             className="btn link"
                             type='submit'
@@ -107,8 +108,9 @@ export default class ChangeServicesDoctors extends React.Component {
                 </div>
                 <div className="admin-item">
                     <CustomSelect
-                        // label="Выбрать"
+                        label="Выбрать"
                         options={data}
+                        emptyLine = {true}
                         clickOptionEvent={this.changeId}
                     />
                     {itemId &&

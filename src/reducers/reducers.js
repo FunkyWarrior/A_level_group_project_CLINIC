@@ -61,14 +61,14 @@ export const appReducer = (state = defaultState,action) => {
 
         case types.CHANGE_SELECTED_DOCTOR_ID : {
             let doctor = action.payload.data.find(el => el.name === action.payload.item);
-            let specArray=[];
             return {
                 ...state,
-                specialityArray:specArray,
+                specialityArray: doctor ? doctor.speciality.map(el => el =el._id) : [ ],
                 changeDoctorId: doctor ? doctor._id : null,
-                postNewDoctor:doctor ? state.postNewDoctor.map(el => Object.keys(doctor).find(item => item === el.name) ? {
+                
+                postNewDoctor:doctor ? state.postNewDoctor.map(el =>  Object.keys(doctor).find(item => item === el.name) ? {
                     ...el,
-                    value:doctor[el.name]
+                    value: el.type==="file" ? null : doctor[el.name]
                 } : el) : postNewDoctorForm
             };
         }

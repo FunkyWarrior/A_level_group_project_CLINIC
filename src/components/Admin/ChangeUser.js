@@ -26,11 +26,11 @@ export default class ChangeUser extends React.Component {
     changeUser = (e) => {
         e.preventDefault();
         const obj = {};
-        // eslint-disable-next-line array-callback-return
-        this.props.changeUserForm.map(el => {
-            obj[el.name] = el.type === 'radio' ? el.checked ? el.value : !el.value : el.value
+            this.props.changeUserForm.map(el => {
+            obj[el.inputName] = el.type === 'radio' ? el.checked ? el.value : !el.value : el.value
         });
-        this.props.putUser({data:obj,path:this.props.user._id})
+        // this.props.putUser
+        console.log({data:obj,path:this.props.user._id})
     };
 
     changeConfirm = (action, text) => {
@@ -51,55 +51,52 @@ export default class ChangeUser extends React.Component {
             error
         } = this.props;
         return (
-            <div
-                style={{
-                    display: 'flex'
-                }}
-            >
-                <div>
-                    <input type='text' name='find_user' onKeyDown={this.enterPressed} onChange={this.changeUserInput}/>
+            <div className = "change-user-container" >
+                <div className = "input-box">
+                    <input type='text' name='find_user' className = " appointment admin-form"  onKeyDown={this.enterPressed} onChange={this.changeUserInput}/>
                     {findUserInput &&
-                    <button id='enter' onClick={this.findUser}>Find User</button>
+                    <button className = "btn service-btn" id='enter' onClick={this.findUser}>Найти пользователя</button>
                     }
                     {user &&
-                    <div>
-                        <form
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                width: '400px'
-                            }}
-                        >
+                    <div className = "change-user-form">
+                        <form className = "change-user-radio">
                             {changeUserForm.map(el =>
-                                <label
-                                    key={el.id}>{el.name === 'role' || el.name === 'doctor' ? `${el.name} ${el.value}` : el.name}
-                                    {el.name !== 'role' && el.name !== 'doctor' && <br/>}
+                            <div className="input-wrap" key={el.id}>
+                                
                                     <Input
                                         el={el}
                                         changeInputValues={changeInputValueUserForm}
                                         className={el.className}
+                                        id={el.id}
+                                        name = {el.inputName}
+                                        value={el.value}
                                     />
-                                </label>
+                                    <label htmlFor = {el.id} >
+                                        {el.pageValue}
+                                    </label>
+                            </div>
+
+                                // <label htmlFor={index}>{Object.keys(el)}</label>
                             )}
                         </form>
-                        <button onClick={this.changeUser}>Change</button>
-                        <button onClick={this.changeConfirm}>DELETE</button>
+                        <button className = "btn service-btn" onClick={this.changeUser}>Изменить</button>
+                        <button className = "btn service-btn" onClick={this.changeConfirm}>Удалить</button>
                     </div>
                     }
 
                     {error &&
                     <div>
-                        <p>User not found</p>
+                        <p>Пользователь не найден</p>
                     </div>
                     }
                 </div>
                 <div>
-                    <p>User List will be here</p>
+                    <p>Здесь будет список пользователей  </p>
                 </div>
                 {
                     this.state.showConfirm &&
                     <ConfirmButton yes={this.deleteUser} no={this.changeConfirm}
-                                   text={'Are you sure you want to Delete User?'}
+                                   text={'Вы уверены, что хотите удалить пользователя?'}
                     />
                 }
             </div>
