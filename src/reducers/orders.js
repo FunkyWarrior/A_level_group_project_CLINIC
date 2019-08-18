@@ -13,8 +13,7 @@ export default (state = initialState, action) => {
             return {...state, isFetching: true};
         }
 
-        case types.GET_ORDERS_REQUEST_SUCCESS: {
-            // console.log(action.payload)     
+        case types.GET_ORDERS_REQUEST_SUCCESS: { 
             return {...state, isFetching: false, orders: action.payload.orders};
         }
 
@@ -22,7 +21,7 @@ export default (state = initialState, action) => {
             // console.log(action.payload)
             // console.log(state.orders)
             const userOrdersArray = state.orders.filter(userOrder => userOrder.user === action.payload._id)
-            // console.log('arr',userOrdersArray)
+            console.log('userOrders',userOrdersArray)
             return  {...state, isFetching: false,}
         }
 

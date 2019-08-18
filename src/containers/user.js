@@ -7,6 +7,8 @@ import UserInfo from '../components/userInfo'
 import UserOrders from '../components/userOrders'
 
 import { getOrders,getUserOrders } from "../actions/orders"
+import { changeInputValueUserUserForm } from '../actions/auth'
+import {putUser} from '../actions/user'
 
 class UserContainer extends Component {
 
@@ -15,20 +17,14 @@ class UserContainer extends Component {
         this.props.getUserOrders(this.props.currentUser)
        
     }
-   
-    // componentDidUpdate(){
-        
-    //     // orders ? action(currentUser) : null
-    // }
 
     render() { 
         // const {currentUser, dataOrders, getUserOrders} = this.props
-        const { currentUser } = this.props
-        // console.log('user',currentUser)
-        // console.log('Orders',dataOrders)
+        const { currentUser,changeUserUserForm, changeInputValueUserUserForm,putUser } = this.props
         return (
             <div className="main">
                 <div className="info-wrap">
+                <h2>Добро пожаловать в личный кабинет, {currentUser.firstName}!</h2>
                  <div className="btn-box">
                     <Link to='/user/orders' className = "btn link admin" >Мои заказы</Link>
                     <Link to='/user/info' className = "btn link admin">Редактировать профиль</Link>
@@ -37,6 +33,9 @@ class UserContainer extends Component {
                     <Route path='/user/orders' component={ UserOrders } />
                     <Route path='/user/info' render={() => <UserInfo
                             user={currentUser}
+                            changeUserUserForm = {changeUserUserForm}
+                            changeInputValueUserUserForm={changeInputValueUserUserForm}
+                            putUser= {putUser}
                         />} />
                  </Switch>
                 </div>
@@ -50,7 +49,7 @@ const mapStateToProps = state => {
     return {
         currentUser: state.auth.user,
         dataOrders: state.orders,
-        changeUserForm: state.auth.changeUserForm
+        changeUserUserForm: state.auth.changeUserForm
     }
 }
-export default connect(mapStateToProps, { getOrders,getUserOrders })(UserContainer);
+export default connect(mapStateToProps, { getOrders,getUserOrders, changeInputValueUserUserForm, putUser })(UserContainer);

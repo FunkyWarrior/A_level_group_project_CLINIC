@@ -232,6 +232,59 @@ export const postNewServiceForm =[
 	}
 ];
 
+export const changeUserForm = [
+	{
+		id:1,
+		type:'email',
+		value:"",
+		name:'email',
+		placeholder:'Введите E-mail',
+		readOnly:true,
+		required:true
+	},
+	{
+		id:2,
+		type:'text',
+		value:"",
+		name:'firstName',
+		placeholder:'Введите Имя',
+		required:true
+	},
+	{
+		id:3,
+		type:'text',
+		value:"",
+		name:'lastName',
+		placeholder:'Введите Фамилию',
+		required:true
+	},
+	{
+		id:4,
+		type:'number',
+		value:"",
+		name:'phone',
+		placeholder:'Введите ваш номер',
+		required:true
+	},
+	{
+		id:5,
+		type:'password',
+		value:"",
+		name:'password',
+		placeholder:'Введите новый пароль',
+		required:true
+	},
+	{
+		id:6,
+		type:'password',
+		value:"",
+		name:'confirmPassword',
+		placeholder:'Повторите пароль',
+		required:true
+	}
+	
+];
+
 export const adminChangeUserForm =[
 	{
 		id:1,

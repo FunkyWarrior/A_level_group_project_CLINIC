@@ -24,19 +24,19 @@ export class App extends React.Component {
 
        if(localStorage.getItem('userId')) this.props.getUser()
 
-        // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
-        //     method : "POST",
-        //     credentials: "include",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify ({
-        //         email: "test@test.com",
-        //         password: "qwerty"
-        //     })
-        // })
-        //     .then (res => res.json ())
-        //     .then (res => console.log (res))
+        fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
+            method : "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify ({
+                email: "test@test.com",
+                password: "qwerty"
+            })
+        })
+            .then (res => res.json ())
+            .then (res => console.log (res))
     }
 
     render() {

@@ -70,22 +70,28 @@ export const deleteUser = (payload) => dispatch => {
 
 
 const putUserRequest = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST,
+    type: types.PUT_USER_REQUEST,
     payload
 });
 
 const putUserRequestSuccess = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST_SUCCESS,
+    type: types.PUT_USER_REQUEST_SUCCESS,
     payload
 });
 
+const changeDataInCurrentUser = payload => ({
+    type: types.CHANGE_DATA_IN_CURRENT_USER,
+    payload
+})
+
 const putUserRequestFail = payload => ({
-    type: types.DELETE_DOCTORS_REQUEST_FAIL,
+    type: types.PUT_USER_REQUEST_FAIL,
     payload
 });
 
 export const putUser = (payload) => dispatch => {
     dispatch(putUserRequest());
+   
     return fetch(`${URL}${payload.path}`, {
         method: "PUT",
         credentials: "include",
@@ -96,5 +102,6 @@ export const putUser = (payload) => dispatch => {
     })
         .then(res => res.json())
         .then(res => dispatch(putUserRequestSuccess(res)))
+        .then(dispatch(changeDataInCurrentUser(payload.data)))
         .catch(err => dispatch(putUserRequestFail(err)));
 };
