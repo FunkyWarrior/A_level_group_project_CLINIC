@@ -44,9 +44,7 @@ export class App extends React.Component {
         //     .then (res => res.json ())
         //     .then (res => console.log (res))
     }
-    componentDidUnMount () {
-        window.removeEventListener  ( "hashchange", makeHashchange)  
-    }
+
     render() {
         return (
               <Loader flag={this.props.app.isFetching}>

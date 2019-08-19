@@ -41,8 +41,8 @@ class Orders extends Component {
                                 <p>{el.time}</p>
                             </div>
                             <div className="name-info">
-                                <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
-                                <div className="info-serv-doc">
+                                 <div className="info-serv-doc">
+                                    <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
                                     <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
                                     <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
                                 </div>                                
@@ -62,8 +62,8 @@ class Orders extends Component {
                                 <p>{el.time}</p>
                             </div>
                             <div className="name-info">
-                                <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
                                 <div className="info-serv-doc">
+                                    <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
                                     <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
                                     <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
                                 </div>
