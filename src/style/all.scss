@@ -143,7 +143,15 @@ aside {
 		text-transform: uppercase;
 		@media (max-width: 768px) {
 			display: none;	
+			// display: flex;
+			// flex-direction: column;
+			// position: absolute;
+			// right: 0%;
+			// top: 100%;
+			// padding: 10px 20px;
+			// background-color: rgba(17,17,17,0.8);
 		}
+
 	}
 	& .item {
 		padding: 0;
@@ -160,6 +168,9 @@ aside {
 			&:hover {
 				color: #4dea94;
 			}
+			&:hover .icon-exit:before  {
+				color: #4dea94;
+			  }
 		}
 		a {
 			text-decoration: none;
@@ -413,6 +424,7 @@ h2 {
 		}
 		@media (max-width: 414px) {
 			width: 100%;
+			margin: 20px 10px;
 		}
 		.photo {
 			border-radius: 5px; 
@@ -481,7 +493,6 @@ h2 {
 		padding-top: 65px;
 	}
 	.item {
-		
 		.photo {
 			position: relative;
 			line-height: 0;
@@ -643,44 +654,6 @@ h2 {
 		@media (max-width: 414px) {
 			max-width: 100%;
 		}
-		.appointment-time {
-			transition: all 0.5s ease;
-			.btn-box {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: flex-start;
-				margin: 55px 0 10px;
-				@media (max-width: 1024px) {
-					margin-top: 10px;
-				}
-			}
-			.radio {
-				display: none;
-			}
-			.radio-btn {
-				flex-basis: 10%;
-			}
-			label {
-				margin: 10px 10px 3px 10px;
-				padding: 3px 10px;
-				display: block;
-				min-width: 75px;	
-				background-color: $hover-color;
-				color: $opacity-color;
-				&:hover {
-					background-color: $main-color;
-					color: $header-color;
-				}
-				@media (max-width: 320px) {
-					margin: 10px 5px 3px 10px;
-				}
-			}
-			.radio-btn input[type="radio"]:checked + label {
-				background-color: $main-color;
-				color: $header-color;
-			}
-		}
 	}
 	.order-information {
 		order: -1;	
@@ -706,6 +679,7 @@ h2 {
 }
 
 
+
 // _____ APPOINTMENT _________
 
 .appointment {
@@ -728,7 +702,44 @@ h2 {
 		max-width: 90%;
 	}
 }
-
+.appointment-time {
+	transition: all 0.5s ease;
+	.btn-box {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin: 55px 0 10px;
+		@media (max-width: 1024px) {
+			margin-top: 10px;
+		}
+	}
+	.radio {
+		display: none;
+	}
+	.radio-btn {
+		flex-basis: 10%;
+	}
+	label {
+		margin: 10px 10px 3px 10px;
+		padding: 3px 10px;
+		display: block;
+		min-width: 75px;	
+		background-color: $hover-color;
+		color: $opacity-color;
+		&:hover {
+			background-color: $main-color;
+			color: $header-color;
+		}
+		@media (max-width: 320px) {
+			margin: 10px 5px 3px 10px;
+		}
+	}
+	.radio-btn input[type="radio"]:checked + label {
+		background-color: $main-color;
+		color: $header-color;
+	}
+}
 .comment {
 	resize: none;
 	background-color: $main-color;
@@ -1076,9 +1087,7 @@ h2 {
 		width: 55%;
 		margin: 15px;
 	}
-	.find-order {
-		max-width: 30%;	
-	}
+
 	.order {
 		display: flex;
 		flex-direction: column;
@@ -1137,6 +1146,7 @@ h2 {
 	z-index: 99;
 	h3 {
 		margin: 10px;
+		text-align: center;
 	}
 	.btns{
 		display: flex;
@@ -1148,8 +1158,34 @@ h2 {
 		min-height: 25px;
 		margin: 5px;
 	}
+	.yes:hover {
+		color: $opacity-color;
+		background-color: $hover-color;
+	}
 	.no {
 		background-color: rgb(255, 151, 116);
+	}
+}
+
+// ________change-order-form______________
+.change-order-form {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: -3px auto;
+	width: 80%;
+	font-size: 1em;
+	z-index: 55;
+	background-color: $opacity-color;
+	border-radius: 3px;
+	.order-change-input {
+		margin-top: 25px;
+	}
+	input {
+		font-size: 1em;
 	}
 }
 
