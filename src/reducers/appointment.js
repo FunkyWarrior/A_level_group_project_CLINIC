@@ -44,7 +44,11 @@ export const appointmentReducer = (state = defaultState, action) => {
                 ...state,
                 appointment:{
                     ...state.appointment,
-                    doctorId:action.payload
+                    doctorId:action.payload,
+                    specId:null,
+                    time:null,
+                    comment:null,
+                    sheduleId:null,
                 }
             };
         }

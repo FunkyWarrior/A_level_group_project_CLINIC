@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-
+import ChangeOrder from "./ChangeOrder";
 class Orders extends Component {
+    state={
+        order:null,
+    };
 
     componentDidMount() {
         this.props.getUsers();
-        this.props.getOrders({doctors:this.props.doctors,services:this.props.services,users:this.props.users});
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.users.length > 0 && this.props.orders.length === 0)
+            this.props.getOrders({doctors:this.props.doctors,services:this.props.services,users:this.props.users});
     }
 
     changeInputFindOrder = (e) => {
@@ -22,10 +30,46 @@ class Orders extends Component {
         }
     };
 
+    emailPressed = (e) => {
+        this.props.changeInputFindOrder(e.target.innerText);
+        this.findOrders()
+    };
+
+    changeOrder = (e) => {
+        this.setState({
+            order:!this.state.order ? this.props.orders.find(el => el._id === e.target.id) : null
+        })
+    };
+
     render() {
-        const{findOrderInput,ordersArray,searching,orders} = this.props;
-        console.log(this.props);
+        const{findOrderInput,ordersArray,searching,orders,doctors,services,
+            appointment,
+            timeArray,
+            setAppointmentSpec,
+            setAppointmentShedule,
+            setAppointmentDoctor,
+            clearAppointment,
+            setAppointmentTime,
+            setAppointmentComment,
+            deleteOrder
+        } = this.props;
         return (
+            <>
+                {this.state.order && <ChangeOrder
+                    doctors={doctors}
+                    services={services}
+                    order={this.state.order}
+                    clearOrder={this.changeOrder}
+                    appointment={appointment}
+                    timeArray={timeArray}
+                    setAppointmentSpec={setAppointmentSpec}
+                    setAppointmentShedule={setAppointmentShedule}
+                    setAppointmentDoctor={setAppointmentDoctor}
+                    clearAppointment={clearAppointment}
+                    setAppointmentTime={setAppointmentTime}
+                    setAppointmentComment={setAppointmentComment}
+                    deleteOrder={deleteOrder}
+                />}
             <div className = "orders-container">
                 <div className = "orders-item find-order">
                     <input className = " appointment admin-form" type="text" onKeyDown={this.enterPressed} onChange={this.changeInputFindOrder}/>
@@ -36,15 +80,15 @@ class Orders extends Component {
                     {ordersArray.map(el => (
                         <div className = "order"  key={el._id}>
                             <div className = "order-date">
-                                <Link to={`/order/${el._id}`} className = "order-info">{el.orderNumber}</Link>
+                                <Link onClick={this.changeOrder} id={el._id} className = "order-info">{el.orderNumber}</Link>
                                 <p>{el.date.split('T')[0]}</p>
                                 <p>{el.time}</p>
                             </div>
                             <div className="name-info">
                                  <div className="info-serv-doc">
-                                    <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
-                                    <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
-                                    <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
+                                    <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.email}`}</Link>
+                                    <Link to={`/doctors/${el.doctor._id}/false`} className = "order-info">{el.doctor.name}</Link>
+                                    <Link to={`/services/${el.spec._id}/false`} className = "order-info">{el.spec.name}</Link>
                                 </div>                                
                             </div>
                         </div>
@@ -57,21 +101,22 @@ class Orders extends Component {
                     {orders.map(el => (
                         <div  className = "order"  key={el._id} >
                             <div className = "order-date">
-                                <Link to={`/order/${el._id}`} className = "order-info">{el.orderNumber}</Link>
+                                <Link onClick={this.changeOrder} id={el._id} className = "order-info">{el.orderNumber}</Link>
                                 <p>{el.date.split('T')[0]}</p>
                                 <p>{el.time}</p>
                             </div>
                             <div className="name-info">
                                 <div className="info-serv-doc">
-                                    <Link to={`/user/${el.user._id}`} className = "order-info">{`${el.user.firstName} ${el.user.lastName}`}</Link>
-                                    <Link to={`/doctors/${el.doctor._id}`} className = "order-info">{el.doctor.name}</Link>
-                                    <Link to={`/services/${el.spec._id}`} className = "order-info">{el.spec.name}</Link>
+                                    <Link onClick={this.emailPressed} className = "order-info">{`${el.user.email}`}</Link>
+                                    <Link to={`/doctors/${el.doctor._id}/false`} className = "order-info">{el.doctor.name}</Link>
+                                    <Link to={`/services/${el.spec._id}/false`} className = "order-info">{el.spec.name}</Link>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+                </>
         );
     }
 }

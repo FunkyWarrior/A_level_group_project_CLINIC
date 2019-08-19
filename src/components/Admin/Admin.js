@@ -37,8 +37,18 @@ import {
 import  {
     getOrders,
     changeInputFindOrder,
-    findOrdersArray
+    findOrdersArray,
+    deleteOrder
 } from "../../actions/orders"
+
+import  {
+    setAppointmentSpec,
+    setAppointmentShedule,
+    setAppointmentDoctor,
+    clearAppointment,
+    setAppointmentTime,
+    setAppointmentComment
+} from "../../actions/appointment"
 
 import Shedule from './Shedule'
 import ChangeUser from './ChangeUser'
@@ -90,7 +100,16 @@ export class Admin extends React.Component {
             findOrderInput,
             findOrdersArray,
             ordersArray,
-            searching
+            searching,
+            appointment,
+            timeArray,
+            setAppointmentSpec,
+            setAppointmentShedule,
+            setAppointmentDoctor,
+            clearAppointment,
+            setAppointmentTime,
+            setAppointmentComment,
+            deleteOrder
         } = this.props;
 
         return (
@@ -158,6 +177,15 @@ export class Admin extends React.Component {
                             changeInputFindOrder={changeInputFindOrder}
                             findOrdersArray={findOrdersArray}
                             getUsers={getUsers}
+                            appointment={appointment}
+                            timeArray={timeArray}
+                            setAppointmentSpec={setAppointmentSpec}
+                            setAppointmentShedule={setAppointmentShedule}
+                            setAppointmentDoctor={setAppointmentDoctor}
+                            clearAppointment={clearAppointment}
+                            setAppointmentTime={setAppointmentTime}
+                            setAppointmentComment={setAppointmentComment}
+                            deleteOrder={deleteOrder}
                         />} />
                     </Switch>
                 </div>
@@ -186,7 +214,9 @@ const mapStateToProps = state => {
         findOrdersArray:state.orders.findOrdersArray,
         findOrderInput:state.orders.findOrderInput,
         ordersArray:state.orders.ordersArray,
-        searching:state.orders.searching
+        searching:state.orders.searching,
+        appointment:state.appointment.appointment,
+        timeArray:state.appointment.timeArray
     }
 };
 
@@ -212,7 +242,14 @@ const mapDispatchToProps = {
     getUsers,
     getOrders,
     changeInputFindOrder,
-    findOrdersArray
+    findOrdersArray,
+    setAppointmentSpec,
+    setAppointmentShedule,
+    setAppointmentDoctor,
+    clearAppointment,
+    setAppointmentTime,
+    setAppointmentComment,
+    deleteOrder
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(Admin)

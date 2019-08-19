@@ -1,4 +1,5 @@
 import * as types from '../actionsTypes/actionsTypes'
+import {sortFunc} from '../utils/sort'
 
 const defaultState = {
     orders:[],
@@ -24,14 +25,14 @@ export const ordersReducer = (state = defaultState, action) => {
             if(!isNaN(+state.findOrderInput)){
                 return {
                     ...state,
-                    ordersArray:state.orders.filter(el => el.orderNumber === +state.findOrderInput),
+                    ordersArray:state.orders.filter(el => el.orderNumber === +state.findOrderInput).sort(sortFunc('orderNumber')),
                     searching:true,
                 }
             }
             if(state.findOrderInput.includes('@')){
                 return {
                     ...state,
-                    ordersArray:state.orders.filter(el => el.user.email === state.findOrderInput),
+                    ordersArray:state.orders.filter(el => el.user.email === state.findOrderInput).sort(sortFunc('orderNumber')),
                     searching:true,
                 }
             }
@@ -68,7 +69,7 @@ export const ordersReducer = (state = defaultState, action) => {
             });
             return {
                 ...state,
-                orders: res
+                orders: res.sort(sortFunc('orderNumber'))
             };
         }
 
@@ -81,14 +82,34 @@ export const ordersReducer = (state = defaultState, action) => {
         }
 
         case types.USER_ORDERS: {
-            //  console.log(action.payload)
-            // console.log(state.orders)
-             const userOrderArray = state.orders.filter(userOrder => userOrder.user === action.payload._id)
-            //  console.log('userOrders',userOrderArray)
+             const userOrderArray = state.orders.filter(userOrder => userOrder.user === action.payload._id);
              return  {
                  ...state,
                  userOrdersArray:userOrderArray,
                 isFetching: false,}
+        }
+
+        case types.DELETE_ORDER_REQUEST : {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case types.DELETE_ORDER_REQUEST_SUCCESS : {
+            return {
+                ...state,
+                orders:[],
+                isFetching: false
+            };
+        }
+
+        case types.DELETE_ORDER_REQUEST_FAIL : {
+            return {
+                ...state,
+                error:action.payload,
+                isFetching: false
+            }
         }
                   
 

@@ -398,15 +398,15 @@ export const route = [
 	},
 	{
 		id: 3,
-		exact: true,
-		path: "/doctors/:doctor",
+		exact: false,
+		path: "/doctors/:doctor/:flag",
 		protected: false,
 		component: MoreInfo
 	},
 	{
 		id: 4,
 		exact: true,
-		path: "/services/:service",
+		path: "/services/:service/:flag",
 		protected: false,
 		component: MoreInfo
 	},
