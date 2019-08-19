@@ -35,6 +35,10 @@ class ChangeOrder extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+        this.props.clearAppointment()
+    }
+
     changeOrder = () => {
         this.setState({flag: !this.state.flag})
     };
