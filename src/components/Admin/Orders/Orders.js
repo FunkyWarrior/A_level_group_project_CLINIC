@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import ChangeOrder from "./ChangeOrder";
+
 class Orders extends Component {
     state={
         order:null,
@@ -8,7 +9,6 @@ class Orders extends Component {
 
     componentDidMount() {
         this.props.getUsers();
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -42,7 +42,7 @@ class Orders extends Component {
     };
 
     render() {
-        const{findOrderInput,ordersArray,searching,orders,doctors,services,
+        const{ findOrderInput,ordersArray,searching,orders,doctors,services,
             appointment,
             timeArray,
             setAppointmentSpec,
@@ -94,10 +94,7 @@ class Orders extends Component {
                         </div>
                     ))}
                 </div>
-                <div className = "orders-item" style={{
-                    display:'flex',
-                    flexDirection:'column',
-                }}>
+                <div className = "orders-item">
                     {orders.map(el => (
                         <div  className = "order"  key={el._id} >
                             <div className = "order-date">
@@ -116,7 +113,7 @@ class Orders extends Component {
                     ))}
                 </div>
             </div>
-                </>
+        </>
         );
     }
 }

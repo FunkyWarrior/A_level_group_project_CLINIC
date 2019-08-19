@@ -41,7 +41,7 @@ class UserContainer extends Component {
       <div className="main">
         <div className="info-wrap">
           <h2>Добро пожаловать в личный кабинет, {currentUser.firstName}!</h2>
-          <div className="btn-box">
+          <div className="btn-box user-btn-box">
             <Link to="/user/orders" className="btn link admin user-link">
               Мои заказы
             </Link>
