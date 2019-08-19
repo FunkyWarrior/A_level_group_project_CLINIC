@@ -10,7 +10,7 @@ export default class ChangeServicesDoctors extends React.Component {
         flag: false,
     };
 
-    changeConfirm = (action, text) => {
+    changeConfirm = () => {
         this.setState({showConfirm: !this.state.showConfirm})
     };
 

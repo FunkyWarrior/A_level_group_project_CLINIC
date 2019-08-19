@@ -13,7 +13,7 @@ export class Doctors extends React.Component {
                             data.map(el => (
                                 <div className="item"  key = {el._id} >
                                     <div className="photo">
-                                        <Link to = {`/doctors/${el._id}`} >
+                                        <Link to = {`/doctors/${el._id}/true`} >
                                             <img src= {el.photo} alt= {el.name}/>
                                             <div className="hover-block">
                                                 <div className = "btn link more">Подробнее ... </div>

@@ -15,14 +15,14 @@ export class MoreInfo extends React.Component {
                     <div className = "info-wrap">
                         <div className="info">
                             <div className="info-item">
-                                <img src={`.${doctor.photo}`} alt={doctor.name}/>
+                                <img src={`../.${doctor.photo}`} alt={doctor.name}/>
                             </div>
                              <div className="info-item info-desc">
                                  <h3> {doctor.name} </h3>
                                 <p className = "highlights">{doctor.profession}</p>
                                 <p className = "highlights">Опыт работы более {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]}  лет</p>
                                 {doctor.skillsDescription.split ("<br>").map ( (el, index) => (  <p key= {index}> { el } </p>)  ) }
-                                <Link to={`/appointment/${doctor._id}`} className = "btn link">Записаться на приём</Link>
+                                 {match.params.flag === 'true' && <Link to={`/appointment/${doctor._id}`} className = "btn link">Записаться на приём</Link>}
                              </div>
                         </div>
                     </div>}
@@ -30,11 +30,10 @@ export class MoreInfo extends React.Component {
                     {service  &&
                     <div  className = "info-wrap">
                         {service.name}
-
                         <p>Duration: {service.duration} h</p>
                         <p>{service.description}</p>
                         <p>Price: {service.price} грн.</p>
-                        <Link to={`/appointment/${service}`} className = "btn link admin">Записаться на приём</Link>
+                        {match.params.flag === 'true' && <Link to={`/appointment/${service._id}`} className = "btn link admin">Записаться на приём</Link>}
 
                     </div>}
                </div>

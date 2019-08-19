@@ -20,7 +20,7 @@ export class Services extends React.Component {
 
                                     {el.services.map(item => (
                                         <div className="servise-name" key={item._id}>
-                                            <p>{item.name}</p>
+                                            <Link to={`/services/${item._id}/true`}>{item.name}</Link>
                                             <p>Стоимость: {item.price} грн.</p>
                                             <div>
                                                 <Link to={`/appointment/${item._id}`}

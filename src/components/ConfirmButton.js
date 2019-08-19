@@ -13,7 +13,7 @@ class ConfirmButton extends Component {
                     </div>
 
                 </div>
-                <div className = "wrap-check-off"  onClick={no}/>
+                <div className = "wrap-check-off" style={{zIndex:'10'}}  onClick={no}/>
             </>
         )
     }

@@ -1,6 +1,7 @@
 import * as types from "../actionsTypes/actionsTypes";
 
 import axios from 'axios'
+import {getOrders} from "./orders";
 
 const URL = "https://api-clinics.herokuapp.com/api/v1/";
 
@@ -95,14 +96,10 @@ export const postOrders = payload => {
                 url:`${URL}orders`,
                 data: payload  
             });
-            dispatch(postOrdersSuccess(data))
+            dispatch(postOrdersSuccess(data));
             dispatch(clearAppointment());
-            console.log('post',data)
-
-           
-            
         } catch (error){
             dispatch(postOrdersFail(error));
         }
     }
-}
+};
