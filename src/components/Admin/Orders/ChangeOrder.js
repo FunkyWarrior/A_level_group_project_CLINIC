@@ -1,6 +1,7 @@
 import React from 'react';
-import {CustomSelect} from "../hooks/select";
-import Calendar from "../Calendar";
+import {CustomSelect} from "../../hooks/select";
+import Calendar from "../../Calendar";
+import ConfirmButton from "../../ConfirmButton";
 
 class ChangeOrder extends React.Component {
     state = {
@@ -13,6 +14,11 @@ class ChangeOrder extends React.Component {
             user: '',
         },
         flag: false,
+        showConfirm: false,
+    };
+
+    changeConfirm = () => {
+        this.setState({showConfirm: !this.state.showConfirm})
     };
 
     componentDidMount() {
@@ -69,7 +75,8 @@ class ChangeOrder extends React.Component {
                 orderNumber: this.state.order.orderNumber,
                 user:this.state.order.user._id
             }
-        })
+        });
+        this.changeConfirm()
     };
 
     render() {
@@ -78,21 +85,27 @@ class ChangeOrder extends React.Component {
             appointment,
             timeArray
         } = this.props;
-        console.log(this.props, this.state, appointment);
         return (
             <>
+                {this.state.showConfirm &&
+                <ConfirmButton
+                    yes={this.deleteAndPostNewOrder}
+                    no={this.changeConfirm}
+                    text={'Уверены что хотите изменить заказ?'}
+                />
+                }
                 <div style={{
-                    position: 'absolute',
+                    position: 'fixed',
                     right: '0',
                     left: '0',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     backgroundColor: 'black',
-                    margin: '5% auto',
+                    margin: '-3% auto',
                     width: '80%',
                     fontSize: '12px',
-                    zIndex: '2'
+                    zIndex: '5',
                 }}>
 
                     <input readOnly={true} id={this.state.order.orderNumber}
@@ -170,9 +183,10 @@ class ChangeOrder extends React.Component {
                             </div>
                         )}
                         {appointment.time &&
-                        <button className="btn link" onClick={this.deleteAndPostNewOrder}>Подтвердите запись
+                        <button className="btn link" onClick={this.changeConfirm}>Подтвердите запись
                         </button>
                         }
+
                     </div>
                     }
                 </div>
