@@ -1,6 +1,6 @@
 import * as types from '../actionsTypes/actionsTypes'
 
-import {adminChangeUserForm, changeUserForm} from "../utils/formFields"
+import {adminChangeUserForm} from "../utils/formFields"
 
 const defaultState = {
     user: null,
@@ -81,7 +81,6 @@ export const userReducer = (state = defaultState, action) => {
 
         case types.FIND_USER_REQUEST_SUCCESS : {
             const data = state.findUserInput.includes('@') ? action.payload.users[0] : action.payload.user;
-            console.log(data)
             return {
                 ...state,
                 user: data,
@@ -99,17 +98,15 @@ export const userReducer = (state = defaultState, action) => {
                         }
                         : el.id === 'user' && data.doctor === false && data.role === false
                         ? {
-                                ...el,
+                            ...el,
                             defaultChecked: true,
-                            }
+                        }
                         : el
                 ),
                 error: action.payload.message,
-                access:data.role ? 'role' : data.doctor ? 'doctor' : 'user',
-                isFetching:
-                    false
-            }
-                ;
+                access: data.role ? 'role' : data.doctor ? 'doctor' : 'user',
+                isFetching: false
+            };
         }
 
         case types.FIND_USER_REQUEST_FAIL : {

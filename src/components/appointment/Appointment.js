@@ -22,10 +22,12 @@ export class Appoint extends React.Component {
 
     componentDidMount() {
         this.props.setAppointmentDoctor(this.props.match.params.doctorId);
-        this.props.setAppointmentSpec({
-            data:this.props.match.params.serviceId,
-            services:this.props.services
-        })
+        if(this.props.match.params.serviceId !== 'false'){
+            this.props.setAppointmentSpec({
+                data:this.props.match.params.serviceId,
+                services:this.props.services
+            })
+        }
     }
 
     componentWillUnmount() {
@@ -75,6 +77,7 @@ export class Appoint extends React.Component {
         if (appointment.specId) {
             spec = services.find(el => el._id === appointment.specId)
         }
+        console.log(this.props)
         return (
             <>
                 <div className="main">
@@ -83,7 +86,7 @@ export class Appoint extends React.Component {
                             <div className="card">
                                 <div className="card-item present">
                                     <div className="photo">
-                                        <img src={`.${doctor.photo}`} alt={doctor.name}/>
+                                        <img src={`../../${doctor.photo}`} alt={doctor.name}/>
                                     </div>
                                     <div className="order">
                                         <h3>{doctor.name}</h3>

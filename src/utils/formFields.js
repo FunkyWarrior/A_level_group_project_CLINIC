@@ -418,7 +418,7 @@ export const route = [
   },
   {
     id: 7,
-    exact: false,
+    exact: true,
     path: "/appointment/:doctorId/:serviceId",
     protected: true,
     component: Appointment
