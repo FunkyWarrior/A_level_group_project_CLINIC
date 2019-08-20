@@ -292,6 +292,7 @@ export const changeUserForm = [
   }
 ];
 
+
 export const adminChangeUserForm =[
 	{
 		id:'firstName',
@@ -360,6 +361,7 @@ export const adminChangeUserForm =[
 		className:"radio",
 		defaultChecked:false,
 	},
+
 
 ];
 
