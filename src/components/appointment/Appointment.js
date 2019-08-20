@@ -86,7 +86,7 @@ export class Appoint extends React.Component {
                             <div className="card">
                                 <div className="card-item present">
                                     <div className="photo">
-                                        <img src={`.${doctor.photo}`} alt={doctor.name}/>
+                                        <img src={`../../${doctor.photo}`} alt={doctor.name}/>
                                     </div>
                                     <div className="order">
                                         <h3>{doctor.name}</h3>

@@ -9,7 +9,7 @@ const Footer = () => {
                     <p>пл. Конституции, 26</p>
            </div>
            <div className="footer-part logo-box">
-               <img src="../images/logo.png" alt="logo"/>
+               <img src="../../images/logo.png" alt="logo"/>
                </div>
            <div className="footer-part contacts">
               <h4 className  = "icon-phone"> Контакты</h4>
