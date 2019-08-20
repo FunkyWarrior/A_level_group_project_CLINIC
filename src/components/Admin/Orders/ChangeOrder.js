@@ -98,45 +98,33 @@ class ChangeOrder extends React.Component {
                     text={'Уверены что хотите изменить заказ?'}
                 />
                 }
-                <div style={{
-                    position: 'fixed',
-                    right: '0',
-                    left: '0',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    backgroundColor: 'black',
-                    margin: '-3% auto',
-                    width: '80%',
-                    fontSize: '12px',
-                    zIndex: '5',
-                }}>
+                <div className = "change-order-form" >
 
-                    <input readOnly={true} id={this.state.order.orderNumber}
+                    <input  className = "appointment admin-form order-change-input" readOnly={true} id={this.state.order.orderNumber}
                            defaultValue={this.state.order.orderNumber}
                     />
-                    <input readOnly={true} id={this.state.order.spec._id}
+                    <input className = "appointment admin-form" readOnly={true} id={this.state.order.spec._id}
                            defaultValue={this.state.order.spec.name}
                     />
-                    <input readOnly={true} id={this.state.order.doctor._id}
+                    <input  className = "appointment admin-form" readOnly={true} id={this.state.order.doctor._id}
                            defaultValue={this.state.order.doctor.name}
                     />
-                    <input readOnly={true} id={this.state.order.user._id}
+                    <input className = "appointment admin-form" readOnly={true} id={this.state.order.user._id}
                            defaultValue={this.state.order.user.email}
                     />
-                    <input readOnly={true} id={this.state.order.date}
+                    <input className = "appointment admin-form" readOnly={true} id={this.state.order.date}
                            defaultValue={this.state.order.date}
                     />
-                    <input readOnly={true} id={this.state.order.time}
+                    <input  className = "appointment admin-form" readOnly={true} id={this.state.order.time}
                            defaultValue={this.state.order.time}
                     />
-                    <input readOnly={true} id={this.state.order.comment}
+                    <input  className = "appointment admin-form" readOnly={true} id={this.state.order.comment}
                            defaultValue={this.state.order.comment}
                     />
-                    <button onClick={this.changeOrder}>Change Order</button>
+                    <button className = "btn service-btn"  onClick={this.changeOrder}>Изменить заказ</button>
                     {this.state.flag &&
-                    <div>
-                        <input readOnly={true} id={this.state.order.orderNumber}
+                    <div className = "order-change-input">
+                        <input className = "appointment admin-form" readOnly={true} id={this.state.order.orderNumber}
                                defaultValue={this.state.order.orderNumber}
                         />
                         <CustomSelect
@@ -190,7 +178,6 @@ class ChangeOrder extends React.Component {
                         <button className="btn link" onClick={this.changeConfirm}>Подтвердите запись
                         </button>
                         }
-
                     </div>
                     }
                 </div>

@@ -20,7 +20,7 @@ export class Services extends React.Component {
 
                                     {el.services.map(item => (
                                         <div className="servise-name" key={item._id}>
-                                            <Link to={`/services/${item._id}/true`}>{item.name}</Link>
+                                            <p>{item.name}</p>
                                             <p>Стоимость: {item.price} грн.</p>
                                             <div>
                                                 <Link to={`/appointment/${item._id}`}
@@ -50,3 +50,5 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Services);
+
+{/* <Link to={`/services/${item._id}/true`}>{item.name}</Link> */}

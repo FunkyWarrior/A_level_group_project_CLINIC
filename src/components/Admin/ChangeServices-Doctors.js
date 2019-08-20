@@ -123,7 +123,7 @@ export default class ChangeServicesDoctors extends React.Component {
                 <ConfirmButton
                     yes={this.deleteItem}
                     no={this.changeConfirm}
-                    text={'Are you sure you want to Delete Item?'}
+                    text={'Подтвердить удаление?'}
                 />
                 }
             </div>
