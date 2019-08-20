@@ -26,11 +26,40 @@ export default class ChangeUser extends React.Component {
     changeUser = (e) => {
         e.preventDefault();
         const obj = {};
-            this.props.changeUserForm.map(el => {
-            obj[el.inputName] = el.type === 'radio' ? el.checked ? el.value : !el.value : el.value
+        // eslint-disable-next-line array-callback-return
+        this.props.changeUserForm.map(el => {
+            if (el.type !== 'radio') {
+                return obj[el.id] = el.value
+            }
         });
-        // this.props.putUser
-        console.log({data:obj,path:this.props.user._id})
+        if (this.props.access === 'user') {
+            this.props.putUser({
+                data: {
+                    ...obj,
+                    doctor: false,
+                    role: false
+                },
+                path: this.props.user._id
+            })
+        } else if (this.props.access === 'doctor') {
+            this.props.putUser({
+                data: {
+                    ...obj,
+                    doctor: true,
+                    role: false
+                },
+                path: this.props.user._id
+            })
+        } else if (this.props.access === 'role') {
+            this.props.putUser({
+                data: {
+                    ...obj,
+                    doctor: false,
+                    role: true
+                },
+                path: this.props.user._id
+            })
+        }
     };
 
     changeConfirm = (action, text) => {
@@ -50,37 +79,37 @@ export default class ChangeUser extends React.Component {
             changeUserForm,
             error
         } = this.props;
+        console.log(this.props)
         return (
-            <div className = "change-user-container" >
-                <div className = "input-box">
-                    <input type='text' name='find_user' className = " appointment admin-form"  onKeyDown={this.enterPressed} onChange={this.changeUserInput}/>
+            <div className="change-user-container">
+                <div className="input-box">
+                    <input type='text' name='find_user' className=" appointment admin-form"
+                           onKeyDown={this.enterPressed} onChange={this.changeUserInput}/>
                     {findUserInput &&
-                    <button className = "btn service-btn" id='enter' onClick={this.findUser}>Найти пользователя</button>
+                    <button className="btn service-btn" id='enter' onClick={this.findUser}>Найти пользователя</button>
                     }
                     {user &&
-                    <div className = "change-user-form">
-                        <form className = "change-user-radio">
+                    <div className="change-user-form">
+                        <form className="change-user-radio">
                             {changeUserForm.map(el =>
-                            <div className="input-wrap" key={el.id}>
-                                
-                                    <Input
-                                        el={el}
-                                        changeInputValues={changeInputValueUserForm}
-                                        className={el.className}
-                                        id={el.id}
-                                        name = {el.inputName}
-                                        value={el.value}
-                                    />
-                                    <label htmlFor = {el.id} >
-                                        {el.pageValue}
-                                    </label>
-                            </div>
+                                    <div className="input-wrap" key={el.id}>
+                                        <Input
+                                            el={el}
+                                            changeInputValues={changeInputValueUserForm}
+                                            className={el.className}
+                                            id={el.id}
+                                            value={el.value}
+                                        />
+                                        <label htmlFor={el.id}>
+                                            {el.pageValue}
+                                        </label>
+                                    </div>
 
                                 // <label htmlFor={index}>{Object.keys(el)}</label>
                             )}
                         </form>
-                        <button className = "btn service-btn" onClick={this.changeUser}>Изменить</button>
-                        <button className = "btn service-btn" onClick={this.changeConfirm}>Удалить</button>
+                        <button className="btn service-btn" onClick={this.changeUser}>Изменить</button>
+                        <button className="btn service-btn" onClick={this.changeConfirm}>Удалить</button>
                     </div>
                     }
 
@@ -91,7 +120,7 @@ export default class ChangeUser extends React.Component {
                     }
                 </div>
                 <div>
-                    <p>Здесь будет список пользователей  </p>
+                    <p>Здесь будет список пользователей </p>
                 </div>
                 {
                     this.state.showConfirm &&

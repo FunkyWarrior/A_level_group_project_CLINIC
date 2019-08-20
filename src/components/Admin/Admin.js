@@ -109,7 +109,8 @@ export class Admin extends React.Component {
             clearAppointment,
             setAppointmentTime,
             setAppointmentComment,
-            deleteOrder
+            deleteOrder,
+            access
         } = this.props;
 
         return (
@@ -154,6 +155,7 @@ export class Admin extends React.Component {
                         />} />
                         <Route path='/admin/change-user' render={() => <ChangeUser
                             user={user}
+                            access={access}
                             users={users}
                             findUserInput={findUserInput}
                             changeFindUserInput={changeFindUserInput}
@@ -206,6 +208,7 @@ const mapStateToProps = state => {
         services: state.services.services,
         categories: state.services.categories,
         user:state.user.user,
+        access:state.user.access,
         findUserInput:state.user.findUserInput,
         userError:state.user.error,
         changeUserForm:state.user.changeUserForm,

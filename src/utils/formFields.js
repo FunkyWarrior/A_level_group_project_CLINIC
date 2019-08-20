@@ -297,7 +297,7 @@ export const changeUserForm = [
 
 export const adminChangeUserForm =[
 	{
-		id:1,
+		id:'firstName',
 		type:'text',
 		value:"",
 		inputName:'firstName',
@@ -306,7 +306,7 @@ export const adminChangeUserForm =[
 		required:true
 	},
 	{
-		id:2,
+		id:'lastName',
 		type:'text',
 		value:"",
 		inputName:'lastName',
@@ -315,7 +315,7 @@ export const adminChangeUserForm =[
 		required:true
 	},
 	{
-		id:3,
+		id:'email',
 		type:'email',
 		value:"",
 		inputName:'email',
@@ -325,7 +325,7 @@ export const adminChangeUserForm =[
 		required:true
 	},
 	{
-		id:4,
+		id:'phone',
 		type:'phone',
 		value:"",
 		inputName:'phone',
@@ -333,43 +333,35 @@ export const adminChangeUserForm =[
 		placeholder:'Введите номер телефона',
 		required:true
 	},
-	// {
-	// 	id:5,
-	// 	type:'text',
-	// 	value:"",
-	// 	name:'_id',
-	// 	readOnly:true,
-	// 	required:true
-	// },
 	{
-		id:6,
+		id:'role',
 		type:'radio',
-		value: 'role',
-		pageValue : "Админ",
-		name: 'access',
-		inputName:'role',
-		required:true,
-		className:"radio"
-	},
-	{
-		id:7,
-		type:'radio',
-		value: 'doctor',
-		inputName:  'doctor',
-		pageValue : "Доктор",
+		value:'role',
+		pageValue:"Админ",
 		name:'access',
-		required:true,
-		className:"radio"
+		inputName:'role',
+		className:"radio",
+		defaultChecked:false,
 	},
 	{
-		id:8,
+		id:'doctor',
 		type:'radio',
-		value: 'user',
-		inputName:  'user',
+		value:'doctor',
+		inputName:'doctor',
+		pageValue:"Доктор",
+		name:'access',
+		className:"radio",
+		defaultChecked:false,
+	},
+	{
+		id:'user',
+		type:'radio',
+		value:'user',
+		inputName:'user',
 		pageValue : "Пользователь",
 		name:'access',
-		required:true,
-		className:"radio"
+		className:"radio",
+		defaultChecked:false,
 	},
 ];
 
