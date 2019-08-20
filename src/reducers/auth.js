@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
         }
 
         case types.AUTH_REQUEST_FAIL: {
-            return {...state, isFetching: false,error: action.payload.response.data.message };
+            return {...state, isFetching: false,error: action.payload.message };
         }
 
         case types.REGISTRATION_REQUEST: {
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
         }
 
         case types.REGISTRATION_REQUEST_FAIL: {
-            return { ...state, isFetching: false, error: action.payload.response.data.message}
+            return { ...state, isFetching: false, error: action.payload.message}
         }
 
         case types.GET_USER_REQUEST: {

@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8a32a88-c432-4104-a927-0d3d1c1c21be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Doctors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Appointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Appointment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/app/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/app/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/app/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/app/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/auth.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +13,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="297" />
-    <option name="y" value="30" />
-    <option name="width" value="1175" />
-    <option name="height" value="1047" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
