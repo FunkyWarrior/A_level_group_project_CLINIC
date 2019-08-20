@@ -55,7 +55,7 @@ class Auth extends Component {
                 <div className="auth__additional-content">
                   {auth ? (
                     <p className="auth__text">
-                    У вас есть акаунт ? {" "}
+                    У вас нет акаунта ? {" "}
                       <span className="auth__toggle-span" onClick={this.toggleAuth}>
                         Зарегистрироваться
                       </span>

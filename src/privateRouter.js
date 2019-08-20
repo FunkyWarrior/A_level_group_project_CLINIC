@@ -11,6 +11,9 @@ export const PrivateRoute = ({ component: Component, protectedRoute, ...rest }) 
 				if (!token) {
 					return <Redirect to="/auth" />;
 				}
+				if(!props.location.key){
+					return <Redirect to="/user" />
+				}
 
 				return <Component {...props} />;
 			}
