@@ -21,7 +21,7 @@ export class Main extends React.Component {
                     <ul className="sidebar-ul">
                         <li className="sidebar-item"><Scrollchor to="#" className="nav-link"><span className="icon-lens"></span></Scrollchor></li>
                         <li className="sidebar-item"><Scrollchor to="#team" className="nav-link"><span className="icon-lens"></span></Scrollchor></li>
-                        <li className="sidebar-item"><Scrollchor to="#banner" className="nav-link"><span className="icon-lens"></span></Scrollchor></li>
+                        {/*<li className="sidebar-item"><Scrollchor to="#banner" className="nav-link"><span className="icon-lens"></span></Scrollchor></li>*/}
                         <li className="sidebar-item"><Scrollchor to="#about" className="nav-link"><span className="icon-lens"></span></Scrollchor></li>
                     </ul>
                 </aside>
@@ -31,7 +31,7 @@ export class Main extends React.Component {
                                 <div className="title-box">
                                     <img className = "logotype" src="./images/logo.png" alt=""/>
                                     <h1>Стоматология для всей семьи</h1>
-                                    <Link to={ `/appointment` } className = "btn ">Записаться на приём</Link>
+                                    <Link to={ `/doctors` } className = "btn ">Записаться на приём</Link>
                                 </div>
                     </div>
                 </div>
@@ -40,12 +40,12 @@ export class Main extends React.Component {
                         <Team doctorsArr = {this.props.app.doctors} />
                     </div>
 
-                <div className=" case" id = "banner">
-                        <img className = "banner" src="./images/medical.jpeg" alt="medical"/>
-                        <div className="button-box">
-                        <Link to={`/appointment`} className = "btn">Записаться на приём</Link>
-                        </div>     
-                 </div>
+                {/*<div className=" case" id = "banner">*/}
+                {/*        <img className = "banner" src="./images/medical.jpeg" alt="medical"/>*/}
+                {/*        <div className="button-box">*/}
+                {/*        <Link to={`/appointment`} className = "btn">Записаться на приём</Link>*/}
+                {/*        </div>     */}
+                {/* </div>*/}
 
                  <div className="wrapper"  id = "about">
                     <About/>

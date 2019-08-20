@@ -25,7 +25,7 @@ export class Doctors extends React.Component {
                                         <h3>{el.name}</h3>
                                         <p className="rank">{el.profession}</p>
                                         <div className="link-box">
-                                            <Link to={`/appointment/${el._id}`} className = "btn link ">Записаться на приём</Link>
+                                            <Link to={`/appointment/${el._id}/false`} className = "btn link ">Записаться на приём</Link>
                                         </div>     
                                     </div>
 

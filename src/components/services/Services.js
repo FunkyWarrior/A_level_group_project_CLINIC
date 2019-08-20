@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 export class Services extends React.Component {
     render() {
-        const {categories} = this.props;
+        const {categories,doctors} = this.props;
         return (
             <div className="main">
                 <div className="wrapper">
@@ -23,7 +23,7 @@ export class Services extends React.Component {
                                             <p>{item.name}</p>
                                             <p>Стоимость: {item.price} грн.</p>
                                             <div>
-                                                <Link to={`/appointment/${item._id}`}
+                                                <Link to={`/appointment/${doctors.find(el => el.speciality.find(serv => serv._id === item._id))._id}/${item.name}`}
                                                       className="btn service-btn"> Записаться </Link>
                                             </div>
                                         </div>
@@ -41,7 +41,8 @@ export class Services extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        categories: state.services.categories
+        categories: state.services.categories,
+        doctors:state.app.doctors
     };
 };
 

@@ -21,7 +21,11 @@ export class Appoint extends React.Component {
     };
 
     componentDidMount() {
-        this.props.setAppointmentDoctor(this.props.match.params.doctorId)
+        this.props.setAppointmentDoctor(this.props.match.params.doctorId);
+        this.props.setAppointmentSpec({
+            data:this.props.match.params.serviceId,
+            services:this.props.services
+        })
     }
 
     componentWillUnmount() {
