@@ -1,90 +1,83 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import {Switch, Route} from "react-router-dom";
+import {connect} from 'react-redux';
+import {Switch} from "react-router-dom";
 
-import {
-    getAll,
-    getDoctors,
-    getServices,
-    setAppointmentDate,
-    setAppointmentDoctor,
-    setAppointmentTime,
-    setAppointmentSpec,
-    setAppointmentComment,
-    clearAppointment,
-    putOrders,
+import {getDoctors} from "./actions/actions";
+import {getServices, getCategories} from "./actions/services";
+import {getUser} from "./actions/auth"
+import {getOrders} from "./actions/orders"
 
-} from "./store/app/actions";
-
-import Header from "./components/Header";
+import Loader from "./components/hooks/loader";
+import Header from "./components/header/index";
 import Footer from "./components/Footer";
-import Doctors from "./components/Doctors"
-import Services from "./components/Services"
-import Service from "./components/Service"
-import Appointment from "./components/Appointment"
+import {route} from './utils/formFields'
+import { PrivateRoute } from "./privateRouter";
 
+
+function  makeHashchange (event) {
+    window.scroll(0, 0)
+} 
 
 export class App extends React.Component {
 
     componentDidMount() {
-        // this.props.getDoctors();
-        // this.props.getServices()
-        this.props.getAll()
+        this.props.getDoctors();
+        this.props.getServices();
+        this.props.getCategories();
+        // this.props.getOrders();
+
+       if(localStorage.getItem('userId')) this.props.getUser()
+
+       window.addEventListener = ( "hashchange", makeHashchange) 
+
+        // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
+        //     method : "POST",
+        //     credentials: "include",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify ({
+        //         email: "test@test.com",
+        //         password: "qwerty"
+        //     })
+        // })
+        //     .then (res => res.json ())
+        //     .then (res => console.log (res))
     }
 
     render() {
-        console.log(this.props.app)
         return (
-            <div className="App">
-                <Header/>
+              <Loader flag={this.props.app.isFetching}>
+                  <Header/>
                     <Switch>
-                        <Route exact path="/" render={() => <div>Main</div>} />
-                        <Route exact path="/doctors" render={() => <Doctors data={this.props.app.doctors} /> } />
-                        <Route exact path="/services" render={() => <Services data={Array.from(Object.values(this.props.app.services))} />} />
-                        <Route exact path="/reviews" render={() => <div>Reviews</div>} />
-                        <Route exact path="/services/:service" render={(props) => <Service
-                            his={props}
-                            data={this.props.app.services}
-                        />} />
-                        <Route  path="/appointment/:doctor" render={(props) => <Appointment
-                            his={props}
-                            dataDoctors={this.props.app.doctors}
-                            dataServices={this.props.app.services}
-                            dataOrders={this.props.app.orders}
-                            appointment={this.props.app.appointment}
-                            setAppointmentDate={this.props.setAppointmentDate}
-                            setAppointmentDoctor={this.props.setAppointmentDoctor}
-                            setAppointmentTime={this.props.setAppointmentTime}
-                            setAppointmentSpec={this.props.setAppointmentSpec}
-                            setAppointmentComment={this.props.setAppointmentComment}
-                            clearAppointment={this.props.clearAppointment}
-                            putOrders={this.props.putOrders}
-                        />} />
+                        {route.map(el => (
+					        <PrivateRoute
+                                protectedRoute={el.protected}
+                                key={el.id}
+                                exact={el.exact}
+                                path={el.path}
+                                component={el.component}
+                            />
+				        ))}
                     </Switch>
-                <Footer/>
-            </div>
+                <Footer />
+             </Loader>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        app:state.app,
+        app:state.app
     }
 };
 
 const mapDispatchToProps = {
-    getAll,
     getDoctors,
     getServices,
-    setAppointmentDate,
-    setAppointmentDoctor,
-    setAppointmentTime,
-    setAppointmentSpec,
-    setAppointmentComment,
-    clearAppointment,
-    putOrders
-
+    getCategories,
+    getUser,
+    getOrders
 };
 
 export default connect (mapStateToProps,mapDispatchToProps)(App)

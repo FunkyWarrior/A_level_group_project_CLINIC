@@ -1,54 +1,94 @@
-import React, {Component} from 'react';
+import React from 'react';
+import moment from "moment";
+import {connect} from "react-redux";
+import 'moment/locale/ru';
 
-class Calendar extends Component {
+import {
+    createCalendarMonthArray,
+    changeCalendarMonth,
+    resetCurrent
+
+} from "../actions/calendar";
+
+export class Calendar extends React.Component {
 
     componentDidMount() {
+        moment.locale('ru');
+        this.props.createCalendarMonthArray(this.props.doctor)
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.doctor !== this.props.doctor) this.props.createCalendarMonthArray(this.props.doctor)
+    }
 
+    componentWillUnmount() {
+        this.props.resetCurrent()
     }
-    setDate = (e) => {
-        console.log(`${new Date().getFullYear()}-${new Date().getMonth() < 10 ? '0' + new Date().getMonth() : new Date().getMonth()}-${e.target.id < 10 ? '0' + e.target.id : e.target.id}`)
-        document.getElementById('inp_date').value=`${new Date().getFullYear()}-${new Date().getMonth() < 10 ? '0' + new Date().getMonth() : new Date().getMonth()}-${e.target.id < 10 ? '0' + e.target.id : e.target.id}`
-    }
+
+    addMonth = () => {
+        this.props.changeCalendarMonth(1);
+        this.props.createCalendarMonthArray(this.props.doctor)
+    };
+
+    subMonth = () => {
+        this.props.changeCalendarMonth(-1);
+        this.props.createCalendarMonthArray(this.props.doctor)
+    };
+
+    action = (e) => {
+        this.props.action(e)
+    };
 
     render() {
-        const date = new Date();
-        const start = new Date(2019, 6, 1);
-        const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        const currentMonth = [];
-        const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
-        for (let x = 1; x <= month[date.getMonth()]; x++) currentMonth.push(x);
-        const startOfMonth = week.indexOf(week.find(el => el === 'чт'));
-        console.log(date.getDate());
-
+        const {current,monthArray} = this.props;
         return (
-            <div>
-                <table cols={7}>
-                    <caption><button>{'<'}</button>{start.toLocaleString('ru', {month: 'short'})}<button>{'>'}</button></caption>
-                    <tbody>
-                    <tr>
-                        {week.map(el => (<th key={el}>{el}</th>))}
-                    </tr>
-                    <tr >
-                        {currentMonth.map(el=> (el >startOfMonth && el<=7) ? <td key={el} className='cal__td'><button id={el -  startOfMonth} onClick={this.setDate}>{el -  startOfMonth}</button></td> : el <=7 ? <td key={el}><button id={el} disabled>none</button></td> : null) }
-                    </tr>
-                    <tr >
-                        {currentMonth.map(el=> (el > 7-startOfMonth && el <= 14-startOfMonth)?(<td key={el} className='cal__td'><button id={el} onClick={this.setDate}>{el}</button></td>):null)}
-                    </tr>
-                    <tr >
-                        {currentMonth.map(el=> (el > 14-startOfMonth && el <= 21-startOfMonth)?(<td key={el} className='cal__td' ><button id={el} onClick={this.setDate}>{el}</button></td>):null)}
-                    </tr>
-                    <tr >
-                        {currentMonth.map(el=> (el > 21-startOfMonth && el <= 28-startOfMonth)?(<td key={el} className='cal__td'><button id={el}  onClick={this.setDate}>{el}</button></td>):null)}
-                    </tr>
-                    <tr >
-                        {currentMonth.map(el=> el > 28-startOfMonth?(<td key={el} className='cal__td'><button id={el} onClick={this.setDate}>{el}</button></td>):null)}
-                    </tr>
-                    </tbody>
-                </table>
-                <input type="date" id='inp_date'/>
+            <div className = "calendar-container">
+                <div className = "calendar-title-box" >
+                    <button className= "btn angle" onClick={this.subMonth}>
+                        <span className="icon-angle-left"></span>
+                    </button>
+                    <h4>{current.format('MMMM-YYYY')}</h4>
+                    <button  className= "btn angle"  onClick={this.addMonth}>
+                        <span className="icon-angle-right"></span>
+                    </button>
+                </div>
+                <div className = "weekdays">
+                    {moment.weekdaysShort(true).map(el => (
+                        <p  key={el}>{el}</p>
+                    ))}
+                </div>
+                <div  className = "days">
+                    {monthArray.map(el => (
+                        <button
+                            key={el.day}
+                            id={el.day}
+                            disabled={el.disabled}
+                            style={{
+                                backgroundColor:el.backgroundColor,
+                                border:el.border
+                            }}
+                            onClick={this.action}
+                        >
+                            {moment(el.day).format('DD')}
+                        </button>
+                    ))}
+                </div>
             </div>
         );
     }
 }
 
-export default Calendar
+const mapStateToProps = state => {
+    return {
+        current:state.calendar.current,
+        monthArray:state.calendar.monthArray
+    }
+};
+
+const mapDispatchToProps = {
+    createCalendarMonthArray,
+    changeCalendarMonth,
+    resetCurrent
+};
+
+export default connect (mapStateToProps,mapDispatchToProps)(Calendar)
+
