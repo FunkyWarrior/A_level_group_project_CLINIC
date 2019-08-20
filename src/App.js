@@ -24,28 +24,15 @@ export class App extends React.Component {
         this.props.getDoctors();
         this.props.getServices();
         this.props.getCategories();
-        // this.props.getOrders();
 
        if(localStorage.getItem('userId')) this.props.getUser()
 
-       window.addEventListener = ( "hashchange", makeHashchange) 
+       window.addEventListener = ( "hashchange", makeHashchange)
 
-        // fetch ("https://api-clinics.herokuapp.com/api/v1/auth/login", {
-        //     method : "POST",
-        //     credentials: "include",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify ({
-        //         email: "test@test.com",
-        //         password: "qwerty"
-        //     })
-        // })
-        //     .then (res => res.json ())
-        //     .then (res => console.log (res))
     }
 
     render() {
+
         return (
               <Loader flag={this.props.app.isFetching}>
                   <Header/>
@@ -68,7 +55,13 @@ export class App extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        app:state.app
+        app:state.app,
+        appoinLoad:state.appointment.isFetching,
+        ordersLoad:state.orders.isFetching,
+        appLoad:state.app.isFetching,
+        servicesLoad:state.services.isFetching,
+        userLoad:state.user.isFetching,
+        sheduleLoad:state.shedule.isFetching,
     }
 };
 

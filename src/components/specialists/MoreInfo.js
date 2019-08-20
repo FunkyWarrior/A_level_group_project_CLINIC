@@ -22,7 +22,7 @@ export class MoreInfo extends React.Component {
                                 <p className = "highlights">{doctor.profession}</p>
                                 <p className = "highlights">Опыт работы более {new Date().toISOString().split('T')[0].split('-')[0] - doctor.experience.split('T')[0].split('-')[0]}  лет</p>
                                 {doctor.skillsDescription.split ("<br>").map ( (el, index) => (  <p key= {index}> { el } </p>)  ) }
-                                 {match.params.flag === 'true' && <Link to={`/appointment/${doctor._id}`} className = "btn link">Записаться на приём</Link>}
+                                 {match.params.flag === 'true' && <Link to={`/appointment/${doctor._id}/false`} className = "btn link">Записаться на приём</Link>}
                              </div>
                         </div>
                     </div>}
